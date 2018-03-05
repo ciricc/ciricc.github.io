@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <title>EasyVK - официальная документация по использованию</title>
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/stroke.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+<!-- 
+    <link rel="stylesheet" type="text/css" href="js/syntax-highlighter/styles/shCore.css" media="all">
+    <link rel="stylesheet" type="text/css" href="js/syntax-highlighter/styles/shThemeRDark.css" media="all"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css"> -->
+    
+    <link rel="stylesheet" type="text/css" href="css/prism.css">
+    <!-- CUSTOM -->
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> -->
+    <style>
+        body, html {
+            font-family: "Roboto", sans-serif;
+        }
+        pre {
+            padding: 5px 5px;
+            background-color: #fff;
+            border-color: #f0f0f0;
+        }
+
+        td, th{
+            padding: 5px 5px;
+        }
+        td {
+            padding: 10px 10px;
+        }
+        th {
+            text-align: center;
+            color: rgb(14,164,239);
+            border-bottom: solid 1px #f0f0f0;
+        }
+        table {
+            min-width: 100%;
+        }
+
+        q {
+            background-color: #EDEEF0;
+            padding: 5px 5px;
+            border-left: solid 3px #0E97EE;
+            display: block;
+        }
+
+        .docs-sidebar {
+            overflow-x: hidden;
+            overflow-y: auto;
+            max-height: 900px;
+            /*position: relative;*/
+        }
+
+        .docs-sidebar::after {
+            display: block;
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 40px;
+            background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+            background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div class="container">
+
+            <section id="top" class="section docs-heading">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="big-title text-center">
+                            <h1>Easy<span style="color: #7298C3;font-weight: bold;">VK</span> v0.4</h1>
+                            <p class="lead">NodeJS модуль для работы с VK API</p>
+                        </div>
+                        <!-- end title -->
+                    </div>
+                    <!-- end 12 -->
+                </div>
+                <!-- end row -->
+
+                <hr>
+
+            </section>
+            <!-- end section -->
+
+            <div class="row">
+
+                <div class="col-md-3 bar" style="padding: 0;">
+                    <nav class="docs-sidebar" data-spy="affix" data-offset-top="300" data-offset-bottom="200" role="navigation">
+                        <ul class="nav">
+                            <li><a href="#line1">Приступаем (Auth)</a></li>
+                            <li><a href="#line2">Methods (Методы)</a>
+                                <ul class="nav">
+                                    <li><a href="#line2_1">.call()</a></li>
+                                    <li><a href="#line2_2">.saveSession()</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#line3">Static методы</a>
+                                <ul class="nav">
+                                    <li><a href="#line3_1">static.call()</a></li>
+                                    <li><a href="#line3_2">static.urlencode()</a></li>
+                                    <li><a href="#line3_3">static.isObject()</a></li>
+                                    <li><a href="#line3_4">static.isString()</a></li>
+                                    <li><a href="#line3_5">static.checkJSONErrors()</a></li>
+                                    <li><a href="#line3_6">static.checkErrors()</a></li>
+                                    <li><a href="#line3_7">static.encodeHTML()</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#line4">Streming API</a><ul class="nav">
+                                <li><a href="#streaming_connect">streamingAPI.connect()</a></li>
+                                <li><a href="#stream_addrule">stream.addRule()</a></li>
+                                <li><a href="#stream_deleterule">stream.deleteRule()</a></li>
+                                <li><a href="#stream_initrules">stream.initRules()</a></li>
+                                <li><a href="#stream_getrules">stream.getRules()</a></li>
+                                <li><a href="#stream_deleteallrules">stream.deleteAllRules()</a></li>
+                                <li><a href="#stream_close">stream.close()</a></li>
+                                <li><a href="#stream_events">События (Events)</a></li>
+                            </ul></li>
+                            <li><a href="#longpollapi">User LongPoll API</a><ul class="nav">
+                                <li><a href="#longpoll_connect">longpoll.connect()</a></li>
+                                <li><a href="#longpollconnection_addeventcodelistener">connection.addEventCodeListener()</a></li>
+                                <li><a href="#longpollconnection_close">connection.close()</a></li>
+                                <li><a href="#longpoll_connect_full">longpoll.connect() (full)</a></li>
+                                <li><a href="#longpoll_events">События (Events)</a></li>
+                            </ul></li>
+                            <li><a href="#callbackapi">Callback API</a>
+                                <ul class="nav">
+                                    <li><a href="#callbackapi_listen">callbackAPI.listen()</a></li>
+                                    <li><a href="#callbackapi_events">События (Events)</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#line7">Файлы</a>
+                                <ul class="nav">
+                                    <li><a href="#line7_1">General Options</a></li>
+                                    <li><a href="#line7_2">Style Options</a></li>
+                                    <li><a href="#line7_3">Header Options</a></li>
+                                    <li><a href="#line7_4">Font Options</a></li>
+                                    <li><a href="#line7_5">Slider Options</a></li>
+                                    <li><a href="#line7_6">Page Options</a></li>
+                                    <li><a href="#line7_7">Import & Export</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#line8">Helpers (Помощники)</a></li>
+                            <li><a href="#line9">Примеры</a></li>
+                        </ul>
+                    </nav >
+                </div>
+                <div class="col-md-9">
+                    <section class="welcome">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Что такое EasyVK?<hr></h2>
+                                <div class="row">
+
+                                    <div class="col-md-12 full">
+                                        <div>
+                                            <p>
+                                                EasyVK - это модуль для NodeJS, написанный на JavaScript, который способен помочь с легкостью обращаться с API Вконтакте бесплатно и без регистрации.
+                                            </p>
+
+                                            <p>При помощи EasyVK Вы можете создавать приложения на NodeJS любого рода. Начиная от простейшего: поиск лайков группы, заканчивая более сложным, как на пример - создание бота или таргетинг новостей. <br>
+                                            EasyVK написан для того, чтобы VK API имел удобную поддержку на NodeJS. Абсолютно все компоненты EasyVK бесплатные и доступны с исходным кодом.
+                                            </p>
+                                            <p>
+                                                <strong>На данный момент EasyVK поддерживает основные платформы VK API</strong> <br>
+                                                <ul>
+                                                    <li><a href="https://vk.com/dev/callback_api" target="_blank">Callback API</a> - управление группой, создание ботов для группы.</li>
+                                                    <li><a href="https://vk.com/dev/using_longpoll" target="_blank">LongPolling</a> - создание ботов, прослушивание событий аккаунта пользователя и группы. </li>
+                                                    <li><a href="https://vk.com/dev/streaming_api_docs" target="_blank">Streaming API</a> - таргетинг, сбор информации о новостях, комментариях и другом по определенным правилам. </li>
+                                                    <li><a href="https://vk.com/dev/methods" target="_blank">Methods</a> - Стандартные методы для управления аккаунтом / группой, и не только.</li>
+                                                    <li><a href="https://vk.com/dev/upload_files" target="_blank">Files</a> - загрузка файлов на сервера ВК, на пример - обложка для группы. </li>
+                                                </ul>
+                                            </p>
+                                            <h4>Что необходимо</h4>
+                                            <p>Для того чтобы использовать EasyVK, убедитесь, что у вас установлена версия <a href="https://nodejs.org/" target="_blank">NodeJS</a> >= 8.*</p>
+                                            Необходимо установить модуль <code>easyvk</code> <br> Для этого необходимо установить менеджер пакетов <code>npm</code> и ввести следующую команду<br><pre class="line-numbers"><code class="command">npm install easyvk</code></pre><br>
+                                            <p>
+                                                После этого необходимо в текущей дериктории (куда устанавливали easyvk) создать файл <code>index.js</code>. <br>
+                                                В него необходимо поместить следующий код
+                                                <pre><code class="line-numbers language-js">const easyVK = require("easyvk");</code></pre>
+                                                <!-- <pre></pre>  -->
+                                            </p>
+                                            <p>
+                                                <q>
+                                                    Весь код, приведенный в данной документации тестировался на версии 0.4! Вы можете быть уверены, что для этой версии все работает стабильно. Во время тестов было исправено много багов и недочетов, благодаря чему я теперь уверен, что это самый стабильный релиз.
+                                                </q>
+                                            </p>
+                                            <!-- <ol>
+                                                <li>Code Editing Software (eg: Dreamweaver, Sublime Text or Notepad)</li>
+                                                <li>Web Browser for testing (eg: Google Chrome or Mozilla Firefox)</li>
+                                                <li>FTP Tool to upload files to Server (eg: <a href="https://filezilla-project.org/download.php?type=client" target="_blank">FileZilla</a>) </li>
+                                            </ol> -->
+                                           <!--  <div class="intro2 clearfix">
+                                                <p><i class="fa fa-exclamation-triangle"></i> Be careful while editing the template. If not edited properly, the design layout may break completely.
+                                                    <br> No support is provided for faulty customization.
+                                                </p>
+                                            </div> -->
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end row -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="line1" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Приступаем <a href="#top">#вступление</a><hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    Прежде чем начать использовать EasyVK, необходимо понять как он работает. <br>
+                                    EasyVK - это впервую очередь посредник между сервером VK и вашими идеями. Так как EasyVK работает с методами ВКонтакте, то мы следуем и их требованиям. <br>
+                                    Именно поэтому прежде чем начать работать с EasyVK, необходимо сначала авторизоваться и создать сессию easyVK.
+                                </p>
+                                <p>
+                                    Для авторизации в EasyVK есть несколько способов
+                                    <ul>
+                                        <li>1. Авторизация по <code>access_token</code> пользователя.</li>
+                                        <li>2. Авторизация по <code>access_token</code> группы.</li>
+                                        <li>3. Авторизация по логину и паролю пользователя.</li>
+                                    </ul>
+                                </p>
+                                <p>
+                                    Какой нужен вам - решать вам. Если вам необходимо работать с группой, то добавляйте <code>access_token</code> группы, а если же вы работаете с личным аккаунтом или аккаунтом пользователя - вы имеет право выбрать каким способом его авторизовывать. Если же вам нужно только для личного использования и вы не хотите заморачиваться на получение токена, выберите 3 способ. 
+                                </p>
+                                <p>
+                                    Итак, вот код, который необходим для авторизации по <code>access_token</code>
+                                    <pre class="line-numbers"><code class="language-js">              
+errHandler = (err) => {console.log(err);}
+
+easyVK({
+    access_token: "это_ваш_токен"
+}).then((vk) => {
+    console.log(vk.session.group_id) //Для групп
+    console.log(vk.session.user_id) //Для пользователя
+}, errHandler);
+                                    </code></pre>
+                                </p>
+                                <p>
+                                    А для пользователя мы выбираем следующий способ:
+                                </p>
+                                <pre class="line-numbers"><code class="language-js">
+easyVK({
+    username: "youremail@mail.ru_ornumberphone",
+    password: "your_password"
+}).then((vk) => {}, errHandler);
+                                </code></pre>
+                                <p>
+                                    Возможно, вам захотелось узнать, какие параметры можно использовать в объекте инициализации. <br>
+                                    Все очень просто, взгляните на следующую таблицу.
+                                </p>
+                                  <table>
+                                      <caption>Параметры объекта инициализации</caption>
+                                      <tr>
+                                          <th>Параметр</th>
+                                          <th>Описание</th>
+                                          <th>По умолчанию</th>
+                                      </tr>
+                                      <tr>
+                                          <td><code>api_v</code></td>
+                                          <td>Версия API Вконтакте, которая будет использоватья для всех запросов.</td>
+                                          <td><a href="https://vk.com/dev/versions" target="_blank">5.73</a></td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>access_token</code></td>
+                                          <td>Токен доступа для авторизации и отправки запросов к API. Обязательный параметр, если файл сесси пустой или не введены другие данные для авторизации</td>
+                                          <td>Отсутствует</td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>username</code></td>
+                                          <td>Имя пользователя при авторизации пользователя. Обзательный параметр, если файл сессии пустой или не ввдены другие данные для авторизации</td>
+                                          <td>Отсутствует</td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>passwrord</code></td>
+                                          <td>Пароль пользователя. Необходим только если введен параметр <code>username</code></td>
+                                          <td>Отсутствует</td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>reauth</code></td>
+                                          <td>В случае если вам необходимо перезаписать файл сессии новыми параметрыми или Вы не хотите авторизовываться по сохраненным данным, необхдимо вставить этот параметр.</td>
+                                          <td><code>false</code></td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>save_session</code></td>
+                                          <td>Если есть необходимость не сохранять файл сессии, то Вы можете выставить этот параметр, как <code>false</code>.</td>
+                                          <td><code>true</code></td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>clean_session</code></td>
+                                          <td>Если имеется необходимость отщищать файл сессии после авторизации, можете поставить этот параметр как <code>true</code></td>
+                                          <td><code>false</code></td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>session_file</code></td>
+                                          <td>Путь к файлу сессии, куда будет сохраняться Ваша сессиия</td>
+                                          <td><code>.vksession</code></td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>code</code></td>
+                                          <td>В случае, если Ваш аккаунт использует двухфакторную авторизацию, необходимо передать в этот параметр код из SMS или код из приложения</td>
+                                          <td>Отсутствует</td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>captcha_key</code></td>
+                                          <td>Если возникла ошибка капчи, значит Вас подозреваются в дудосе. Введите в этот параметр строку с капчи, которую Вы найдете в ошибке, если правильно ее выводите.</td>
+                                          <td><code>""</code></td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>captcha_sid</code></td>
+                                          <td>Если возникла ошибка капчи, значит Вас подозреваются в дудосе. Введите в этот параметр ID капчи, который вы получаете из ошибки.</td>
+                                          <td><code>""</code></td>
+                                      </tr>
+                                  </table>
+                                  Это конечный список параметров авторизации. Вряд ли он будет пополняться, но может произойти все, что угодно. <br><br>
+                                  Итак, после того, как вы авторизовались, будет создан файл сессии, который будет содержать сессию группы/пользователя. В этой сессии записаны некоторые параметры <code>group_id</code> (для групп), <code>access_token</code>, <code>user_id</code> (для пользователя), <code>first_name</code> (имя), <code>last_name</code> (фамилия), <code>group_name</code> (навание группы), <code>group_screen</code> (буквенный id группы). <br>
+                                  В поледующих попытках авторизации все данные будут браться из этого файла, даже если они отличаются от тех, что вы ввели. Если вы этого не желаете, установите параметр <code>reauth</code> как <code>true</code><br><br>
+
+                                  <strong>Что там такое then((vk) => ...)</strong>
+                                  <p>
+                                        Это просто вызов callback функции, первым параметром в нее передается объект EasyVK, с которым вы и будете работать далее.
+                                  </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line2" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Methods (Методы)<a href="#top">#наверх</a><hr></h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>
+                                        В объекте EasyVK есть несколько методов, которые могут вам пригодится для работы с API Вконтакте. Документацию по ним пожно прочитать ниже
+                                    </p><br>
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line2_1">.call(...)</h4>
+                                
+                                Данный метод обращается к стандартным <a href="https://vk.com/dev/methods" target="_blank">методам</a> API Вконтакте. Вы можете контроллировать запрос, отправляя определенные параметры на сервер, а затем получать ответ. В случае ошибки, вы можете ловить ее и выводить в консоль без остановки программы.
+
+                                <br>
+                                <p>
+                                    Обращение к данному методу у текущего объекта гарантирует, что запрос отправится вметсе с <code>access_token</code> из сессии. В случае же, если вам необходимо сделать запрос к методу, которые не требует авторизации, вы можете воспользоваться static Методами, о которых речь пойдет ниже. Но это необязательно.
+                                </p>
+                                <br><br>
+                                <table>
+                                    <tr>
+                                        <th>Характеристика</th>
+                                        <th>Значение</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>Promise</code></td>
+                                        <td>Стандартный объект <code>Promise</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> methodName</td>
+                                        <td><code>{String}</code></td>
+                                        <td>Имя метода</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> data</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>Объект с параметрами для запроса, на пример: <br> <code>{text: "Привет!"}</code> </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> methodType</td>
+                                        <td><code>{String}</code></td>
+                                        <td>Один из способов отправки запроса: <br><code>["post", "get", "delete", "put"]</code></td>
+                                    </tr>
+                                </table>
+
+                                <br>
+                                <p>
+                                    После обращения, в функцию <code>resolve</code> передается полный ответ VK в виде объекта.
+                                </p><br>
+
+                                <h4>Пример использования</h4>
+                                <p>
+                                    Приведу очень простой пример - отправка сообщения. Прошу вас заметить, что я обращаюсь не к функции easyVK, а к объекту vk, который уже получил после авторизации.
+                                </p>
+                                <br>
+                                <pre class="line-numbers"><code class="language-js">
+vk.call("messages.send", {
+    user_id: "356607530",
+    message: "Привет, Кирилл! Я использую твой модуль EasyVK!",
+    attachment: ["photo100172_166443618", "video85635407_165186811_69dff3de4372ae9b6e"]
+}).then(vkr => {console.log(vkr)}, errHandler);
+                                </code></pre><br>
+                                <p>
+                                    Или, на пример - отправка слишком большого поста. С таким ограничением часто встречаются все программисты, именно поэтому я добавил поддержку <code>POST</code> запросов
+                                </p><br>
+                                <pre class="line-numbers"><code class="language-js">
+vk.call("wall.post", {
+    message: `very large text..... more >> `
+}, "post").catch(errHandler);
+                                </code></pre>
+                                <br>
+                                <p>
+                                    Для загрузки файлов таким способом я рекомендую использовать уже имеющийся загрузчик, и отказаться от метода <code>.call()</code>
+                                </p><br>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line2_2">.saveSession(...)</h4>
+                                <p>
+                                    Данный метод сохраняет файл сессии по указанному пути в параметре <code>file_session</code>.
+                                </p>
+                                <p>
+                                    Сохранение происходит синхронно, поэтому воздержитесь от использования данного метода на постоянной основе, зачастую в этом нет необходиомости.
+                                </p>
+                                <p>
+                                    Метод ничего не принимает и ничего не возвращает
+                                </p>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.session.foo = "bar";
+vk.saveSession();
+                                </code></pre>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line3" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Static методы<a href="#top">#наверх</a><hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                    
+                        <p>
+                            Static методы - это методы, которые не требуют инициализации объекта. В нашем случае эти методы не требуют авторизации. В большинстве случае static методы в EasyVK - это просто дополнительные функции, которые применялись во время разработки EasyVK. Эти функции доступны каждой утилите и именно поэтому я их использую.
+                        </p><br>
+                        <p>
+                            Static методы могут применяться для удобства разрботки, или же, на пример, для обращения к методам API Вконтакте, которые не требуют авторизации (пример будет ниже). <br>
+                            Ну а теперь просто подробней разберем каждый из них.
+                        </p>
+                        <br>
+                        <p>
+                            Стандертный способ использования static методов
+                            <pre class="line-numbers"><code class="language-js">
+easyVK.static.someMethodName();
+                            </code></pre>
+                        </p>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_1">static.call(...)</h4>
+                                <p>
+                                    Данный метод обращается к методу API Вконтакте, не требуя авторизации. Такая необходимость возникает часто тогда, когда запрос не требует вообще никаких <code>access_token</code>. <br>
+                                    EasyVK не требует чтобы вы точно знали, нужна ли авторизация для метода или нет. Также EasyVK не знает, нужна ли авторизация, или нет. В случае, если вы обращаетесь к данному методу с намерением выполнить запрос, который требует автризации, вы получите ошибку не от EasyVK, а от сервера Вконтакте. <br>
+                                    Именно благодаря этому библиотека может жить еще долго, а поддерживать ее будет неоходимо только в случае, если архитектура API изменится или, на пример, добавится новая платформа.
+                                </p>
+                                <p>
+                                    Итак, немного описания
+                                </p>
+
+                                <table>
+                                    <tr>
+                                        <th>Характеристика</th>
+                                        <th>Значение</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>Promise</code></td>
+                                        <td>Стандартный объект <code>Promise</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> methodName</td>
+                                        <td><code>{String}</code></td>
+                                        <td>Имя метода</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> data</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>Объект с параметрами для запроса, на пример: <br> <code>{text: "Привет!"}</code> </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> methodType</td>
+                                        <td><code>{String}</code></td>
+                                        <td>Один из способов отправки запроса: <br><code>["post", "get", "delete", "put"]</code></td>
+                                    </tr>
+                                </table>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+easyVK.static.call("users.get", {
+    user_ids: ["1", "156"]
+}).then((vkr) => {
+    console.log(vkr.response[0].id); //1
+}, (e) => {console.log(e);});
+                                </code></pre>
+                            </div>
+                            <!-- end col -->
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md12">
+                                <h4 id="line3_2">static.urlencode(...)</h4>
+                                <p>
+                                    Данный метод сериализует объект в строку как параметры в URL для запроса. Все очень просто.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Характеристика</th>
+                                        <th>Значение</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>String</code></td>
+                                        <td>Возвращает объект, сериализованный в строку. Пример: <code class="language-js">"foo=bar&amp;foo2=barNew"</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> object</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>Объект который нужно сериализовать, максимум 1 уровень</td>
+                                    </tr>
+                                </table>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+const request = require("request");
+const easyVK = require("easyvk");
+
+let objGetData = {
+    message: "Привет",
+    user_id: "356607530",
+    access_token: "ваш_токен",
+    v: "5.73"
+}
+
+let url = "https://api.vk.com/method/messages.send?";
+
+url += easyVK.static.urlencode(objGetData);
+
+request.get(url, (err, res) => {
+   if (err) throw err;
+   console.log(res.body); 
+});
+                                </code></pre>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_3">static.isObject(...)</h4>
+                                <p>
+                                    Данный метод проверяет, что переменная <code>n</code> - это объект. <br>
+                                    Написана была при разработке EasyVK для удобства и не более. 
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Характеристика</th>
+                                        <th>Значение</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Boolean}</code></td>
+                                        <td>Является ли переменная объектом <code>{}</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> n</td>
+                                        <td><code>{*}</code></td>
+                                        <td>Переменная, которую нужно проверить на принадлежность к объектам</td>
+                                    </tr>
+                                </table>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers" ><code class="language-js">
+console.log(easyVK.static.isObject({
+    some: "false"
+})); //true
+
+console.log(easyVK.static.isObject(false)); //false
+console.log(easyVK.static.isObject(1)); //false
+console.log(easyVK.static.isObject(easyVK)) //false (AsyncFunction)
+console.log(easyVK.static.isObject(easyVK.static)) //false (Function)
+console.log(easyVK.static.isObject(new Object())) //true
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_4">static.isString(...)</h4>
+                                <p>
+                                    Данный метод проверяет, что переменная <code>n</code> - это строка. <br>
+                                    Написана была при разработке EasyVK для удобства и не более. 
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Характеристика</th>
+                                        <th>Значение</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Boolean}</code></td>
+                                        <td>Является ли переменная строкой <code>String</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> n</td>
+                                        <td><code>{*}</code></td>
+                                        <td>Переменная, которую нужно проверить на принадлежность к строкам</td>
+                                    </tr>
+                                </table>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+console.log(easyVK.static.isString({
+    some: "false"
+})); //false
+
+console.log(easyVK.static.isString(false)); //false
+console.log(easyVK.static.isString(1)); //false
+console.log(easyVK.static.isString(easyVK));
+console.log(easyVK.static.isString(() => {})); //false
+console.log(easyVK.static.isString(`${easyVK.version} - is a current version`)); //true
+console.log(easyVK.static.isString("")); //true
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_5">static.checkJSONErrors(...)</h4>
+                                <p>
+                                    Данная функция проверяет ответ сервера Вконтакте на ошибки. То есть, на пример - вконтакте ответил не JSON ответом - выйдет ошибка, что <code>unexppected value {val} in JSON object on line {line}</code>, не совсем точно, но приблизительно так.
+                                    Это может произойти в любой момент, также эта функция проверяет ваш запрос на ошибки, и если сервер ответил с JSON, что произошла ошибка, эта функция вернет <code>false</code>. В случае успешного выполнени запроса, вернется объект (уже спарсенный JSON) ответа Вконтакте. На примере будет показано более наглядно.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Характеристика</th>
+                                        <th>Значение</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Object}</code> или <code>{Boolean}</code></td>
+                                        <td>Объект JSON-ответ сервера, или, если произошла ошибка, значение <code>false</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> vkr</td>
+                                        <td><code>{String}</code></td>
+                                        <td>Строка с ответом сервера Вконтакте VKResponse</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> reject</td>
+                                        <td><code>{Function}</code></td>
+                                        <td><code>Reject</code> функция, котора вызовется в случае возникновени ошибки. Эта функция первым параметром получает описание ошибки.</td>
+                                    </tr>
+                                </table>
+                                <h4>Пример использования</h4>
+                                А данном примере делается запрос на сервер ВК, но из-за слеша после названия метода сервер ответит нам с html доументом, в котором будет написано <code>403 Foridden</code>. Там нет JSON, поэтому произойдет ошибка.
+                                <pre class="line-numbers"><code class="language-js">
+const easyVK = require("easyvk");
+const request = require("request");
+
+let url = "http://api.vk.com/method/users.get/?user_ids=1&amp;v=5.73";
+request.get(url, (err, res) => {
+    if (err) throw err;
+    
+    let json = easyVK.static.checkJSONErrors(res.body, (err) => {
+        console.log(err);
+    });
+
+    if (json) {
+        console.log(json.response[0].id); //не выведется, произойдет ошибка
+    } else {
+        console.log("invalid json", res.body);
+    }
+});
+                                </code></pre>
+                                <p>
+                                    Применяйте этот метод только с тех случаях, когда вы точно уверены, что сервер должен вернуть JSON. В остальных случаях используйте собственные решения.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_6">static.checkErrors(...)</h4>
+                                <p>
+                                    Данная функция проверет на ошибки ваш запрос. Когда сервер Вконтакте отвечает нам с валидным JSON, в котором говорится, что в запросе имеется ошибка, или на пример, пользователь заблокирован, а вы пытаетесь получить информацию о нем, эта функция возвращает эту ошибку. Она настроена под все виды ошибок запросов, в том числе, и под ошибку капчи, когда запрос требует подтверждения капчей.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Характеристика</th>
+                                        <th>Значение</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{String}</code></td>
+                                        <td>Описание ошибки запроса, на пример: нужен код подтверждения авторизации для двухфакторной проверки.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> vkr</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>Объект ответа сервера Вконтакте, уже спарсенный JSON</td>
+                                    </tr>
+                                </table>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+const easyVK = require("easyvk");
+const request = require("request");
+
+let url = "http://api.vk.com/method/users.get?user_ids=-1&amp;v=5.73";
+request.get(url, (err, res) => {
+    if (err) throw err;
+
+    if (!res.body) res.body = "{}";
+    let vkr = JSON.parse(res.body); //Вот тут аккауратней. 
+    // Мы делаем запрос такой, что точно уверены в нем
+    let vkErr = easyVK.static.checkErrors(vkr);
+    
+    if (vkErr) {
+        throw new Error(vkErr); //Выведится ошибка Invalid user id
+    } else {
+        console.log(vkr.response[0].id);
+    }
+});
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_7">static.encodeHTML(...)</h4>
+                                <p>
+                                    Данный метод декодирует все символы вроде <code>&amp;amp;</code>, <code>&amp;gt;</code> в обычный символ <code>&amp;</code>, <code>&gt;</code>
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Характеристика</th>
+                                        <th>Значение</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{String}</code></td>
+                                        <td>Декодированная строка в нормальный вид.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> str</td>
+                                        <td><code>{String}</code></td>
+                                        <td>Первоначальная строка в нечитаемом виде.</td>
+                                    </tr>
+                                </table>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+let str = "Привет, Кирилл!&lt;br&gt;&lt;br&gt;";
+str += "Я сегодня посмотрел твой доклад &amp;lt;&amp;quot;Экосистема процессора&amp;quot;&amp;gt;.";
+str += " &lt;br&gt;&lt;br&gt;Ты знаешь, мне не понравилось. Пойду поем m&amp;amp;m&amp;#039;s"
+
+console.log(str); //Некрасиво
+console.log(easyVK.static.encodeHTML(str)); //Красиво
+                                </code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line4" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Streaming API <a href="#top">#наверх</a><hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <!-- end col -->
+
+                            <div class="col-md-12">
+                                <p>
+                                    <q>
+                                        <b>Streaming API</b> — это инструмент для получения публичных данных из ВКонтакте по заданным ключевым словам. 
+                                    </q>
+                                </p>
+                                <p>
+                                    То есть проще говоря, вы можете по определенным правилам искать информацию в ВК в режиме реального времени (ну почти). Когда кто-то выкладывает пост со словом <b>кот</b>, ваш сервер может получить этот пост благодаря Streaming API сразу после того, как пост опубликовали. Такие дела. Это работает также для комментариев. И информация поступает к вам не из определенной группы, а из общей массы событий ВКонтакте. Подробнее о самом Streaming API вы можете почитать <a href="https://vk.com/dev/streaming_api" title="Streaming API" target="_blank">здесь</a> (для всех), а вот <a href="https://vk.com/dev/streaming_api_docs" target="_blank" title="Техническая документация Streaming API">тут</a> для тех, кто хочет ознакомится с технической стороной вопроса.
+                                </p>
+                                <p>
+                                    EasyVK поддерживает Streaming API в виде отдельной утилиты, но без авторизации вызывать Streaming API не имеет смысла. Ниже описана инструкция по использованию методов Streaming API и приведен пример использования. 
+                                </p>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="streaming_connect">streamingAPI.connect</h4>
+                                        <p>
+                                            Для того, чтобы создать стрим, необходимо подключиться к серверу ВК по протоколу <code>WSS://</code>, этим вы не занимаетесь, вам нужно всего лишь ввести параметры подключения, а именно - параметры вашего приложения.
+                                            После успешного подключения вы получите первым параметром объект <code>stream</code>: теперь вы имеете доступ к настройкам вашего стрима, можете добавлять правила, удалять, слушать события и так далее. Разберем подробнее ниже
+                                        </p>
+                                        <p>
+                                            Для того, чтобы создать свое приложение, перейдите по <a href="https://vk.com/editapp?act=create" target="_blank" title="Создать приложение">этой ссылке</a> и выберите тип Standalone.
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Характеристика</th>
+                                                <th>Значение</th>
+                                                <th>Опсиание</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Стандартный объект <code>{Promise}</code>, в функцию <code>resolve</code> передается объект <code>stream</code></td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@param</code> application</td>
+                                                <td><code>{Object}</code></td>
+                                                <td>Настройки приложения, какие в него параметры вводить - смотрите ниже</td>
+                                            </tr>
+                                        </table>
+                                        <p>
+                                            В функцию вы должны передать объект <code>application</code> с настройками вашего приложения.
+                                        </p>
+                                        <table>
+                                            <caption>Настройки приложения. Параметры</caption>
+                                            <tr>
+                                                <th>Параметр</th>
+                                                <th>Описание</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>clientSecret</code></td>
+                                                <td>Строка  ключ вашего приложения, берется из настроек приложения.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>clientId</code></td>
+                                                <td>ID вышего приложения</td>
+                                            </tr>
+                                        </table>
+                                        <h4>Пример использования</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({
+    clientSecret: "ваш_секретный_ключ_приложения",
+    clientId: "id_вышего_приложения"
+}).then((stream) => {
+    
+}).catch(errHandler);
+                                        </code></pre>
+                                        <p>
+                                            Вот и все. Теперь вы создали свой стрим. Далее пойдет настройка правил и прослушивание событий.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_addrule">stream.addRule(...)</h4>
+                                        <p>
+                                            Данный метод добавляет правило в общий список правил.
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Характеристика</th>
+                                                <th>Значение</th>
+                                                <th>Описание</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Стандартный объект <code>Promise</code></td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@param</code> tag</td>
+                                                <td><code>{String}</code></td>
+                                                <td>Тег правила, ключ правила</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@param</code> value</td>
+                                                <td><code>{String}</code></td>
+                                                <td>Само правило</td>
+                                            </tr>
+                                        </table>
+                                        <h4>Пример использования</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application params*/}).then(stream => {
+    stream.addRule("cats", "кот -собака").then((vkr) => {
+        console.log(vkr);
+    }, errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_deleterule">stream.deleteRule(...)</h4>
+                                        <p>
+                                            Данный метод удаляет правило из обего списка правил.
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Характеристика</th>
+                                                <th>Значение</th>
+                                                <th>Описание</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Стандартный объект <code>Promise</code></td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@param</code> tag</td>
+                                                <td><code>{String}</code></td>
+                                                <td>Тег правила, ключ правила</td>
+                                            </tr>
+                                        </table>
+                                        <h4>Пример использования</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application params*/}).then(stream => {
+    stream.addRule("cats", "кот -собака").then((vkr) => {
+        stream.deleteRule("cats").then((vkr_deleted) => {
+            console.log(vkr_deleted);
+        }, errHandler);
+    }, errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_initrules">stream.initRules(...)</h4>
+                                        <p>
+                                            Вместо того, чтобы использовать методы вроде <a href="#stream_deleterule">stream.deleteRule()</a> и <a href="#stream_addrule">stream.addRule()</a>, я рекомендую использовать только этот метод. Этот метод является чем-то вроде менеджера ваших правил. Вы прописываете все правила в одном объекте и каждый раз, когда что-то в нем изменяете, все изменения применяются к стриму. То есть: если вы удалили правила из объекта, оно удлится из стрима. Если изменили правило, оно измнится. В конце вы получите лог объкт изменений. В нем будут вынесены все правила, которые вы изменили/удалили/добавили. Удобная штука, однако.
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Характеристика</th>
+                                                <th>Значение</th>
+                                                <th>Описание</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Стандартный объект <code>Promise</code>, в <code>resolve</code> функцию вы получаете изменения, который вступли в силу</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@param</code> rules</td>
+                                                <td><code>{Object}</code></td>
+                                                <td>Объект с правилами где пара ключ => занчение это пара tag => tule.</td>
+                                            </tr>
+                                        </table>
+                                        <h4>Пример использования</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application params*/}).then(stream => {
+    stream.initRules({
+        "cats": "кот",
+        "dogs": "собака пес щенок"
+    }).then((log) => {
+        console.log(log);
+    }).catch(errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_getrules">stream.getRules(...)</h4>
+                                        <p>
+                                            Если вы хотите получить список всех правил стрима, можете использовать этот метод.
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Характеристика</th>
+                                                <th>Значение</th>
+                                                <th>Описание</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Стандартный объект <code>Promise</code>, в <code>resolve</code> функцию вы получаете список всех правил стрима <code>stream</code></td>
+                                            </tr>
+                                        </table>
+                                        <h4>Пример использования</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application params*/}).then(stream => {
+    stream.initRules({
+        "cats": "кот",
+        "dogs": "собака пес щенок"
+    }).then((log) => {
+        stream.getRules().then((rules) => {
+                console.log(rules);
+        }, errHandler);
+    }).catch(errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_deleteallrules">stream.deleteAllRules(...)</h4>
+                                        <p>
+                                            Данный метод удаляет все правила из общего списка правил стрима <code>stream</code>
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Характеристика</th>
+                                                <th>Значение</th>
+                                                <th>Описание</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Стандартный объект <code>Promise</code>, в <code>resolve</code> функцию вы получаете ответ сервера, если все правила удалились</td>
+                                            </tr>
+                                        </table>
+                                        <h4>Пример использования</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application params*/}).then(stream => {
+    stream.initRules({ //Создаем правила
+        "cats": "кот",
+        "dogs": "собака пес щенок"
+    }).then((log) => {
+        stream.deleteAllRules().then(() => { //удаляем
+            stream.getAllRules((rules) => { //получаем хук
+                console.log(rules);
+            }, errHandler);
+        }, errHandler);
+    }).catch(errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_close">stream.close()</h4>
+                                        <p>
+                                            Данный метод закрывает подключение WebSocket и вызывает событие <code>failure</code>
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Характеристика</th>
+                                                <th>Значение</th>
+                                                <th>Описание</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Стандартный объект <code>Promise</code></td>
+                                            </tr>
+                                        </table>
+                                        <h4>Пример использования</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application params*/}).then(stream => {
+    stream.initRules({ //Создаем правила
+        "cats": "кот",
+        "dogs": "собака пес щенок"
+    }).then((log) => {
+        stream.deleteAllRules().then(() => { //удаляем
+            stream.close(); //Нуивсетут 
+            //Даааа. Жоска
+        }, errHandler);
+    }).catch(errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_events">События (Events)</h4>
+                                        <p>
+                                            После инициализации правил и установки их, вы можете получать данные со стрима. На стрим поступают посты, комментарии и репосты (share). Вы можете слушать все эти события и создавать какую-то статистику и вообще. Это не мое дело. В общем у вас есть возможность получать данные на стрим.
+                                        </p>
+                                        <p>
+                                            так как объект <code>stream</code> наследует все методы и свойства объекта <a href="https://nodejs.org/api/events.html" target="_blank">EventEmitter</a>, то в него включаются меоды <a href="https://nodejs.org/api/events.html#events_emitter_on_eventname_listener" target="_blank">.on()</a> и <a href="https://nodejs.org/api/events.html#events_emitter_emit_eventname_args" target="_blank">.emit()</a>. Эти методы служат только для того, чтобы слушать событие и создавать его. И так, какие бывают события?
+                                            На даннй момент это все события из таблицы ниже, посмотрите.
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Событие</th>
+                                                <th>Описание события</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>post</code></td>
+                                                <td>Возникает, когда пользователь или группа опубликовал(а) запись на своей стене.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>comment</code></td>
+                                                <td>Возникает, когда пользователь или группа комментирует чью-то запись (как я понял, только запись, но это не точно)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>share</code></td>
+                                                <td>Возникает, когда пользователь или группа подилился(лась) на своей стене записью</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>failure</code></td>
+                                                <td>Возникает, когда возникает критическая ошибка на сервере или, когда подключение разорвано/закрыто</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>error</code></td>
+                                                <td>Возникает, когда происходит какая-то ошибка при подключении или во время передачи информации.</td>
+                                            </tr>
+                                        </table>
+                                        <h4>Пример использования</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application params*/}).then(stream => {
+    stream.initRules({
+        "cats": "кот"
+    }).then(log => {
+        
+        stream.on("post", (event) => { //Слушаем все события post
+            console.log(event.event_url);
+        });
+
+    }).catch(errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <section class="section" id="longpollapi">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">User LongPoll API <a href="#top">#наверх</a><hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    Вконтакте предоставляет возможность прослушивания событий средствами длительный опросов (запросов) - LongPoll, не будем их ни в чем обвинять, думаю, они знаю, что делают. EasyVK поддерживает эту платформу точно также как и <a href="#line4">Streaming API</a>, в виде отдельной утилиты, крепко связанной с объектом EasyVK.
+                                    Итак, чтобы понять что 'то такое, обратимся к Википедии <br><br>
+                                    <q style="display: block;">
+                                        Long Polling — это технология, которая позволяет получать данные о новых событиях с помощью «длинных запросов». Сервер получает запрос, но отправляет ответ на него не сразу, а лишь тогда, когда произойдет какое-либо событие (например, придёт новое сообщение), либо истечет заданное время ожидания.
+                                    </q><br>
+                                    Думаю все понятно. Все это вам вряд ли понадобится, но для ознакомлени сойдет.
+                                    В EasyVK все это намного проще. Документация ниже.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="longpoll_connect">longpoll.connect(...)</h4>
+                                <p>
+                                    Эта функция подключется к серверу LongPoll (user), а затем возвращает в функцию <code>resolve</code> объект <code>LongPollConnection</code>.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Характеристика</th>
+                                        <th>Значение</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Promise}</code></td>
+                                        <td>Стандартный объект <code>Promise</code>, в функцию <code>resolve</code> передается объект подключения - <code>LongPollConnection</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> params</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>Настройки подключеня LongPoll на разных этапах подключения. Обычно этот объект не нужен, разбираю его в боллее подробно гайде <a href="#longpoll_connect_full">longpoll.connect() (Подробно)</a></td>
+                                    </tr>
+                                </table>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.longpoll.connect().then((connection) => {
+    console.log(connection);
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="longpollconnection_addeventcodelistener">connection.addEventCodeListener(...)</h4>
+                                <p>
+                                    Так как в User Longpoll API все события приходят в виде массива, а названия событий - это по сути числа, не было смысла добавлять все события из LongPoll, поэтому я добавил только основные <a href="#longpoll_events">события</a>. А все остальное вы можете прослушивать с помощью дополнения. Возможно, в будущем, этот метод немного изменится и все же все события будут обозначены, но пока что так. Не расстраивайтесь. Все нормально.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Характеристика</th>
+                                        <th>Значение</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Promise}</code></td>
+                                        <td>Стандартный объект <code>Promise</code>, <code>resolve</code> не вызывается (поправьте меня, если это неправильно).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> code</td>
+                                        <td><code>{Number}</code></td>
+                                        <td>Число-код события, список всех кодов событий можно посмотреть <a href="https://vk.com/dev/using_longpoll?f=3.%20%D0%A1%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B0%20%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B9" target="_blank">здесь</a>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> handler</td>
+                                        <td><code>{Function}</code></td>
+                                        <td>callback-функция, которая будет вызываться, когда будет происходит событие с кодом <code>code</code></td>
+                                    </tr>
+                                </table>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+connection.addEventCodeListener(3, (event) => { 
+//Сброс флагов сообщения, на пример: прочитано
+    console.log(event);
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="longpollconnection_close">connection.close(...)</h4>
+                                <p>
+                                    Этот метод разрывает соединение с сервером LongPoll и вызывает событие <code>close</code>
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Характеристика</th>
+                                        <th>Значение</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Promise}</code></td>
+                                        <td>Стандартный объект <code>Promise</code>, в функцию <code>resolve</code> ничего не возвращается</td>
+                                    </tr>
+                                </table>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.longpoll.connect().then(connection => {
+    connection.close(); //Закрываем соединение.
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="longpoll_connect_full">longpoll.connect(...) (full)</h4>
+                                <p>
+                                    Это более подробная документация метода <a href="#longpoll_connect">longpoll.connect()</a>.
+                                    Как уже говорилось, метод принимает объект <code>params</code>, сейчас я его и буду описывать.
+                                    В этом объекте глаыне два свойства - объекты: <code>forGetLongPollServer</code>, <code>forLongPollServer</code>
+                                </p>
+                                <p>
+                                    <code>forGetLongPollServer</code> - это объект с настройками для первого запроса на сервер - запроса на метод <a href="https://vk.com/dev/messages.getLongPollServer" target="_blank">messages.getLongPollServer</a>. Все параметры, которые будут в этом объекте будут применены к этому запросу.
+                                </p>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.longpoll.connect({
+    forGetLongPollServer: {
+        lp_version: "2",
+        need_pts: "1"
+    }
+}).then(connection => {
+    console.log(connection.config.responseGetServer.response.pts);
+}).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    <code>forLongPollServer</code> - это параметры для запроса на каждый Poll к серверу. Тут вы можете установить на пример, параметр <code>wait</code> на свой вкус<br>
+                                    Подробней об этих параметрах можно почитать <a href="https://vk.com/dev/using_longpoll?f=1.%20%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5" target="_blank">тут</a>
+                                </p>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.longpoll.connect({
+    forLongPollServer: {
+        wait: "1" //Дудосим крч :D
+    }
+}).then(connection => {
+    console.log(connection.config);
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="longpoll_events">События (Events)</h4>
+                                <p>
+                                    Так как LongPoll изначально предназначен для прослушивания событий, вы можете это делать оень легко в EasyVK. Также, как и <a href="#streaming_api">Streaming API</a>, объект <code>LongPollConnection</code> наследует все свойства и методы от объекта <a href="https://nodejs.org/api/events.html" target="_blank">EventEmitter</a>. Таким образом вы можете слушать события сервера.
+                                    Посмотрите на таблицу поддерживаемых событий
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Код события</th>
+                                        <th>Событие</th>
+                                        <th>Описание события</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>4</code></td>
+                                        <td><code>message</code></td>
+                                        <td>Возникает, когда пользователь отправил сообщение или ему отправили сообщение</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>8</code></td>
+                                        <td><code>friendOnline</code></td>
+                                        <td>Возникает, когда друг пользователя стал онлайн</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>9</code></td>
+                                        <td><code>friendOffline</code></td>
+                                        <td>Возникает, когда друг пользователя стал оффлайн</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>51</code></td>
+                                        <td><code>editChat</code></td>
+                                        <td>Возникает, пользователь или кто-то меняет настройки беседы</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>61</code></td>
+                                        <td><code>typeInDialog</code></td>
+                                        <td>Возникает, когда пользователь набирает сообщение в <b>диалоге</b> с пользователем</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>62</code></td>
+                                        <td><code>typeInChat</code></td>
+                                        <td>Возникает, когда пользователь набирает сообщение в <b>беседе</b></td>
+                                    </tr>
+                                </table>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.longpoll.connect().then(connection => {
+    connection.on("message", (msg) => {
+        console.log(msg);
+    });
+}).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    Остальный события, который вы хотите прослушиывать, вы можете обавлять через метод <a href="#longpollconnection_addeventcodelistener">connection.addEventCodeListener()</a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                    </section>
+                    <section id="callbackapi" class="section">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Callback API <a href="#top">#наверх</a><hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    Callback API поддерживается в EasyVK с релиза 0.3. С тех пор Callback API был рефакторен 2 раза и теперь работает стабильно. Тесты проходили на сервере хостинга <a href="https://heroku.com/">Heroku</a>. <br>
+                                    <h3>Что это такое?</h3>Callback API в первую очередь позволяет прослушивать события ващей группы: комментарии, записи, вступления в группу, различные другие взаимодействия, также еще и сообщения, смена обложки и прочее. Все события вы можете посмотреть на странице управления вашим сообществом. А подробнее о том, как можно настроить Callback API читайте на <a href="https://vk.com/dev/callback_api" target="_blank">этой</a> странице.
+                                </p>
+                                <p>
+                                    Я же вам всего лишь подскажу как это использовать на уже настроенном сервере. Для работы с Callback API необходимо будет либо покупать сервер, либо где-то его взять, в качестве примеров хостингов могу предложить <a href="https://heroku.com/" target="_blank">Heroku</a>, <a href="https://aws.amazon.com/ru/?nc2=h_lg" target="_blank">AWS</a>, <a href="https://cloud.google.com/compute/" target="_blank">Google Cloud</a>. Конечно эти сервисы не полностью бесплатные, все-таки VPS не из дешевых. На платной основе имеется <a href="https://selectel.ru/" target="_blank">Selectel</a>, а для углубленного поиска воспользуйтесь серсисом <a href="https://poiskvps.ru/" target="_blank">poiskvps.ru</a>
+                                </p>
+                                <p>
+                                    Вот собственно и все. Настраиваете сервер, ставите <a href="https://nodejs.org">nodejs</a>, <a href="https://npmjs.org">npm</a>, <a href="#top">easyvk</a>, а далее следуете документации ниже.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="callbackapi_listen">callbackAPI.listen(...)</h4>
+                                <p>
+                                    Callback API работает по принципу "слушаю". Вы устанавливаете сервер, пишите софт и после чего сервер принимает <code>POST</code> запросы от сервера VK. VK обычно присылает запросы разного характера: <a href="#callbackapi_events">события</a>, подтверждение и другие. Ваш сервер все это слушает и на основе событий выполняет действия. Какие события вы хотите слушать - дело ваше, это настраивается в настройка API (управление группой).
+                                    Callback API использует для создания сервера модуль <a href="https://npmjs.org/package/express" target="_blank">express</a> и стандартный модуль <a href="https://nodejs.org/api/http.html" target="_blank">http</a>.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Характеристика</th>
+                                        <th>Значение</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Promise}</code></td>
+                                        <td>Стандартный объект <code>Promise</code>, в функцию <code>resolve</code> передаетс объект <code>cb</code>, там хранится переменная <code>connection</code>, <code>app</code> и <code>server</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> cbParams</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>Настройки группы, список групп, события которых нужно слушать. Ну и порт сервера. Подробнее описано ниже</td>
+                                    </tr>
+                                </table>
+                                <p>
+                                    Чтобы слушать события вы должны вызвать этот метод с одним объектом <code>cbParams</code>, в свойства которого должны ввести одну из следующих настроек.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Параметр</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>groups</code></td>
+                                        <td>Массив групп, где каждый элемент - объект <code>Group</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>groupId</code></td>
+                                        <td>ID вашей группы, этот ID вы берете из инструкций по подтверждению сервера (управление группой -> API -> Callback API)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>confirmCode</code></td>
+                                        <td>Код подтверждения, который должен вернуть сервер во время запроса на подтверждение. Берется также, как и <code>groupId</code> из настроек подключения сервера (управление группой)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>secret</code></td>
+                                        <td>Секретный ключ для запросов. Если запрос не имеет ключа возникнет ошибка. По сути это пароль для доступа к вашему Callback серверу, вы сами его утанавливаете в настройках группы</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>port</code></td>
+                                        <td>HTTP порт для сервера, рекомендую устанавливать <code class="language-js">process.env.PORT || 3000</code></td>
+                                    </tr>
+                                </table>
+                                <h4>Пример использования</h4>
+                                <p>
+                                    Ну а теперь для понимания - пример.
+                                </p>
+                                <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.listen({
+    groupId: "111111",
+    secret: "my_password_group",
+    confirmCode: "confirm_code_from_setting_group",
+    port: (process.env.PORT || 3000)
+}).then((cb) => {
+    console.log(cb.app) //express app
+    console.log(cb.server) //http server
+    console.log(cb.connection) //connection (по сути это слушатель событий)
+}).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    Для нескольких групп
+                                </p>
+                                <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI({
+    groups: [{
+        groupId: "111",
+        confirmCode: "confirm_code_from_settings_group",
+        secret: "my_password_group"
+    }, {
+        groupId: "1112",
+        confirmCode: "confirm_code_from_settings_group",
+        secret: "my_password_group"
+    }],
+    port: (process.env.PORT || 3000)
+}).then((cb) => {}).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    Для безопасности и для стойкости от утечки данных ваших пользователей рекомендую устанавливать пароль для запросов (лучше всего еще и md5), хотя по умолчанию в этом нет необходиомости.
+                                </p>
+                                <p>
+                                    Ради честности, я напомню, что для Callback API не требуется авторизация, хотя, возможно, вы замтеили, что используется переменная <code>vk</code> для прослушивания. В общем есть еще более простой метод.
+                                </p>
+                                <pre class="line-numbers"><code class="language-js">
+easyVK.streamingAPI.listen(/*....*/).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    Тогда смысл использования объекта анициализации отпадает. Я рекомендую использовать именно этот вариант, потому что необходимость в авторизации отсутствует, но так как может измениться все, что угодно, я все-таки оставил Streaming API в объекте инициализации. Тем не менее, второй способ не означает, что Streaming API - статичная утилита. Нет. Просто у нее другие предназначения. Вот и все.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="callbackapi_events">События (Events)</h4>
+                                <p>
+                                    Как и в <a href="#longpollapi">LongPoll</a>, в Callback API имеются события, прослушивать их можно таким же способом. Через переменную <code>connection</code>. Список событий вы можете посмотреть на <a href="https://vk.com/dev/groups_events" target="_blank">этой</a> странице (официальная документация).
+                                </p>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+easyVK.streamingAPI.listen({
+    groupId: "111111",
+    secret: "my_password_group",
+    confirmCode: "confirm_code_from_setting_group",
+    port: (process.env.PORT || 3000)
+}).then((cb) => {
+    cb.on("message_new", (event) => {
+        console.log(event);
+        /*
+            Чтобы узнать какой группе принадлежит событие, 
+            используйте это
+        */
+        console.log(event.group_id);
+    });
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- end section -->
+
+                    <!-- end section -->
+                </div>
+                <!-- // end .col -->
+
+            </div>
+            <!-- // end .row -->
+
+        </div>
+        <!-- // end container -->
+
+    </div>
+    <!-- end wrapper -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/retina.js"></script>
+    <script src="js/jquery.fitvids.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+
+    <!-- CUSTOM PLUGINS -->
+    <script src="js/custom.js"></script>
+    <script src="js/main.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> -->
+    <script src="js/prism.js"></script>
+</body>
+
+</html>
