@@ -28,6 +28,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>.nav-link{color:#000;font-size: 16px;margin:0px 5px;}</style>
 </head>
 
 <body>
@@ -43,6 +44,9 @@
                         <div class="big-title text-center">
                             <h1>Easy<span style="color: #7298C3;font-weight: bold;">VK</span> v0.4</h1>
                             <p class="lead">NodeJS модуль для работы с VK API</p>
+                            <p>
+                                | <a href="https://vk.com/dev" target="_blank" class="nav-link">Официальная документация API ВКонтакте</a> | <a href="https://npmjs.org/package/easyvk" target="_blank" class="nav-link">EasyVK в npm</a> | <a href="https://github.com/ciricc/easyvk" target="_blank" class="nav-link">EasyVK github</a> | <a href="https://vk.com/club162208999" target="_blank" class="nav-link" target="_blank">Сообщество</a> |
+                            </p>
                         </div>
                         <!-- end title -->
                     </div>
@@ -92,8 +96,12 @@
                                 <li><a href="#longpoll_connect">longpoll.connect()</a></li>
                                 <li><a href="#longpollconnection_addeventcodelistener">connection.addEventCodeListener()</a></li>
                                 <li><a href="#longpollconnection_close">connection.close()</a></li>
+                                <li><a href="#longpollconnection_debug">connection.debug()</a></li>
                                 <li><a href="#longpoll_connect_full">longpoll.connect() (full)</a></li>
                                 <li><a href="#longpoll_events">События (Events)</a></li>
+                            </ul></li>
+                            <li><a href="#botslongpollapi">Bots LongPoll API</a><ul class="nav">
+                                <li><a href="#botslongpollapi_events">События (Events)</a></li>
                             </ul></li>
                             <li><a href="#callbackapi">Callback API</a>
                                 <ul class="nav">
@@ -1250,6 +1258,41 @@ vk.longpoll.connect().then(connection => {
                         </div>
                         <div class="row">
                             <div class="col-md-12">
+                                <h4 id="longpollconnection_debug">longpoll.debug(...)</h4>
+                                <p>
+                                    Этот метод позволяет добавить debug-функцию, в которую будут передаваться все ответы сервера ВК, которые касаются только подключения к LongPoll.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Характеристика</th>
+                                        <th>Значение</th>
+                                        <th>Описание</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>LongPollConnection</code> или <code>false</code></td>
+                                        <td>Если удачно добавили функцию, то вернется объект <code>LongPollConnection</code>, в противном случае - вернется <code>false</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> debugg</td>
+                                        <td><code>{Function}</code></td>
+                                        <td>Функция-дебаггер, в нее будут передаваться все ответы.</td>
+                                    </tr>
+                                </table>
+                                <h4>Пример использования</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.longpoll.connect().then(connection => {
+    connection.debug((vkr) => {
+        console.log(vkr); // не JSON, обычная строка ответа
+    }).on("message", (msg) => {
+        console.log("MESSAGE", msg);
+    });
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
                                 <h4 id="longpoll_connect_full">longpoll.connect(...) (full)</h4>
                                 <p>
                                     Это более подробная документация метода <a href="#longpoll_connect">longpoll.connect()</a>. <br>
@@ -1344,6 +1387,59 @@ vk.longpoll.connect().then(connection => {
                             </div>
                         </div>
                         <!-- end row -->
+                    </section>
+                    <section class="section" id="botslongpollapi">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Bots LongPoll API <a href="#top">#наверх</a><hr></h2>
+                            </div>
+                        </div>    
+                        <div class="row">
+                               <div class="col-md-12">
+                                   <p>С недавних пор ВКонтакте добавили поддержку LongPoll для групп. То есть теперь все события, которые есть для Callback API, будут работать для LongPoll, но для Bots LongPoll. Это сильно упрощает создание ботов. Плюс, как-никак, LongPoll работает быстрее, чем Callback API, что делает его теперь лидиром в платформах ВКонтакте для ботов. </p>
+                                   <p>
+                                       EasyVK поддерживает Bots LongPoll API с версии 0.4. <br>
+                                       Все методы, за исключением <a href="#longpollconnection_addeventcodelistener">connection.addEventCodeListener()</a>, повторяются из <a href="#longpollapi">User LongPoll API</a>. Также Bots LongPoll API отличается от User LongPoll API структурой событий, поэтому события, который есть в обычном LongPoll API не будут работать для этого, названия будут отличатся + формат ответа.
+                                   </p>
+                                   <h4>Пример использования</h4>
+                                   <pre class="line-numbers"><code class="language-js">
+vk.bots.longpoll.connect({
+    forGetLongPollServer: {
+        group_id: "1"
+    }
+}).then(connection => {
+    connection.debug(vkr => {
+        console.log(vkr);
+    }).on("message_new", (msg) => {
+        console.log(msg);
+    });
+}).catch(errHandler);
+                                   </code></pre>
+                               </div>
+                           </div>
+                           <div class="row">
+                                  <div class="col-md-12">
+                                      <h4 id="botslongpollapi_events">События (Events)</h4>
+                                      <p>
+                                          Структура событий в Bots LongPoll API отличается от обычных, почитать о них можно <a href="https://vk.com/dev/bots_longpoll?f=2.1.%20%D0%A2%D0%B8%D0%BF%D1%8B%20%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B9" target="_blank">здесь</a>. Но ловля событий не отличается.
+                                      </p>
+                                      <h4>Пример использования</h4>
+                                      <pre class="line-numbers"><code class="language-js">
+vk.bots.longpoll.connect({
+    forGetLongPollServer: {
+        group_id: "1"
+    }
+}).then(connection => {
+    connection.on("wall_reply_new", (comment) => {
+        console.log(comment);
+    });
+}).catch(errHandler);
+                                      </code></pre>
+                                      <p>
+                                          Вот и все.
+                                      </p>
+                                  </div>
+                              </div>   
                     </section>
                     <section id="callbackapi" class="section">
                         <div class="row">
