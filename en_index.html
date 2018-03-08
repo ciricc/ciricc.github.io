@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="EasyVK is a javascript module created for support the VKontakte API on node.js. This site official documentation for use of this module.">
+    <meta name="author" content="Kirill Novak">
+    <meta name="keywords" content="easyvk,nodejs,javascript,vkontakte,api,вконтакте,вк,API,sdk,npmjs,npm,изивк,изи,easy,async,await">
+
+    <title>EasyVK - doumentation for use</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#58ba0c">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/prism.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>.nav-link{color:#000;font-size: 16px;margin:0px 5px;}</style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div class="container">
+
+            <section id="top" class="section docs-heading">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="big-title text-center">
+                            <h1>Easy<span style="color: #7298C3;font-weight: bold;">VK</span> v0.4</h1>
+                            <p class="lead">NodeJS module for work with VKontakte API</p>
+                            <p>
+                                | <a href="https://vk.com/dev" target="_blank" class="nav-link">Official documentation for VKontakte API</a> | <a href="https://npmjs.org/package/easyvk" target="_blank" class="nav-link">EasyVK on npm</a> | <a href="https://github.com/ciricc/easyvk" target="_blank" class="nav-link">EasyVK github</a> | <a href="https://vk.com/club162208999" target="_blank" class="nav-link" target="_blank">Community</a> | <a href="index.html" class="nav-link"><b>Русская</b> версия</a>
+                            </p>
+                        </div>
+                        <!-- end title -->
+                    </div>
+                    <!-- end 12 -->
+                </div>
+                <!-- end row -->
+
+                <hr>
+
+            </section>
+            <!-- end section -->
+
+            <div class="row">
+
+                <div class="col-md-3 bar" style="padding: 0;">
+                    <nav class="docs-sidebar" data-spy="affix" data-offset-top="300" data-offset-bottom="200" role="navigation">
+                      <ul class="nav">
+                            <li><a href="#line1">Let's start (Auth)</a></li>
+                            <li><a href="#line2">Methods</a>
+                                <ul class="nav">
+                                    <li><a href="#line2_1">vk.call()</a></li>
+                                    <li><a href="#line2_2">vk.saveSession()</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#line3">Static methods</a>
+                                <ul class="nav">
+                                    <li><a href="#line3_1">static.call()</a></li>
+                                    <li><a href="#line3_2">static.urlencode()</a></li>
+                                    <li><a href="#line3_3">static.isObject()</a></li>
+                                    <li><a href="#line3_4">static.isString()</a></li>
+                                    <li><a href="#line3_5">static.checkJSONErrors()</a></li>
+                                    <li><a href="#line3_6">static.checkErrors()</a></li>
+                                    <li><a href="#line3_7">static.encodeHTML()</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#line4">Streming API</a><ul class="nav">
+                                <li><a href="#streaming_connect">streamingAPI.connect()</a></li>
+                                <li><a href="#stream_addrule">stream.addRule()</a></li>
+                                <li><a href="#stream_deleterule">stream.deleteRule()</a></li>
+                                <li><a href="#stream_initrules">stream.initRules()</a></li>
+                                <li><a href="#stream_getrules">stream.getRules()</a></li>
+                                <li><a href="#stream_deleteallrules">stream.deleteAllRules()</a></li>
+                                <li><a href="#stream_close">stream.close()</a></li>
+                                <li><a href="#stream_events">События (Events)</a></li>
+                            </ul></li>
+                            <li><a href="#longpollapi">User LongPoll API</a><ul class="nav">
+                                <li><a href="#longpoll_connect">longpoll.connect()</a></li>
+                                <li><a href="#longpollconnection_addeventcodelistener">connection.addEventCodeListener()</a></li>
+                                <li><a href="#longpollconnection_close">connection.close()</a></li>
+                                <li><a href="#longpollconnection_debug">connection.debug()</a></li>
+                                <li><a href="#longpoll_connect_full">longpoll.connect() (full)</a></li>
+                                <li><a href="#longpoll_events">События (Events)</a></li>
+                            </ul></li>
+                            <li><a href="#botslongpollapi">Bots LongPoll API</a><ul class="nav">
+                                <li><a href="#botslongpollapi_events">Events</a></li>
+                            </ul></li>
+                            <li><a href="#callbackapi">Callback API</a>
+                                <ul class="nav">
+                                    <li><a href="#callbackapi_listen">callbackAPI.listen()</a></li>
+                                    <li><a href="#callbackapi_events">Events</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#files">Files (uploader)</a>
+                                <ul class="nav">
+                                    <li><a href="#files_getuploadurl">uploader.getUploadURL()</a></li>
+                                    <li><a href="#files_uploadfile">uploader.uploadFile()</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#helpers">Helpers</a><ul class="nav">
+                                <li><a href="#helpers_getallfriendslist">helpers.getAllFriendsList()</a></li>
+                                <li><a href="#helpers_isfriend">helpers.isFriend()</a></li>
+                                <li><a href="#helpers_userfollowed">helpers.userFollowed()</a></li>
+                            </ul></li>
+                            <li>
+                                <a href="#widgets">Widgets</a><ul class="nav">
+                                    <li><a href="#widgets_getliveviews">widgets.getLiveViews()</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#advices">Advices / FAQ</a><ul class="nav">
+                                <li><a href="#advices_1">Sync execution?</a></li>
+                            </ul></li>
+                        </ul>
+                    </nav >
+                </div>
+                <div class="col-md-9">
+                    <section class="welcome">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">What is EasyVK?<hr></h2>
+                                <div class="row">
+
+                                    <div class="col-md-12 full">
+                                        <div>
+                                            <p>
+                                                EasyVK is a module for node.js, written in JavaScript, which is able to easily handle VKontakte API without registration. <br> 
+                                                The author of this module is javascript developer Kirill Novak (very modestly).
+                                            </p>
+
+                                            <p>With EasyVK you can create applications on node.js any of type. Started from  the simplest: <b>searching likes in group</b>, and ending more hard, such as <b>creating  bots</b> or just <b>news targeting</b>. <br>
+                                            EasyVK is written in order for the VK API to have support on the node.js, absolutely all EasyVK components are free and available with open source code.
+                                            </p>
+                                            <p>
+                                                <strong>At the moment EasyVK supports the main platforms VKontakte API</strong> <br>
+                                                <ul>
+                                                    <li><a href="https://vk.com/dev/callback_api" target="_blank">Callback API</a> - <b>group management, creating bots for the group</b></li>
+                                                    <li><a href="https://vk.com/dev/using_longpoll" target="_blank">LongPoll</a> - <b>creating bots, listening to user or group account events</b></li>
+                                                    <li><a href="https://vk.com/dev/streaming_api_docs" target="_blank">Streaming API</a> - <b>Targeting, collecting information about news, comments and other by certain rules</b> </li>
+                                                    <li><a href="https://vk.com/dev/methods" target="_blank">Methods</a> - <b>Standard methods for managing an account / group, and not only</b></li>
+                                                    <li><a href="https://vk.com/dev/upload_files" target="_blank">Files</a> - <b>uploading files to the server VK</b>, for example - cover for a group</li>
+                                                </ul>
+                                            </p>
+                                            <h4>What is necessary</h4>
+                                            <p>In order to use EasyVK, make sure that you have installed <a href="https://nodejs.org/" target="_blank">node.js</a> >= 8.* version</p>
+                                            You must install the <code>easyvk</code> module <br> 
+                                            To do this, you must install the <code>npm</code> package manager and enter the command<br>
+                                            <pre class="line-numbers"><code class="command">npm install easyvk</code></pre><br>
+                                            <p>
+                                                After this you must create file <code>index.js</code> in the current directory. <br>
+                                                In it, you need to put the this code
+                                                <pre><code class="line-numbers language-js">const easyVK = require("easyvk");</code></pre>
+                                            </p>
+                                            <p>
+                                                <i class="block">
+                                                    <b>All the code</b> in this documentation <b>was tested on version 0.4</b>
+                                                    You can be sure that <b>for this version everything works stably</b>. During the tests, many bugs and bugs were fixed, thanks to which I am now sure that this is the most stable release.
+                                                </i>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end row -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="line1" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Let's start <a href="#top">#backtotop</a><hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    Before you start using EasyVK, you must understand how does he works. <br>
+                                    EasyVK is primarily an intermediary between the VK server and your ideas. Since EasyVK works with VKontakte methods, we follow their requirements. <br>
+                                    That's why before you start working with EasyVK, you must first log in and create an easyVK session.
+                                </p>
+                                <p>
+                                    In EasyVK there are several ways to authorize
+                                    <ul>
+                                        <li>1. Authentication with user's <code>access_token</code></li>
+                                        <li>2. Authentication with group's <code>access_token</code></li>
+                                        <li>3. Authentication with user's username and password</li>
+                                    </ul>
+                                </p>
+                                <p>
+                                    What you need is up to you. <br>
+                                    If you need to work with a group, then add group's <code>access_token</code>, but if you work with a personal account or user account - you have the right to choose how to authorize it. If you only need for personal use and you do not want to bother getting a token, select 3-d way. 
+                                </p>
+                                <p>
+                                    So, here is the code that is needed to authorize with <code>access_token</code>
+                                    <pre class="line-numbers"><code class="language-js">              
+errHandler = (err) => {console.log(err);}
+
+easyVK({
+    access_token: "your_token"
+}).then((vk) => {
+    console.log(vk.session.group_id) // For groups
+    console.log(vk.session.user_id) // For user
+}, errHandler);
+                                    </code></pre>
+                                </p>
+                                <p>
+                                    And for user account we select this way:
+                                </p>
+                                <pre class="line-numbers"><code class="language-js">
+easyVK({
+    username: "your_email@mail.ru_or_number_phone",
+    password: "your_password"
+}).then((vk) => {}, errHandler);
+                                </code></pre>
+                                <p>
+                                    You might want to know what parameters can be used in the initialization object. <br>
+                                    It's very simple, take a look at the this table.
+                                </p>
+                                  <table>
+                                      <caption>Parameters for initialization object</caption>
+                                      <tr>
+                                          <th>Parameter</th>
+                                          <th>Description</th>
+                                          <th>Default</th>
+                                      </tr>
+                                      <tr>
+                                          <td><code>api_v</code></td>
+                                          <td>VKontakte API version, which will be used in all queries.</td>
+                                          <td><a href="https://vk.com/dev/versions" target="_blank">5.73</a></td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>access_token</code></td>
+                                          <td>Access token to authorize and send API requests. Required parameter if session file is empty or no other data is entered for authorization.</td>
+                                          <td>Absent</td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>username</code></td>
+                                          <td>User name. Need when authorizing a user. A mandatory parameter if the session file is empty or no other data is entered for authorization.</td>
+                                          <td>Absent</td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>password</code></td>
+                                          <td>The user's password. Required only if the parameter <code>username</code> is not empty.</td>
+                                          <td>Absent</td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>reauth</code></td>
+                                          <td>In case you need to overwrite the session file with new parameters or you do not want to be authorized for the saved data, you need to insert this parameter.</td>
+                                          <td><code>false</code></td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>save_session</code></td>
+                                          <td>If there is a need not to save the session file, then you can set this parameter as <code>false</code></td>
+                                          <td><code>true</code></td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>clean_session</code></td>
+                                          <td>If you need to clear the session file after authorization, you can set this parameter as <code>true</code></td>
+                                          <td><code>false</code></td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>session_file</code></td>
+                                          <td>The path to the session file where your session will be saved.</td>
+                                          <td><code>.vksession</code></td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>code</code></td>
+                                          <td>In the event that your account uses two-factor authentication, you must send the code from the SMS or code from the application that you use to generate this code.</td>
+                                          <td>Absent</td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>captcha_key</code></td>
+                                          <td>If a CAPTCHA error occurs, then you are suspected of being a DDOS attack. Enter the CAPTCHA string in this parameter, which you will find in the error, if you print it correctly.</td>
+                                          <td><code>""</code></td>
+                                      </tr>
+                                      <tr>
+                                          <td><code>captcha_sid</code></td>
+                                          <td>In this parameter you need to enter the captcha sID, which you get from an error.</td>
+                                          <td><code>""</code></td>
+                                      </tr>
+                                  </table>
+                                  This is the final list of authorization parameters. It is unlikely that it will be replenished, but anything can happen. <br><br>
+                                  So, after you're logged in, a session file will be created that will contain a group's / user's session. <br>
+                                  n this session some parameters are recorded: <code>group_id</code>, <code>access_token</code>, <code>user_id</code>, <code>first_name</code>, <code>last_name</code>, <code>group_name</code>, <code>group_screen</code> (litteral group's id). <br>
+                                  In subsequent authorization attempts, all data will be taken from this file, even if they differ from those that you entered. If you do not want this, set the <code>reauth</code> as <code>true</code><br><br>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line2" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Methods<a href="#top">#backtotop</a><hr></h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>
+                                        There are several methods in the EasyVK object that you can use to work with the VKontakte API. The documentation on them can be read below.
+                                    </p><br>
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line2_1">vk.call(...)</h4>
+                                
+                                This method refers to standard <a href="https://vk.com/dev/methods" target="_blank">methods</a> VKontakte API. <br>
+                                You can monitor the request by sending certain parameters to the server, and then receive a response. In case of an error, you can catch it and display it in the console without stopping the program.
+
+                                <br>
+                                <p>
+                                    Accessing this method from the current object ensures that the request goes with <code>access_token</code> from the session. In the case, if you need to make a request to a method that does not require authorization, you can use static methods, which will be discussed below. But this is optional.
+                                </p>
+                                <br><br>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>Promise</code></td>
+                                        <td>Standard <code>Promise</code> object</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> methodName</td>
+                                        <td><code>{String}</code></td>
+                                        <td>Method name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> data</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>An object with parameters for the query, for example: <br> <code>{text: "Hello!"}</code> </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> methodType</td>
+                                        <td><code>{String}</code></td>
+                                        <td>One way to send a request: <br><code>["post", "get", "delete", "put"]</code></td>
+                                    </tr>
+                                </table>
+
+                                <br>
+                                <p>
+                                    After a cal, in the <code>resolve</code> function will send the complete VK response is sent as an object.
+                                </p><br>
+
+                                <h4>Usage example</h4>
+                                <p>
+                                   I'll give you a very simple example - sending a message. I ask you to note that I'm not referring to the easyVK function, but to the vk object that I already received after authorization.
+                                </p>
+                                <br>
+                                <pre class="line-numbers"><code class="language-js">
+vk.call("messages.send", {
+    user_id: "356607530",
+    message: "Hello, Kirill! I am using your module EasyVK!",
+    attachment: ["photo100172_166443618", "video85635407_165186811_69dff3de4372ae9b6e"]
+}).then(vkr => {console.log(vkr)}, errHandler);
+                                </code></pre><br>
+                                <p>
+                                    Or, for example - sending too much of a post. With this restriction, there are often many programmers, which is why I added support <code>POST</code> queries.
+                                </p><br>
+                                <pre class="line-numbers"><code class="language-js">
+vk.call("wall.post", {
+    message: `very large text..... more >> `
+}, "post").catch(errHandler);
+                                </code></pre>
+                                <br>
+                                <p>
+                                    For upload files using it, i recommend using the existing uploader, and abandoning the  <code>vk.call()</code> method.
+                                </p><br>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line2_2">vk.saveSession(...)</h4>
+                                <p>
+                                    This method saves session file to the specified path in the <code>file_session</code> parameter.
+                                </p>
+                                <p>
+                                    Conservation occurs synchronously.
+                                </p>
+                                <p>
+                                   The method does not accept anything and nothing returns.
+                                </p>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.session.foo = "bar";
+vk.saveSession();
+                                </code></pre>
+                                <p>
+                                    After the next run, a variable <code>vk.session.foo</code> will be available to you.So you can cache any data for yourself. You will receive this variable only if you do not ask to be reauthorized with new data.
+                                </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line3" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Static methods<a href="#top">#backtotop</a><hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                    
+                        <p>
+                            Static methods - are methods that do not require object initialization. <br>
+                            In our case, these methods do not require authorization. In most cases, static methods in EasyVK are just additional functions that were applied during the development of EasyVK. These functions are available to each utility, which is why I use them.
+                        </p><br>
+                        <p>
+                            Static methods can be used for the convenience of development, or, for example, to access VKontakte API methods that do not require authorization (the example will be below). <br>
+                            Well, now we will just analyze each of them in detail.
+                        </p>
+                        <br>
+                        <p>
+                            The standard way to use static methods
+                            <pre class="line-numbers"><code class="language-js">
+easyVK.static.someMethodName();
+                            </code></pre>
+                        </p>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_1">static.call(...)</h4>
+                                <p>
+                                    This method refers to the VKontakte API method without requiring authorization. Such a need arises often when the request does not require any <code>access_token</code>. <br>
+                                    EasyVK does not require you to know exactly whether authorization is required for a method or not. But also EasyVK does not know if authorization is needed, or not. <br>
+                                    In the event that you are accessing this method with the intention of executing a request <b>that requires authorization</b>, you will receive an error not from EasyVK, but from the VKontakte server. <br>
+                                    Thanks to this, the library can live for a long time, and it will be necessary to support it only if the API architecture changed or, for example, a new platform is added.
+                                </p>
+                                <p>
+                                    So, a little description.
+                                </p>
+
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>Promise</code></td>
+                                        <td>Standard object <code>Promise</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> methodName</td>
+                                        <td><code>{String}</code></td>
+                                        <td>Method name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> data</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>An object with parameters for the query, for example: <br> <code>{text: "Hello!"}</code> </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> methodType</td>
+                                        <td><code>{String}</code></td>
+                                        <td>One way to send a request: <br><code>["post", "get", "delete", "put"]</code></td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+easyVK.static.call("users.get", {
+    user_ids: ["1", "156"]
+}).then((vkr) => {
+    console.log(vkr.response[0].id); // 1
+}, (e) => {console.log(e);});
+                                </code></pre>
+                            </div>
+                            <!-- end col -->
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md12">
+                                <h4 id="line3_2">static.urlencode(...)</h4>
+                                <p>
+                                    This method serializes the object into a string as parameters in the URL for the query. <br>
+                                    Everything is very simple.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>String</code></td>
+                                        <td>Returns an object serialized to a string. Example: <code class="language-js">"foo=bar&amp;foo2=barNew"</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> object</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>The object to be serialized, maximum is 1 level.</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+const request = require("request");
+const easyVK = require("easyvk");
+
+let objGetData = {
+    message: "Hello",
+    user_id: "356607530",
+    access_token: "your_token",
+    v: "5.73"
+}
+
+let url = "https://api.vk.com/method/messages.send?";
+
+url += easyVK.static.urlencode(objGetData);
+
+request.get(url, (err, res) => {
+   if (err) throw err;
+   console.log(res.body); 
+});
+                                </code></pre>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_3">static.isObject(...)</h4>
+                                <p>
+                                    This method checks that the variable <code>n</code> is an object. <br>
+                                    It was written during the development of EasyVK for convenience and no more. 
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Boolean}</code></td>
+                                        <td>Is the variable an object <code>{}</code>?</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> n</td>
+                                        <td><code>{*}</code></td>
+                                        <td>A variable to check for belonging to objects.</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers" ><code class="language-js">
+console.log(easyVK.static.isObject({
+    some: "false"
+})); // true
+
+console.log(easyVK.static.isObject(false)); // false
+console.log(easyVK.static.isObject(1)); // false
+console.log(easyVK.static.isObject(easyVK)) // false (AsyncFunction)
+console.log(easyVK.static.isObject(easyVK.static)) // false (Function)
+console.log(easyVK.static.isObject(new Object())) // true
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_4">static.isString(...)</h4>
+                                <p>
+                                    This method checks that the variable <code>n</code> is a string. <br>
+                                    Written when developing EasyVK for convenience and no more. 
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Boolean}</code></td>
+                                        <td>Is the variable a string <code>String</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> n</td>
+                                        <td><code>{*}</code></td>
+                                        <td>The variable that you want to check for belonging to the string.</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+
+let template___ = `${easyVK.version} - is a current version`;
+console.log(easyVK.static.isString({
+    some: "false"
+})); // false
+console.log(easyVK.static.isString(false)); // false
+console.log(easyVK.static.isString(1)); // false
+console.log(easyVK.static.isString(easyVK)); // false
+console.log(easyVK.static.isString(() => {})); // false
+console.log(easyVK.static.isString(template__)); // true
+console.log(easyVK.static.isString("")); // true
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_5">static.checkJSONErrors(...)</h4>
+                                <p>
+                                    This function checks the VKontakte server's response to errors. <br>
+                                    That is, for example - the server did not respond with a JSON response will be issued <code>unexpected value {val} in JSON object at {pos} position</code> an error. This can happen at any time. <br>
+                                    Also this function checks your error request, and if the server respond with JSON that an error has occurred, this function will return <code>false</code>. If the query succeeds, the object (already parsed with JSON) will return the VKontakte's response. The example will be shown more clearly.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Object}</code> or <code>{Boolean}</code></td>
+                                        <td>The server JSON response object, or, if an error occurred, the <code>false</code> value.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> vkr</td>
+                                        <td><code>{String}</code></td>
+                                        <td>The string with the reply of the server VKontakte VKResponse</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> reject</td>
+                                        <td><code>{Function}</code></td>
+                                        <td><code>Reject</code> function that will be called if an error occurs. This function receives the error description as the first parameter.</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <p>
+                                    In this example, a request is made to the VK server, but because of the slash after the method name, the server will respond to us with an HTML document in which it will be written <code>403 Forbidden</code>. <br>
+                                    There is no JSON, so there will be an error.
+                                </p>
+                                <pre class="line-numbers"><code class="language-js">
+const easyVK = require("easyvk");
+const request = require("request");
+
+let url = "http://api.vk.com/method/users.get/?user_ids=1&amp;v=5.73";
+request.get(url, (err, res) => {
+    if (err) throw err;
+    
+    let json = easyVK.static.checkJSONErrors(res.body, (err) => {
+        console.log(err);
+    });
+
+    if (json) {
+        console.log(json.response[0].id); // not output, error will occur
+    } else {
+        console.log("invalid json", res.body);
+    }
+});
+                                </code></pre>
+                                <p>
+                                    Use this method only when you are certain that the server should return JSON. In other cases, use your own solutions.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_6">static.checkErrors(...)</h4>
+                                <p>
+                                    This function will check for errors in your request. When the VKontakte server answers us with a valid JSON, which says that there is an error in the request, or, for example, the user is locked, and you are trying to get information about it, this function will return this error. It is configured for all kinds of query errors, including, and for CAPTCHA error: when the request requires a confirmation of the captcha.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{String}</code></td>
+                                        <td>Description of the query error, for example: you need an authorization confirmation code for two-factor verification.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> vkr</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>VKontakte server response object, already parsed JSON</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+const easyVK = require("easyvk");
+const request = require("request");
+
+let url = "http://api.vk.com/method/users.get?user_ids=-1&amp;v=5.73";
+request.get(url, (err, res) => {
+    if (err) throw err;
+
+    if (!res.body) res.body = "{}";
+
+    // Here it is more accurate. 
+    // We make a request such that we are sure of it
+    let vkr = JSON.parse(res.body); 
+    
+    let vkErr = easyVK.static.checkErrors(vkr);
+    
+    if (vkErr) {
+        throw new Error(vkErr); // Will output Invalid user id error
+    } else {
+        console.log(vkr.response[0].id);
+    }
+});
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="line3_7">static.encodeHTML(...)</h4>
+                                <p>
+                                    This method decodes all characters like <code>&amp;amp;</code>, <code>&amp;gt;</code> in a normal character <code>&amp;</code>, <code>&gt;</code>
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{String}</code></td>
+                                        <td>Decoded string to normal view.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> str</td>
+                                        <td><code>{String}</code></td>
+                                        <td>The original string in unreadable view.</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+let str = "Hello, Kirill!&lt;br&gt;&lt;br&gt;";
+str += "Today I looked your report &amp;lt;&amp;quot;Processor Ecosystem&amp;quot;&amp;gt;.";
+str += " &lt;br&gt;&lt;br&gt;You know, I did not like. I'll go eat m&amp;amp;m&amp;#039;s"
+
+console.log(str); // Ugly
+console.log(easyVK.static.encodeHTML(str)); // Goodly
+                                </code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line4" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Streaming API <a href="#top">#backtotop</a><hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <!-- end col -->
+
+                            <div class="col-md-12">
+                                <p>
+                                    <q>
+                                        <b>Streaming API</b> — It is a tool for obtaining public data from VKontakte by the given keywords. 
+                                    </q> (Read <a href="index.html#line4" target="_blank">russian version</a>)
+                                </p>
+                                <p>
+                                    That is, in simple terms: you can, by certain rules, search for information in the VK in real time (well, almost). <br>
+                                    When someone puts out a post with a <b>cat</b> word, your server can receive this post thanks to the Streaming API immediately after the post is published. So it goes. <br>
+                                    It works same way for a comments. <br>
+                                    Information comes to you not from a certain group, but from the general mass of VKontakte's events. More information about the Streaming API itself you can read <a href="https://vk.com/dev/streaming_api" title="Streaming API" target="_blank">here</a> (for all), and <a href="https://vk.com/dev/streaming_api_docs" target="_blank" title="Technical documentation of the Streaming API">here</a> for those who want to get acquainted with the technical side of the issue.
+                                </p>
+                                <p>
+                                    EasyVK supports Streaming API as a separate utility. You can use it both after authorization, and without. Below is an instruction for using the Streaming API methods and an example of using. 
+                                </p>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="streaming_connect">streamingAPI.connect(...)</h4>
+                                        <p>
+                                            In order to create a stream, you need to connect to the VK server by <code>WSS://</code> protocol, you do not do this, you just need to enter the connection parameters, namely, the parameters of your application.
+                                            After a successful connection, you will get the first parameter <code>stream</code> object: now you have access to the settings of your stream, you can add rules, delete; listen to events and so on. Let us examine more in detail below
+                                        </p>
+                                        <p>
+                                            In order to create your application, go to <a href="https://vk.com/editapp?act=create" target="_blank" title="Создать приложение">this link</a> and select the <b>Standalone</b> type.
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Characteristic</th>
+                                                <th>Value</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Standard object <code>{Promise}</code>, in the <code>resolve</code> function sends <code>stream</code> object</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@param</code> application</td>
+                                                <td><code>{Object}</code></td>
+                                                <td>Application settings, what parameters to enter in it - see below</td>
+                                            </tr>
+                                        </table>
+                                        <p>
+                                            In the function, you must pass an <code>application</code> object with settings of your application.
+                                        </p>
+                                        <table>
+                                            <caption>Application settings. Options</caption>
+                                            <tr>
+                                                <th>Option</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>clientSecret</code></td>
+                                                <td>The string of the key of your application is taken from the application settings.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>clientId</code></td>
+                                                <td>The ID of your application.</td>
+                                            </tr>
+                                        </table>
+                                        <h4>Usage example</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({
+    clientSecret: "your_application_secret_key",
+    clientId: "id_of_your_application"
+}).then((stream) => {
+    
+}).catch(errHandler);
+                                        </code></pre>
+                                        <p>
+                                            That's all. Now you have created your stream. Next, you will configure the rules and listen for events. 
+                                        </p>
+                                        <p>
+                                            An example for those who do not need authorization (in fact, it is not needed).
+                                        </p>
+                                        <pre class="line-numbers"><code class="language-js">
+easyVK.streamingAPI.connect(/*...*/) 
+// Without authorization. Works the same way, but with one exception - 
+// for this method the debugger will not work, it will be fixed in 0.5 version
+// usually a debugger is not needed here
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_addrule">stream.addRule(...)</h4>
+                                        <p>
+                                            This method adds a rule to the general rule list.
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Characteristic</th>
+                                                <th>Value</th>
+                                                <th>Decription</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Standard object <code>Promise</code></td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@param</code> tag</td>
+                                                <td><code>{String}</code></td>
+                                                <td>Tag rule's, key rule's</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@param</code> value</td>
+                                                <td><code>{String}</code></td>
+                                                <td>The rule itself.</td>
+                                            </tr>
+                                        </table>
+                                        <h4>Usage example</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application params*/}).then(stream => {
+    stream.addRule("cats", "cat -dog").then((vkr) => {
+        console.log(vkr);
+    }, errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_deleterule">stream.deleteRule(...)</h4>
+                                        <p>
+                                            This method removes the rule from the general rule list.
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Characteristic</th>
+                                                <th>Value</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Standard object <code>Promise</code></td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@param</code> tag</td>
+                                                <td><code>{String}</code></td>
+                                                <td>Rule tag, rule key.</td>
+                                            </tr>
+                                        </table>
+                                        <h4>Usage example</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application*/}).then(stream => {
+    stream.addRule("cats", "cat -dog").then((vkr) => {
+        stream.deleteRule("cats").then((vkr_deleted) => {
+            console.log(vkr_deleted);
+        }, errHandler);
+    }, errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_initrules">stream.initRules(...)</h4>
+                                        <p>
+                                            Instead of using methods like <a href="#stream_deleterule">stream.deleteRule()</a> and <a href="#stream_addrule">stream.addRule()</a>, i recommend using only this method. <br>
+                                            This method is something like <b>a manager of your rules</b>. You write all the rules in one object and every time you change something in it, all the changes apply to the stream (only after the restart). <br>
+                                            I.e: If you remove the rules from the object, they will be removed from the stream. If you change the rule, it will change. At the end you will get the change log. It will take out all the rules that you changed / deleted / added. Convenient thing, however.
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Characteristic</th>
+                                                <th>Value</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Standard object <code>Promise</code>, in a <code>resolve</code> function sends change log, which came into force.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@param</code> rules</td>
+                                                <td><code>{Object}</code></td>
+                                                <td>An object with rules where the pair key => value is a pair of tag => rule.</td>
+                                            </tr>
+                                        </table>
+                                        <h4>Usage example</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application*/}).then(stream => {
+    stream.initRules({
+        "cats": "cat",
+        "dogs": "dog puppy"
+    }).then((log) => {
+        console.log(log);
+    }).catch(errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_getrules">stream.getRules(...)</h4>
+                                        <p>
+                                            If you want to get a list of all the stream rules, you can use this method.
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Characteristic</th>
+                                                <th>Value</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Standard object <code>Promise</code>, in a <code>resolve</code> function sends list of all stream's rules.</td>
+                                            </tr>
+                                        </table>
+                                        <h4>Usage example</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application*/}).then(stream => {
+    stream.initRules({
+        "cats": "cat",
+        "dogs": "dog puppy"
+    }).then((log) => {
+        stream.getRules().then((rules) => {
+                console.log(rules);
+        }, errHandler);
+    }).catch(errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_deleteallrules">stream.deleteAllRules(...)</h4>
+                                        <p>
+                                            This method removes all rules from the general list of <code>stream</code> rules
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Characteristic</th>
+                                                <th>Value</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Standard object <code>Promise</code>, in a <code>resolve</code> function sends server's response, only if all rules was deleted.</td>
+                                            </tr>
+                                        </table>
+                                        <h4>Usage example</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application*/}).then(stream => {
+    stream.initRules({ // Adding rules
+        "cats": "cat",
+        "dogs": "dog puppy"
+    }).then((log) => {
+        stream.deleteAllRules().then(() => { // deleting
+            stream.getAllRules((rules) => { // geting a hook :D
+                console.log(rules);
+            }, errHandler);
+        }, errHandler);
+    }).catch(errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_close">stream.close(...)</h4>
+                                        <p>
+                                            This method closes the WebSocket connection and calls the <code>failure</code> event.
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Characteristic</th>
+                                                <th>Values</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>@returns</code></td>
+                                                <td><code>{Promise}</code></td>
+                                                <td>Standard object <code>Promise</code></td>
+                                            </tr>
+                                        </table>
+                                        <h4>Usage example</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application*/}).then(stream => {
+    stream.initRules({ // Adding rules
+        "cats": "cat",
+        "dogs": "dog puppy"
+    }).then((log) => {
+        stream.deleteAllRules().then(() => { // deleting
+            stream.close(); // Nuivsetut (russian dialect) 
+            // Yeah. Zhoska
+        }, errHandler);
+    }).catch(errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 id="stream_events">Events</h4>
+                                        <p>
+                                            After initializing the rules and installing them, you can receive data from the stream. Posts are received on the stream, comments and shares. You can listen to all these events and create some statistics ... and in general, it's not my business. In general, you have the ability to receive data from a stream.
+                                        </p>
+                                        <p>
+                                            Since the <code>stream</code> object extends from <a href="https://nodejs.org/api/events.html" target="_blank">EventEmitter</a>, then it includes <a href="https://nodejs.org/api/events.html#events_emitter_on_eventname_listener" target="_blank">.on()</a> and <a href="https://nodejs.org/api/events.html#events_emitter_emit_eventname_args" target="_blank">.emit()</a> methods. These methods serve only to listen to the event and create it. And so, what are the events?
+                                            At the moment these are all the events from the table below, take a look.
+                                        </p>
+                                        <table>
+                                            <tr>
+                                                <th>Event</th>
+                                                <th>Event description</th>
+                                            </tr>
+                                            <tr>
+                                                <td><code>post</code></td>
+                                                <td>Occurs when a user or group has posted a record on their wall.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>comment</code></td>
+                                                <td>Occurs when a user or group comments on someone's record (as I understand, only a record, but it's not accurate).</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>share</code></td>
+                                                <td>Occurs when a user or group has share to the wall with a record.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>failure</code></td>
+                                                <td>Occurs when a critical error occurs on the server or when the connection is disconnected / closed.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>error</code></td>
+                                                <td>Occurs when there is some error during connection or during the transfer of information.</td>
+                                            </tr>
+                                        </table>
+                                        <h4>Usage example</h4>
+                                        <pre class="line-numbers"><code class="language-js">
+vk.streamingAPI.connect({/*application*/}).then(stream => {
+    stream.initRules({
+        "cats": "cat"
+    }).then(log => {
+        
+        stream.on("post", (event) => { // Listening to all post events
+            console.log(event.event_url);
+        });
+
+    }).catch(errHandler);
+}).catch(errHandler);
+                                        </code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <section class="section" id="longpollapi">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">User LongPoll API <a href="#top">#backtotop</a><hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    VKontakte provides an opportunity to listen to events through long polls (requests) - LongPoll, we will not blame them, I think they know what they are doing. EasyVK supports this platform just like <a href="#line4">Streaming API</a>, as a separate utility, tightly connected with the EasyVK object. <br>
+                                    Documentation below.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="longpoll_connect">longpoll.connect(...)</h4>
+                                <p>
+                                    This function connects to the LongPoll (user) server, and then sends in a <code>resolve</code> function the <code>LongPollConnection</code> object.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Promise}</code></td>
+                                        <td>Standard object <code>Promise</code>, in a <code>resolve</code> function sends the <code>LongPollConnection</code> object.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> params</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>LongPoll connection settings at different stages of the connecting. Usually this object is not needed, I analyze it in more detail in the <a href="#longpoll_connect_full">longpoll.connect() (full)</a> guide.</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.longpoll.connect().then((connection) => {
+    console.log(connection);
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="longpollconnection_addeventcodelistener">connection.addEventCodeListener(...)</h4>
+                                <p>
+                                    Since in the User LongPoll API all events come in the form of an array, and the names of the events are essentially numbers, it did not make sense to add all the events from LongPoll, so I added only the basic <a href="#longpoll_events">events</a>. And you can listen to everything else with the help of the add-on. Perhaps in the future, this method will change slightly and yet all events will be indicated, but so far. Dont be upset. Everything is fine.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Promise}</code></td>
+                                        <td>Standard object <code>Promise</code>, <code>resolve</code> not being called (correct me if it's wrong).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> code</td>
+                                        <td><code>{Number}</code></td>
+                                        <td>The event number, the list of all event codes, can be viewed <a href="https://vk.com/dev/using_longpoll?f=3.%20%D0%A1%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B0%20%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B9" target="_blank">here</a>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> handler</td>
+                                        <td><code>{Function}</code></td>
+                                        <td>callback function that will be called when an event with a <code>code</code> occurs. </td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+connection.addEventCodeListener(3, (event) => { 
+    // Resetting message flags, for example: readed
+    console.log(event);
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="longpollconnection_close">connection.close(...)</h4>
+                                <p>
+                                    This method breaks the connection to the LongPoll server and triggers an <code>close</code> event.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Promise}</code></td>
+                                        <td>Standard object <code>Promise</code>, in a <code>resolve</code>  function sends nothing.</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.longpoll.connect().then(connection => {
+    connection.close(); // Close connection
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="longpollconnection_debug">longpoll.debug(...)</h4>
+                                <p>
+                                    This method allows you to add a debug function to which all VK server responses will be transmitted that relate only to connecting to LongPoll.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Values</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>LongPollConnection</code> or <code>false</code></td>
+                                        <td>If the function is successfully added, it will return the <code>LongPollConnection</code> object, else will return <code>false</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> debugg</td>
+                                        <td><code>{Function}</code></td>
+                                        <td>Debugger-function, all responses will be sent to it.</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.longpoll.connect().then(connection => {
+    connection.debug((vkr) => {
+        console.log(vkr); // not a JSON, regular response string
+    }).on("message", (msg) => {
+        console.log("MESSAGE", msg);
+    });
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="longpoll_connect_full">longpoll.connect(...) (full)</h4>
+                                <p>
+                                    This is a more detailed documentation of the <a href="#longpoll_connect">longpoll.connect()</a> method. <br>
+                                    As already mentioned, the method takes the <code>params</code> object. Now I will describe it. <br>
+                                    In this object, the main two properties are objects: <code>forGetLongPollServer</code>, <code>forLongPollServer</code>
+                                </p>
+                                <p>
+                                    <code>forGetLongPollServer</code> - This is the object with the settings for the first request to the server - the method request <a href="https://vk.com/dev/messages.getLongPollServer" target="_blank">messages.getLongPollServer</a>. All the parameters that will be applied to this object in this object.
+                                </p>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.longpoll.connect({
+    forGetLongPollServer: {
+        lp_version: "2",
+        need_pts: "1"
+    }
+}).then(connection => {
+    console.log(connection.config.responseGetServer.response.pts);
+}).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    <code>forLongPollServer</code> - these are the parameters for requesting each Poll to the server. Here you can set an example, the <code>wait</code> parameter. <br>
+                                    More details about these parameters can be read <a href="https://vk.com/dev/using_longpoll?f=1.%20%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5" target="_blank">here</a>
+                                </p>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.longpoll.connect({
+    forLongPollServer: {
+        wait: "1" // Дудосим крч :D
+    }
+}).then(connection => {
+    console.log(connection.config);
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="longpoll_events">Events</h4>
+                                <p>
+                                    Since LongPoll is primarily intended for listening to events, you can do this very easily in EasyVK. As well as <a href="#streaming_api">Streaming API</a>, the <code>LongPollConnection</code> object extends from the <a href="https://nodejs.org/api/events.html" target="_blank">EventEmitter</a> object. This way you can listen to server events. Look at the table of supported events.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Event code</th>
+                                        <th>Event</th>
+                                        <th>Event description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>4</code></td>
+                                        <td><code>message</code></td>
+                                        <td>Occurs when a user sends a message or a message is sent to him.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>8</code></td>
+                                        <td><code>friendOnline</code></td>
+                                        <td>Arises when a friend of the user is online.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>9</code></td>
+                                        <td><code>friendOffline</code></td>
+                                        <td>Occurs when a friend of the user is offline.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>51</code></td>
+                                        <td><code>editChat</code></td>
+                                        <td>Occurs when a user or someone changes the conversation settings.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>61</code></td>
+                                        <td><code>typeInDialog</code></td>
+                                        <td>Occurs when the user types a message in a <b>dialog</b> with user.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>62</code></td>
+                                        <td><code>typeInChat</code></td>
+                                        <td>Occurs when the user types a message in a <b>chat</b> (conversation).</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.longpoll.connect().then(connection => {
+    connection.on("message", (msg) => {
+        console.log(msg);
+    });
+}).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                   The rest of the events that you want to listen to, you can add via the <a href="#longpollconnection_addeventcodelistener">connection.addEventCodeListener()</a> method.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                    </section>
+                    <section class="section" id="botslongpollapi">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Bots LongPoll API <a href="#top">#backtotop</a><hr></h2>
+                            </div>
+                        </div>    
+                        <div class="row">
+                               <div class="col-md-12">
+                                   <p>Recently, VKontakte has added support for LongPoll for groups. That is now all the events that are for the Callback API will work for LongPoll, but for Bots LongPoll. This greatly simplifies the creation of bots. After all, LongPoll works faster than the Callback API, which makes it now the leader in the VKontakte platforms for bots. </p>
+                                   <p>
+                                       EasyVK supports Bots LongPoll API from version 0.4. <br>
+                                       All methods, except the <a href="#longpollconnection_addeventcodelistener">connection.addEventCodeListener()</a> method, copied from <a href="#longpollapi">User LongPoll API</a>. Also, the Bots LongPoll API differs from the User LongPoll API in the event structure, so the events that are in the usual LongPoll API will not work for this, the names will differ + answer format.
+                                   </p>
+                                   <h4>Usage example</h4>
+                                   <pre class="line-numbers"><code class="language-js">
+vk.bots.longpoll.connect({
+    forGetLongPollServer: {
+        group_id: "1"
+    }
+}).then(connection => {
+    connection.debug(vkr => {
+        console.log(vkr);
+    }).on("message_new", (msg) => {
+        console.log(msg);
+    });
+}).catch(errHandler);
+                                   </code></pre>
+                               </div>
+                           </div>
+                           <div class="row">
+                                  <div class="col-md-12">
+                                      <h4 id="botslongpollapi_events">Events</h4>
+                                      <p>
+                                          The structure of events in the Bots LongPoll API differs from the usual ones, you can read about them <a href="https://vk.com/dev/bots_longpoll?f=2.1.%20%D0%A2%D0%B8%D0%BF%D1%8B%20%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B9" target="_blank">here</a>. But handling events is no different.
+                                      </p>
+                                      <h4>Usage example</h4>
+                                      <pre class="line-numbers"><code class="language-js">
+vk.bots.longpoll.connect({
+    forGetLongPollServer: {
+        group_id: "1"
+    }
+}).then(connection => {
+    connection.on("wall_reply_new", (comment) => {
+        console.log(comment);
+    });
+}).catch(errHandler);
+                                      </code></pre>
+                                      <p>
+                                          That's all.
+                                      </p>
+                                  </div>
+                              </div>   
+                    </section>
+                    <section id="callbackapi" class="section">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Callback API <a href="#top">#backtotop</a><hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    The Callback API is supported in EasyVK with a release of 0.3. Since then, the Callback API has been refactored 2 times and now works stably. Tests were conducted on the <a href="https://heroku.com/">Heroku</a> hosting server. <br>
+                                    <h3>What is it?</h3>
+                                    The Callback API first allows you to listen to the events of your group: comments, posts, joins the group, various other interactions, also messages, etc. All the events you can see on the management page of your community. And more about how you can configure the Callback API read on <a href="https://vk.com/dev/callback_api" target="_blank">this</a> page.
+                                </p>
+                                <p>
+                                    I'll just tell you how to use it on an already configured server. <br>
+                                </p>
+                                <p>
+                                    That's all. Configure the server, install <a href="https://nodejs.org">node.js</a>, <a href="https://npmjs.org">npm</a>, <a href="#top">easyvk</a>, and then follow the documentation below.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="callbackapi_listen">callbackAPI.listen(...)</h4>
+                                <p>
+                                    Callback API works by the principle of "listen". You install the server, write the software and then the server accepts <code>POST</code> requests from th VK server. VK usually sends requests of a different nature: <a href="#callbackapi_events">events</a>, confirmations and others. Your server listens to all this and performs actions based on events. What events you want to listen to - it's your thing, it's configured in the API settings (group management). Callback API uses a <a href="https://npmjs.org/package/express" target="_blank">express</a> module to create a server and standard <a href="https://nodejs.org/api/http.html" target="_blank">http</a> module.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Promise}</code></td>
+                                        <td>Standard object <code>Promise</code>, in a <code>resolve</code> function sends a <code>cb</code> object, there are variables <code>connection</code>, <code>app</code> and <code>server</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> cbParams</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>Group settings, list of groups whose events you want to listen to. Well, the server port. Details are described below.</td>
+                                    </tr>
+                                </table>
+                                <p>
+                                    To listen to events, you must call this method with a single <code>cbParams</code> object, in the properties of which you must enter one of the following settings.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Parameter</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>groups</code></td>
+                                        <td>An array of groups where each element is a <code>Group</code> object</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>groupId</code></td>
+                                        <td>The ID of your group, this ID you take from the server confirmation instructions (manage group -> API -> Callback API)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>confirmCode</code></td>
+                                        <td>The confirmation code that the server must return during the confirmation request. It is also taken, like <code>groupId</code> from the server connection settings (group management)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>secret</code></td>
+                                        <td>Secret key for requests. If the query does not have a key, an error will occur. In fact, this is the password for accessing your Callback server, you set it in the group settings. Its presence is not necessary.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>port</code></td>
+                                        <td>HTTP port for the server, I recommend to install <code class="language-js">process.env.PORT || 3000</code></td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <p>
+                                    Well and now for understanding - an example.
+                                </p>
+                                <pre class="line-numbers"><code class="language-js">
+vk.callbackAPI.listen({
+    groupId: "111111",
+    secret: "my_password_group",
+    confirmCode: "confirm_code_from_setting_group",
+    port: (process.env.PORT || 3000)
+}).then((cb) => {
+    console.log(cb.web.app) // express app
+    console.log(cb.web.server) // http server
+    console.log(cb.connection) // connection (as a matter of fact it is the listener of events)
+}).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    For several groups
+                                </p>
+                                <pre class="line-numbers"><code class="language-js">
+vk.callbackAPI.listen({
+    groups: [{
+        groupId: "111",
+        confirmCode: "confirm_code_from_settings_group",
+        secret: "my_password_group"
+    }, {
+        groupId: "1112",
+        confirmCode: "confirm_code_from_settings_group",
+        secret: "my_password_group"
+    }],
+    port: (process.env.PORT || 3000)
+}).then((cb) => {}).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    For security and for the durability of the data leakage of your users, I recommend setting a password for requests (preferably also md5), although by default this is not necessary.
+                                </p>
+                                <p>
+                                    For the sake of honesty, I will remind you that the Callback API does not require authorization, although you may have noticed that a <code>vk</code> variable for listening. In general, there is an even simpler method.
+                                </p>
+                                <pre class="line-numbers"><code class="language-js">
+easyVK.callbackAPI.listen(/*....*/).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    Then the sense of using the object of anisation disappears. I recommend using this option, because there is no need for authorization, but since anything can change, I still left the Streaming API in the initialization object. However, the second method does not mean that the Streaming API is a static utility. No. She just has other purposes. That's all.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="callbackapi_events">Events</h4>
+                                <p>
+                                    As in <a href="#longpollapi">LongPoll</a>, in Callback API there are events, you can listen to them in the same way. Through a <code>connection</code> variable. List of events you can look at <a href="https://vk.com/dev/groups_events" target="_blank">this</a> page (official documentation).
+                                </p>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.callbackAPI.listen({
+    groupId: "111111",
+    secret: "my_password_group",
+    confirmCode: "confirm_code_from_setting_group",
+    port: (process.env.PORT || 3000)
+}).then((cb) => {
+    cb.connection.on("message_new", (event) => {
+        console.log(event);
+        /*
+            To find out which group the event belongs to,
+            use it
+        */
+        console.log(event.group_id);
+    });
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="section" id="files">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Uploader <a href="#top">#backtotop</a><hr></h2>
+                                <p>
+                                    With update 0.4 EasyVK has a handy utility for uploading files. Of course, this is not new, and in general, there is nothing complicated in this, but I think that in EasyVK there should be such at once without additives. 
+                                </p>
+                                <p>
+                                    So, if you have the need to upload to the server, for example, an avatar, you can get a url to upload to VKontakte server one of the suggested methods on <a href="https://vk.com/dev/upload_files" target="_blank">this</a> page. This page details the upload of files for advertising, photos of messages and in general a lot of things. Basically, it all boils down to one thing: getting the server address to load the file (s).
+                                    <br>
+                                    About this below.
+                                </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="files_getuploadurl">uploader.getUploadURL(...)</h4>
+                                <p>
+                                    This method makes it possible to obtain a <code>upload_url</code> for further upload to the server. Nothing complicated, but convenient.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Promise}</code></td>
+                                        <td>Standard object <code>Promise</code>, in a <code>resolve</code> function sends the <code>upload_url</code> variable.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> method_name</td>
+                                        <td><code>{String}</code></td>
+                                        <td>The method by referring to which you want to get the URL to upload the file.</td>
+                                    </tr
+                                    <tr>
+                                        <td><code>@param</code> params</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>Parameters for request to the <code>method_name</code> method, optional.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> returnAll</td>
+                                        <td><code>{Boolean}</code></td>
+                                        <td>Whether it is necessary to return the whole answer VKontakte or only url. Default - <code>false</code></td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.uploader.getUploadURL("photos.getWallUploadServer", {
+    group_id: "153044419"
+}).then((url) => {
+    console.log(url);
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="files_uploadfile">uploader.uploadFile(...)</h4>
+                                <p>
+                                    This method allows you to upload a file to the specified url.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Promise}</code></td>
+                                        <td>Standard object <code>Promise</code>, in a <code>resolve</code> function sends server's response after upload.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> <br> url</td>
+                                        <td><code>{String}</code></td>
+                                        <td>The URL to upload, usually you get it from some GET method.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> <br> filePath</td>
+                                        <td><code>{String}</code></td>
+                                        <td>The path to the file you want to upload (NOT A <code>Buffer</code>!).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> fieldName</td>
+                                        <td><code>{String}</code></td>
+                                        <td>The name of the field that your file will be named in a <code>POST</code> request. For example: <code>photo</code>. Usually it is necessary to name <code>field</code> written in the documentation for uploading files, look for there.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> paramsUpload</td>
+                                        <td><code>{Object}</code></td>
+                                        <td>Parameters for uploading. These parameters will be sent along with the file in the request to the server. It is necessary, use it.</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.uploader.getUploadURL("photos.getWallUploadServer", {
+    group_id: "153044419"
+}).then((url) => {    
+    /*
+        + node_modules
+        + images
+            - photo.jpg        
+        - index.js
+        - package.json
+        - Procfile
+    */
+    let path = __dirname + "/images/photo.jpg";
+    vk.uploader.uploadFile(url, path, "photo").then((vkr) => {
+        console.log(vkr);
+    }, errHandler);
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="section" id="helpers">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Helpers <a href="#top">#backtotop</a><hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    Helper is a convenient tool for solving everyday tasks. So far, helpers do not have many options, as now the list of helper options has not been replenished and the focus has been more on the capabilities of other utilities. But in 0.5 version there will be a great update for helpers, so you do not have to wait long.
+                                </p>
+                                <p>
+                                    Nevertheless, helpers have in the package several solutions for everyday tasks. They will be discussed below.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="helpers_getallfriendslist">helpers.getAllFriendsList(....)</h4>
+                                <p>
+                                    This method allows you to get a list of all the friends. Its practicality is in doubt, but I decided to leave it, because there is little that can happen in VKontakte restrictions, and here the method is already ready. It will be necessary simply to rewrite it a bit. Therefore, I recommend using it.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Values</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Promise}</code></td>
+                                        <td>Standard object <code>Promise</code>, in a <code>resolve</code> function sends a <code>friends</code> array </td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> user_id</td>
+                                        <td><code>{Number}</code></td>
+                                        <td>The ID of the user whose list of friends you want to receive.</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+let user_id = 1;
+vk.helpers.getAllFriendsList(user_id).then((firiends) => {
+    console.log(friends.length) // 0
+}, errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="helpers_isfriend">helpers.isFriend(...)</h4>
+                                <p>
+                                    This method verifies that the <code>check_id</code> user is in the <code>friend_id</code> user's friends. So it goes.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Promise}</code></td>
+                                        <td>Standard object <code>Promise</code>, in a <code>resolve</code> function sends a <code>Boolean</code> value - check that <code>check_id</code> user in a list of friends <code>friend_id</code> user's.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> friend_id</td>
+                                        <td><code>{Number}</code></td>
+                                        <td>User ID, in the list of friends of which we will search for a user with ID <code>check_id</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> check_id</td>
+                                        <td><code>{Number}</code></td>
+                                        <td>The user ID that we will search for in the user's friends ID <code>friend_id</code>. By default, this is the ID from your session, after user authorization.</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.helpers.isFriend(1, 356607530).then((isFriend) => {
+    console.log(isFriend) // false, that is a constant :D
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="helpers_userfollowed">helpers.userFollowed(...)</h4>
+                                <p>
+                                    This method verifies that the <code>follower_id</code> user subscribed on the <code>user_id</code> user.
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th>Characteristic</th>
+                                        <th>Value</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@returns</code></td>
+                                        <td><code>{Promise}</code></td>
+                                        <td>Standard object <code>Promise</code>, in ad <code>resolve</code> function sends the <code>Boolean</code> value - is subscribed <code>follower_id</code> user on the <code>user_id</code> user.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> follower_id</td>
+                                        <td><code>{Number}</code></td>
+                                        <td>ID of the intended subscriber.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> user_id</td>
+                                        <td><code>{Number}</code></td>
+                                        <td>The ID of the blogger, the person who subscribes to (lol). By default, this is your ID from the session.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>@param</code> maximum</td>
+                                        <td><code>{Number}</code></td>
+                                        <td>Maximum number of subscribers. Since users can have 100K subscribers, you need to limit the number of subscribers. After all, this is how many requests you will have to make ... In general: if you put the number 1, but for a person> 1 subscribers, the search will not go, it will not even begin.</td>
+                                    </tr>
+                                </table>
+                                <h4>Usage example</h4>
+                                <pre class="line-numbers"><code class="language-js">
+vk.helpers.userFollowed(1, 356607530).then(isFollower => {
+    console.log(isFollower) // false
+}).catch(errHandler);
+                                </code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="section" id="widgets">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Widgets <a href="#top">#backtotop</a><hr></h2>
+                                <p>
+                                    Widgets is another utility that was created to help you do something with ease. Usually in widgets are methods that are designed to solve everyday problems. Widgets work <b>INFORMALLY</b>. That is, all components do not refer in any way to the official VK API. Correctly work of these components is <b>not guaranteed</b>! If any changes are made to the structure of the site's html code VKontakte, the widget may stop working correctly. But I try to track this change and immediately apply it to EasyVK.
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 id="widgets_getliveviews">widgets.getLiveViews(...)</h4>
+                                    <p>
+                                        This method allows you to get video broadcasts at the time of the request. It returns the views at a time, so if you want to keep statistics, you need to make a query several times.
+                                    </p>
+                                    <table>
+                                        <tr>
+                                            <th>Characteristic</th>
+                                            <th>Value</th>
+                                            <th>Description</th>
+                                        </tr>
+                                        <tr>
+                                            <td><code>@returns</code></td>
+                                            <td><code>{Promise}</code></td>
+                                            <td>Standard object <code>Promise</code>, in a <code>resolve</code> function sends cunt of views on the live video.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>@param</code> video_source_id</td>
+                                            <td><code>{String}</code></td>
+                                            <td>The video ID string is taken from the url of the video. Example: <code>-22773667_456241573</code></td>
+                                        </tr>
+                                    </table>
+                                    <h4>Usage example</h4>
+                                    <pre class="line-numbers"><code class="language-js">
+setInterval (() => {
+    vk.widgets.getLiveViews("-76914461_456243041").then((views) => {
+        console.log(views);
+    }).catch(errHandler);
+}, 1000);
+                                    </code></pre>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                    </section>
+                    <section class="section" id="advices">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Advices / FAQ <a href="#top">#backtotop</a><hr></h2>
+                                <p>
+                                    In this section I will share with you the tips for fulfilling requests. Here you can find something really useful and necessary. All these questions were created either because they were interesting to me personally and I found it necessary to add an explanation to this block, or because one of the active users asked me it, and I, in turn, responded to it, added here. It's simple.
+                                </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="advices_1">Sync execution?</h4>
+                                <p>
+                                    This question often arises, because at the time of writing the code there are many nestings and the programmer starts to get confused in the code, what follows, where the output, where the input, etc.
+                                    Of course, not everything needs to be done synchronously, but the creation of asynchronous code introduces some understanding in the essence of the program. Che tut (<a href="index.html#advices_1" target="_blank">rus</a>). Just give an example.
+                                    <br>
+                                    You have a need to make a condition, something like: if a person is a friend of this person, or he is subscribed to it, then do it. This is how it looks in code with asynchronous program execution.
+                                </p>
+
+                                <pre class="line-numbers"><code class="language-js">
+let params = [1, 356607530];
+vk.helpers.isFriend(...params).then(isFriend => {
+    if (isFriend) return true;
+    else {
+        return vk.helpers.userFollowed(...params).then(userFollowed => {
+            return userFollowed;
+        });
+    }
+}).then(isAdded => {
+    if (isAdded) {
+        console.log("You have added it as a friend!");
+    } else {
+        console.log(`Points are not added, you did not add it to friends!
+         Try again...`);
+    }
+}).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    Gromozdo, is not it (I'm sure you can be offered an option even more, or on a ball, even less, more thoughtful .. But I'm not an olymp, sorry)? It can be simpler, but already make all requests synchronously.
+                                </p>
+                                <pre class="line-numbers"><code class="language-js">
+easyVK({/*...*/}).then(async (vk) => {
+    let params = [1, 356607530];
+    let isFriend = await (vk.helpers.isFriend(...params));
+    let userFollowed = await (vk.helpers.userFollowed)(...params);
+    if (isFriend || userFollowed) {
+        console.log("You have added it as a friend!");
+    } else {
+        console.log(`Points are not added, you did not add it to friends!
+         Try again...`);
+    }
+}).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    Of course, this example is not the best, because the first code can be placed in general in 11 lines, if desired, and the implementation in the second code is done so that in any case 2 requests are executed, and in fact there is no meaning, there will be more load. And yet, it's up to you to decide which option to use. <br> <b>For the honesty of the experiment, I will give the solution of the first variant in a more compact representation.</b>
+                                </p>
+                                <pre class="line-numbers"><code class="language-js">
+let p = ["helpers", "isFriend", [1, 356607530]];
+vk[p[0]][p[1]](...p[2]).then(isFriend=>(isFriend||vk.helpers.userFollowed(...p[2])))
+.then(isAdded=>{
+    console.log((isAdded) ? "You have added it as a friend!" : `Points are not added, 
+    you did not add it to friends! Try again...`);
+}).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    But in my opinion it is, although beautiful, not everyone will understand and understand. But as they say ... <br> <br>
+                                    <q>
+                                        If you want, you can do everything
+                                    </q> (read russian version) <br>
+                                    Here is another example
+                                </p>
+                                <pre class="line-numbers"><code class="language-js">
+easyVK({/*...*/}).then(async vk => {
+    
+    let users = await (vk.call("users.get", {
+        user_ids: "1, 457"
+    }));
+
+    console.log(users.response);
+
+}).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    In this case, it is very important that <code>resolve</code> function had before itself the <code>async</code> operator, Otherwise you will get an <code>await is not defined</code> error. Further, it is necessary that there is a single function-catcher, which will catch all the errors, because using await you take this opportunity from the method. And most recently, use await when calling an asynchronous function.
+                                </p>
+                                <p>
+                                    I strongly recommend using async / await, because at any time you can switch to async, forgetting about await. I hope this helped someone. Again, everything was tested, so everything will work for you.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- end section -->
+
+                    <!-- end section -->
+                </div>
+                <!-- // end .col -->
+
+            </div>
+            <!-- // end .row -->
+
+        </div>
+        <!-- // end container -->
+
+    </div>
+    <!-- end wrapper -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/retina.js"></script>
+    <script src="js/jquery.fitvids.js"></script>
+    <script src="js/wow.js"></script>
+
+    <!-- CUSTOM PLUGINS -->
+    <script src="js/custom.js"></script>
+    <script src="js/prism.js"></script>
+</body>
+
+</html>

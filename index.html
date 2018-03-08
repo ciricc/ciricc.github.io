@@ -49,9 +49,9 @@
                     <div class="col-md-12">
                         <div class="big-title text-center">
                             <h1>Easy<span style="color: #7298C3;font-weight: bold;">VK</span> v0.4</h1>
-                            <p class="lead">NodeJS модуль для работы с VK API</p>
+                            <p class="lead">NodeJS модуль для работы с ВКонтакте API</p>
                             <p>
-                                | <a href="https://vk.com/dev" target="_blank" class="nav-link">Официальная документация API ВКонтакте</a> | <a href="https://npmjs.org/package/easyvk" target="_blank" class="nav-link">EasyVK в npm</a> | <a href="https://github.com/ciricc/easyvk" target="_blank" class="nav-link">EasyVK github</a> | <a href="https://vk.com/club162208999" target="_blank" class="nav-link" target="_blank">Сообщество</a> |
+                                | <a href="https://vk.com/dev" target="_blank" class="nav-link">Официальная документация API ВКонтакте</a> | <a href="https://npmjs.org/package/easyvk" target="_blank" class="nav-link">EasyVK в npm</a> | <a href="https://github.com/ciricc/easyvk" target="_blank" class="nav-link">EasyVK github</a> | <a href="https://vk.com/club162208999" target="_blank" class="nav-link" target="_blank">Сообщество</a> | <a href="en_index.html" class="nav-link"><b>English</b> Version</a>
                             </p>
                         </div>
                         <!-- end title -->
@@ -126,6 +126,11 @@
                                 <li><a href="#helpers_isfriend">helpers.isFriend()</a></li>
                                 <li><a href="#helpers_userfollowed">helpers.userFollowed()</a></li>
                             </ul></li>
+                            <li>
+                                <a href="#widgets">Widgets</a><ul class="nav">
+                                    <li><a href="#widgets_getliveviews">widgets.getLiveViews()</a></li>
+                                </ul>
+                            </li>
                             <li><a href="#advices">Советы / FAQ</a><ul class="nav">
                                 <li><a href="#advices_1">Синхронное выполнение?</a></li>
                             </ul></li>
@@ -147,7 +152,7 @@
                                                 Автор данного модуля - javascript разработчик Кирилл Новак (оч скромно).
                                             </p>
 
-                                            <p>При помощи EasyVK вы можете создавать приложения на node.js любого рода. Начиная от простейшего: <b>поиск лайков группы</b>, заканчивая более сложным, как на пример - <b>создание бота</b> или <b>таргетинг новостей</b>. <br>
+                                            <p>При помощи EasyVK вы можете создавать приложения на node.js любого рода. Начиная от простейшего: <b>поиск лайков группы</b>, заканчивая более сложным, как например - <b>создание бота</b> или <b>таргетинг новостей</b>. <br>
                                             EasyVK написан для того, чтобы API ВКонтакте имел удобную поддержку на платформе node.js, абсолютно все компоненты EasyVK бесплатные и доступны с исходным кодом.
                                             </p>
                                             <p>
@@ -157,7 +162,7 @@
                                                     <li><a href="https://vk.com/dev/using_longpoll" target="_blank">LongPoll</a> - <b>создание ботов, прослушивание событий аккаунта пользователя или группы</b></li>
                                                     <li><a href="https://vk.com/dev/streaming_api_docs" target="_blank">Streaming API</a> - <b>таргетинг, сбор информации о новостях, комментариях и другом по определенным правилам</b> </li>
                                                     <li><a href="https://vk.com/dev/methods" target="_blank">Methods</a> - <b>Стандартные методы для управления аккаунтом / группой, и не только</b></li>
-                                                    <li><a href="https://vk.com/dev/upload_files" target="_blank">Files</a> - <b>загрузка файлов на сервера ВК</b>, на пример - обложка для группы</li>
+                                                    <li><a href="https://vk.com/dev/upload_files" target="_blank">Files</a> - <b>загрузка файлов на сервера ВК</b>, например - обложка для группы</li>
                                                 </ul>
                                             </p>
                                             <h4>Что необходимо</h4>
@@ -199,7 +204,7 @@
                             <div class="col-md-12">
                                 <p>
                                     Прежде чем начать использовать EasyVK, необходимо понять как он работает. <br>
-                                    EasyVK - это впервую очередь посредник между сервером ВК и вашими идеями. Так как EasyVK работает с методами ВКонтакте, то мы следуем и их требованиям. <br>
+                                    EasyVK - это в первую очередь посредник между сервером ВК и вашими идеями. Так как EasyVK работает с методами ВКонтакте, то мы следуем и их требованиям. <br>
                                     Именно поэтому прежде чем начать работать с EasyVK, необходимо сначала авторизоваться и создать сессию easyVK.
                                 </p>
                                 <p>
@@ -279,12 +284,12 @@ easyVK({
                                       </tr>
                                       <tr>
                                           <td><code>clean_session</code></td>
-                                          <td>Если имеется необходимость отщищать файл сессии после авторизации, можете поставить этот параметр как <code>true</code></td>
+                                          <td>Если имеется необходимость очищать файл сессии после авторизации, можете поставить этот параметр как <code>true</code></td>
                                           <td><code>false</code></td>
                                       </tr>
                                       <tr>
                                           <td><code>session_file</code></td>
-                                          <td>Путь к файлу сессии, куда будет сохраняться ваша сессиия.</td>
+                                          <td>Путь к файлу сессии, куда будет сохраняться ваша сессия.</td>
                                           <td><code>.vksession</code></td>
                                       </tr>
                                       <tr>
@@ -342,7 +347,7 @@ easyVK({
                                 <h4 id="line2_1">vk.call(...)</h4>
                                 
                                 Данный метод обращается к стандартным <a href="https://vk.com/dev/methods" target="_blank">методам</a> API ВКонтакте. <br>
-                                Вы можете контроллировать запрос, отправляя определенные параметры на сервер, а затем получать ответ. В случае ошибки, вы можете ловить ее и выводить в консоль без остановки программы.
+                                Вы можете контролировать запрос, отправляя определенные параметры на сервер, а затем получать ответ. В случае ошибки, вы можете ловить ее и выводить в консоль без остановки программы.
 
                                 <br>
                                 <p>
@@ -368,7 +373,7 @@ easyVK({
                                     <tr>
                                         <td><code>@param</code> data</td>
                                         <td><code>{Object}</code></td>
-                                        <td>Объект с параметрами для запроса, на пример: <br> <code>{text: "Привет!"}</code> </td>
+                                        <td>Объект с параметрами для запроса, например: <br> <code>{text: "Привет!"}</code> </td>
                                     </tr>
                                     <tr>
                                         <td><code>@param</code> methodType</td>
@@ -395,11 +400,11 @@ vk.call("messages.send", {
 }).then(vkr => {console.log(vkr)}, errHandler);
                                 </code></pre><br>
                                 <p>
-                                    Или, на пример - отправка слишком большого поста. С таким ограничением часто встречаются все программисты, именно поэтому я добавил поддержку <code>POST</code> запросов.
+                                    Или, например - отправка слишком большого поста. С таким ограничением часто встречаются все программисты, именно поэтому я добавил поддержку <code>POST</code> запросов.
                                 </p><br>
                                 <pre class="line-numbers"><code class="language-js">
 vk.call("wall.post", {
-    message: `very large text..... more >> `
+    message: `очень большой текст ... больше >> `
 }, "post").catch(errHandler);
                                 </code></pre>
                                 <br>
@@ -451,8 +456,8 @@ vk.saveSession();
                             В нашем случае эти методы не требуют авторизации. В большинстве случаев static методы в EasyVK - это просто дополнительные функции, которые применялись во время разработки EasyVK. Эти функции доступны каждой утилите, именно поэтому я их использую.
                         </p><br>
                         <p>
-                            Static методы могут применяться для удобства разработки, или же, на пример, для обращения к методам API ВКонтакте, которые не требуют авторизации (пример будет ниже). <br>
-                            Ну а теперь просто подробней разберем каждый из них.
+                            Static методы могут применяться для удобства разработки, или же, например, для обращения к методам API ВКонтакте, которые не требуют авторизации (пример будет ниже). <br>
+                            Ну а теперь просто подробно разберем каждый из них.
                         </p>
                         <br>
                         <p>
@@ -469,7 +474,7 @@ easyVK.static.someMethodName();
                                     Данный метод обращается к методу API ВКонтакте, не требуя авторизации. Такая необходимость возникает часто тогда, когда запрос не требует вообще никаких <code>access_token</code>. <br>
                                     EasyVK не требует чтобы вы точно знали, нужна ли авторизация для метода или нет. Но так же EasyVK не знает, нужна ли авторизация, или нет. <br>
                                     В случае, если вы обращаетесь к данному методу с намерением выполнить запрос, <b>который требует авторизации</b>, вы получите ошибку не от EasyVK, а от сервера ВКонтакте. <br>
-                                    Именно благодаря этому библиотека может жить еще долго, а поддерживать ее будет необходимо только в случае, если архитектура API изменится или, на пример, добавится новая платформа.
+                                    Именно благодаря этому библиотека может жить еще долго, а поддерживать ее будет необходимо только в случае, если архитектура API изменится или, например, добавится новая платформа.
                                 </p>
                                 <p>
                                     Итак, немного описания.
@@ -494,7 +499,7 @@ easyVK.static.someMethodName();
                                     <tr>
                                         <td><code>@param</code> data</td>
                                         <td><code>{Object}</code></td>
-                                        <td>Объект с параметрами для запроса, на пример: <br> <code>{text: "Привет!"}</code> </td>
+                                        <td>Объект с параметрами для запроса, например: <br> <code>{text: "Привет!"}</code> </td>
                                     </tr>
                                     <tr>
                                         <td><code>@param</code> methodType</td>
@@ -626,15 +631,16 @@ console.log(easyVK.static.isObject(new Object())) // true
                                 </table>
                                 <h4>Пример использования</h4>
                                 <pre class="line-numbers"><code class="language-js">
+
+let template___ = `${easyVK.version} - is a current version`;
 console.log(easyVK.static.isString({
     some: "false"
 })); // false
-
 console.log(easyVK.static.isString(false)); // false
 console.log(easyVK.static.isString(1)); // false
 console.log(easyVK.static.isString(easyVK)); // false
 console.log(easyVK.static.isString(() => {})); // false
-console.log(easyVK.static.isString(`${easyVK.version} - is a current version`)); // true
+console.log(easyVK.static.isString(template__)); // true
 console.log(easyVK.static.isString("")); // true
                                 </code></pre>
                             </div>
@@ -644,7 +650,7 @@ console.log(easyVK.static.isString("")); // true
                                 <h4 id="line3_5">static.checkJSONErrors(...)</h4>
                                 <p>
                                     Данная функция проверяет ответ сервера ВКонтакте на ошибки. <br>
-                                    То есть, на пример - сервер ответил не JSON ответом - выйдет ошибка, что <code>unexpected value {val} in JSON object at {pos} position</code>, не совсем точно, но приблизительно так. Это может произойти в любой момент. <br>
+                                    То есть, например - сервер ответил не JSON ответом - выйдет ошибка, что <code>unexpected value {val} in JSON object at {pos} position</code>, не совсем точно, но приблизительно так. Это может произойти в любой момент. <br>
                                     Также эта функция проверяет ваш запрос на ошибки, и если сервер ответил с JSON, что произошла ошибка, эта функция вернет <code>false</code>. В случае успешного выполнени запроса, вернется объект (уже спарсенный JSON) ответа ВКонтакте. На примере будет показано более наглядно.
                                 </p>
                                 <table>
@@ -670,8 +676,10 @@ console.log(easyVK.static.isString("")); // true
                                     </tr>
                                 </table>
                                 <h4>Пример использования</h4>
-                                А данном примере делается запрос на сервер ВК, но из-за слэша после названия метода, сервер ответит нам HTML документом, в котором будет написано <code>403 Forbidden</code>. <br>
-                                Там нет JSON, поэтому произойдет ошибка.
+                                <p>
+                                    В данном примере делается запрос на сервер ВК, но из-за слэша после названия метода, сервер ответит нам HTML документом, в котором будет написано <code>403 Forbidden</code>. <br>
+                                    Там нет JSON, поэтому произойдет ошибка.
+                                </p>
                                 <pre class="line-numbers"><code class="language-js">
 const easyVK = require("easyvk");
 const request = require("request");
@@ -700,7 +708,7 @@ request.get(url, (err, res) => {
                             <div class="col-md-12">
                                 <h4 id="line3_6">static.checkErrors(...)</h4>
                                 <p>
-                                    Данная функция проверет на ошибки ваш запрос. Когда сервер ВКонтакте отвечает нам с валидным JSON, в котором говорится, что в запросе имеется ошибка, или, на пример, пользователь заблокирован, а вы пытаетесь получить информацию о нем, эта функция вернет эту ошибку. Она настроена под все виды ошибок запросов, в том числе, и под ошибку капчи: когда запрос требует подтверждения капчей.
+                                    Данная функция проверет на ошибки ваш запрос. Когда сервер ВКонтакте отвечает нам с валидным JSON, в котором говорится, что в запросе имеется ошибка, или, например, пользователь заблокирован, а вы пытаетесь получить информацию о нем, эта функция вернет эту ошибку. Она настроена под все виды ошибок запросов, в том числе, и под ошибку капчи: когда запрос требует подтверждения капчей.
                                 </p>
                                 <table>
                                     <tr>
@@ -711,12 +719,12 @@ request.get(url, (err, res) => {
                                     <tr>
                                         <td><code>@returns</code></td>
                                         <td><code>{String}</code></td>
-                                        <td>Описание ошибки запроса, на пример: нужен код подтверждения авторизации для двухфакторной проверки.</td>
+                                        <td>Описание ошибки запроса, например: нужен код подтверждения авторизации для двухфакторной проверки.</td>
                                     </tr>
                                     <tr>
                                         <td><code>@param</code> vkr</td>
                                         <td><code>{Object}</code></td>
-                                        <td>Объект ответа сервера Вконтакте, уже спарсенный JSON</td>
+                                        <td>Объект ответа сервера ВКонтакте, уже спарсенный JSON</td>
                                     </tr>
                                 </table>
                                 <h4>Пример использования</h4>
@@ -730,7 +738,7 @@ request.get(url, (err, res) => {
 
     if (!res.body) res.body = "{}";
 
-    // Вот тут аккауратней. 
+    // Вот тут аккуратней. 
     // Мы делаем запрос такой, что точно уверены в нем
     let vkr = JSON.parse(res.body); 
     
@@ -812,7 +820,7 @@ console.log(easyVK.static.encodeHTML(str)); // Красиво
                                 </p>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h4 id="streaming_connect">streamingAPI.connect</h4>
+                                        <h4 id="streaming_connect">streamingAPI.connect(...)</h4>
                                         <p>
                                             Для того, чтобы создать стрим, необходимо подключиться к серверу ВК по протоколу <code>WSS://</code>, этим вы не занимаетесь, вам нужно всего лишь ввести параметры подключения, а именно - параметры вашего приложения.
                                             После успешного подключения вы получите первым параметром объект <code>stream</code>: теперь вы имеете доступ к настройкам вашего стрима, можете добавлять правила, удалять, слушать события и так далее. Разберем подробнее ниже
@@ -852,7 +860,7 @@ console.log(easyVK.static.encodeHTML(str)); // Красиво
                                             </tr>
                                             <tr>
                                                 <td><code>clientId</code></td>
-                                                <td>ID вышего приложения.</td>
+                                                <td>ID вашего приложения.</td>
                                             </tr>
                                         </table>
                                         <h4>Пример использования</h4>
@@ -957,7 +965,7 @@ vk.streamingAPI.connect({/*application*/}).then(stream => {
                                         <p>
                                             Вместо того, чтобы использовать методы вроде <a href="#stream_deleterule">stream.deleteRule()</a> и <a href="#stream_addrule">stream.addRule()</a>, я рекомендую использовать только этот метод. <br>
                                             Этот метод является чем-то вроде <b>менеджера ваших правил</b>. Вы прописываете все правила в одном объекте и каждый раз, когда что-то в нем изменяете, все изменения применяются к стриму (только после перезапуска). <br>
-                                            То есть: если вы удалили правила из объекта, они удалятся из стрима. Если изменили правило, оно изменится. В конце вы получите лог объект изменений. В нем будут вынесены все правила, которые вы изменили/удалили/добавили. Удобная штука, однако.
+                                            То есть: если вы удалили правила из объекта, они удаляются из стрима. Если изменили правило, оно изменится. В конце вы получите лог объект изменений. В нем будут вынесены все правила, которые вы изменили/удалили/добавили. Удобная штука, однако.
                                         </p>
                                         <table>
                                             <tr>
@@ -968,7 +976,7 @@ vk.streamingAPI.connect({/*application*/}).then(stream => {
                                             <tr>
                                                 <td><code>@returns</code></td>
                                                 <td><code>{Promise}</code></td>
-                                                <td>Стандартный объект <code>Promise</code>, в функцию <code>resolve</code> вы получаете изменения, которые вступли в силу.</td>
+                                                <td>Стандартный объект <code>Promise</code>, в функцию <code>resolve</code> вы получаете изменения, которые вступили в силу.</td>
                                             </tr>
                                             <tr>
                                                 <td><code>@param</code> rules</td>
@@ -1116,7 +1124,7 @@ vk.streamingAPI.connect({/*application*/}).then(stream => {
                                             </tr>
                                             <tr>
                                                 <td><code>share</code></td>
-                                                <td>Возникает, когда пользователь или группа подилились на своей стене записью.</td>
+                                                <td>Возникает, когда пользователь или группа поделились на своей стене записью.</td>
                                             </tr>
                                             <tr>
                                                 <td><code>failure</code></td>
@@ -1230,7 +1238,7 @@ vk.longpoll.connect().then((connection) => {
                                 <h4>Пример использования</h4>
                                 <pre class="line-numbers"><code class="language-js">
 connection.addEventCodeListener(3, (event) => { 
-    // Сброс флагов сообщения, на пример: прочитано
+    // Сброс флагов сообщения, например: прочитано
     console.log(event);
 }).catch(errHandler);
                                 </code></pre>
@@ -1320,7 +1328,7 @@ vk.longpoll.connect({
 }).catch(errHandler);
                                 </code></pre>
                                 <p>
-                                    <code>forLongPollServer</code> - это параметры для запроса на каждый Poll к серверу. Тут вы можете установить на пример, параметр <code>wait</code> на свой вкус<br>
+                                    <code>forLongPollServer</code> - это параметры для запроса на каждый Poll к серверу. Тут вы можете установить например, параметр <code>wait</code> на свой вкус<br>
                                     Подробней об этих параметрах можно почитать <a href="https://vk.com/dev/using_longpoll?f=1.%20%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5" target="_blank">тут</a>
                                 </p>
                                 <h4>Пример использования</h4>
@@ -1604,7 +1612,7 @@ vk.callbackAPI.listen({
                                     С обновления 0.4 в EasyVK появилась удобная утилита для загрузки файлов. Конечно, это не ново все и вообще в принципе ничего сложного нет в этом, но я считаю, что в EasyVK должно быть такое сразу без добавок. 
                                 </p>
                                 <p>
-                                    Итак, если у вас есть неободимость загрузить на сервер, на пример, аватарку, вы можете получить url для загрузки на сервер ВКонтакте одним из предложенных способов на <a href="https://vk.com/dev/upload_files" target="_blank">этой</a> странице. На этой странице подробно описана загрузка файлов для рекламы, фотографий сообщений и вообще много чего. В основном все сводится к одному - получению адреса сервера для загрузки файла(ов).
+                                    Итак, если у вас есть неободимость загрузить на сервер, например, аватарку, вы можете получить url для загрузки на сервер ВКонтакте одним из предложенных способов на <a href="https://vk.com/dev/upload_files" target="_blank">этой</a> странице. На этой странице подробно описана загрузка файлов для рекламы, фотографий сообщений и вообще много чего. В основном все сводится к одному - получению адреса сервера для загрузки файла(ов).
                                     <br>
                                     Об этом ниже.
                                 </p>
@@ -1636,7 +1644,7 @@ vk.callbackAPI.listen({
                                     <tr>
                                         <td><code>@param</code> params</td>
                                         <td><code>{Object}</code></td>
-                                        <td>Параметры для запроса на метод <code>method_name</code>, необязательны.</td>
+                                        <td>Параметры для запроса на метод <code>method_name</code>, не обязательны.</td>
                                     </tr>
                                     <tr>
                                         <td><code>@param</code> returnAll</td>
@@ -1684,7 +1692,7 @@ vk.uploader.getUploadURL("photos.getWallUploadServer", {
                                     <tr>
                                         <td><code>@param</code> fieldName</td>
                                         <td><code>{String}</code></td>
-                                        <td>Имя поля, которым будет именоваться ваш файл в <code>POST</code> запросе. На пример: <code>photo</code>. Обычно как именно необходимо именовывать <code>field</code> написано в документации по загрузке файлов, ищите там.</td>
+                                        <td>Имя поля, которым будет именоваться ваш файл в <code>POST</code> запросе. Например: <code>photo</code>. Обычно как именно необходимо именовать <code>field</code> написано в документации по загрузке файлов, ищите там.</td>
                                     </tr>
                                     <tr>
                                         <td><code>@param</code> paramsUpload</td>
@@ -1844,6 +1852,50 @@ vk.helpers.userFollowed(1, 356607530).then(isFollower => {
                             </div>
                         </div>
                     </section>
+                    <section class="section" id="widgets">
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Widgets <a href="#top">#наверх</a><hr></h2>
+                                <p>
+                                    Widgets - это еще одна утилита, которая создавалась, чтобы помочь делать что-то с легкостью. Обычно в виджетах находятся методы, которые предназначены для решения повседневных задач. Виджеты работают <b>НЕОФИЦИАЛЬНО</b>. То есть все компоненты не относятся никаким образом к официальному API ВКонтакте. Работа данных компонентов <b>не гарантируется</b>! Если вносятся какие-либо изменения в структуру html кода сайта ВКонтакте, виджет может перестать работать корректно. Но таким изменения я стараюсь отслеживать и сразу применять к EasyVK.
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 id="widgets_getliveviews">widgets.getLiveViews(...)</h4>
+                                    <p>
+                                        Данный метод позволяет получить просмотры видео трансляции в момент запроса. Возвращает просмотры он единовременно, поэтому, если вы хотите вести статистику, необходимо делать запрос несколько раз.
+                                    </p>
+                                    <table>
+                                        <tr>
+                                            <th>Характеристика</th>
+                                            <th>Значение</th>
+                                            <th>Описание</th>
+                                        </tr>
+                                        <tr>
+                                            <td><code>@returns</code></td>
+                                            <td><code>{Promise}</code></td>
+                                            <td>Стандартный объект <code>Promise</code>, в функцию <code>resolve</code> отдается количество просмотров видео трансляции</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>@param</code> video_source_id</td>
+                                            <td><code>{String}</code></td>
+                                            <td>Строка ID видео, берется из url видео. Пример: <code>-22773667_456241573</code></td>
+                                        </tr>
+                                    </table>
+                                    <h4>Пример использования</h4>
+                                    <pre class="line-numbers"><code class="language-js">
+setInterval (() => {
+    vk.widgets.getLiveViews("-76914461_456243041").then((views) => {
+        console.log(views);
+    }).catch(errHandler);
+}, 1000);
+                                    </code></pre>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                    </section>
                     <section class="section" id="advices">
                         <div class="row">
                             <div class="col-md-12 left-align">
@@ -1865,23 +1917,20 @@ vk.helpers.userFollowed(1, 356607530).then(isFollower => {
                                 </p>
 
                                 <pre class="line-numbers"><code class="language-js">
-
-function ifBlock () {
-    console.log("Вы добавили его в друзья!");
-}
-
-function elseBlock () {
-    console.log(`Баллы не начислены, вы не добавили его в друзья! 
-    Попробуйте еще раз...`);
-}
-
-vk.helpers.isFriend(1, 356607530).then(isFriend => {
-    if (isFriend) ifBlock();
+let params = [1, 356607530];
+vk.helpers.isFriend(...params).then(isFriend => {
+    if (isFriend) return true;
     else {
-        vk.helpers.userFollowed(1, 356607530).then(isFollower => {
-            if (isFollower) ifBlock();
-            else elseBlock();
-        }, errHandler);
+        return vk.helpers.userFollowed(...params).then(userFollowed => {
+            return userFollowed;
+        });
+    }
+}).then(isAdded => {
+    if (isAdded) {
+        console.log("Вы добавили его в друзья!");
+    } else {
+        console.log(`Баллы не начислены, вы не добавили его в друзья! 
+        Попробуйте еще раз...`);
     }
 }).catch(errHandler);
                                 </code></pre>
@@ -1890,22 +1939,33 @@ vk.helpers.isFriend(1, 356607530).then(isFriend => {
                                 </p>
                                 <pre class="line-numbers"><code class="language-js">
 easyVK({/*...*/}).then(async (vk) => {
-    
     let params = [1, 356607530];
-
     let isFriend = await (vk.helpers.isFriend(...params));
     let userFollowed = await (vk.helpers.userFollowed)(...params);
-    
     if (isFriend || userFollowed) {
         console.log("Вы добавили его в друзья!");
     } else {
         console.log(`Баллы не начислены, вы не добавили его в друзья! 
         Попробуйте еще раз...`);
     }
-
 }).catch(errHandler);
                                 </code></pre>
                                 <p>
+                                    Конечно, данный пример не самый лучший, ведь первый код можно уместить вообще в 11 строчек, при желании, да и выполнение во втором коде сделано так, что в любом случае выполняются 2 запроса, а смысла по сути в этом нет, будет больше нагрузка. И тем не менее, решать вам, какой вариант использовать. <br> <b>Для честности эксперимента я приведу решение первого варианта в более компактном представлении.</b>
+                                </p>
+                                <pre class="line-numbers"><code class="language-js">
+let p = ["helpers", "isFriend", [1, 356607530]];
+vk[p[0]][p[1]](...p[2]).then(isFriend=>(isFriend||vk.helpers.userFollowed(...p[2])))
+.then(isAdded=>{
+    console.log((isAdded) ? "Вы добавили его в друзья!" : `Баллы не начислены, 
+        вы не добавили его в друзья! Попробуйте еще раз...`);
+}).catch(errHandler);
+                                </code></pre>
+                                <p>
+                                    Но по-моему это, хоть и красиво, не каждый поймет и разберет. Но как говорится... <br> <br>
+                                    <q>
+                                        При желании можно сделать все
+                                    </q> <br>
                                     Вот еще пример
                                 </p>
                                 <pre class="line-numbers"><code class="language-js">
