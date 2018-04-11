@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru-ru">
+  <head>
+  	
+  	{% head %}
+
+  </head>
+  <body>
+  	
+  	<section class="header">
+  	  
+  	  <!-- 
+  	  	Header section, here are logo and 
+  		version selection, news and other... 
+  	  -->
+
+		{% header %}
+
+
+  	</section>
+
+    <section class="body-develop" style="max-height: 100%;overflow: hidden;">
+    
+      <!-- Start navigation block, copy/paste id :D -->
+
+
+      <div class="col-md-3 docs body-elem no-padding" style="max-height: 100%;min-height: 100%;">
+        {% nav %}
+      </div>
+
+
+      
+
+      <!-- End navigation block, copy/paste id :D -->
+
+
+
+      <div class="col-md-9 body-elem" style="max-height: 100%;min-height: 100%;">
+          <div class="col-md-11 body-content">
+              <!-- Content is here -->
+              <h1>Капча</h1>
+              <p>
+               Насущная проблема для программистов, которые пишут что либо под ВК - это капча. В EasyVK нету готовых решений для решения капчи, но есть удобные инструменты для ловли этой ошибки, для дальнейшего решения каким либо удобным способом.
+              </p>
+              <hr>
+
+              <div class="theme">
+                <h2 id="captchaHandler">captchaHandler</h2>
+                <p>
+                  Это и есть тот самый инструмент.
+                  captchaHandler - это один из параметров инициализации EasyVK, который появился в версии 1.1, и существует с того момента в следующем виде:
+                </p>
+                <pre><code class="js">let captchaHandler
+
+captchaHandler = ({captcha_sid, captcha_img, resolve:solve, vk}) => {
+  console.log(`Ohh.... captcha, need solve this captcha (${captcha_img})`)
+}
+
+easyvk({
+    captchaHandler: captchaHandler    
+})</code></pre>
+              <p>
+                Когда возникает ошибка капчи, EasyVK вызывает эту функцию, передавая в нее такой объект: 
+                <pre><code class="js">{
+    captcha_sid: ...,
+    captcha_img: ...,
+    resolve: callbackFunction () ....,
+    vk: EasyVK
+}</code></pre>
+              </p>
+              <p>
+                Функция <code class="code">resolve</code> - это функция, вызывая которую вы пытетесь решить капчу. То есть, если вы знаете код, необходимо вызвать эту функцию, передав в нее ответ капчи. Ниже приведен более полный пример использования captchaHandler'а
+              </p>
+              <pre><code class="js">const readline = require('readline')
+const easyvk = require('easyvk')
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+const captchaHandler = ({captcha_sid, captcha_img, resolve:solve, vk}) => {
+
+  rl.question(`Введите капчу для картинки ${captcha_img} `, (key) => {
+    
+    //Когда вводится капча в консоль, пробуем решить капчу
+    solve(key).then(() => {
+    
+
+      console.log('Капча решена корректно!')
+
+    }).catch(({err, reCall: tryNewCall}) => {
+    
+      //Иначе капча не решена, стоит попробовать снова
+      console.log('Капче не решена!!!\nПробуем занова')
+      tryNewCall() //Пробуем снова, занова запускаем наш captchaHandler, по факту...
+      
+      //Не стоит самостоятельно перезапускать функцию captchaHandler, так как в EasyVK
+      //для этого имеется функция reCall, которая точно запустит все как нужно
+
+    })
+
+  })
+}
+
+easyvk({
+  captchaHandlder: captchaHandler
+}).then(vk => {
+  
+  // пример: vk.call('messages.send', ...)
+
+}).catch(console.error)</code></pre>
+                <p>
+                  Таким образом вы можете ловить все ошибки капчи, решать их, и если есть нужда, останавливать все процессы, до тех пор, пока капча не будет решена, чтобы ваш аккаунт не заморозили за подозрительную активность. <br>
+                  Рекомендую пройти к следующему разделу документации, чтобы ознакомиться со всеми возможностями EasyVK - <a href="methods.html">Методы</a>.
+                </p>
+              </div>
+             
+          </div>
+      </div>
+
+    </section>
+
+    {% scripts %}
+
+  </body>
+</html>

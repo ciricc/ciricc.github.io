@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru-ru">
+  <head>
+  	
+  	{% head %}
+
+  </head>
+  <body>
+  	
+  	<section class="header">
+  	  
+  	  <!-- 
+  	  	Header section, here are logo and 
+  		version selection, news and other... 
+  	  -->
+
+		{% header %}
+
+
+  	</section>
+
+    <section class="body-develop" style="max-height: 100%;overflow: hidden;">
+    
+      <!-- Start navigation block, copy/paste id :D -->
+
+
+      <div class="col-md-3 docs body-elem no-padding" style="max-height: 100%;min-height: 100%;">
+        {% nav %}
+      </div>
+
+
+      
+
+      <!-- End navigation block, copy/paste id :D -->
+
+
+
+      <div class="col-md-9 body-elem" style="max-height: 100%;min-height: 100%;">
+          <div class="col-md-11 body-content">
+             <!-- Content is here -->
+             <h1>[Bots] LongPoll API</h1>
+             <p>
+               Bots LongPoll API - это по сути копию <a href="longpollapi.html">User LongPoll API</a>, потому почти все методы, кроме <a href="longpollapi.html#connection_addEventCodeListener">connection.addEventCodeListener()</a> повторяются.
+             </p>
+             <hr>
+             <div class="theme">
+               <h2 id="intro">Описание</h2>
+               <p>
+                 Bots LongPoll API - это инструмент для прослушивания событий группы, для того, чтобы его подключить, необходимо в настройках группы его включить, а затем выбрать события, которые вы хотите прослушивать.
+               </p>
+               <p>
+                 В EasyVK LongPoll API тоже разделяется на User и Bots, почти все методы дублируются, кроме <a href="longpollapi.html#connection_addEventCodeListener">connection.addEventCodeListener()</a>. Надо заметить, что структура событий и ответ сервера тоже отличаются.
+               </p>
+               <p>
+                 использовать Bots LongPoll API в EasyVK можно так
+               </p>
+               <pre><code class="js">easyvk(/*данные для автризации группы, access_token API*/)
+.then(vk => {
+    
+    const LPB = vk.bots.longpoll
+    
+    LPB.connect({
+        forGetLongPollServer: {},
+        forLongPollServer: {}
+    }).then(({connection}) => {
+      
+      connection.debug(({type, data}) => {
+          console.log(type, data)
+      })
+      
+      connection.on('message_new', (msg) => {
+          console.lg(msg)   
+      })
+
+    })
+
+}).catch(console.error)</code></pre>
+             </div>
+             <div class="theme">
+               <h2 id="events">События</h2>
+               <p>
+                 В EasyVK Bots LongPoll API события отличаются и дублируют по этой странице, поэтому, если вам нужно прослушивать событий сообщений, его неободимо включить в настройках группы, а затем прослушивать его через код. Посмотреть список событий можно <a href="https://vk.com/dev/groups_events">тут</a>
+               </p>
+               <pre class="js"><code class="js">const LPB = vk.bots.lonpoll
+LPB.connect().then(({connection}) => {
+    connection.on('message_new', (msg) => {
+        console.log(msg)
+    })  
+})</code></pre>
+               <p>
+                 Системные события вроде <b>error</b> повторяются из <a href="longpoll.html#events">User LongPoll API</a>
+               </p>
+             </div>
+          </div>
+      </div>
+
+    </section>
+
+    {% scripts %}
+
+  </body>
+</html>

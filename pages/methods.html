@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru-ru">
+  <head>
+    
+    {% head %}
+
+  </head>
+  <body>
+    
+    <section class="header">
+      
+      <!-- 
+        Header section, here are logo and 
+      version selection, news and other... 
+      -->
+
+    {% header %}
+
+
+    </section>
+
+    <section class="body-develop" style="max-height: 100%;overflow: hidden;">
+    
+      <!-- Start navigation block, copy/paste id :D -->
+
+
+      <div class="col-md-3 docs body-elem no-padding" style="max-height: 100%;min-height: 100%;">
+        {% nav %}
+      </div>
+
+
+      
+
+      <!-- End navigation block, copy/paste id :D -->
+
+
+
+      <div class="col-md-9 body-elem" style="max-height: 100%;min-height: 100%;">
+          <div class="col-md-11 body-content">
+             <!-- Content is here -->
+             <h1>Методы</h1>
+             <p>
+               Когда вы уже авторизовались, вам возвращается в функцию <code class="code">resolve</code> объект EasyVK, в котором есть сессия для авторизованных запросов. Теперь все запросы которые вы будете делать, будут происходить от того аккаунта/группы, который вы выбрали и подключили. Ниже описаны некоторые методы объекта EasyVK, которые стоит знать, чтобы с ним работать. <br>
+               Методы EasyVK - это не вся его состовляющая, есть еще куча свойств, в которых хранятся дополнительные модули-объекты для работы с определенными платформами ВКонтакте API.
+             </p>
+             <hr>
+             <div class="theme">
+               <h2 id="vk_call">vk.call()</h2>
+               <p>
+                 Данный метод создан, чтобы обращаться к методам ВКонтакте API, вроде <a href="https://vk.com/dev/messages.send" target="_blank">messages.send</a>, в разных формах: [<code class="code">get</code>, <code class="code">post</code>, <code class="code">put</code>, <code class="code">delete</code>]. Метод позволяет отправлять параметры на сервер, которые необходимы для определенного метода. На пример:  для метода <a href="https://vk.com/dev/messages.send" target="_blank">messages.send</a> необходимы параметры вроде message, user_id, attachment. И т.д. Все это можно отправить с помощью EasyVK.
+               </p>
+               <p>
+                 В функцию <code class="code">resolve</code> метод передает объект со следующими свойтсвами:
+               </p>
+                 <pre><code class="js">{
+    vk: EasyVK,
+    vkr: VKResponseJSON
+}</code></pre>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Аргумент</th>
+                    <th>Описание</th>
+                    <th>По умолчанию</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>methodName</td>
+                    <td>Имя метода, к которому мы делаем запрос</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>params</td>
+                    <td>Параметры для запроса, которые сериализуются в строку URI, обязательно объект!</td>
+                    <td>{}</td>
+                  </tr>
+                  <tr>
+                    <td>methodType</td>
+                    <td>Тип запроса, который вы будете посылать [<code class="code">get</code>, <code class="code">post</code>, <code class="code">put</code>, <code class="code">delete</code>]. <br>
+                      На пример: для метода <a href="https://vk.com/dev/wall.post" target="_blank">wall.post</a>, нужно обязательно отправлять данные <br> через метод POST, а не GET, так он примет текст с большим объемом. </td>
+                    <td>get</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>
+              Пример работы
+              <pre><code class="js">const me = 356607530
+
+vk.call('messages.send', {
+    message: 'Hi!',
+    user_id: me
+}).then(({vkr}) => {
+  
+  console.log(vkr)
+
+}).catch(console.error)</code></pre>
+               </p>
+               <p>
+                Или пример с отправкой поста на стену   
+               </p>
+              <pre><code class="js">vk.call('wall.post', {
+  message: 'OOOHH BIIIIIIIG POOOOST TEXXXT'
+}).then(({vkr}) => {
+  
+  console.log(vkr)
+
+}, 'post').catch(console.error)</code></pre>
+             </div>
+             <div class="theme">
+               <h2 id="vk_saveSession">vk.saveSession()</h2>
+               <p>
+                 Данный метод сохраняет все изменения в сессии.
+               </p>
+               <pre><code class="js">vk.session.myData = {cachedPosts: []}
+vk.saveSession() //Файл сессии перезаписан</code></pre>
+             </div>
+          </div>
+      </div>
+
+    </section>
+
+    {% scripts %}
+
+  </body>
+</html>

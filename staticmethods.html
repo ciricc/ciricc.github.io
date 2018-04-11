@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ru-ru">
+  <head>
+  	
+  		<meta charset="utf-8">
+		
+	<meta name="description" content="EasyVK - это полностью бесплатный и доступный модуль, написанный для поддержки API ВКонтакте на платформе Node.js">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>EasyVK / Node.JS ВКонтакте API | Документация </title>
+	
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="assets/css/main.css" type="text/css">
+
+
+
+  </head>
+  <body>
+  	
+  	<section class="header">
+  	  
+  	  <!-- 
+  	  	Header section, here are logo and 
+  		version selection, news and other... 
+  	  -->
+
+			<div class="opacity-block"></div>
+	<div class="col-md-12">
+		
+		<div class="col-md-6">
+			<div class="logo">
+				<span class="fa fa-bars opener"></span><h2 style="display: inline-block;margin-left: 20px;" class="name-page">EasyVK <span class="small">| документация</span></h2>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+		</div>
+
+	</div>
+
+
+  	</section>
+
+    <section class="body-develop" style="max-height: 100%;overflow: hidden;">
+    
+      <!-- Start navigation block, copy/paste id :D -->
+
+
+      <div class="col-md-3 docs body-elem no-padding" style="max-height: 100%;min-height: 100%;">
+        <div class="docs-nav-wrap">
+	<ul class="nav">
+		<li>
+			<a href="index.html" class="title bigger">Знакомство</a>
+			<ul>
+				<li>
+					<a href="index.html#whatisthis">Что такое EasyVK ?</a>
+				</li>
+				<li>
+					<a href="index.html#installation">Установка</a>
+				</li>
+				<li>
+					<a href="index.html#info">Информация</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="easyvk.html" class="title bigger">EasyVK</a>
+			<ul>
+				<li>
+					<a href="easyvk.html#init">Авторизация</a>
+				</li>
+				<li>
+					<a href="easyvk.html#errors">Ловля ошибок</a>
+				</li>
+				<li>
+					<a href="easyvk.html#concepts">История EasyVK</a>
+				</li>
+				<li class="disable">
+					<a href="#">/* API  */</a>
+				</li>
+				<li>
+					<a href="easyvk.html#faq"><b>FAQ</b></a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="captcha.html" class="title bigger">Капча</a>
+			<ul>
+				<li>
+					<a href="captcha.html#captchaHandler">captchaHandler</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="methods.html" class="title bigger">Методы</a>
+			<ul>
+				<li>
+					<a href="methods.html#vk_call"><span class="object">vk</span>.<span class="span method">call</span>()</a>
+				</li>
+				<li>
+					<a href="methods.html#vk_saveSession"><span class="object">vk</span>.<span class="span method">saveSession</span>()</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="staticmethods.html" class="title bigger">Статические методы</a>
+			<ul>
+				<li>
+					<a href="staticmethods.html#static_call"><span class="object">static</span>.<span class="span method">call</span>()</a>
+				</li>
+				<li>
+					<a href="staticmethods.html#static_urlencode"><span class="object">static</span>.<span class="span method">urlencode</span>()</a>
+				</li>
+				<li>
+					<a href="staticmethods.html#static_isObject"><span class="object">static</span>.<span class="span method">isObject</span>()</a>
+				</li>
+				<li>
+					<a href="staticmethods.html#static_isString"><span class="object">static</span>.<span class="span method">isString</span>()</a>
+				</li>
+				<li>
+					<a href="staticmethods.html#static_checkJSONErrors"><span class="object">static</span>.<span class="span method">checkJSONErrors</span>()</a>
+				</li>
+				<li>
+					<a href="staticmethods.html#static_checkErrors"><span class="object">static</span>.<span class="span method">checkErrors</span>()</a>
+				</li>
+				<li>
+					<a href="staticmethods.html#static_encodeHTML"><span class="object">static</span>.<span class="span method">encodeHTML</span>()</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="streamingapi.html" class="title bigger">Streaming API</a>
+			<ul>
+				<li>
+					<a href="streamingapi.html#streamingAPI_connect"><span class="object">streamingAPI</span>.<span class="span method">connect</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_addRule"><span class="object">stream</span>.<span class="span method">addRule</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_deleteRule"><span class="object">stream</span>.<span class="span method">deleteRule</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_deleteAllRules"><span class="object">stream</span>.<span class="span method">deleteAllRules</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_close"><span class="object">stream</span>.<span class="span method">close</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_initRules"><span class="object">stream</span>.<span class="span method">initRules</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_getRules"><span class="object">stream</span>.<span class="span method">getRules</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#events">События стрима</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="longpollapi.html" class="title bigger"><span class="no-weight">[User]</span> LongPoll API</a>
+			<ul>
+				<li>
+					<a href="longpollapi.html#longpoll_connect"><span class="object">longpoll</span>.<span class="span method">connect</span>()</a>
+				</li>
+				<li>
+					<a href="longpollapi.html#connection_addEventCodeListener"><span class="object">connection</span>.<span class="span method">addEventCodeListener</span>()</a>
+				</li>
+				<li>
+					<a href="longpollapi.html#connection_debug"><span class="object">connection</span>.<span class="span method">debug</span>()</a>
+				</li>
+				<li>
+					<a href="longpollapi.html#connection_close"><span class="object">connection</span>.<span class="span method">close</span>()</a>
+				</li>
+				<li>
+					<a href="longpollapi.html#events">События</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="botslongpollapi.html" class="title bigger"><span class="no-weight">[Bots]</span> LongPoll API</a>
+			<ul>
+				<li>
+					<a href="botslongpollapi.html#intro">Описание</a>
+				</li>
+				<li>
+					<a href="botslongpollapi.html#events">События</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="callbackapi.html" class="title bigger">Callback API</a>
+			<ul>
+				<li>
+					<a href="callbackapi.html#callbackAPI_listen"><span class="object">callbackAPI</span>.<span class="span method">listen</span>()</a>
+				</li>
+				<li>
+					<a href="callbackapi.html#events">События</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="uploader.html" class="title bigger">Загрузка файлов</a>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">uploader</span>.<span class="span method">getUploadURL</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_uploadFile"><span class="object">uploader</span>.<span class="span method">uploadFile</span>()</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="widgets.html" class="title bigger">Виджеты</a>
+			<ul>
+				<li>
+					<a href="widgets.html#widgets_getLiveViews"><span class="object">widgets</span>.<span class="span method">getLiveViews</span>()</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+      </div>
+
+
+      
+
+      <!-- End navigation block, copy/paste id :D -->
+
+
+
+      <div class="col-md-9 body-elem" style="max-height: 100%;min-height: 100%;">
+          <div class="col-md-11 body-content">
+             <!-- Content is here -->
+             <h1>Статические методы</h1>
+             <p>
+             	Статические методы - это такие методы, которые не требуют инициализации объекта. То есть в нашем случае, эти методы не требуют авторизации. В большинстве случае библиотеки EasyVK статические методы - вспомогательные методы для решения каких-либо задач
+             </p>
+             <hr>
+			
+			<p>
+				Обращение ко всем статическим методам происходит следующим образом.
+			</p>
+			<pre><code class="js">const easyvk = require('easyvk')
+easyvk.static.call() //Пример</code></pre>
+
+             <div class="theme">
+             	<h2 id="static_call">static.call()</h2>
+             	<p>
+             		Если вы хотите сделать запрос, который не требует авторизации, или, вам просто не хочется инициализировать объект EasyVK, а просто проверить, как все работает, то можете использовать этот метод. На пример: вам захочется обратиться к методу <a href="https://vk.com/dev/users.get">users.get</a>, вы можете это сделать так:
+             	</p>
+             	<pre><code class="js">easyvk.static.call('users.get', {
+  user_ids: [1]
+}).then((vkr) => {
+  console.log(vkr)
+}).catch(console.error)</code></pre>
+				<p>
+					Все параметры повторяются из метода <a href="methods.html#vk_call">vk.call()</a>
+				</p>
+				<p>
+					Если вам необходимо сделать запрос с access_token, вы можете отправить его в параметры. Все это реально.
+				</p>
+             </div>
+             <div class="theme">
+             	<h2 id="static_urlencode">static.urlencode()</h2>
+             	<p>
+             		Данный метод сериализует объект в URI подстроку. <br>
+             		Принимает всего один параметр - объект с глубиной 1, возвращает строку URI.
+             	</p>
+             	<pre><code class="js">const request = require('request')
+
+const urlApi = 'https://api.vk.com/method/'
+const methodName = 'messages.send'
+const p = {
+  v: '5.73',
+  user_id: 356607530,
+  access_token: 'ваш_токен',
+  message: 'Hi!'
+}
+
+const parameters = '?' + easyvk.static.urlencode(p)
+
+request.get(urlApi + methodName + parameters, (err, res) => {
+  console.log(res)
+})</code></pre>
+				<p>
+					Более подробно:
+				</p>
+				<pre><code class="js">const p = {
+   foo: 'bar',
+   foo2: 'bar2'
+}
+
+console.log(easyvk.static.urlencode(p)) 
+//foo=bar&foo2=bar2</code></pre>
+             </div>
+             <div class="theme">
+             	<h2 id="static_isObject">static.isObject()</h2>
+             	<p>
+             		Этот метод проверяет, что переменная является объектом <code class="code">Object</code>. <br>
+             		Использовалось в процессе разработки EasyVK, не является какой-то определенной возможностью ВКонтакте API, и лишь сделано для удобства.
+             	</p>
+             	<pre><code class="js">function log (...arguments_) { console.log(...arguments_) }
+
+log(easyvk.static.isObject({
+    some: "false"
+})) // true
+
+log(easyvk.static.isObject(false)) // false
+log(easyvk.static.isObject(1)) // false
+log(easyvk.static.isObject(easyvk)) // false (AsyncFunction)
+log(easyvk.static.isObject(easyvk.static)) // false (Function)
+log(easyvk.static.isObject(new Object())) // true</code></pre>
+             </div>
+             <div class="theme">
+             	<h2 id="static_isString">static.isString()</h2>
+             	<p>
+					Этот метод проверяет, что переменная является строкой <code class="code">String</code>. <br>
+             		Использовалось в процессе разработки EasyVK, не является какой-то определенной возможностью ВКонтакте API, и лишь сделано для удобства.
+             	</p>
+             	<pre><code class="js">function log (...arguments_) { console.log(...arguments_) }
+
+let template_ = `${easyvk.version} - is a current version`;
+log(easyvk.static.isString({
+    some: "false"
+})) // false
+
+log(easyvk.static.isString(false)) // false
+log(easyvk.static.isString(1)) // false
+log(easyvk.static.isString(easyvk)) // false
+log(easyvk.static.isString(() => {})) // false
+log(easyvk.static.isString(template_)) // true
+log(easyvk.static.isString("")) // true
+             	</code></pre>
+             </div>
+             <div class="theme">
+             	<h2 id="static_checkJSONErrors">static.checkJSONErrors()</h2>
+             	<p>
+             		Этот метод проверяет на ошибки ответ сервера. Так как этот метод создавался в разработке EasyVK, я не предполагаю, что вы будете его использовать, можно даже сказать, что этот метод только для разработки EasyVK, всего лишь для удобства.
+             	</p>
+             	<p>
+             		То есть, когда сервер отвечает нам текстом, мы проверяем ответ на определенные ошибки, на пример, вы попытались отправить сообщение пользователю через метод <a href="https://vk.com/dev/messages.send" target="_blank">messages.send</a>, но забыли добавить параметр <b>message</b>, тогда сервер вернет эту ошибку, и эта функция вызовет <code class="code">reject</code> функцию. Кроме того, эта функция проверяет валидность JSON, сначала проверив валидность, она проверяет на наличие ошибок через метод <a href="#checkErrors">static.checkErrors()</a>
+             	</p>
+             	<pre><code class="js">const easyvk = require('easyvk')
+const request = require('request')
+
+let url = 'http://api.vk.com/method/users.get/?user_ids=1&amp;v=5.73'
+
+request.get(url, (err, res) => {
+    
+    if (err) throw err
+    
+    let json = easyvk.static.checkJSONErrors(res.body, (err) => {
+        console.log(err)
+    })
+
+    if (json) {
+        console.log(json.response[0].id) // не выведется, произойдет ошибка
+    } else {
+        console.log("invalid json", res.body)
+    }
+
+})</code></pre>
+             </div>
+             <div class="theme">
+             	<h2 id="static_checkErrors">static.checkErrors()</h2>
+             	<p>
+             		Этот метод проверяет объект VKResponse на наличие серверных ошибок. То есть, когда сервер отвечает с ошибкой, этот метод дает об этом знать, что произошла определенная ошибка. Можете использовать его для разработки дополнений к EasyVK, но я хочу предупредить, что этот метод создавался только как впомогательный методы для разработки EasyVK.
+             	</p>
+             	<pre><code class="js">const easyvk = require('easyvk')
+const request = require('request')
+
+let url = 'http://api.vk.com/method/users.get?user_ids=-1&v=5.73'
+
+request.get(url, (err, res) => {
+    if (err) throw err
+
+    if (!res.body) res.body = '{}'
+
+    // Вот тут аккуратней. 
+    // Мы делаем запрос такой, что точно уверены в нем
+    let vkr = JSON.parse(res.body) 
+    
+    let vkErr = easyvk.static.checkErrors(vkr)
+    
+    if (vkErr) {
+        throw new Error(vkErr) // Выведится ошибка Invalid user id
+    } else {
+        console.log(vkr.response[0].id)
+    }
+})</code></pre>
+             </div>
+             <div class="theme">
+             	<h2 id="static_encodeHTML">static.encodeHTML()</h2>
+             	<p>
+             		Этот метод декодирует строку с символами вроде <b>&amp;lt;</b>, <b>&amp;gt;</b> в обычную строку, понятную человеку. Этот метод не использовался при разработке EasyVK, и существует в нем лишь для удобства, но, скорее всего, я его уберу.
+             	</p>
+             	<pre><code class="js">function log (...arguments_) { console.log(...arguments_) }
+
+let str = "Привет, Кирилл!&lt;br&gt;&lt;br&gt;"
+str += "Я сегодня посмотрел твой доклад &amp;lt;&amp;quot;Экосистема процессора&amp;quot;&amp;gt;.";
+str += " &lt;br&gt;&lt;br&gt;Ты знаешь, мне не понравилось. Пойду поем m&amp;amp;m&amp;#039;s"
+
+log(str) // Некрасиво
+log(easyvk.static.encodeHTML(str)) // Красиво
+             	</code></pre>
+             </div>
+          </div>
+      </div>
+
+    </section>
+
+    <link rel="stylesheet" href="assets/css/highlight-theme.css">
+<script src="assets/plugins/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="assets/js/main.js"></script>
+
+  </body>
+</html>

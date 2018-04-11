@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru-ru">
+  <head>
+  	
+  	{% head %}
+
+  </head>
+  <body>
+  	
+  	<section class="header">
+  	  
+  	  <!-- 
+  	  	Header section, here are logo and 
+  		version selection, news and other... 
+  	  -->
+
+		{% header %}
+
+
+  	</section>
+
+    <section class="body-develop" style="max-height: 100%;overflow: hidden;">
+    
+      <!-- Start navigation block, copy/paste id :D -->
+
+
+      <div class="col-md-3 docs body-elem no-padding" style="max-height: 100%;min-height: 100%;">
+        {% nav %}
+      </div>
+
+
+      
+
+      <!-- End navigation block, copy/paste id :D -->
+
+
+
+      <div class="col-md-9 body-elem" style="max-height: 100%;min-height: 100%;">
+          <div class="col-md-11 body-content">
+             <!-- Content is here -->
+             <h1>Test content</h1>
+          </div>
+      </div>
+
+    </section>
+
+    {% scripts %}
+
+  </body>
+</html>
