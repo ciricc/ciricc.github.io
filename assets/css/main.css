@@ -197,19 +197,21 @@ h2 {
 pre {
 	position: relative;
 	max-width: 100%;
+	overflow: auto;
 }
 
 pre .path {
 	position: absolute;
 	right: 0;
 	bottom: 0;
-	margin-bottom: 28px;
+	margin-bottom: -28px;
 	margin-right: 4px;
 	font-size: 12px;
 	color: #fff;
 	background-color: #0F1419;
 	border-radius: 5px;
 	padding: 0px 5px;
+	display: none;
 }
 
 code.code {
@@ -323,5 +325,13 @@ img {
 
 	.opacity-block.visible {
     	visibility: visible;
+	}
+
+	section.header {
+		height: 60px;
+	}
+
+	h2 {
+		word-wrap: break-word;
 	}
 }
