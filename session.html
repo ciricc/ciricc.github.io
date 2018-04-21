@@ -246,85 +246,72 @@
 
       <div class="col-md-9 body-elem" style="max-height: 100%;min-height: 100%;">
           <div class="col-md-11 body-content">
-              <!-- Content is here -->
-              <h1>Капча</h1>
-              <p>
-               Насущная проблема для программистов, которые пишут что либо под ВК - это капча. В EasyVK нету готовых решений для решения капчи, но есть удобные инструменты для ловли этой ошибки, для дальнейшего решения каким либо удобным способом.
-              </p>
-              <hr>
+             <!-- Content is here -->
+             <h1>Сессия</h1>
+             <p>
+               После того, как EasyVK вас авторизует, создается объект сессии - это просто объект, у которого есть свои методы и т.д. И он зависит безусовно, от файла сессии, если вы указали что необходимо сохранять сессию в файл. Вы можете изменить сессию и управлять ею через ее же методы.
+             </p>
+             <p>
+               <b>ВНИМАНИЕ ! Объект сессии существует в EasyVK с версии 1.2, в версиях ниже был только метод vk.saveSession(), используйте последние релизы EasyVK.</b>
+             </p>
+             <hr>
+             <div class="theme">
+               <h2 id="session_save">session.save()</h2>
+               <p>
+                 Данный метод сохраняет сессию по указанному файлу, если файл не был указан, то выкинится ошибка. Все просто.
+               </p>
+             <pre><code class="js">vk.session.cache = []
 
-              <div class="theme">
-                <h2 id="captchaHandler">captchaHandler</h2>
-                <p>
-                  Это и есть тот самый инструмент.
-                  captchaHandler - это один из параметров инициализации EasyVK, который появился в версии 1.1, и существует с того момента в следующем виде:
-                </p>
-                <pre><code class="js">let captchaHandler
+vk.session.cache[0] = [/* Photos...*/]
 
-captchaHandler = ({captcha_sid, captcha_img, resolve:solve, vk}) => {
-  console.log(`Ohh.... captcha, need solve this captcha (${captcha_img})`)
-}
+vk.session.save().then(() => {
+  
+  console.log('Saved!')
 
-easyvk({
-    captchaHandler: captchaHandler    
+})</code></pre>
+             </div>
+             
+             <div class="theme">
+               <h2 id="session_setPath">session.setPath()</h2>
+               <p>
+                 Данный метод устанавливает путь к файлу сессии, если файла не существует, он автоматически будет создан.
+               </p>
+               <pre><code class="js">const path = require('path')
+const sessionPath = path.join(__dirname, '.current-session')
+
+
+vk.session.setPath(sessionPath)
+.then(({vk: EasyVK}) => {
+  
+  console.log(EasyVK.session.path) //__dirname + .current-session
+
 })</code></pre>
               <p>
-                Когда возникает ошибка капчи, EasyVK вызывает эту функцию, передавая в нее такой объект: 
-                <pre><code class="js">{
-    captcha_sid: ...,
-    captcha_img: ...,
-    resolve: callbackFunction () ....,
-    vk: EasyVK
-}</code></pre>
+                Конечно, вы можете изменять path, просто устанавливая его новым свойством, но я рекомендую делать это именно через данный метод. 
               </p>
               <p>
-                Функция <code class="code">resolve</code> - это функция, вызывая которую вы пытетесь решить капчу. То есть, если вы знаете код, необходимо вызвать эту функцию, передав в нее ответ капчи. Ниже приведен более полный пример использования captchaHandler'а
+                Сам метод же может пригодиться в тех случаях, когда вам необходимо менять сессии прям "на ходу"... Может быть, у вас на одном процессе несколько ботов (не рекомендуется).
               </p>
-              <pre><code class="js">const readline = require('readline')
-const easyvk = require('easyvk')
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-const captchaHandler = ({captcha_sid, captcha_img, resolve:solve, vk}) => {
-
-  rl.question(`Введите капчу для картинки ${captcha_img} `, (key) => {
-    
-    //Когда вводится капча в консоль, пробуем решить капчу
-    solve(key).then(() => {
-    
-
-      console.log('Капча решена корректно!')
-
-    }).catch(({err, reCall: tryNewCall}) => {
-    
-      //Иначе капча не решена, стоит попробовать снова
-      console.log('Капче не решена!!!\nПробуем занова')
-      tryNewCall() //Пробуем снова, занова запускаем наш captchaHandler, по факту...
-      
-      //Не стоит самостоятельно перезапускать функцию captchaHandler, так как в EasyVK
-      //для этого имеется функция reCall, которая точно запустит все как нужно
-
-    })
-
-  })
-}
-
-easyvk({
-  captchaHandlder: captchaHandler
-}).then(vk => {
-  
-  // пример: vk.call('messages.send', ...)
-
-}).catch(console.error)</code></pre>
+             </div>
+             <div class="theme">
+               <h2 id="session_clear">session.clear()</h2>
+               <p>
+                 Данный метод отчищает файл сессии, вашу сессию, как объект, и потом синхронизирует с файловой системой, то есть сохранет данные.
+               </p>
+               <p>
+                 Все просто!
+               </p>
+               <pre><code class="js">vk.session.data = []
+vk.session.clear(() => {
+  console.log(vk.session) // {data: undefined}
+})</code></pre> 
                 <p>
-                  Таким образом вы можете ловить все ошибки капчи, решать их, и если есть нужда, останавливать все процессы, до тех пор, пока капча не будет решена, чтобы ваш аккаунт не заморозили за подозрительную активность. <br>
-                  Рекомендую пройти к следующему разделу документации, чтобы ознакомиться со всеми возможностями EasyVK - <a href="methods.html">Методы</a>.
+                  Данный метод "удаляет" не только те данные, которые вы добавили, но и те, что были изначально. Таким образом вы можете отчищать файл сессии.
                 </p>
-              </div>
-             
+                <p>
+                  Сами же свойства в объекте сессии не удаляются, так как метод <code>delete</code> работает очень медленно, не хотелось бы застопорить весь процесс только одним методом.
+                </p>
+             </div>
           </div>
       </div>
 
