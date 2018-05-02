@@ -127,7 +127,7 @@ section.body-develop {
 }
 
 .nav li.active > a {
-	background-color: rgba(255,255,255);
+	background-color: rgb(255,255,255);
 	color: rgb(66,66,66); 
 }
 
@@ -198,7 +198,10 @@ h2 {
 pre {
 	position: relative;
 	max-width: 100%;
-	overflow: auto;
+	min-width: 100%;
+	overflow-x: scroll !important;
+    display: block;
+    box-sizing: border-box;
 }
 
 pre .path {
