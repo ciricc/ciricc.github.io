@@ -111,6 +111,7 @@ section.body-develop {
 }
 
 .nav > li > a {
+	display: inline-block;
 	padding: 5px 10px;
 	margin-bottom: 8px;
 	transition: all .1s;
@@ -333,5 +334,23 @@ img {
 
 	h2 {
 		word-wrap: break-word;
+	}
+
+	section.body-develop {
+		padding-top: 60px;
+	}
+}
+
+@media (max-width: 498px) {
+	h1, h2 {
+		font-size: 1em;
+	}
+
+	.name-page {
+		position: absolute;
+	}
+
+	section.header {
+		padding-top: 10px;
 	}
 }
