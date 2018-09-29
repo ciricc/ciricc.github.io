@@ -2,7 +2,7 @@ body, html {
 	padding: 0;
 	margin: 0;
 	font-weight: normal;
-	font-family: Verdana, sans-serfi;
+	font-family: Verdana, sans-serif;
 	color: #333;
 	height: 100%;
 }
@@ -22,13 +22,16 @@ a:hover {
 }
 
 
+.header a:hover {
+	color: #fff;
+}
+
 .theme > ul li {
 	margin-top: 20px;
 }
 
 
 section.header {
-	box-shadow: 0px 0px 5px rgba(0,0,0,.3);
 	height: 80px;
 	max-height: 80px;
 	overflow: hidden;
@@ -62,8 +65,6 @@ section.body-develop {
 }
 
 .docs {
-	background-color: rgb(66,66,66);
-	color: rgba(255,255,255,.9);
 	overflow-x: auto;
 }
 
@@ -89,7 +90,9 @@ section.body-develop {
 }
 
 .nav > li {
-	padding: 5px 5px 5px 75px;
+	padding: 5px 5px 5px 15px;
+	display: inline-block;
+	min-width: 100%;
 }
 
 .nav li a {
@@ -108,24 +111,46 @@ section.body-develop {
 	-o-transition: all .1s; 
 }
 
+.nav > li > ul li a {
+	padding: 5px 5px;
+}
+
+.nav > li > ul > li {
+	padding-left: 0px;
+}
+
 .nav > li > ul li a:hover {
 	/*text-decoration: underline !important;*/
-	font-weight: bold;
+	/*font-weight: bold;*/
+	background-color: #F2F3F5;
+	border-radius: 3px;
+	box-shadow: 0px 0px 2px 1px rgba(0,0,0,.1);
+}
+
+.nav > li {
+	margin: 0 auto;
 }
 
 .nav li.active > a {
-	background-color: rgb(255,255,255);
-	color: rgb(66,66,66); 
+	color: black; 
+}
+
+.nav li.active {
+	background-color: #F8F8F8;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	border-radius: 3px;
 }
 
 .nav > li {
 	margin-top: 18px;
 	margin-bottom: 18px;
+	padding-right: 15px;
 }
 
 
 .nav > li > ul li a {
-	display: block;
+	display: inline-block;
 	padding-top: 6px;
 	padding-bottom: 6px;
 }
@@ -139,7 +164,7 @@ section.body-develop {
 
 .nav li > ul > li {
 	font-size: 16px;
-	color: rgba(255,255,255,.8);
+	/*color: rgba(255,255,255,.8);*/
 }
 
 .nav li ul {
@@ -148,13 +173,17 @@ section.body-develop {
 
 .nav .object {
 	/*color: rgb(255,221,0);*/
-	color: rgb(191,186,176);
+	color: rgb(66,66,66);
 	/*font-weight: bold;*//
 }
 
 .nav .method {
-	color: rgb(255,180,84);
-	font-weight: bold;
+	color: rgb(0,134,195);
+	/*font-weight: bold;*/
+}
+
+.nav .property {
+	color: #A65B00;
 }
 
 .nav .no-weight {
@@ -261,7 +290,7 @@ img {
 
 .opener {
 	font-size: 2em;
-	visibility: hidden;
+	display: none;
 }
 
 
@@ -277,9 +306,11 @@ img {
 
 
 @media (max-width: 998px) {
+	
 	.opener {
-		visibility: visible;
-	}
+		display: inline-block;
+	}	
+
 	.docs {
 		position: fixed;
 		top: 0;
@@ -289,6 +320,7 @@ img {
 		z-index: 667;
 		max-width: 75%;
 		visibility: hidden;
+		background: rgb(252,253,255);
 		box-shadow: 2px 0px 5px rgba(0,0,0,.16);
 		-webkit-transition: -webkit-transform .3s;
 		transition: -webkit-transform .3s;
@@ -367,3 +399,160 @@ img {
     	white-space: pre;
 	}
 }
+
+
+html {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    height: 100%;
+    background-color: #fff;
+  }
+
+  #container {
+    height: 100%;
+    /*margin-bottom: 15px;*/
+    box-shadow: 0px 0px 5px rgba(0,0,0,.1);
+    padding: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow-y: hidden;
+    padding-top: 80px;
+  }
+
+  .nav {
+    padding-bottom: 250px;
+  }
+	
+  .nav ul > li {
+  	color: #0071A6;
+  	margin-top: 5px;
+  }
+
+  .nav li > span {
+  	font-size: 12px;
+  	display: block;
+  	margin-left: 15px;
+  	margin-top: 5px;
+  	margin-bottom: 5px;
+  	color: #666;
+  }
+
+  .nav li > span > a {
+  	color: black;
+  	text-decoration: underline;
+  }
+
+  #sidebar {
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    width: 25%;
+    overflow: auto;
+    background-color: rgb(252,253,255);
+    border-right: solid 1px #f0f0f0;
+    /*color: #fff;*/
+
+  }
+
+  #content {
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    width: 75%;
+    overflow: auto;
+    padding-left: 15px;
+    background-color: #fff;
+    padding-left: 25px;
+  }
+
+  .header {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0cb1f2+0,89d4f4+100 */
+    background: #fff; /* Old browsers */
+    color: #222;
+    border-bottom: solid 1px #f0f0f0;
+    z-index: 5;
+    margin-bottom: 0px;
+    height: 100%;
+    padding: 0px 15px;
+  }
+
+  .wrap-header {
+    height: 80px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 5;
+  }
+
+  .opener {
+    padding: 15px;
+    cursor: pointer;
+  }
+
+  .header .header-content {
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .container.wrap-header::after {
+    display: none;
+  }
+
+  .container.wrap-header::before {
+    display: none;
+  }
+
+  .flex-wrap {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .soc-link {
+    font-size: 20px;
+    color: #fff;
+    margin-left: 10px;
+    margin-right: 5px;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    line-height: 38px;
+    text-align: center;
+    display: inline-block;
+    background-color: #000;
+  }
+
+  @media (max-width: 998px) {
+
+    #sidebar {
+      width: 0%;
+      position: absolute;
+      left: 0;
+    }
+
+    #content {
+      width: 100%;
+      padding-left: 0px;
+    }
+
+    .soc, .logo {
+      display: none;
+    }
+
+    #container {
+      height: auto;
+      margin-top: 80px;
+      padding: 0px;
+    }
+
+    #main-content {
+      padding: 15px;
+    }
+
+  }

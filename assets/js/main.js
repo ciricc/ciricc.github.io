@@ -2,7 +2,6 @@
 	'use strict'
 	var $ = jQuery;
 
-
 	function Nav () {
 
 		this.DOM = $('.nav');
@@ -16,6 +15,8 @@
 	//This method set active link on <li> in navigation
 	Nav.prototype.setActive = function (link) {
 		
+
+
 		var active = this.DOM
 		.find('li')
 		.removeClass('active')
@@ -24,8 +25,11 @@
 
 		active.addClass('active');
 
+		console.log(active.offset())
 
-		this.DOM.parents('.body-elem').animate({
+		console.log($('.docs-nav-wrap'));
+
+		$('#sidebar,.docs-nav-wrap').animate({
 			scrollTop: active.offset().top - 170
 		}, 'fast')
 
@@ -79,9 +83,21 @@
 
 	$(document).ready(function () {
 
+		var version = $("#version");
+		var currentVersion = "2.0.0";
+
 		var loc = document.location;
 			loc = loc.pathname.split('/');
 
+		version.on("change", function (e) {
+			var v = version.val();
+			var locVersion = parseFloat(loc[loc.length - 2]);
+			if (locVersion) {
+				document.location = (v == currentVersion) ? "../index.html" : "../" + v + "/index.html";
+			} else {
+				document.location = (v == currentVersion) ? "index.html" : v + "/index.html";
+			}
+		});
 
 		var nav = new Nav();
 

@@ -25,197 +25,257 @@
 
   </head>
   <body>
-  	
-  	<section class="header">
-  	  
-  	  <!-- 
-  	  	Header section, here are logo and 
-  		version selection, news and other... 
-  	  -->
-
-			<div class="opacity-block"></div>
-	<div class="col-md-12">
-		
-		<div class="col-md-6">
-			<div class="logo">
-				<span class="fa fa-bars opener"></span><h2 style="display: inline-block;margin-left: 20px;" class="name-page">EasyVK <span class="small">| документация</span></h2>
-			</div>
-		</div>
-
-		<div class="col-md-4">
-		</div>
-
-	</div>
-
-
-  	</section>
-
-    <section class="body-develop" style="max-height: 100%;overflow: hidden;">
-    
-      <!-- Start navigation block, copy/paste id :D -->
-
-
-      <div class="col-md-3 docs body-elem no-padding" style="max-height: 100%;min-height: 100%;">
-        <div class="docs-nav-wrap">
+    <div class="opacity-block"></div>
+    <div class="wrap-header" style="padding: 0">
+      <div class="header">
+        <div class="header-content">
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <a href="/" class="logo">
+              <img src="assets/img/logo.png" alt="EasyVK логотип Node.js ВКонтакте API JavaScript" width="45" style="display: inline-block;margin-bottom: 20px;">
+            </a>
+            <span class="fa fa-bars opener"></span>
+            <h2 style="display: inline-block;margin:0;margin-left: 25px;line-height: 80px;">EasyVK <span style="font-size: 16px;font-weight: normal;">Node.JS ВКонтакте API</span></h2>
+            <span style="margin-left: 25px">
+              <select name="version" id="version">
+                <a href="v1.5.1/"><option value="1.5.1">1.5.1</option></a>
+                <a href="v2.0.0/"><option value="2.0.0" selected="selected">2.0.0</option></a>
+              </select><label for="version" style="font-size: 12px;margin-left: 5px;color:#1967D2;"> - версия документации</label>
+            </span>
+            </div>
+            <div class="col-md-6 soc" style="height: 80px;">
+              <div class="flex-wrap">
+                <a href="https://vk.com/easyvk_npm" class="soc-link"><span class="fa fa-vk"></span></a>
+                <a href="https://github.com/ciricc/easyvk" class="soc-link"><span class="fa fa-github"></span></a>
+                <a href="https://github.com/ciricc/easyvk" class="soc-link" style="font-size: 12px;"><b>npm</b></a>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  	<div id="container">
+      <div id="sidebar">
+        <div id="sidebar-content">
+          <div class="docs-nav-wrap docs">
 	<ul class="nav">
 		<li>
-			<a href="index.html" class="title bigger">Знакомство</a>
+			<a href="index.html" class="title bigger">Начнем</a>
 			<ul>
 				<li>
-					<a href="index.html#whatisthis">Что такое EasyVK ?</a>
+					<a href="">Для чего нужен EasyVK?</a>
+					<span>EasyVK - лучшая библиотека для работы с ВК API <br> на Node.js</span>
+				</li>
+				<li>
+					<a href="">Функционал EasyVK</a>
+					<span>Неограниченные возможности работы с API ВКонтакте</span>
 				</li>
 				<li>
 					<a href="index.html#installation">Установка</a>
-				</li>
-				<li>
-					<a href="index.html#info">Информация</a>
+					<span>Простая установка</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="easyvk.html" class="title bigger">EasyVK</a>
+			<a href="uploader.html" class="title bigger">Основное</a>
 			<ul>
 				<li>
-					<a href="easyvk.html#init">Авторизация</a>
+					<a href="">Концепция работы с EasyVK</a>
 				</li>
 				<li>
-					<a href="easyvk.html#errors">Ловля ошибок</a>
+					<a href="uploader.html#uploader_getUploadURL">Первый шаг</a>
+					<span>Авторизация</span>
 				</li>
 				<li>
-					<a href="easyvk.html#concepts">История EasyVK</a>
-				</li>
-				<li class="disable">
-					<a href="#">/* API  */</a>
+					<a href="">Возможности дебага</a>
+					<span>Ловля ошибок</span>
 				</li>
 				<li>
-					<a href="easyvk.html#faq"><b>FAQ</b></a>
+					<a href="">База знаний</a>
+					<span>FAQ</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="captcha.html" class="title bigger">Капча</a>
+			<a href="" class="title bigger">Работа с капчей</a>
+			<span>@ Ловите капчу! Ловите!</span>
 			<ul>
 				<li>
-					<a href="captcha.html#captchaHandler">captchaHandler</a>
+					<a href="">captchaHandler</a>
+					<span>Основное свойство настроек EasyVK</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="methods.html" class="title bigger">Методы</a>
+			<a href="uploader.html" class="title bigger">Главное</a>
 			<ul>
 				<li>
-					<a href="methods.html#vk_call"><span class="object">vk</span>.<span class="span method">call</span>()</a>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">vk</span>.<span class="span method">call</span>()</a>
+					<span>Сделать запрос к ВК API</span>
+				</li>
+				<li>
+					<a href=""><span class="object">easyvk</span>.<span class="span method">is</span>()</a>
+				</li>
+				<li>
+					<a href=""><span class="object">easyvk</span>.<span class="span property">class</span></a>
+				</li>
+				<li>
+					<a href=""><span class="object">easyvk</span>.<span class="span property">version</span></a>
+				</li>
+				<li>
+					<a href=""><span class="object">easyvk</span>.<span class="span property">callbackAPI</span> </a>
+					<span>Используйте Callback API без авторизации</span>
+				</li>
+				<li>
+					<a href=""><span class="object">easyvk</span>.<span class="span property">streamingAPI</span></a>
+					<span>Используйте Streaming API без авторизации</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="session.html" class="title bigger">Сессия</a>
+			<a href="uploader.html" class="title bigger">Статические методы</a>
+			<span>Обращение к статическим методам происходит аналогично: easyvk.static.someMethod()</span>
 			<ul>
 				<li>
-					<a href="session.html#session_save"><span class="object">session</span>.<span class="span method">save</span>()</a>
-				</li>
-				<li>
-					<a href="session.html#session_setPath"><span class="object">session</span>.<span class="span method">setPath</span>()</a>
-				</li>
-				<li>
-					<a href="session.html#session_clear"><span class="object">session</span>.<span class="span method">clear</span>()</a>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">static</span>.<span class="span method">call</span>()</a>
+					<span>Сделать запрос к ВК API без авторизации</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="staticmethods.html" class="title bigger">Статические методы</a>
+			<a href="uploader.html" class="title bigger">Сессия VK</a>
 			<ul>
 				<li>
-					<a href="staticmethods.html#static_call"><span class="object">static</span>.<span class="span method">call</span>()</a>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">session</span>.<span class="span method">save</span>()</a>
 				</li>
 				<li>
-					<a href="staticmethods.html#static_urlencode"><span class="object">static</span>.<span class="span method">urlencode</span>()</a>
+					<a href="uploader.html#uploader_uploadFile"><span class="object">session</span>.<span class="span method">setPath</span>()</a>
 				</li>
 				<li>
-					<a href="staticmethods.html#static_isObject"><span class="object">static</span>.<span class="span method">isObject</span>()</a>
+					<a href="uploader.html#uploader_uploadFile"><span class="object">session</span>.<span class="span method">clear</span>()</a>
 				</li>
 				<li>
-					<a href="staticmethods.html#static_isString"><span class="object">static</span>.<span class="span method">isString</span>()</a>
-				</li>
-				<li>
-					<a href="staticmethods.html#static_checkJSONErrors"><span class="object">static</span>.<span class="span method">checkJSONErrors</span>()</a>
-				</li>
-				<li>
-					<a href="staticmethods.html#static_checkErrors"><span class="object">static</span>.<span class="span method">checkErrors</span>()</a>
-				</li>
-				<li>
-					<a href="staticmethods.html#static_encodeHTML"><span class="object">static</span>.<span class="span method">encodeHTML</span>()</a>
+					<a href=""><span class="object">Метод использования</span></a>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="streamingapi.html" class="title bigger">Streaming API</a>
+			<a href="uploader.html" class="title bigger">HTTP</a>
+			<span>С помощью HTTP клиента можно делать то, что нельзя делать с официальным API <br>Связующие компоненты: <a href="">Client</a></span>
 			<ul>
 				<li>
-					<a href="streamingapi.html#streamingAPI_connect"><span class="object">streamingAPI</span>.<span class="span method">connect</span>()</a>
-				</li>
-				<li>
-					<a href="streamingapi.html#stream_addRule"><span class="object">stream</span>.<span class="span method">addRule</span>()</a>
-				</li>
-				<li>
-					<a href="streamingapi.html#stream_deleteRule"><span class="object">stream</span>.<span class="span method">deleteRule</span>()</a>
-				</li>
-				<li>
-					<a href="streamingapi.html#stream_deleteAllRules"><span class="object">stream</span>.<span class="span method">deleteAllRules</span>()</a>
-				</li>
-				<li>
-					<a href="streamingapi.html#stream_close"><span class="object">stream</span>.<span class="span method">close</span>()</a>
-				</li>
-				<li>
-					<a href="streamingapi.html#stream_initRules"><span class="object">stream</span>.<span class="span method">initRules</span>()</a>
-				</li>
-				<li>
-					<a href="streamingapi.html#stream_getRules"><span class="object">stream</span>.<span class="span method">getRules</span>()</a>
-				</li>
-				<li>
-					<a href="streamingapi.html#events">События стрима</a>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">http</span>.<span class="span method">loginByForm</span>()</a>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="longpollapi.html" class="title bigger"><span class="no-weight">[User]</span> LongPoll API</a>
+			<a href="uploader.html" class="title bigger">HTTP клиент</a>
 			<ul>
 				<li>
-					<a href="longpollapi.html#longpoll_connect"><span class="object">longpoll</span>.<span class="span method">connect</span>()</a>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">client</span>.<span class="span method">readFeedStories</span>()</a>
+					<span>Посмотреть все новые истории друзей</span>
 				</li>
 				<li>
-					<a href="longpollapi.html#connection_addEventCodeListener"><span class="object">connection</span>.<span class="span method">addEventCodeListener</span>()</a>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">client</span>.<span class="span method">readStories</span>()</a>
+					<span>Посмотреть истории пользователя</span>
 				</li>
 				<li>
-					<a href="longpollapi.html#connection_debug"><span class="object">connection</span>.<span class="span method">debug</span>()</a>
-				</li>
-				<li>
-					<a href="longpollapi.html#connection_close"><span class="object">connection</span>.<span class="span method">close</span>()</a>
-				</li>
-				<li>
-					<a href="longpollapi.html#events">События</a>
+					<a href=""><span class="object">client</span>.<span class="span span property">audio</span></a>
+					<span>
+						Это объект <a href="">AudioAPI</a>
+					</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="botslongpollapi.html" class="title bigger"><span class="no-weight">[Bots]</span> LongPoll API</a>
+			<a href="uploader.html" class="title bigger">Audio API</a>
+			<span>Со временем возможно устревание, следите, чтобы всегда была последняя версия Audio API</span>
 			<ul>
 				<li>
-					<a href="botslongpollapi.html#intro">Описание</a>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">get</span>()</a>
+					<span>Получить аудиозаписи</span>
 				</li>
 				<li>
-					<a href="botslongpollapi.html#events">События</a>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">getById</span>()</a>
+					<span>Получить аудиозапись</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">search</span>()</a>
+					<span>Поиск аудиозаписей (<b>BETA</b>)</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">getLyrics</span>()</a>
+					<span>(<b>ЛУЧШЕ НЕ ИСПОЛЬЗОВАТЬ</b>)</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">getCount</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">getUploadServer</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">upload</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">getURL</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">save</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">add</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">delete</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">edit</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">reorder</span>()</a>
+				</li>
+
+			</ul>
+		</li>
+		<li>
+			<a href="uploader.html" class="title bigger">Загрузчик файлов</a>
+			<span>Свободно загружайте нужные файлы на сервера ВКонтакте</span>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">uploader</span>.<span class="span method">getUploadURL</span>()</a>
+					<span>Получите URL для загрузки</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_uploadFile"><span class="object">uploader</span>.<span class="span method">uploadFile</span>()</a>
+					<span>И загрузите файл</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="callbackapi.html" class="title bigger">Callback API</a>
+			<a href="uploader.html" class="title bigger">Виджеты</a>
+			<span>Неофициальные инструменты для получения чего-либо, что нельзя получить официально через API</span>
 			<ul>
 				<li>
-					<a href="callbackapi.html#callbackAPI_listen"><span class="object">callbackAPI</span>.<span class="span method">listen</span>()</a>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">widgets</span>.<span class="span method">getLiveViews</span>()</a>
+					<span>Просмотры LIVE видео</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="uploader.html" class="title bigger">Debugger</a>
+			<span>Инструмент для дебага запросов и деятельности EasyVK в режиме реального времени</span>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">debugger</span>.<span class="span method">push</span>()</a>
+					<span>Метод чаще используется в разработке EasyVK, но вы  ткже можете им воспользоваться</span>
 				</li>
 				<li>
-					<a href="callbackapi.html#events">События</a>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">debugger</span>.<span class="span method">on</span>("push")</a>
+					<span>Узнайте о новом событии в EasyVK</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
+					<span>Debugger изначально не доступен, поэтому запросы до авторизации вы можете прослушивать с помощью debuggerRun</span>
 				</li>
 			</ul>
 		</li>
@@ -230,253 +290,19 @@
 				</li>
 			</ul>
 		</li>
-		<li>
-			<a href="widgets.html" class="title bigger">Виджеты</a>
-			<ul>
-				<li>
-					<a href="widgets.html#widgets_getLiveViews"><span class="object">widgets</span>.<span class="span method">getLiveViews</span>()</a>
-				</li>
-			</ul>
-		</li>
 	</ul>
 </div>
-      </div>
-
-
-      
-
-      <!-- End navigation block, copy/paste id :D -->
-
-
-
-      <div class="col-md-9 body-elem" style="max-height: 100%;min-height: 100%;">
-          <div class="col-md-11 body-content">
-			<!-- Content is here -->
-			<h1>EasyVK</h1>
-			<p>
-				В этом разделе подробно описана авторизация, а также история создания EasyVK
-			</p>
-			<hr>
-			
-			<div class="theme">
-				<h2 id="init">Авторизация <span class="small">(инициализация)</span></h2>
-				<p>
-					В EasyVK, когда вы импторируете себе модуль командой <i>require</i>, возвращается функция, выполнив которую вам будет необходимо иницализировать сессию EasyVK. <br>
-					Попроще говоря, <b>это просто запуск алгоритма авторизации</b> вас по токену / паролю пользователя / группы. 
-				</p>
-				<p>
-					Выглядит это примерно так
-				</p>
-				<pre><code class="js">const easyvk = require('easyvk')
-
-easyvk({
-    access_token: '{ВАШ_ТОКЕН}'
-}).then(vk => {
-    
-}).catch(console.error)</code> <span class="path">~/Project/index.js</span></pre>
-				<p>
-					Именно тут вы даете понять, как авторизовать вас, чтобы вы дальше делали какие-то действия. Возвращается объект <code class="code">Promise</code>, передается в resolve функцию объект <b>EasyVK</b> (именнуемый переменной vk, для удобства). <br> 
-				</p>
-				<p>
-					Обращаясь к методам этого объекта, будет гарантированно, что все запроы будут выполняться по тому токену, который вы поставили в нициализации функции. Если вы не ставили токен, лишь выбрали авторизацию по логину и паролю, то токен EasyVK получит самостоятельно с максимальными правами для комфортной работы.
-				</p>
-				<p>
-					Ниже вы можете посмотреть какие параметры можно передать в иницализацию функции. Напомню, что функция принимает единственный аргумент - объект инициализации, настройки вашей сессии, по факту.
-				</p>
-				<pre><code class="js">//Стандартный вид инициализации
-//По такому шаблону происходт все взаимодействия
-
-const easyvk = require('easyvk')
-
-//Сессия EasyVK, настройки
-const sessionParams = {
-    access_token: 'token',
-    api_v: '5.73'	
-}
-
-//Функция, в которую передается объект EasyVK
-const vkInit = (vk) => {
-    // пример, vk.call()
-}
-
-easyvk(sessionParams)
-    .then(vkInit)
-    .catch(console.error)</code> <span class="path">~/Project/index.js</span></pre>
+        </div>
+      </div><!--
+    --><div id="content">
+        <div id="main-content" style="max-width: 910px;">
+          <h1>Документация обновляется...</h1>
 <p>
-	Параметры иницизалиации
+  Документация для версии <b>2.0.0</b> временно не доступна, воспользуйтесь более старыми гайдами.
 </p>
-
-<table>
-	<thead>
-		<tr>
-			<th>Параметр</th>
-			<th>Описание</th>
-			<th>По умолчанию</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>api_v</td>
-			<td>
-				Версия ВКонтакте API, которую вы хотите использовать для всех запросов.
-				<br> Не рекомендую менять этот параметр ниже версии 5, так как сама библиотека писалась именно под нее, <br> в версии 4 JSON ответы могут отличаться от версии 5.
-				<pre><code class="js">easyvk({
-    api_v: 5.73,
-    //Или
-    api_v: '5.73'    
-})</code> <span class="path">~/Project/index.js</span> </pre>
-			</td>
-			<td>5.73</td>
-		</tr>
-		<tr>
-			<td>acсess_token</td>
-			<td>Ваш токен доступа, параметр необходим только, если вы не ввели <br>
-				логин и пароль. Токен может быть как группы, так и пользователя. <br>
-				Библиотека самостоятельно определит какой именно это токен, <br>
-				если он будет не правильным, выведется ошибка с ответом сервера ВКонтатке. <br>
-				<pre><code class="js">easyvk({
-    access_token: 'ac56jklopas45dnbmwaahjklqfs671wd....'
-})</code> <span class="path">~/Project/index.js</span></pre>
-			</td>
-			<td>-</td>
-		</tr>
-		<tr>
-			<td>username</td>
-			<td>Ваш логин для аккаунта, используется в связке с параметром <code class="code">password</code></td>
-			<td>-</td>
-		</tr>
-		<tr>
-			<td>password</td>
-			<td>Ваш пароль для аккаунта, используется в связке с параметром <code class="code">username</code>
-
-			<pre><code class="js">easyvk({
-    username: 89158888888,
-    password: 'qwerty', //Пример для телефона
-
-    //Или
-    username: 'example@mail.ru',
-    password: 12345678,
-})
-
-</code> <span class="path">~/Project/index.js</span></pre>
-
-			</td>
-			<td>-</td>
-		</tr>
-		<tr>
-			<td>session_file</td>
-			<td>Путь к файлу сессии, в который будет сохраняться вся сессия.
-				<pre><code class="js">const path = require('path')
-const sessionPath = path.join(__dirname, '.session-vk')
-
-easyvk({
-    session_file: sessionPath
-})</code> <span class="path">~/Project/index.js</span></pre>
-<br>
-				Тем временем в самом файле
-				<pre><code class="json">{
-    "access_token": "68837af82bc....",
-    "group_id": 5,
-    "group_name": "Бот Программист",
-    "group_screen": "bot_prog",
-    "user_id": false
-}</code> <span class="path">~/Project/.session-vk</span></pre>
-			</td>
-			<td>~/Project/ <br> node_modules/ <br> easyvk/lib/ <br> .vksession</td>
-		</tr>
-		<tr>
-			<td>save_session</td>
-			<td>Сохранять сессию в файл?</td>
-			<td><code class="code">true</code></td>
-		</tr>
-		<tr>
-			<td>reauth</td>
-			<td>Игнорировать данные файла сессии и авторизоваться с новыми данными?</td>
-			<td><code class="code">false</code></td>
-		</tr>
-		<tr>
-			<td>clean_session</td>
-			<td>Отчистить файл сессии после авторизации? </td>
-			<td><code class="code">false</code></td>
-		</tr>
-		<tr>
-			<td>captcha_sid</td>
-			<td>ID капчи, которую вы получаете из ошибки. Необходимо передать этот <br> параметр после получения ошибки. Если вы не ловите ошибки капчи через <br>captchaHandler, то тогда необходимо переинициализировать EasyVK с новыми <br>данными, чтобы EasyVK мог выполнять запрос дальше. То есть. Если вы получили <br> ошибку капчи, вы можете ее ловить через хендлер, но если по каким-то <br>причинам это не получилось, вы можете передать из ошибки данные в этот <br> параметр, EasyVK будет встраивать их во все запросы в ходе работы.</td>
-			<td>-</td>
-		</tr>
-		<tr>
-			<td>captcha_key</td>
-			<td>Текст с капчи, которую вы получили в ошибке. 
-             Ваши дейтсвия: <br>
-             1. Инициализировать первый раз <br>
-             2. Получить ошибку капчи, вывести ее куда-нибудь в лог, чтобы посмотреть саму капчу и решить ее. <br>
-             3. Открыть картинку капчи, посмотреть текст <br>
-             4. Запустить EasyVK с заданными параметрами captcha_sid и captcha_key. <br>
-             Или используйте captchaHandler для решения капчи самостоятельно и автоматически.
-			</td>
-			<td>-</td>
-		</tr>
-		<tr>
-			<td>code</td>
-			<td>Ваш код для двухфакторной авторизации. Если вы используете двухфакторную авторизацию для своего аккаунта, неободимо вписать в этот параметр код для авторизации. </td>
-			<td>code</td>
-		</tr>
-		<tr>
-			<td>captchaHandlder</td>
-			<td>Функция для ловли ошибки капчи. Вы можете решать капчу любым удобным вам способом. <br> Пример смотрите на странице <a href="captcha.html">Капча</a></td>
-			<td>-</td>
-		</tr>
-	</tbody>
-</table>
-	<p>
-		После того, как вы авторизовались, вызывается функция <code class="code">resolve</code>, в нее передается объект EasyVK, с помощью которого вы можете обращаться к ВКонтакте API. Подробнее читайте на странице <a href="methods.html">Методы</a>
-	</p>
-			</div>
-			<div class="theme">
-				<h2 id="errors">Ловля ошибок</h2>
-				
-				<p>
-					В EasyVK пока что не сильно развит режим Debug'а, но то, что уже есть сейчас, несомненно, работает так, как надо. 
-					И так, все основные дейтствия, которые производятся в объекте EasyVK происсходят на основе Promis'ов. Следовательно, можно ловить ошибки, но не везде. <br>
-					Я рекомендую использовать событие unhandledRejection, чтобы ловить все ошибки без исключений и знать, что происходит в том или ином месте кода.
-				</p>
-				<pre><code class="js">process.on('unhandledRejection', console.error)</code></pre>
-				<p>
-					Но в основном все сводится к ловле ошибок на уровне промисов
-				</p>
-				<pre><code class="js">easyvk({})
-.then(vk => {})
-.catch(console.error)
-
-process.on('unhandledRejection', console.error)</code></pre>
-
-
-			</div>
-			<div class="theme">
-				<h2 id="concepts">История</h2>
-				<p>
-					<b>ОСТОРОЖНО ! Многобукаф !!</b>
-				</p>
-				<p>
-					EasyVK создавался просто так. EasyVK - это мое хобби, можно так сказать, но которым я не сильно увлечен по разным причинам. Модуль создавался, потому что я не видел на тот момент, когда понял, что нужно что-то делать, я не увидел модулей, которые бы были похоже на то, что из себя представляет сейчас EasyVK. Модуль не сильно полезный, на самом деле. Но кому-то он может сильно помочь. Сначала я создавал его для себя, как это обычно бывает со всеми проектами, а потом решил, а почему бы и не опубликовать его? Так и появился EasyVK.
-				</p>
-				<p>
-					С первой версии EasyVK обладал малым количеством возможностей, было много багов и прочего. Во второй версии я решил переписать все с нуля, ведь то, что было, нельзя было считать расширяемым проектом. И даже во второй верии не вышло то, что я хотел. Появилась версия 0.3, в которой появились утилиты, много дополнений. Я реализовал почти все возможности. Но все же, знал, что это не все. 
-				</p>
-				<p>
-					После версии 0.3, я начал писать версию 0.4, думал, что это ведь еще не релиз 1.0, чего там, ведь много чего еще можно сделать. Но к концу уже понял, что дело катит на релиз 1.0 версии. Вот и вся история проекта. Сейчас проект уже плывет по течению, я лишь помогаю людям, у которых возникают какие либо проблемы с использованием. Но на данный момент не собираюсь развивать его дальше. Только по мере поступления новых задач, вроде "ВКонтакте запустили масштабную Бот Платформу с доступным API". 
-				</p>
-			</div>
-			<div class="theme">
-				<h2 id="faq">FAQ</h2>
-				<p>
-					Данный раздел будет пополняться по мере поступления вопросов.
-				</p>
-			</div>
-          </div>
+        </div>
       </div>
-
-    </section>
+    </div>
 
     <link rel="stylesheet" href="assets/css/highlight-theme.css">
 <script src="assets/plugins/highlight/highlight.pack.js"></script>

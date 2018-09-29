@@ -1,0 +1,160 @@
+<h1><span class="no-weight">[User]</span> LongPoll API</h1>
+<p>
+ LongPoll API позволяет прослушивать события аккаунта, вроде сообщения или, вступления в группу. LongPoll API с недавних пор разделяют на две части - <a href="https://vk.com/dev/using_longpoll" target="_blank">User LongPoll API</a>, и <a href="https://vk.com/dev/bots_longpoll" target="_blank">Bots LongPoll API</a>, в EasyVK поддерживаются оба типа.
+</p>
+<hr>
+ 
+Чтобы прослушивать события пользователя - просто используйте свойство longpoll у объекта EasyVK, после анициализации easyvk.
+
+<pre><code class="js">easyvk(/*данные для авторизации*/).then(vk => {
+
+vk.longpoll.connect().then(({connection, vk: EasyVK}) => {
+connection.on('message', console.log)
+console.log(EasyVK === vk) //true        
+})
+
+})</code></pre>
+<div class="theme">
+  <h2 id="longpoll_connect">longpoll.connect([settings])</h2>
+  <p>
+     Этот метод создает подключение в серверу LongPoll и начинает прослушивать, в штатном режиме этот метод просто подключается к серверу и возвращает в функцию <code class="code">resolve</code> объект такого вида
+  </p>
+  <pre><code class="js">{
+vk: EasyVK,
+connection: LongPollConnection
+}
+  </code></pre>
+  <p>
+    В более расширенном использовании этого метода можно натроить его как вам нужно. На пример, вы можете внести параметры, которые нужны вам на определенных этапах подклюения к LongPoll, для этого передайте в вызов метода объект с такими свойствами: 
+  </p>
+  <pre><code class="js">const lpSettings = {
+forGetLongPollServer: {
+lp_version: "3", //Изменяем версию LongPoll, в EasyVK используется версия 2
+need_pts: "1"
+}, 
+forLongPollServer: {
+wait: "15" //Ждем ответа 15 секунд
+}
+}</code></pre>
+<pre><code class="js">vk.longpoll.connect(lpSettings).then(({connection}) => {
+
+console.log(connection.config)
+
+}).catch(console.error)</code></pre>
+<p>
+  <code class="code">forGetLongPollServer</code> - это параметры для запроса на метод <a href="https://vk.com/dev/messages.getLongPollServer" target="_blank">messages.getLongPollServer</a>, вы можете их добавлять и изменять.
+</p>
+<p>
+  <code class="code">forLongPollServer</code> - это параметры для каждого запроса к серверу, то есть каждый раз, когда ваш сервер будет запрашивать данные, он будет отправлять эти параметры. Подробнее о них <a href="https://vk.com/dev/using_longpoll?f=1.%20%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5" target="_blank">тут</a>
+</p>
+</div>
+<div class="theme">
+  <h2 id="connection_addEventCodeListener">connection.addEventCodeListener(eventCode, handler)</h2>
+  <p>
+    Так как в User LongPoll все названия событий - это их дентификаторы, то в EasyVK не было смысла прописывать для каждого из них строчное именование, поэтому эту возможность я оставил вам, хоть и не для всех событий, и некоторые события, основные, скажем так, я проименовал.
+  </p>
+  <pre><code class="js">connection.addEventCodeListener(3, (event) => { 
+
+// Сброс флагов сообщения, например: прочитано
+console.log(event)
+
+})</code></pre>
+  <p>
+    Теперь каждый раз, когда кто-то будет, например, читать непрочитанное сообщение, будет вызываться <code class="code">handler</code>
+  </p>
+</div>
+<div class="theme">
+  <h2 id="connection_debug">connection.debug()</h2>
+  <p>
+    Этот метод подрубает вашу функцию дебагер, в которую каждый раз, когда происходит какое-то событие, будет передаваться ответ сервера, или что-то еще.
+  </p>
+  <pre><code class="js">function longPollDebugger({type, data}) {
+console.log(`[typeLog ${type}]`, data);
+}
+
+vk.longpoll.connect()
+.then(({connection}) => {
+connection.debug(longPollDebugger)
+})</code></pre>
+</div>
+<div class="theme">
+  <h2 id="connection_close">connection.close()</h2>
+  <p>
+    Данный метод закрывает соединение, не то, чтобы соединение, а скорее, он просто прекращает делать длительные запросы.
+  </p>
+  <pre><code class="js">connection.close().then(() => {
+console.log('[Closed] LongPoll connection...')   
+})</code></pre>
+</div>
+<div class="theme">
+  <h2 id="events">События</h2>
+  <p>
+    В User LongPoll API все события - это по сути числа, их идентификаторы, поэтому в EasyVK поддерживаются лишь определенные события, поддержка остальных событий производится через метод <a href="#connection_addEventCodeListener">connection.addEventCodeListener()</a> 
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>ID события</th>
+        <th>Событие</th>
+        <th>Описание</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>4</td>
+        <td>message</td>
+        <td>Пользователь отправил сообщение, либо ему отправили сообщение</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>friendOnline</td>
+        <td>Друг стал онлайн</td>
+      </tr>
+      <tr>
+        <td>51</td>
+        <td>editChat</td>
+        <td>В беседе произошли изменения, например, название сменил Антон</td>
+      </tr>
+      <tr>
+        <td>61</td>
+        <td>typeInDialog</td>
+        <td>Человек пишет в диалоге с пользователем</td>
+      </tr>
+      <tr>
+        <td>62</td>
+        <td>typeInChat</td>
+        <td>Кто-то пишет в беседе</td>
+      </tr>
+      <tr>
+        <td>-</td>
+        <td>error</td>
+        <td>Возникла ошибка в подключении</td>
+      </tr>
+      <tr>
+        <td>-</td>
+        <td>reconnectError</td>
+        <td>Возникла какая-то ошибка при попытки переподключиться, когда какие-то параметры сервера изменяются</td>
+      </tr>
+      <tr>
+        <td>-</td>
+        <td>failure</td>
+        <td>Возникает, когда подключение разрывается, или, сервер слишком долго не отвечает</td>
+      </tr>
+      <tr>
+        <td>-</td>
+        <td>close</td>
+        <td>Возникает, когда подключение закрывается по принуждению</td>
+      </tr>
+    </tbody>
+  </table>
+  <pre><code class="js">vk.longpoll.connect()
+.then(({connetion}) => {
+
+connection.on('error', console.error)
+.on('failure', console.error)
+.on('reconnectError', console.error)
+
+connection.on('messsage', console.log)
+
+})</code></pre>
+</div>

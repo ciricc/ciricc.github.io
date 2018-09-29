@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ru-ru">
+  <head>
+  	
+  		<meta charset="utf-8">
+		
+	<meta name="description" content="EasyVK - это полностью бесплатный и доступный модуль, написанный для поддержки API ВКонтакте на платформе Node.js">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<meta property="og:image"              content="https://psv4.userapi.com/c834502/u356607530/docs/d2/7968b5680c4c/logo.png" />
+	<meta property="og:title"              content="EasyVK / Node.JS ВКонтакте API | Документация" />
+	<meta property="og:description"        content="EasyVK - это полностью бесплатный и доступный модуль, написанный для поддержки API ВКонтакте на платформе Node.js" />
+
+
+	<title>EasyVK / Node.JS ВКонтакте API | Документация </title>
+	
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+
+
+
+  </head>
+  <body>
+    <style>
+      html {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        height: 100%;
+        background-color: #fff;
+      }
+
+      #container {
+        height: 100%;
+        /*margin-bottom: 15px;*/
+        box-shadow: 0px 0px 5px rgba(0,0,0,.1);
+        padding: 0px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        overflow-y: hidden;
+        padding-top: 80px;
+      }
+
+      .nav {
+        padding-bottom: 250px;
+      }
+
+      #sidebar {
+        display: inline-block;
+        vertical-align: top;
+        height: 100%;
+        width: 25%;
+        overflow: auto;
+        background-color: rgb(252,253,255);
+        border-right: solid 1px #f0f0f0;
+        /*color: #fff;*/
+
+      }
+
+      #content {
+        display: inline-block;
+        vertical-align: top;
+        height: 100%;
+        width: 75%;
+        overflow: auto;
+        padding-left: 15px;
+        background-color: #fff;
+        padding-left: 25px;
+      }
+
+      .header {
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0cb1f2+0,89d4f4+100 */
+        background: #fff; /* Old browsers */
+        color: #222;
+        box-shadow: 0px 0px 5px rgba(0,0,0,.1);
+        z-index: 5;
+        margin-bottom: 0px;
+        height: 100%;
+        padding: 0px 15px;
+      }
+
+      .wrap-header {
+        height: 80px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 5;
+      }
+
+      .opener {
+        padding: 15px;
+        cursor: pointer;
+      }
+
+      .header .header-content {
+        height: 100%;
+        box-sizing: border-box;
+      }
+
+      .container.wrap-header::after {
+        display: none;
+      }
+
+      .container.wrap-header::before {
+        display: none;
+      }
+
+      .flex-wrap {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .soc-link {
+        font-size: 20px;
+        color: #fff;
+        margin-left: 10px;
+        margin-right: 5px;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        line-height: 38px;
+        text-align: center;
+        display: inline-block;
+        background-color: #000;
+      }
+
+      @media (max-width: 998px) {
+
+        #sidebar {
+          width: 0%;
+          position: absolute;
+          left: 0;
+        }
+
+        #content {
+          width: 100%;
+          padding-left: 0px;
+        }
+
+        .soc, .logo {
+          display: none;
+        }
+
+        #container {
+          height: auto;
+          margin-top: 80px;
+          padding: 0px;
+        }
+
+        #main-content {
+          padding: 15px;
+        }
+
+      }
+
+    </style>
+      
+    <div class="opacity-block"></div>
+    <div class="wrap-header" style="padding: 0">
+      <div class="header">
+        <div class="header-content">
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <a href="/" class="logo">
+              <img src="../assets/img/logo.png" alt="EasyVK логотип Node.js ВКонтакте API JavaScript" width="45" style="display: inline-block;margin-bottom: 20px;">
+            </a>
+            <span class="fa fa-bars opener"></span>
+            <h2 style="display: inline-block;margin:0;margin-left: 25px;line-height: 80px;">EasyVK</h2>
+            <span style="margin-left: 25px">
+              <label for="version">Версия </label> <select name="version" id="version">
+                <a href="v1.5.1/"><option value="1.5.1">1.5.1</option></a>
+                <a href="v2.0.0/"><option value="2.0.0">2.0.0</option></a>
+              </select>
+            </span>
+            </div>
+            <div class="col-md-6 soc" style="height: 80px;">
+              <div class="flex-wrap">
+                <a href="https://vk.com/easyvk_npm" class="soc-link"><span class="fa fa-vk"></span></a>
+                <a href="https://github.com/ciricc/easyvk" class="soc-link"><span class="fa fa-github"></span></a>
+                <a href="https://github.com/ciricc/easyvk" class="soc-link" style="font-size: 12px;"><b>npm</b></a>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  	<div id="container">
+      <div id="sidebar">
+        <div id="sidebar-content">
+          <div class="docs-nav-wrap docs">
+	<ul class="nav">
+		<li>
+			<a href="index.html" class="title bigger">Знакомство</a>
+			<ul>
+				<li>
+					<a href="index.html#whatisthis">Что такое EasyVK ?</a>
+				</li>
+				<li>
+					<a href="index.html#installation">Установка</a>
+				</li>
+				<li>
+					<a href="index.html#info">Информация</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="easyvk.html" class="title bigger">EasyVK</a>
+			<ul>
+				<li>
+					<a href="easyvk.html#init">Авторизация</a>
+				</li>
+				<li>
+					<a href="easyvk.html#errors">Ловля ошибок</a>
+				</li>
+				<li>
+					<a href="easyvk.html#concepts">История EasyVK</a>
+				</li>
+				<li class="disable">
+					<a href="#">/* API  */</a>
+				</li>
+				<li>
+					<a href="easyvk.html#faq"><b>FAQ</b></a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="captcha.html" class="title bigger">Капча</a>
+			<ul>
+				<li>
+					<a href="captcha.html#captchaHandler">captchaHandler</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="methods.html" class="title bigger">Методы</a>
+			<ul>
+				<li>
+					<a href="methods.html#vk_call"><span class="object">vk</span>.<span class="span method">call</span>()</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="session.html" class="title bigger">Сессия</a>
+			<ul>
+				<li>
+					<a href="session.html#session_save"><span class="object">session</span>.<span class="span method">save</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#session_setPath"><span class="object">session</span>.<span class="span method">setPath</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#session_clear"><span class="object">session</span>.<span class="span method">clear</span>()</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="staticmethods.html" class="title bigger">Статические методы</a>
+			<ul>
+				<li>
+					<a href="staticmethods.html#static_call"><span class="object">static</span>.<span class="span method">call</span>()</a>
+				</li>
+				<li>
+					<a href="staticmethods.html#static_urlencode"><span class="object">static</span>.<span class="span method">urlencode</span>()</a>
+				</li>
+				<li>
+					<a href="staticmethods.html#static_isObject"><span class="object">static</span>.<span class="span method">isObject</span>()</a>
+				</li>
+				<li>
+					<a href="staticmethods.html#static_isString"><span class="object">static</span>.<span class="span method">isString</span>()</a>
+				</li>
+				<li>
+					<a href="staticmethods.html#static_checkJSONErrors"><span class="object">static</span>.<span class="span method">checkJSONErrors</span>()</a>
+				</li>
+				<li>
+					<a href="staticmethods.html#static_checkErrors"><span class="object">static</span>.<span class="span method">checkErrors</span>()</a>
+				</li>
+				<li>
+					<a href="staticmethods.html#static_encodeHTML"><span class="object">static</span>.<span class="span method">encodeHTML</span>()</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="streamingapi.html" class="title bigger">Streaming API</a>
+			<ul>
+				<li>
+					<a href="streamingapi.html#streamingAPI_connect"><span class="object">streamingAPI</span>.<span class="span method">connect</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_addRule"><span class="object">stream</span>.<span class="span method">addRule</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_deleteRule"><span class="object">stream</span>.<span class="span method">deleteRule</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_deleteAllRules"><span class="object">stream</span>.<span class="span method">deleteAllRules</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_close"><span class="object">stream</span>.<span class="span method">close</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_initRules"><span class="object">stream</span>.<span class="span method">initRules</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_getRules"><span class="object">stream</span>.<span class="span method">getRules</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#events">События стрима</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="longpollapi.html" class="title bigger"><span class="no-weight">[User]</span> LongPoll API</a>
+			<ul>
+				<li>
+					<a href="longpollapi.html#longpoll_connect"><span class="object">longpoll</span>.<span class="span method">connect</span>()</a>
+				</li>
+				<li>
+					<a href="longpollapi.html#connection_addEventCodeListener"><span class="object">connection</span>.<span class="span method">addEventCodeListener</span>()</a>
+				</li>
+				<li>
+					<a href="longpollapi.html#connection_debug"><span class="object">connection</span>.<span class="span method">debug</span>()</a>
+				</li>
+				<li>
+					<a href="longpollapi.html#connection_close"><span class="object">connection</span>.<span class="span method">close</span>()</a>
+				</li>
+				<li>
+					<a href="longpollapi.html#events">События</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="botslongpollapi.html" class="title bigger"><span class="no-weight">[Bots]</span> LongPoll API</a>
+			<ul>
+				<li>
+					<a href="botslongpollapi.html#intro">Описание</a>
+				</li>
+				<li>
+					<a href="botslongpollapi.html#events">События</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="callbackapi.html" class="title bigger">Callback API</a>
+			<ul>
+				<li>
+					<a href="callbackapi.html#callbackAPI_listen"><span class="object">callbackAPI</span>.<span class="span method">listen</span>()</a>
+				</li>
+				<li>
+					<a href="callbackapi.html#events">События</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="uploader.html" class="title bigger">Загрузка файлов</a>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">uploader</span>.<span class="span method">getUploadURL</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_uploadFile"><span class="object">uploader</span>.<span class="span method">uploadFile</span>()</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="widgets.html" class="title bigger">Виджеты</a>
+			<ul>
+				<li>
+					<a href="widgets.html#widgets_getLiveViews"><span class="object">widgets</span>.<span class="span method">getLiveViews</span>()</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+        </div>
+      </div><!--
+    --><div id="content">
+        <div id="main-content" style="max-width: 910px;">
+          <h1>Виджеты</h1>
+ <p>
+   Виджеты - это инструменты, которые помогают делать что-то неофициально, то, что не поддерживается в ВКонтакте API, как например, получить количество просмотров Live Видео
+ </p>
+ <hr>
+ <p>
+   Обычно обращение к виджетам происходит таким образом
+ </p>
+ <pre><code class="js">vk.widgets.exampleWidget()</code></pre>
+ <div class="theme">
+   <h2 id="widgets_getLiveViews">widgets.getLiveViews(videoSource)</h2>
+   <p>
+     Данный метод позволяет получить количество просмотров Live видео. Я заметил, что кому-то на форуме по ВКонтакте API понадобился скрипт получения просмотров, мне стал интересен этот вопрос и я решил, что это будет полезной фитчей в EasyVK.
+   </p>
+   <p>
+     Для того, чтобы получить количество просмотров, вам необходимо первым аргументом отправит sourceId видео, как со скриншота.
+   </p>
+   <img src="https://pp.userapi.com/c847121/v847121586/1eece/kCDoHW5bixI.jpg" alt="">
+   <p>
+     Затем использовать виджет
+   </p>
+   <pre><code class="js">easyvk(/*параметры авторизации*/).then(vk => {
+vk.widgets.getLiveViews('-157276298_456239074').then(views => {
+console.log(views)   
+})
+})</code></pre>
+ </div>
+        </div>
+      </div>
+    </div>
+
+    <link rel="stylesheet" href="../assets/css/highlight-theme.css">
+<script src="../assets/plugins/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="../assets/js/main.js"></script>
+
+  </body>
+</html>
