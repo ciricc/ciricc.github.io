@@ -19,8 +19,38 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
 	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+	
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript" >
+	    (function (d, w, c) {
+	        (w[c] = w[c] || []).push(function() {
+	            try {
+	                w.yaCounter50546380 = new Ya.Metrika2({
+	                    id:50546380,
+	                    clickmap:true,
+	                    trackLinks:true,
+	                    accurateTrackBounce:true,
+	                    webvisor:true
+	                });
+	            } catch(e) { }
+	        });
 
+	        var n = d.getElementsByTagName("script")[0],
+	            s = d.createElement("script"),
+	            f = function () { n.parentNode.insertBefore(s, n); };
+	        s.type = "text/javascript";
+	        s.async = true;
+	        s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+	        if (w.opera == "[object Opera]") {
+	            d.addEventListener("DOMContentLoaded", f, false);
+	        } else { f(); }
+	    })(document, window, "yandex_metrika_callbacks2");
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/50546380" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
 
 
   </head>
@@ -167,23 +197,27 @@
       
     <div class="opacity-block"></div>
     <div class="wrap-header" style="padding: 0">
-      <div class="header">
+      <div class="header no-padding-mobile">
         <div class="header-content">
-          <div class="col-md-12">
-            <div class="col-md-6">
-              <a href="/" class="logo">
-              <img src="../assets/img/logo.png" alt="EasyVK логотип Node.js ВКонтакте API JavaScript" width="45" style="display: inline-block;margin-bottom: 20px;">
-            </a>
-            <span class="fa fa-bars opener"></span>
-            <h2 style="display: inline-block;margin:0;margin-left: 25px;line-height: 80px;">EasyVK</h2>
-            <span style="margin-left: 25px">
-              <label for="version">Версия </label> <select name="version" id="version">
-                <a href="v1.5.1/"><option value="1.5.1">1.5.1</option></a>
-                <a href="v2.0.0/"><option value="2.0.0">2.0.0</option></a>
-              </select>
-            </span>
+          <div class="col-md-12 no-padding-mobile">
+            <div class="col-md-5 no-padding-mobile">
+              <div class="col-md-6 col-sm-6 col-xs-8 no-padding">
+                <span class="fa fa-bars opener"></span>
+                  <a href="/" class="logo">
+                    <img src="../assets/img/logo.png" alt="EasyVK логотип Node.js ВКонтакте API JavaScript" width="45" style="display: inline-block;margin-bottom: 20px;">
+                  </a>
+                <h2>EasyVK</h2>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-4" style="height: 80px;">
+                <div class="version-wrap">
+                  <select name="version" id="version">
+                    <a href="v1.5.1s/"><option value="1.5.1" selected="selected">1.5.1</option></a>
+                    <a href="v2.0.0/"><option value="2.0.0">2.0.0</option></a>
+                  </select>
+                </div>
+              </div>
             </div>
-            <div class="col-md-6 soc" style="height: 80px;">
+            <div class="col-md-7 soc no-mobile" style="height: 80px;">
               <div class="flex-wrap">
                 <a href="https://vk.com/easyvk_npm" class="soc-link"><span class="fa fa-vk"></span></a>
                 <a href="https://github.com/ciricc/easyvk" class="soc-link"><span class="fa fa-github"></span></a>
@@ -556,6 +590,7 @@ connection.on('messsage', console.log)
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/selectic/selectic.min.js"></script>
 
   </body>
 </html>

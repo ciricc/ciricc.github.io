@@ -82,6 +82,8 @@
 
 
 	$(document).ready(function () {
+		
+		($('select').selectric) ? $('select').selectric() : null;
 
 		var version = $("#version");
 		var currentVersion = "2.0.0";

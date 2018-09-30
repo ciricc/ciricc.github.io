@@ -21,36 +21,7 @@
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
 	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
-	
-	<!-- Yandex.Metrika counter -->
-	<script type="text/javascript" >
-	    (function (d, w, c) {
-	        (w[c] = w[c] || []).push(function() {
-	            try {
-	                w.yaCounter50546380 = new Ya.Metrika2({
-	                    id:50546380,
-	                    clickmap:true,
-	                    trackLinks:true,
-	                    accurateTrackBounce:true,
-	                    webvisor:true
-	                });
-	            } catch(e) { }
-	        });
 
-	        var n = d.getElementsByTagName("script")[0],
-	            s = d.createElement("script"),
-	            f = function () { n.parentNode.insertBefore(s, n); };
-	        s.type = "text/javascript";
-	        s.async = true;
-	        s.src = "https://mc.yandex.ru/metrika/tag.js";
-
-	        if (w.opera == "[object Opera]") {
-	            d.addEventListener("DOMContentLoaded", f, false);
-	        } else { f(); }
-	    })(document, window, "yandex_metrika_callbacks2");
-	</script>
-	<noscript><div><img src="https://mc.yandex.ru/watch/50546380" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-	<!-- /Yandex.Metrika counter -->
 
 
   </head>
@@ -419,71 +390,205 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1>Сессия</h1>
- <p>
-   После того, как EasyVK вас авторизует, создается объект сессии - это просто объект, у которого есть свои методы и т.д. И он зависит безусовно, от файла сессии, если вы указали что необходимо сохранять сессию в файл. Вы можете изменить сессию и управлять ею через ее же методы.
- </p>
- <p>
-   <b>ВНИМАНИЕ ! Объект сессии существует в EasyVK с версии 1.2, в версиях ниже был только метод vk.saveSession(), используйте последние релизы EasyVK.</b>
- </p>
- <hr>
- <div class="theme">
-   <h2 id="session_save">session.save()</h2>
-   <p>
-     Данный метод сохраняет сессию по указанному файлу, если файл не был указан, то выкинится ошибка. Все просто.
-   </p>
- <pre><code class="js">vk.session.cache = []
+          <!DOCTYPE html>
+<html lang="ru-ru">
+  <head>
+  	
+  	{% head %}
 
-vk.session.cache[0] = [/* Photos...*/]
+  </head>
+  <body>
+    <style>
+      html {
+        height: 100%;
+      }
 
-vk.session.save().then(() => {
+      body {
+        margin: 0;
+        height: 100%;
+        background-color: #fff;
+      }
 
-console.log('Saved!')
+      #container {
+        height: 100%;
+        /*margin-bottom: 15px;*/
+        box-shadow: 0px 0px 5px rgba(0,0,0,.1);
+        padding: 0px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        overflow-y: hidden;
+        padding-top: 80px;
+      }
 
-})</code></pre>
- </div>
- 
- <div class="theme">
-   <h2 id="session_setPath">session.setPath()</h2>
-   <p>
-     Данный метод устанавливает путь к файлу сессии, если файла не существует, он автоматически будет создан.
-   </p>
-   <pre><code class="js">const path = require('path')
-const sessionPath = path.join(__dirname, '.current-session')
+      .nav {
+        padding-bottom: 250px;
+      }
 
+      #sidebar {
+        display: inline-block;
+        vertical-align: top;
+        height: 100%;
+        width: 25%;
+        overflow: auto;
+        background-color: rgb(252,253,255);
+        border-right: solid 1px #f0f0f0;
+        /*color: #fff;*/
 
-vk.session.setPath(sessionPath)
-.then(({vk: EasyVK}) => {
+      }
 
-console.log(EasyVK.session.path) //__dirname + .current-session
+      #content {
+        display: inline-block;
+        vertical-align: top;
+        height: 100%;
+        width: 75%;
+        overflow: auto;
+        padding-left: 15px;
+        background-color: #fff;
+        padding-left: 25px;
+      }
 
-})</code></pre>
-  <p>
-    Конечно, вы можете изменять path, просто устанавливая его новым свойством, но я рекомендую делать это именно через данный метод. 
-  </p>
-  <p>
-    Сам метод же может пригодиться в тех случаях, когда вам необходимо менять сессии прям "на ходу"... Может быть, у вас на одном процессе несколько ботов (не рекомендуется).
-  </p>
- </div>
- <div class="theme">
-   <h2 id="session_clear">session.clear()</h2>
-   <p>
-     Данный метод отчищает файл сессии, вашу сессию, как объект, и потом синхронизирует с файловой системой, то есть сохранет данные.
-   </p>
-   <p>
-     Все просто!
-   </p>
-   <pre><code class="js">vk.session.data = []
-vk.session.clear(() => {
-console.log(vk.session) // {data: undefined}
-})</code></pre> 
-    <p>
-      Данный метод "удаляет" не только те данные, которые вы добавили, но и те, что были изначально. Таким образом вы можете отчищать файл сессии.
-    </p>
-    <p>
-      Сами же свойства в объекте сессии не удаляются, так как метод <code>delete</code> работает очень медленно, не хотелось бы застопорить весь процесс только одним методом.
-    </p>
- </div>
+      .header {
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0cb1f2+0,89d4f4+100 */
+        background: #fff; /* Old browsers */
+        color: #222;
+        box-shadow: 0px 0px 5px rgba(0,0,0,.1);
+        z-index: 5;
+        margin-bottom: 0px;
+        height: 100%;
+        padding: 0px 15px;
+      }
+
+      .wrap-header {
+        height: 80px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 5;
+      }
+
+      .opener {
+        padding: 15px;
+        cursor: pointer;
+      }
+
+      .header .header-content {
+        height: 100%;
+        box-sizing: border-box;
+      }
+
+      .container.wrap-header::after {
+        display: none;
+      }
+
+      .container.wrap-header::before {
+        display: none;
+      }
+
+      .flex-wrap {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .soc-link {
+        font-size: 20px;
+        color: #fff;
+        margin-left: 10px;
+        margin-right: 5px;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        line-height: 38px;
+        text-align: center;
+        display: inline-block;
+        background-color: #000;
+      }
+
+      @media (max-width: 998px) {
+
+        #sidebar {
+          width: 0%;
+          position: absolute;
+          left: 0;
+        }
+
+        #content {
+          width: 100%;
+          padding-left: 0px;
+        }
+
+        .soc, .logo {
+          display: none;
+        }
+
+        #container {
+          height: auto;
+          margin-top: 80px;
+          padding: 0px;
+        }
+
+        #main-content {
+          padding: 15px;
+        }
+
+      }
+
+    </style>
+      
+    <div class="opacity-block"></div>
+    <div class="wrap-header" style="padding: 0">
+      <div class="header no-padding-mobile">
+        <div class="header-content">
+          <div class="col-md-12 no-padding-mobile">
+            <div class="col-md-5 no-padding-mobile">
+              <div class="col-md-6 col-sm-6 col-xs-8 no-padding">
+                <span class="fa fa-bars opener"></span>
+                  <a href="/" class="logo">
+                    <img src="../assets/img/logo.png" alt="EasyVK логотип Node.js ВКонтакте API JavaScript" width="45" style="display: inline-block;margin-bottom: 20px;">
+                  </a>
+                <h2>EasyVK</h2>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-4" style="height: 80px;">
+                <div class="version-wrap">
+                  <select name="version" id="version">
+                    <a href="v1.5.1s/"><option value="1.5.1" selected="selected">1.5.1</option></a>
+                    <a href="v2.0.0/"><option value="2.0.0">2.0.0</option></a>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7 soc no-mobile" style="height: 80px;">
+              <div class="flex-wrap">
+                <a href="https://vk.com/easyvk_npm" class="soc-link"><span class="fa fa-vk"></span></a>
+                <a href="https://github.com/ciricc/easyvk" class="soc-link"><span class="fa fa-github"></span></a>
+                <a href="https://github.com/ciricc/easyvk" class="soc-link" style="font-size: 12px;"><b>npm</b></a>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  	<div id="container">
+      <div id="sidebar">
+        <div id="sidebar-content">
+          {% nav %}
+        </div>
+      </div><!--
+    --><div id="content">
+        <div id="main-content" style="max-width: 910px;">
+          {% content %}
+        </div>
+      </div>
+    </div>
+
+    {% scripts %}
+
+  </body>
+</html>
+
         </div>
       </div>
     </div>

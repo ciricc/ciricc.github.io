@@ -1,3 +1,13 @@
+select {
+	background-color: #fff;
+	color: rgb(68,68,68);
+	font-size: 14px;
+	border-radius: 3px;
+	box-shadow: 0px 0px 5px rgba(0,0,0,.1);
+	border: none;
+	padding: 10px 5px 10px 5px;
+}
+
 body, html {
 	padding: 0;
 	margin: 0;
@@ -136,10 +146,14 @@ section.body-develop {
 }
 
 .nav li.active {
-	background-color: #F8F8F8;
+	background-color: #fff;
 	padding-top: 25px;
 	padding-bottom: 25px;
 	border-radius: 3px;
+	border-bottom: solid 1px #f0f0f0;
+	border-top: solid 1px #f0f0f0;
+	border-left: solid 1px #f0f0f0;
+	margin-left: 25px;
 }
 
 .nav > li {
@@ -306,7 +320,11 @@ img {
 
 
 @media (max-width: 998px) {
-	
+	select {
+		box-shadow: 0px 0px 3px rgba(0,0,0,.05);
+		border: none;
+		padding: 5px 5px 5px 5px;
+	}
 	.opener {
 		display: inline-block;
 	}	
@@ -363,20 +381,6 @@ img {
 	}
 }
 
-@media (max-width: 498px) {
-	h1, h2 {
-		font-size: 1em;
-	}
-
-	.name-page {
-		position: absolute;
-	}
-
-	section.header {
-		padding-top: 10px;
-	}
-}
-
 @media (min-width: 720px) {
 	::-webkit-scrollbar {
 	    width: 0.4em;
@@ -408,7 +412,7 @@ html {
   body {
     margin: 0;
     height: 100%;
-    background-color: #fff;
+    background-color: rgb(252,252,252);
   }
 
   #container {
@@ -472,7 +476,7 @@ html {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0cb1f2+0,89d4f4+100 */
     background: #fff; /* Old browsers */
     color: #222;
-    border-bottom: solid 1px #f0f0f0;
+    box-shadow: 0px 0px 5px rgba(0,0,0,.1);
     z-index: 5;
     margin-bottom: 0px;
     height: 100%;
@@ -525,7 +529,13 @@ html {
     line-height: 38px;
     text-align: center;
     display: inline-block;
-    background-color: #000;
+    background-color: #FCFDFF !important;
+    color: #333 !important;
+    border: solid 1px #f0f0f0;
+    box-shadow: 0px 0px 5px rgba(0,0,0,.1);
+  }
+  .soc-link:hover {
+  	color: black !important;
   }
 
   @media (max-width: 998px) {
@@ -541,7 +551,7 @@ html {
       padding-left: 0px;
     }
 
-    .soc, .logo {
+    .soc, .logo{
       display: none;
     }
 
@@ -556,3 +566,71 @@ html {
     }
 
   }
+
+.header h2 {
+	display: inline-block;margin:0;margin-left: 25px;line-height: 80px;
+}
+
+.header .version-wrap {
+	margin-left: 25px;display: inline-block;position: absolute;left: 0;top:25%;margin-right: 15px;
+}
+
+@media (max-width: 498px) {
+	h1, h2 {
+		font-size: 1.5em;
+		word-wrap: break-word;
+	}	
+
+	.selectric .label, .selectric .button{
+		line-height: 28px;
+		height: 28px;
+		margin-right: 0px;
+	}
+
+	.selectric {
+		box-shadow: 0px 0px 3px rgba(0,0,0,.05);
+	}
+
+	.selectric .label {
+		margin-right: 30px;
+	}
+
+	.selectric .button {
+		width: 28px;
+		margin-left: 5px;
+	}
+	
+	.header .version-wrap {
+		margin-top: 6px;
+		margin-right: 0px;
+		margin-left: 5px;
+	}
+
+	.opener {
+		font-size: 28px;
+		color: rgb(34,34,34);
+	}
+
+	.header h2 {
+		font-size: 26px;
+		font-weight: normal;
+		margin: 0;
+		text-transform: uppercase;
+	}
+
+	.name-page {
+		position: absolute;
+	}
+
+	section.header {
+		padding-top: 10px;
+	}
+
+	.no-padding-mobile {
+		padding: 0 !important;
+	}
+
+	.no-mobile {
+		display: none;
+	}
+}
