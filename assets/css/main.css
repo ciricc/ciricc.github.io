@@ -152,8 +152,12 @@ section.body-develop {
 	border-radius: 3px;
 	border-bottom: solid 1px #f0f0f0;
 	border-top: solid 1px #f0f0f0;
-	border-left: solid 1px #f0f0f0;
-	margin-left: 25px;
+	border-right: solid 1px #f0f0f0;
+}
+
+.nav > li.active {
+	max-width: 90%;
+	min-width: 90%;
 }
 
 .nav > li {
