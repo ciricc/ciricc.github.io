@@ -88,11 +88,13 @@
 		
 		nav.setActive(loc[loc.length - 1] || 'index.html')
 		nav.init();
+		var page = loc[loc.length - 1];
+		var v = parseFloat(loc[loc.length - 2]);
 
-		if (loc[loc.length - 1] == "") {
-			var v = parseFloat(loc[loc.length - 2]);
-			document.location = ((v) ? (v + "/") : "") + "index.html";
+		if (page == "") {
+			document.location = ((v) ? ("/" + v + "/") : "") + "index.html";
 		}
 		
+
 	});
 })();
