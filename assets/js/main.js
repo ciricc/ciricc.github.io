@@ -1,9 +1,9 @@
 !(function(){
-	'use strict'
+	"use strict";
+
 	var $ = jQuery;
 
 	function Nav () {
-
 		this.DOM = $('.nav');
 		this.controller = $('.opener')
 		this.opened = false;
@@ -14,32 +14,23 @@
 
 	//This method set active link on <li> in navigation
 	Nav.prototype.setActive = function (link) {
-		
 
-
-		var active = this.DOM
-		.find('li')
-		.removeClass('active')
-		.find('a[href="' + link + '"]')
-		.parent('li');
+		var active = this.DOM.find('li')
+			.removeClass('active')
+			.find('a[href="' + link + '"]')
+			.parent('li');
 
 		active.addClass('active');
 
-		console.log(active.offset())
-
-		console.log($('.docs-nav-wrap'));
-
 		$('#sidebar,.docs-nav-wrap').animate({
 			scrollTop: active.offset().top - 170
-		}, 'fast')
+		}, 'fast');
 
 		return this;
 	}
 
 	Nav.prototype.init = function () {
-
 		var self = this;
-
 
 		self.controller.on('click', _initToggleNav)
 		self.opBlock.on('click', _initToggleNav)
@@ -48,38 +39,30 @@
 		function _initToggleNav (_event) {
 			(self.opened) ? self.close() : self.open();
 		}
-
-
 	}
 
 	Nav.prototype.close = function () {
 		var self = this;
 
-		self.docs.removeClass('active')
-		
-		self.opBlock.removeClass('visible')
+		self.docs.removeClass('active');
+		self.opBlock.removeClass('visible');
 
 		setTimeout(function() {
 			
-			self.docs.removeClass('visible')
+			self.docs.removeClass('visible');
 			self.opened = false;
 
-		}, 300)
+		}, 300);
 
 	}
 
 	Nav.prototype.open = function () {
 		
-		this.docs.addClass('active')
-		this.docs.addClass('visible')
-
-		
-		this.opBlock.addClass('visible')
+		this.docs.addClass('active');
+		this.docs.addClass('visible');
+		this.opBlock.addClass('visible');
 		this.opened = true;
 	}
-
-
-
 
 	$(document).ready(function () {
 		
@@ -102,14 +85,14 @@
 		});
 
 		var nav = new Nav();
-
-		console.log(loc)
-
+		
 		nav.setActive(loc[loc.length - 1] || 'index.html')
-		nav.init()
+		nav.init();
 
-
+		if (loc[loc.length - 1] == "") {
+			var v = parseFloat(loc[loc.length - 2]);
+			document.location = ((v) ? (v + "/") : "") + "index.html";
+		}
+		
 	});
-
-
 })();
