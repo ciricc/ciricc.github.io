@@ -92,9 +92,9 @@
 		var v = parseFloat(loc[loc.length - 2]);
 
 		if (page == "") {
-			document.location = ((v) ? ("/" + v + "/") : "") + "index.html";
+			document.location = ((v) ? ("/" + loc[loc.length - 2] + "/") : "") + "index.html";
 		}
-		
+
 
 	});
 })();
