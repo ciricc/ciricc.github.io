@@ -3,6 +3,27 @@
 
 	var $ = jQuery;
 
+	$.fn.animateRotate = function(angle, duration, easing, complete) {
+	  return this.each(function() {
+	    var $elem = $(this);
+
+	    $({deg: 0}).animate({deg: angle}, {
+	      duration: duration,
+	      easing: easing,
+	      step: function(now) {
+	        $elem.css({
+	           transform: 'rotate(' + now + 'deg)'
+	         });
+	      },
+	      complete: complete || $.noop
+	    });
+	  });
+	};
+
+	function rand(min, max) {
+	  return Math.floor(Math.random() * (max - min)) + min;
+	}
+
 	function Nav () {
 		this.DOM = $('.nav');
 		this.controller = $('.opener')
@@ -93,6 +114,35 @@
 
 		if (page == "") {
 			document.location = ((v) ? ("/" + loc[loc.length - 2] + "/") : "") + "index.html";
+		}
+
+		var dots = 0;
+		if (v == 2 || !v) {
+			var logo = $('.logo img');
+
+			function rotateLogo (){
+				logo.animate({
+					width: 20
+				});
+				logo.animateRotate(360, 1000);
+				setTimeout(function() {
+					logo.animate({
+						width: 45
+					});
+				}, 1000);
+			}
+
+			setInterval(rotateLogo, 16000);
+			setTimeout(rotateLogo, 1000);
+
+			var phInterval = setInterval(function(){
+				dots += 1;
+				
+				$('h1').html('Документация обновляется' + new Array(dots).fill(".").join(""));
+
+				if (dots >=4) dots = 0;
+
+			}, 500);
 		}
 
 
