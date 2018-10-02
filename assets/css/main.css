@@ -31,6 +31,16 @@ a:hover {
 	color: #FF6B0F;
 }
 
+a.dark-link {
+	color: black;
+	text-decoration: underline !important;
+}
+
+a.dark-link:hover {
+	text-decoration: none !important;
+	color: #333 !important;
+}
+
 
 .header a:hover {
 	color: #fff;

@@ -3,7 +3,12 @@
   <head>
   	
   	{% head %}
+  
+    <script>
+      
+      window.root = "{root}";
 
+    </script>
   </head>
   <body>
     <div class="opacity-block"></div>
@@ -22,17 +27,18 @@
               <div class="col-md-6 col-sm-6 col-xs-4" style="height: 80px;">
                 <div class="version-wrap">
                   <select name="version" id="version">
-                    <a href="v1.5.1s/"><option value="1.5.1">v1.5.1</option></a>
-                    <a href="v2.0.0/"><option value="2.0.0" selected="selected">v2.0.0</option></a>
+                    <a href="{root}1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
+                    <a href="{root}2.0.0/index.html"><option value="2.0.0" selected="selected">2.0.0</option></a>
                   </select>
                 </div>
               </div>
             </div>
             <div class="col-md-7 soc no-mobile" style="height: 80px;">
               <div class="flex-wrap">
-                <a href="https://vk.com/easyvk_npm" class="soc-link"><span class="fa fa-vk"></span></a>
-                <a href="https://github.com/ciricc/easyvk" class="soc-link"><span class="fa fa-github"></span></a>
-                <a href="https://github.com/ciricc/easyvk" class="soc-link" style="font-size: 12px;"><b>npm</b></a>
+                <a href="https://vk.com/npm_easyvk" target="_blank" class="soc-link"><span class="fa fa-vk"></span></a>
+                <a href="https://github.com/ciricc/easyvk" target="_blank" class="soc-link"><span class="fa fa-github"></span></a>
+                <a href="https://npmjs.com/package/easyvk" target="_blank" class="soc-link" style="font-size: 12px;"><b>npm</b></a>
+                <a href="https://vk.com/kinock" target="_blank" class="dark-link" style="margin-left: 15px;text-decoration: none !important;">Связаться</a>
               </div>
             </div>
           </div>
@@ -48,8 +54,6 @@
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
           {% content %}
-
-          <div id="disqus_thread"></div>
         </div>
       </div>
     </div>
