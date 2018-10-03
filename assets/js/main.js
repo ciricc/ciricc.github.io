@@ -117,6 +117,17 @@
 		}
 
 		var dots = 0;
+		if (v == 2 || !v && !window.pageGot) {
+			var phInterval = setInterval(function(){
+				dots += 1;
+				
+				$('h1').html('Документация обновляется' + new Array(dots).fill(".").join(""));
+
+				if (dots >=4) dots = 0;
+
+			}, 500);
+		}
+
 		if (v == 2 || !v) {
 			var logo = $('.logo img');
 
@@ -134,16 +145,7 @@
 
 			setInterval(rotateLogo, 16000);
 			setTimeout(rotateLogo, 1000);
-
-			var phInterval = setInterval(function(){
-				dots += 1;
-				
-				$('h1').html('Документация обновляется' + new Array(dots).fill(".").join(""));
-
-				if (dots >=4) dots = 0;
-
-			}, 500);
-		}
+		}	
 
 
 	});
