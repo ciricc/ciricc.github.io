@@ -197,6 +197,11 @@
   cursor: pointer;
 }
 
+.selectric-items li:last-child {
+  color: #00C397 !important;
+  font-weight: bold;
+}
+
 .selectric-items li.selected {
   background: #E0E0E0;
   color: #444;

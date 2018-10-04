@@ -19,6 +19,43 @@ body, html {
 	height: 100%;
 }
 
+.default {
+	color: #aaa;
+}
+
+.date-edit {
+	font-size: 12px;
+	color: #aaa;
+	font-weight: normal;
+	display: block;
+	margin-left: 15px;
+}
+
+
+.spoiler {
+	display: block;
+	background-color: #FBFCFE;
+	border-radius: 3px;
+	border: solid 1px #f0f0f0;
+	margin-bottom: 25px;
+}
+
+.spoiler .spoiler-name {
+	padding: 15px 15px;
+	color: #0071A6;
+	cursor: pointer;
+}
+
+.spoiler .spoiler-content {
+	display: none;
+}
+
+code.h {
+	background: #FBFCFE;
+	border-radius: 3px;
+	border: solid 1px #f0f0f0;
+	padding: 2px 5px;
+}
 
 
 .no-padding {
@@ -660,10 +697,35 @@ html {
 }
 
 @media (max-width: 498px) {
+
 	h1, h2 {
 		font-size: 1.8em !important;
 		word-wrap: break-word;
 	}	
+		
+	h2 {
+		font-size: 1.5em !important;
+	}
+
+	.big-quote p {
+		padding: 10px 15px;
+	}
+
+	.big-quote p .ic {
+		display: block;
+		width: 10%;
+		height: 100%;
+		float: left;
+		text-align: center;
+	}
+
+	.big-quote {
+		width: 100%;
+	}
+
+	#content.v2 {
+		font-size: 16px;
+	}
 
 	.selectric .label, .selectric .button{
 		line-height: 28px;
@@ -700,6 +762,16 @@ html {
 		font-weight: normal;
 		margin: 0;
 		text-transform: uppercase;
+		margin-right: 40px;
+	}
+
+	.header {
+		text-align: right;
+	}
+
+	.opener {
+		float: left;
+		margin-top: 10px;
 	}
 
 	.name-page {

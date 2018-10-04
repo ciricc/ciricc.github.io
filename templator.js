@@ -20,6 +20,63 @@ const versions = [
 const templatesDir = _ + '/templates/';
 const pagesDir = _ + '/pages/';
 
+function Zeros (d = 0) {
+	if (Number(d) < 10) 
+		d = "0" + d;
+
+	return d;
+}
+
+function getEditedOrNot (firstVersion, lastVersion) {
+	
+	let d = new Date();
+
+	if (firstVersion.replace(/ <span class="date-edit">(.*)<\/span>/g, "") != lastVersion && firstVersion.match(/date-edit/g)) {
+		//it was edited, need update date-edit time
+		console.log("Was edited, need update date!");
+
+		let date = Zeros(d.getDate());
+		let month = Zeros(d.getMonth() + 1);
+		let year = d.getFullYear();
+
+		let hours = Zeros(d.getHours());
+		let minutes = Zeros(d.getMinutes());
+
+			let dateEdit = date + "." + month + "." + year + " в " + hours + ":" + minutes;
+
+		let dateEditedTemplate = '<span class="date-edit">Редактировано: <span class="det">'+dateEdit+'</span></span>';
+			lastVersion = lastVersion.replace(/<h1>(.*?)<\/h1>/g, `<h1>$1 ${dateEditedTemplate}</h1>`);
+		console.log(dateEdit);
+
+	} else {
+		
+		// let dateEdit = d;
+		try {
+			let date = Zeros(d.getDate());
+			let month = Zeros(d.getMonth() + 1);
+			let year = d.getFullYear();
+
+			let hours = Zeros(d.getHours());
+			let minutes = Zeros(d.getMinutes());
+
+			let dateEdit = date + "." + month + "." + year + " в " + hours + ":" + minutes;
+
+			if (firstVersion.match(/date-edit/)) {
+				dateEdit = firstVersion.match(/<span class="det">(.*?)<\/span>/g)[0]
+				dateEdit = dateEdit.replace('<span class="det">', "").replace('</span>', '');
+			}
+
+			let dateEditedTemplate = '<span class="date-edit">Редактировано: <span class="det">'+dateEdit+'</span></span>';
+			lastVersion = lastVersion.replace(/<h1>(.*?)<\/h1>/g, `<h1>$1 ${dateEditedTemplate}</h1>`);
+		} catch (e) {
+			console.log(e);
+		}
+	}
+
+	console.log(lastVersion.length);
+	return lastVersion;
+}
+
 function Update (file = "", version = "2.0.0", isLastVersion = false) {
 
 	let htmlTemplate = fs.readFileSync(pagesDir + version + "/template.html").toString();
@@ -32,11 +89,14 @@ function Update (file = "", version = "2.0.0", isLastVersion = false) {
 		fs.mkdirSync(dirname);
 	}
 
+	let fTemplate = fs.readFileSync(dirname + file).toString();
+	htmlV = getEditedOrNot(fTemplate, htmlV);
 	fs.writeFileSync(dirname + file, htmlV);
 
 	if (isLastVersion) {
-		console.log(isLastVersion, version);
 		html = TemplateIt(html, htmlTemplate, version, true);
+		let fTemplate = fs.readFileSync(_ + "/" + file).toString();
+		html = getEditedOrNot(fTemplate, html);
 		fs.writeFileSync(_ + "/" + file, html);
 	}
 }
@@ -65,6 +125,24 @@ function TemplateIt (htmlContent = "", template = "", version = "2.0.0", rootabl
 
 	template = template.replace(regexp, htmlContent);
 	template = scanRoot(template);
+
+	let types = [
+		["string", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type"],
+		["number", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type"],
+		["function", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function", "Function"],
+		["boolean", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type", "boolean"],
+		["Promise", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise", "Promise"]
+	];
+
+	for (let i = 0; i < types.length; i++) {
+		let type = types[i][0];
+		let linkType = types[i][1];
+		let typeNormal = types[i][2];
+		let typeRegExp = new RegExp(`<a href="#"\>${type}<\/a>`, "gi");
+		template =  template.replace(typeRegExp, `<a href="${linkType}" target="_blank"/>&lt;${(typeNormal) ? typeNormal : type}&gt;</a>`);
+	}
+	
+	template = template.replace(/class\=\"default\"/g, "class='default' title='По умолчанию'");
 
 	return template;
 } 
