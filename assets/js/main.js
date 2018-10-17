@@ -92,14 +92,14 @@
 			if ($(this).data('spoiled')) {
 				$(this).parent().find('.spoiler-content').stop(true,false).slideUp('fast');
 				$(this).data('spoiled', false);
-				$('#content')[0].scroll(0, $(this).data('current-pos'));
+				// $('#content')[0].scroll(0, $(this).data('current-pos'));
 			} else {
 				$(this).data('current-pos', $('#content').scrollTop());
 
 				var spoiler = $(this).parent();
 				var spolilerContent = spoiler.find('.spoiler-content');
 				spolilerContent.stop(true,false).slideDown('fast', function (){
-					$('#content')[0].scroll(0, $('#content').scrollTop() + spoiler.position().top - 25);
+					// $('#content')[0].scroll(0, $('#content').scrollTop() + spoiler.position().top - 25);
 				});
 
 				$(this).data('spoiled', true);
