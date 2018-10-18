@@ -75,10 +75,10 @@
                 <h2>EasyVK</h2>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-4" style="height: 80px;">
-                <div class="version-wrap" style="width: 100%;text-align: center;">
+                <div class="version-wrap" style="text-align: center;">
                   <select name="version" id="version">
-                    <a href="../1.5.1/index.html"><option value="1.5.1">v. 1.5.1</option></a>
-                    <a href="../2.0.0/index.html"><option value="2.0.0" selected="selected">v. 2.0.0</option></a>
+                    <a href="../1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
+                    <a href="../2.0.0/index.html"><option value="2.0.0" selected="selected">2.0.0</option></a>
                   </select>
                 </div>
               </div>
@@ -324,6 +324,14 @@
 			</ul>
 		</li>
 		<li>
+			<a href="uploader.html" class="title bigger">VKResponse</a>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">response</span>.<span class="span method">getFullResponse</span>()</a>
+				</li>
+			</ul>
+		</li>
+		<!-- <li>
 			<a href="uploader.html" class="title bigger">Загрузка файлов</a>
 			<ul>
 				<li>
@@ -331,6 +339,17 @@
 				</li>
 				<li>
 					<a href="uploader.html#uploader_uploadFile"><span class="object">uploader</span>.<span class="span method">uploadFile</span>()</a>
+				</li>
+			</ul>
+		</li> -->
+		<li>
+			<a href="uploader.html" class="title bigger">Классификация ошибок</a>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">vk</span>.<span class="span method">EasyVKError</span></a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_uploadFile"><span class="object">vk</span>.<span class="span method">VKResponseError</span></a>
 				</li>
 			</ul>
 		</li>
@@ -352,68 +371,9 @@
   <p>
     Я очень рад, что обновление наконец вышло! И думаю, оно вам понравится.
   </p>
-  <div class="spoiler">
-    <div class="spoiler-name">
-      Узнать подробнее :)
-    </div>
-    <div class="spoiler-content">
-      <div style="color: #333;">
-        <article class="markdown-body entry-content" itemprop="text">
-<h2>v2.0</h2>
-<h3>Добавленные методы (21):</h3>
-<ul>
-<li>easyvk.is(foor, obj2) - проверка объектов</li>
-<li>easyvk.http.loginByForm() - исправлена проблема авторизации без пароля, не было проверки, что данные верны</li>
-<li>httpClient.audio.get() - получить аудиозаписи группы или пользователя</li>
-<li>httpClient.audio.getById() - получить несколько аудиозаписей по их ID,</li>
-<li>httpClient.audio.search() - получить аудиозаписи по поисковому запросу</li>
-<li>httpClient.audio.getCount() - получить количество аудиозаписей группы/юзера</li>
-<li>httpClient.audio.getLyrics() - получить слова песни (старый способ)</li>
-<li>httpClient.audio.getUploadServer() - получить URL Для загрузки аудио</li>
-<li>httpClient.audio.upload() - загрузить аудиозапись</li>
-<li>httpClient.audio.getURL() - получить разобранный URL аудиозаписи, Mp3</li>
-<li>httpClient.audio.save() - сохранить загруженную аудиозапись, чтобы дальше ею манипулировать</li>
-<li>httpClient.audio.add() - добавить аудиозапись</li>
-<li>httpClient.audio.delete() - удалить аудиозапись с возможностью восстановить</li>
-<li>httpClient.audio.reorder() - восстановить удаленную запись</li>
-<li>httpClient.audio.edit() - редактировать аудиозапись</li>
-<li>httpClient.audio.reorder() - переместить аудиозапись на другую позицию</li>
-</ul>
-<h4>—- ДЛЯ ПРОДВИНУТЫХ —</h4>
-<ul>
-<li>httpClient.audio._getAudioAsObject() - получение из массива аудиозаписи объекта аудиозаписи</li>
-<li>httpClient.audio._parseResponse() - спарсить ответ сервера POST запроса вк, пока что не используется, но будет переписано на это</li>
-<li>httpClient.audio._getAdi() - получение хешей для работы с аудио</li>
-<li>httpClietn.audio._getNormalAudiosWithURL() - более массивный метод для получения сразу нескольких аудио из массива в объект</li>
-<li>httpClient.audio._request() - сделать POST запрос на адрес vk.com/al_audio.php</li>
-<li>httpClietn.audio._parseJSON() - спарсить JSON из ответа сервера, скоро будет удален ввиду переписи под метод parseResponse</li>
-</ul>
-<h3>Исправленные баги:</h3>
-<ul>
-<li>Исправлена ошибка авторизации по HTTP сессии без пароля и логина</li>
-<li>Исправлена ошибка объекта VKResponse, бывало, что он был пустым</li>
-<li>Исправлены ошибки метода parseJSON, в некоторых местах он не принимал основных аргументов</li>
-<li>Исправлена ошибка парсинга JSON из ответа сервера, когда тот в конце</li>
-<li>Исправлена ошибка пустых src аудиозаписей</li>
-<li>Исправлена ошибка загрузки аудиозаписи</li>
-<li>Исправлена ошибка несуществующего метода error() в HTTP клиенте</li>
-</ul>
-<h3>Добавленные объекты и свойства:</h3>
-<ul>
-<li>easyvk.http.audio - AudioAPI</li>
-<li>AudioAPI.genres - жанры аудиозаписей</li>
-<li>AudioAPI._authjar - JAR сессия HTTP клиента</li>
-<li>easyvk.classes - названия внутренних классов EasyVK</li>
-<li>AudioItem - объект аудиозаписи</li>
-</ul>
-
-</article>
-      </div>
-    </div>
-  </div>
 </div>
 
-<h1>Начнем <span class="date-edit">Редактировано: <span class="det">17.10.2018 в 22:52</span></span></h1>
+<h1>Начнем <span class="date-edit">Редактировано: <span class="det">18.10.2018 в 19:40</span></span></h1>
 <p>
   Этот сайт - документация библиотеки EasyVK (easy vk) - модуля, который предназначен для работы с API ВКонтакте под платформой Node.JS
 </p>
