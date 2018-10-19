@@ -89,13 +89,28 @@ function Update (file = "", version = "2.0.0", isLastVersion = false) {
 		fs.mkdirSync(dirname);
 	}
 
-	let fTemplate = fs.readFileSync(dirname + file).toString();
+	let fTemplate;
+	try {
+		fTemplate = fs.readFileSync(dirname + file).toString();
+	} catch (e) {
+		fs.writeFileSync(dirname + file, "");
+		fTemplate = "";
+	}
+
 	htmlV = getEditedOrNot(fTemplate, htmlV);
 	fs.writeFileSync(dirname + file, htmlV);
 
 	if (isLastVersion) {
 		html = TemplateIt(html, htmlTemplate, version, true);
-		let fTemplate = fs.readFileSync(_ + "/" + file).toString();
+		let fTemplate;
+		
+		try {
+			fTemplate = fs.readFileSync(_ + "/" + file).toString();
+		} catch (e) {
+			fs.writeFileSync(dirname + file, "");
+			fTemplate = "";
+		}
+
 		html = getEditedOrNot(fTemplate, html);
 		fs.writeFileSync(_ + "/" + file, html);
 	}

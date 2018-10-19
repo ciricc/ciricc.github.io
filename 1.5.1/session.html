@@ -420,7 +420,7 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1>Сессия <span class="date-edit">Редактировано: <span class="det">04.10.2018 в 21:30</span></span></h1>
+          <h1>Сессия <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:31</span></span></h1>
  <p>
    После того, как EasyVK вас авторизует, создается объект сессии - это просто объект, у которого есть свои методы и т.д. И он зависит безусовно, от файла сессии, если вы указали что необходимо сохранять сессию в файл. Вы можете изменить сессию и управлять ею через ее же методы.
  </p>
@@ -439,7 +439,7 @@ vk.session.cache[0] = [/* Photos...*/]
 
 vk.session.save().then(() => {
 
-console.log('Saved!')
+  console.log('Saved!')
 
 })</code></pre>
  </div>
@@ -456,7 +456,7 @@ const sessionPath = path.join(__dirname, '.current-session')
 vk.session.setPath(sessionPath)
 .then(({vk: EasyVK}) => {
 
-console.log(EasyVK.session.path) //__dirname + .current-session
+  console.log(EasyVK.session.path) //__dirname + .current-session
 
 })</code></pre>
   <p>
@@ -476,7 +476,7 @@ console.log(EasyVK.session.path) //__dirname + .current-session
    </p>
    <pre><code class="js">vk.session.data = []
 vk.session.clear(() => {
-console.log(vk.session) // {data: undefined}
+  console.log(vk.session) // {data: undefined}
 })</code></pre> 
     <p>
       Данный метод "удаляет" не только те данные, которые вы добавили, но и те, что были изначально. Таким образом вы можете отчищать файл сессии.

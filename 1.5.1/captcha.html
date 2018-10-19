@@ -420,7 +420,7 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1>Капча <span class="date-edit">Редактировано: <span class="det">04.10.2018 в 21:30</span></span></h1>
+          <h1>Капча <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:27</span></span></h1>
 <p>
  Насущная проблема для программистов, которые пишут что либо под ВК - это капча. В EasyVK нету готовых решений для решения капчи, но есть удобные инструменты для ловли этой ошибки, для дальнейшего решения каким либо удобным способом.
 </p>
@@ -435,19 +435,19 @@
   <pre><code class="js">let captchaHandler
 
 captchaHandler = ({captcha_sid, captcha_img, resolve:solve, vk}) => {
-console.log(`Ohh.... captcha, need solve this captcha (${captcha_img})`)
+  console.log(`Ohh.... captcha, need solve this captcha (${captcha_img})`)
 }
 
 easyvk({
-captchaHandler: captchaHandler    
+  captchaHandler: captchaHandler    
 })</code></pre>
 <p>
   Когда возникает ошибка капчи, EasyVK вызывает эту функцию, передавая в нее такой объект: 
   <pre><code class="js">{
-captcha_sid: ...,
-captcha_img: ...,
-resolve: callbackFunction () ....,
-vk: EasyVK
+  captcha_sid: ...,
+  captcha_img: ...,
+  resolve: callbackFunction () ....,
+  vk: EasyVK
 }</code></pre>
 </p>
 <p>
@@ -457,39 +457,39 @@ vk: EasyVK
 const easyvk = require('easyvk')
 
 const rl = readline.createInterface({
-input: process.stdin,
-output: process.stdout
+  input: process.stdin,
+  output: process.stdout
 });
 
 const captchaHandler = ({captcha_sid, captcha_img, resolve:solve, vk}) => {
 
-rl.question(`Введите капчу для картинки ${captcha_img} `, (key) => {
+  rl.question(`Введите капчу для картинки ${captcha_img} `, (key) => {
 
-//Когда вводится капча в консоль, пробуем решить капчу
-solve(key).then(() => {
+    //Когда вводится капча в консоль, пробуем решить капчу
+    solve(key).then(() => {
 
 
-console.log('Капча решена корректно!')
+      console.log('Капча решена корректно!')
 
-}).catch(({err, reCall: tryNewCall}) => {
+    }).catch(({err, reCall: tryNewCall}) => {
 
-//Иначе капча не решена, стоит попробовать снова
-console.log('Капче не решена!!!\nПробуем занова')
-tryNewCall() //Пробуем снова, занова запускаем наш captchaHandler, по факту...
+      //Иначе капча не решена, стоит попробовать снова
+      console.log('Капче не решена!!!\nПробуем занова')
+      tryNewCall() //Пробуем снова, занова запускаем наш captchaHandler, по факту...
 
-//Не стоит самостоятельно перезапускать функцию captchaHandler, так как в EasyVK
-//для этого имеется функция reCall, которая точно запустит все как нужно
+      //Не стоит самостоятельно перезапускать функцию captchaHandler, так как в EasyVK
+      //для этого имеется функция reCall, которая точно запустит все как нужно
 
-})
+    })
 
-})
+  })
 }
 
 easyvk({
-captchaHandlder: captchaHandler
+  captchaHandlder: captchaHandler
 }).then(vk => {
 
-// пример: vk.call('messages.send', ...)
+  // пример: vk.call('messages.send', ...)
 
 }).catch(console.error)</code></pre>
   <p>

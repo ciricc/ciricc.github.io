@@ -17,7 +17,7 @@ vk.session.cache[0] = [/* Photos...*/]
 
 vk.session.save().then(() => {
 
-console.log('Saved!')
+  console.log('Saved!')
 
 })</code></pre>
  </div>
@@ -34,7 +34,7 @@ const sessionPath = path.join(__dirname, '.current-session')
 vk.session.setPath(sessionPath)
 .then(({vk: EasyVK}) => {
 
-console.log(EasyVK.session.path) //__dirname + .current-session
+  console.log(EasyVK.session.path) //__dirname + .current-session
 
 })</code></pre>
   <p>
@@ -54,7 +54,7 @@ console.log(EasyVK.session.path) //__dirname + .current-session
    </p>
    <pre><code class="js">vk.session.data = []
 vk.session.clear(() => {
-console.log(vk.session) // {data: undefined}
+  console.log(vk.session) // {data: undefined}
 })</code></pre> 
     <p>
       Данный метод "удаляет" не только те данные, которые вы добавили, но и те, что были изначально. Таким образом вы можете отчищать файл сессии.

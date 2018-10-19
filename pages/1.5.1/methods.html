@@ -13,8 +13,8 @@
    В функцию <code class="code">resolve</code> метод передает объект со следующими свойтсвами:
  </p>
    <pre><code class="js">{
-vk: EasyVK,
-vkr: VKResponseJSON
+  vk: EasyVK,
+  vkr: VKResponseJSON
 }</code></pre>
 
 <table>
@@ -49,11 +49,11 @@ vkr: VKResponseJSON
 <pre><code class="js">const me = 356607530
 
 vk.call('messages.send', {
-message: 'Hi!',
-user_id: me
+  message: 'Hi!',
+  user_id: me
 }).then(({vkr}) => {
 
-console.log(vkr)
+  console.log(vkr)
 
 }).catch(console.error)</code></pre>
  </p>
@@ -61,10 +61,10 @@ console.log(vkr)
   Или пример с отправкой поста на стену   
  </p>
 <pre><code class="js">vk.call('wall.post', {
-message: 'OOOHH BIIIIIIIG POOOOST TEXXXT'
+  message: 'OOOHH BIIIIIIIG POOOOST TEXXXT'
 }).then(({vkr}) => {
 
-console.log(vkr)
+  console.log(vkr)
 
 }, 'post').catch(console.error)</code></pre>
 </div>

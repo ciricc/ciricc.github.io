@@ -420,7 +420,7 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1>Методы <span class="date-edit">Редактировано: <span class="det">04.10.2018 в 21:30</span></span></h1>
+          <h1>Методы <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:31</span></span></h1>
 <p>
  Когда вы уже авторизовались, вам возвращается в функцию <code class="code">resolve</code> объект EasyVK, в котором есть сессия для авторизованных запросов. Теперь все запросы которые вы будете делать, будут происходить от того аккаунта/группы, который вы выбрали и подключили. Ниже описаны некоторые методы объекта EasyVK, которые стоит знать, чтобы с ним работать. <br>
  Методы EasyVK - это не вся его состовляющая, есть еще куча свойств, в которых хранятся дополнительные модули-объекты для работы с определенными платформами ВКонтакте API.
@@ -435,8 +435,8 @@
    В функцию <code class="code">resolve</code> метод передает объект со следующими свойтсвами:
  </p>
    <pre><code class="js">{
-vk: EasyVK,
-vkr: VKResponseJSON
+  vk: EasyVK,
+  vkr: VKResponseJSON
 }</code></pre>
 
 <table>
@@ -471,11 +471,11 @@ vkr: VKResponseJSON
 <pre><code class="js">const me = 356607530
 
 vk.call('messages.send', {
-message: 'Hi!',
-user_id: me
+  message: 'Hi!',
+  user_id: me
 }).then(({vkr}) => {
 
-console.log(vkr)
+  console.log(vkr)
 
 }).catch(console.error)</code></pre>
  </p>
@@ -483,10 +483,10 @@ console.log(vkr)
   Или пример с отправкой поста на стену   
  </p>
 <pre><code class="js">vk.call('wall.post', {
-message: 'OOOHH BIIIIIIIG POOOOST TEXXXT'
+  message: 'OOOHH BIIIIIIIG POOOOST TEXXXT'
 }).then(({vkr}) => {
 
-console.log(vkr)
+  console.log(vkr)
 
 }, 'post').catch(console.error)</code></pre>
 </div>

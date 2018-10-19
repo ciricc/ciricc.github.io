@@ -420,7 +420,7 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1>EasyVK <span class="date-edit">Редактировано: <span class="det">04.10.2018 в 21:30</span></span></h1>
+          <h1>EasyVK <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:28</span></span></h1>
 <p>
   В этом разделе подробно описана авторизация, а также история создания EasyVK
 </p>
@@ -438,7 +438,7 @@
   <pre><code class="js">const easyvk = require('easyvk')
 
 easyvk({
-access_token: '{ВАШ_ТОКЕН}'
+  access_token: '{ВАШ_ТОКЕН}'
 }).then(vk => {
 
 }).catch(console.error)</code> <span class="path">~/Project/index.js</span></pre>
@@ -458,13 +458,13 @@ const easyvk = require('easyvk')
 
 //Сессия EasyVK, настройки
 const sessionParams = {
-access_token: 'token',
-api_v: '5.73' 
+  access_token: 'token',
+  api_v: '5.73' 
 }
 
 //Функция, в которую передается объект EasyVK
 const vkInit = (vk) => {
-// пример, vk.call()
+  // пример, vk.call()
 }
 
 easyvk(sessionParams)
@@ -489,9 +489,9 @@ easyvk(sessionParams)
   Версия ВКонтакте API, которую вы хотите использовать для всех запросов.
   <br> Не рекомендую менять этот параметр ниже версии 5, так как сама библиотека писалась именно под нее, <br> в версии 4 JSON ответы могут отличаться от версии 5.
   <pre><code class="js">easyvk({
-api_v: 5.73,
-//Или
-api_v: '5.73'    
+  api_v: 5.73,
+  // Или
+  api_v: '5.73'    
 })</code> <span class="path">~/Project/index.js</span> </pre>
 </td>
 <td>5.73</td>
@@ -503,7 +503,7 @@ api_v: '5.73'
   Библиотека самостоятельно определит какой именно это токен, <br>
   если он будет не правильным, выведется ошибка с ответом сервера ВКонтатке. <br>
   <pre><code class="js">easyvk({
-access_token: 'ac56jklopas45dnbmwaahjklqfs671wd....'
+  access_token: 'ac56jklopas45dnbmwaahjklqfs671wd....'
 })</code> <span class="path">~/Project/index.js</span></pre>
 </td>
 <td>-</td>
@@ -518,12 +518,12 @@ access_token: 'ac56jklopas45dnbmwaahjklqfs671wd....'
 <td>Ваш пароль для аккаунта, используется в связке с параметром <code class="code">username</code>
 
 <pre><code class="js">easyvk({
-username: 89158888888,
-password: 'qwerty', //Пример для телефона
+  username: 89158888888,
+  password: 'qwerty', //Пример для телефона
 
-//Или
-username: 'example@mail.ru',
-password: 12345678,
+  // Или
+  username: 'example@mail.ru',
+  password: 12345678,
 })
 
 </code> <span class="path">~/Project/index.js</span></pre>
@@ -538,16 +538,16 @@ password: 12345678,
 const sessionPath = path.join(__dirname, '.session-vk')
 
 easyvk({
-session_file: sessionPath
+  session_file: sessionPath
 })</code> <span class="path">~/Project/index.js</span></pre>
 <br>
   Тем временем в самом файле
   <pre><code class="json">{
-"access_token": "68837af82bc....",
-"group_id": 5,
-"group_name": "Бот Программист",
-"group_screen": "bot_prog",
-"user_id": false
+  "access_token": "68837af82bc....",
+  "group_id": 5,
+  "group_name": "Бот Программист",
+  "group_screen": "bot_prog",
+  "user_id": false
 }</code> <span class="path">~/Project/.session-vk</span></pre>
 </td>
 <td>~/Project/ <br> node_modules/ <br> easyvk/lib/ <br> .vksession</td>

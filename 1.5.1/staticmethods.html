@@ -420,7 +420,7 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1>Статические методы <span class="date-edit">Редактировано: <span class="det">04.10.2018 в 21:30</span></span></h1>
+          <h1>Статические методы <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:33</span></span></h1>
  <p>
   Статические методы - это такие методы, которые не требуют инициализации объекта. То есть в нашем случае, эти методы не требуют авторизации. В большинстве случае библиотеки EasyVK статические методы - вспомогательные методы для решения каких-либо задач
  </p>
@@ -438,9 +438,9 @@ easyvk.static.call() //Пример</code></pre>
     Если вы хотите сделать запрос, который не требует авторизации, или, вам просто не хочется инициализировать объект EasyVK, а просто проверить, как все работает, то можете использовать этот метод. На пример: вам захочется обратиться к методу <a href="https://vk.com/dev/users.get" target="_blank">users.get</a>, вы можете это сделать так:
   </p>
   <pre><code class="js">easyvk.static.call('users.get', {
-user_ids: [1]
+  user_ids: [1]
 }).then((vkr) => {
-console.log(vkr)
+  console.log(vkr)
 }).catch(console.error)</code></pre>
 <p>
 Все параметры повторяются из метода <a href="methods.html#vk_call">vk.call()</a>
@@ -461,22 +461,22 @@ const urlApi = 'https://api.vk.com/method/'
 const methodName = 'messages.send'
 const p = {
 v: '5.73',
-user_id: 356607530,
-access_token: 'ваш_токен',
-message: 'Hi!'
+  user_id: 356607530,
+  access_token: 'ваш_токен',
+  message: 'Hi!'
 }
 
 const parameters = '?' + easyvk.static.urlencode(p)
 
 request.get(urlApi + methodName + parameters, (err, res) => {
-console.log(res)
+  console.log(res)
 })</code></pre>
 <p>
 Более подробно:
 </p>
 <pre><code class="js">const p = {
-foo: 'bar',
-foo2: 'bar2'
+  foo: 'bar',
+  foo2: 'bar2'
 }
 
 console.log(easyvk.static.urlencode(p)) 
@@ -491,7 +491,7 @@ console.log(easyvk.static.urlencode(p))
   <pre><code class="js">function log (...arguments_) { console.log(...arguments_) }
 
 log(easyvk.static.isObject({
-some: "false"
+  some: "false"
 })) // true
 
 log(easyvk.static.isObject(false)) // false
@@ -510,7 +510,7 @@ log(easyvk.static.isObject(new Object())) // true</code></pre>
 
 let template_ = `${easyvk.version} - is a current version`;
 log(easyvk.static.isString({
-some: "false"
+  some: "false"
 })) // false
 
 log(easyvk.static.isString(false)) // false
@@ -536,17 +536,17 @@ let url = 'http://api.vk.com/method/users.get/?user_ids=1&amp;v=5.73'
 
 request.get(url, (err, res) => {
 
-if (err) throw err
+  if (err) throw err
 
-let json = easyvk.static.checkJSONErrors(res.body, (err) => {
-console.log(err)
-})
+  let json = easyvk.static.checkJSONErrors(res.body, (err) => {
+    console.log(err)
+  })
 
-if (json) {
-console.log(json.response[0].id) // не выведется, произойдет ошибка
-} else {
-console.log("invalid json", res.body)
-}
+  if (json) {
+    console.log(json.response[0].id) // не выведется, произойдет ошибка
+  } else {
+    console.log("invalid json", res.body)
+  }
 
 })</code></pre>
  </div>
@@ -561,21 +561,22 @@ const request = require('request')
 let url = 'http://api.vk.com/method/users.get?user_ids=-1&v=5.73'
 
 request.get(url, (err, res) => {
-if (err) throw err
+  if (err) throw err
 
-if (!res.body) res.body = '{}'
+  if (!res.body) res.body = '{}'
 
-// Вот тут аккуратней. 
-// Мы делаем запрос такой, что точно уверены в нем
-let vkr = JSON.parse(res.body) 
+  // Вот тут аккуратней. 
+  // Мы делаем запрос такой, что точно уверены в нем
+  let vkr = JSON.parse(res.body) 
 
-let vkErr = easyvk.static.checkErrors(vkr)
+  let vkErr = easyvk.static.checkErrors(vkr)
 
-if (vkErr) {
-throw new Error(vkErr) // Выведится ошибка Invalid user id
-} else {
-console.log(vkr.response[0].id)
-}
+  if (vkErr) {
+    throw new Error(vkErr) // Выведится ошибка Invalid user id
+  } else {
+    console.log(vkr.response[0].id)
+  }
+  
 })</code></pre>
  </div>
  <div class="theme">

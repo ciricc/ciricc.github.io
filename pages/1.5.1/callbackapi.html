@@ -13,9 +13,9 @@
 </p>
 <hr>
 <pre><code class="js">easyvk.callbackAPI.listen().then(({connection}) => {
-connection.on('message_new', (msg) => {
-console.log('[Got message]', msg)
-})
+  connection.on('message_new', (msg) => {
+    console.log('[Got message]', msg)
+  })
 })</code></pre>
 <div class="theme">
   <h2 id="callbackAPI_listen">callbackAPI.listen()</h2>
@@ -26,51 +26,51 @@ console.log('[Got message]', msg)
     Так как CallBack API предназначен для прослушивания событий группы, вам следует указать EasyVK какую именно группу вы хотите слушать, указать код подтверждения сервера, чтобы ВКонтакте сделал свой первый запрос подтверждения. То есть, чтобы ВК убедились, что это правда ваш сервер, они отправят запрос подтверждения, и EasyVK вернет код подтверждения, который вы укажете в настройках. Код подтверждени берется из настроек группы, когда вы подключаете CallBAckk API. Процедура подтверждения обычно проводится единожды для одной группы, но EasyVK поддерживает и множественное слушание, когда события могут происходит на разных группах, а сервер, который их слушает - один, как и слушатели событий, они не дублируются и вы всегда можете понять в какой именно группе произошло событие. Об этом ниже.
   </p>
   <pre><code class="js">easyvk.callbackAPI.listen({
-port: process.env.PORT || 8080, //Http port для сервера, для heroku process.env.PORT,
-groups: [
-{
-groupId: 11,
-confirmCode: 'TestConfirmationCode',
-secret: 'GroupPassword'
-},
-{
-/*....*/
-}
-]
+  port: process.env.PORT || 8080, //Http port для сервера, для heroku process.env.PORT,
+  groups: [
+    {
+      groupId: 11,
+      confirmCode: 'TestConfirmationCode',
+      secret: 'GroupPassword'
+    },
+    {
+      /*....*/
+    }
+  ]
 }).then(({ connection }) => {
 
-connection.on('message_new', (msg) => {
+  connection.on('message_new', (msg) => {
 
-console.log(msg.group_id)
+    console.log(msg.group_id)
 
-})
+  })
 
 }).catch(console.error)</code></pre>
   <p>
     Если вам нужно слушать всего лишь одну группу, необязательно для этого создавать массив <code class="code">groups</code>, для этого можно всего лишь передать <code class="code">groupId</code>, <code class="code">confirmCode</code>, <code class="code">secret</code> в верхний уровень объекта параметров таким образом
   </p>
   <pre><code class="js">easyvk.callbackAPI.listen({
-groupId: '1' //ID группы,
-secret: 'SecretCodeForGroupOrJustPassword',
-confirmCode: 'TestConfirmationCode' //Код подтверждения, единожды для одной группы,
-port: process.env.PORT || 8080
+  groupId: '1' //ID группы,
+  secret: 'SecretCodeForGroupOrJustPassword',
+  confirmCode: 'TestConfirmationCode' //Код подтверждения, единожды для одной группы,
+  port: process.env.PORT || 8080
 })</code></pre>
   <p>
     В EasyVK имеется также вариант использования CallBack API после инициализации easyvk таким образом
   </p>
   <pre><code class="js">easyvk(/*параметры авторизации*/).then(vk => {
 
-// Пример
-// vk.callbackAPI.listen(/*..*/).then()
+  // Пример
+  // vk.callbackAPI.listen(/*..*/).then()
 
 }).catch(console.error)</code></pre>
   <p>
     Также если вам необходимо внести изменения в сервере, вы можете использовать переменную <code class="code">app</code>, это Express Application
   </p>
   <pre><code class="js">vk.callbackAPI.listen().then(({ connection, app, vk }) => {
-app.get('/fold', (req, res) => {
-//Пример
-})
+  app.get('/fold', (req, res) => {
+    //Пример
+  })
 })</code></pre>
 </div>
 
@@ -103,7 +103,7 @@ app.get('/fold', (req, res) => {
     </tbody>
   </table>
   <pre><code class="js">function errorHandler ({ postData, description }) {
-console.log(`[${ description }]`, postData)
+  console.log(`[${ description }]`, postData)
 }
 
 connection.on('eventEmpty', errorHandler)

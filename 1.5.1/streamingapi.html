@@ -420,7 +420,7 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1>Streaming API <span class="date-edit">Редактировано: <span class="det">04.10.2018 в 21:30</span></span></h1>
+          <h1>Streaming API <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:35</span></span></h1>
  <p>
    Streaming API - это удобный инструмент, который может помочь вашим рекламщикам, вашей компании или рекламному агентству собирать данные о популярности тех или иных продуктах / проектах и т.д. Проще говоря, вы подключаете Streaming API к своему серверу или куда-хотите, на пример, в программу, как-то вязанную с метрикой вашего продукта, и затем, собираете данные из ВКонтакте. Как только, какой-то польователь поубликует пост / делает комментарий, в котором идет упоминание вашего продута, вы собираете это в данные  затем составляете метрику популярности. Анализ данных, короче говоря.
  </p>
@@ -448,8 +448,8 @@
      Данный метод подключается к серверу по протоколу WebSocket'ов. И возвращает в <code class="code">resolve</code> функцию следующий объект: 
    </p>
 <pre><code class="js">{
-vk: EasyVK,
-connection: StreamingApiConnection
+  vk: EasyVK,
+  connection: StreamingApiConnection
 }</code></pre>
   <p>
     Переменная <code class="code">connection</code> - это переменная подключения, будем называть ее просто переменной <code class="code">stream</code>
@@ -458,22 +458,22 @@ connection: StreamingApiConnection
     Так как Streaming API нуждается в данных вашего приложения, вам необходимо создать Standalone-приложение и получить от туда appId, и secret для подключения. Дальнейшие примеры рассматривают этот вопрос.
   </p>
 <pre><code class="js">easyvk(/*данные авторизации*/).then(vk => {
-return vk.streamingAPI.connect({
-clientId: 'id_вашего_приложения',
-clientSecret: 'секретный_ключ_вашего_приложения'
-})
+  return vk.streamingAPI.connect({
+    clientId: 'id_вашего_приложения',
+    clientSecret: 'секретный_ключ_вашего_приложения'
+  })
 }).then(({connection: stream, vk}) => {
 
-// Дальнейшие действия ... stream.on()
+  // Дальнейшие действия ... stream.on()
 
 }).catch(console.error)</code></pre>
 <p>Также вы можете не инициализировать объект EasyVK, а просто создать подлючение по статическому свойству. </p>
 <pre><code class="js">easyvk.streamingAPI.connect({
-clientId: 'id_вашего_приложения',
-clientSecret: 'секретный_ключ_вашего_приложения'
+  clientId: 'id_вашего_приложения',
+  clientSecret: 'секретный_ключ_вашего_приложения'
 }).then(({connection: stream}) => {
 
-// Дальнейшие действия ... stream.on()
+  // Дальнейшие действия ... stream.on()
 
 }).catch(console.error)</code></pre>
  </div>
@@ -486,13 +486,13 @@ clientSecret: 'секретный_ключ_вашего_приложения'
 
 streamingAPI.connect(/*данные*/).then(({connection: stream}) => {
 
-//При условии, что в стриме не было правил вообще
-return stream.addRule('rule_1', 'кошка -собака')
-.then(() => {
-return stream.getRules() 
-}).then(({vkr: rules}) => {
-console.log(rules)
-})
+  //При условии, что в стриме не было правил вообще
+  return stream.addRule('rule_1', 'кошка -собака')
+  .then(() => {
+    return stream.getRules() 
+  }).then(({vkr: rules}) => {
+    console.log(rules)
+  })
 
 }).catch(console.error)</code></pre>
  </div>
@@ -505,15 +505,15 @@ console.log(rules)
 
 streamingAPI.connect(/*данные*/).then(({connection: stream}) => {
 
-//При условии, что в стриме не было правил вообще
-return stream.addRule('rule_1', 'кошка -собака')
-.then(() => {
-return stream.deleteRule('rule_1') 
-}).then(() => {
-return stream.getRules()
-}).then(rules => {
-console.log(rules) //Ничего
-})
+  //При условии, что в стриме не было правил вообще
+  return stream.addRule('rule_1', 'кошка -собака')
+  .then(() => {
+    return stream.deleteRule('rule_1') 
+  }).then(() => {
+    return stream.getRules()
+  }).then(rules => {
+    console.log(rules) //Ничего
+  })
 
 }).catch(console.error)</code></pre>
  </div>
@@ -524,7 +524,7 @@ console.log(rules) //Ничего
    </p>
    <pre><code class="js">stream.addRule('rule_1', 'кошка -собака')
 .then(() => {
-return stream.deleteAllRules()
+  return stream.deleteAllRules()
 })</code></pre>
  </div>
  <div class="theme">
@@ -540,10 +540,10 @@ return stream.deleteAllRules()
      Данный метод - это что-то вроде менеджера ваших правил, он всегда знает, что вы удалили, а что добавили. Вместо кучи тех методов выше вы можете использовать только один - initRules, потому как, вызывая его, вы передаете в него один объект - список ваших правил. И если он как-то отличается от тех, что уже есть в вашем стриме, эти изменения вступят в силу, и из стрима, на пример, будут удалены те правила, которых нету в этом объекте. Ну или, если вы что-то изменили, этот менеджер сам автоматически применит изменения.
    </p>
    <pre><code class="js">stream.initRules({
-rule_1: 'кошка -собака',
-rule_2: 'попугай'
+  rule_1: 'кошка -собака',
+  rule_2: 'попугай'
 }).then(({log}) => {
-console.log(log.changedRules, log.addedRules, log.deletedRules)
+  console.log(log.changedRules, log.addedRules, log.deletedRules)
 })</code></pre>
  </div>
  <div class="theme">
@@ -552,7 +552,7 @@ console.log(log.changedRules, log.addedRules, log.deletedRules)
      Данный метод добавляет возвращает список правил, которые сейчас есть на стриме.
    </p>
    <pre><code class="js">stream.getRules().then(({rules, vk}) => {
-console.log(rules)
+  console.log(rules)
 })</code></pre>
  </div>
  <div class="theme">

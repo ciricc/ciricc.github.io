@@ -20,17 +20,17 @@
 const LPB = vk.bots.longpoll
 
 LPB.connect({
-forGetLongPollServer: {},
-forLongPollServer: {}
+  forGetLongPollServer: {},
+  forLongPollServer: {}
 }).then(({connection}) => {
 
-connection.debug(({type, data}) => {
-console.log(type, data)
-})
+  connection.debug(({type, data}) => {
+    console.log(type, data)
+  })
 
-connection.on('message_new', (msg) => {
-console.lg(msg)   
-})
+  connection.on('message_new', (msg) => {
+    console.log(msg)   
+  })
 
 })
 
@@ -43,9 +43,9 @@ console.lg(msg)
    </p>
    <pre class="js"><code class="js">const LPB = vk.bots.lonpoll
 LPB.connect().then(({connection}) => {
-connection.on('message_new', (msg) => {
-console.log(msg)
-})  
+  connection.on('message_new', (msg) => {
+    console.log(msg)
+  })  
 })</code></pre>
    <p>
      Системные события вроде <b>error</b> повторяются из <a href="longpollapi.html#events">User LongPoll API</a>

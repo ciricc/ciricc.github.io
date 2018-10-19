@@ -420,7 +420,7 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1><span class="no-weight">[User]</span> LongPoll API <span class="date-edit">Редактировано: <span class="det">04.10.2018 в 21:30</span></span></h1>
+          <h1><span class="no-weight">[User]</span> LongPoll API <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:30</span></span></h1>
 <p>
  LongPoll API позволяет прослушивать события аккаунта, вроде сообщения или, вступления в группу. LongPoll API с недавних пор разделяют на две части - <a href="https://vk.com/dev/using_longpoll" target="_blank">User LongPoll API</a>, и <a href="https://vk.com/dev/bots_longpoll" target="_blank">Bots LongPoll API</a>, в EasyVK поддерживаются оба типа.
 </p>
@@ -430,10 +430,10 @@
 
 <pre><code class="js">easyvk(/*данные для авторизации*/).then(vk => {
 
-vk.longpoll.connect().then(({connection, vk: EasyVK}) => {
-connection.on('message', console.log)
-console.log(EasyVK === vk) //true        
-})
+  vk.longpoll.connect().then(({connection, vk: EasyVK}) => {
+    connection.on('message', console.log)
+    console.log(EasyVK === vk) //true        
+  })
 
 })</code></pre>
 <div class="theme">
@@ -442,25 +442,25 @@ console.log(EasyVK === vk) //true
      Этот метод создает подключение в серверу LongPoll и начинает прослушивать, в штатном режиме этот метод просто подключается к серверу и возвращает в функцию <code class="code">resolve</code> объект такого вида
   </p>
   <pre><code class="js">{
-vk: EasyVK,
-connection: LongPollConnection
+  vk: EasyVK,
+  connection: LongPollConnection
 }
   </code></pre>
   <p>
     В более расширенном использовании этого метода можно натроить его как вам нужно. На пример, вы можете внести параметры, которые нужны вам на определенных этапах подклюения к LongPoll, для этого передайте в вызов метода объект с такими свойствами: 
   </p>
   <pre><code class="js">const lpSettings = {
-forGetLongPollServer: {
-lp_version: "3", //Изменяем версию LongPoll, в EasyVK используется версия 2
-need_pts: "1"
-}, 
-forLongPollServer: {
-wait: "15" //Ждем ответа 15 секунд
-}
+  forGetLongPollServer: {
+    lp_version: "3", //Изменяем версию LongPoll, в EasyVK используется версия 2
+    need_pts: "1"
+  }, 
+  forLongPollServer: {
+    wait: "15" //Ждем ответа 15 секунд
+  }
 }</code></pre>
 <pre><code class="js">vk.longpoll.connect(lpSettings).then(({connection}) => {
 
-console.log(connection.config)
+  console.log(connection.config)
 
 }).catch(console.error)</code></pre>
 <p>
@@ -477,8 +477,8 @@ console.log(connection.config)
   </p>
   <pre><code class="js">connection.addEventCodeListener(3, (event) => { 
 
-// Сброс флагов сообщения, например: прочитано
-console.log(event)
+  // Сброс флагов сообщения, например: прочитано
+  console.log(event)
 
 })</code></pre>
   <p>
@@ -491,12 +491,12 @@ console.log(event)
     Этот метод подрубает вашу функцию дебагер, в которую каждый раз, когда происходит какое-то событие, будет передаваться ответ сервера, или что-то еще.
   </p>
   <pre><code class="js">function longPollDebugger({type, data}) {
-console.log(`[typeLog ${type}]`, data);
+  console.log(`[typeLog ${type}]`, data);
 }
 
 vk.longpoll.connect()
 .then(({connection}) => {
-connection.debug(longPollDebugger)
+  connection.debug(longPollDebugger)
 })</code></pre>
 </div>
 <div class="theme">
@@ -505,7 +505,7 @@ connection.debug(longPollDebugger)
     Данный метод закрывает соединение, не то, чтобы соединение, а скорее, он просто прекращает делать длительные запросы.
   </p>
   <pre><code class="js">connection.close().then(() => {
-console.log('[Closed] LongPoll connection...')   
+  console.log('[Closed] LongPoll connection...')   
 })</code></pre>
 </div>
 <div class="theme">
@@ -572,11 +572,11 @@ console.log('[Closed] LongPoll connection...')
   <pre><code class="js">vk.longpoll.connect()
 .then(({connetion}) => {
 
-connection.on('error', console.error)
-.on('failure', console.error)
-.on('reconnectError', console.error)
+  connection.on('error', console.error)
+  .on('failure', console.error)
+  .on('reconnectError', console.error)
 
-connection.on('messsage', console.log)
+  connection.on('messsage', console.log)
 
 })</code></pre>
 </div>
