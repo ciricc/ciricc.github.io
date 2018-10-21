@@ -143,6 +143,7 @@ function TemplateIt (htmlContent = "", template = "", version = "2.0.0", rootabl
 
 	let types = [
 		["string", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type"],
+		["array", "https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array", "Array"],
 		["number", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type"],
 		["function", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function", "Function"],
 		["boolean", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type", "boolean"],

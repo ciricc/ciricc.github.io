@@ -732,6 +732,13 @@ html {
 	margin-left: 25px;display: inline-block;position: absolute;left: 0;top:25%;margin-right: 15px;
 }
 
+.footer {
+	color: #B2B4B5;
+	font-size: 14px;
+	margin-top: 50px;
+	margin-bottom: 10px;
+}
+
 @media (max-width: 498px) {
 
 	h1, h2 {

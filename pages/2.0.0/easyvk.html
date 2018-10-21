@@ -84,6 +84,20 @@
   
 </code></pre>
   </li>
+  <li id="auth_fields_param"><b>fields</b> (<a href="#">string</a>,<a href="#">array</a>) <span class="default">[]</span> 
+    <p>Список полей, которые Вы хотите сохранить в текущую сессию после авторизации</p>
+    <p>
+      Во время авторизации происходит запрос на метод <a href="https://vk.com/dev/groups.getById" target="_blank">groups.getById</a>, чтобы получить больше информации о группе и сохранить ее в сессию, и, кроме того, если идет авторизация пользователя, происходит запрос на метод <a href="https://vk.com/dev/users.get" target="_blank">users.get</a>, оба этих запроса принимают единый параметр <code class="code">fields</code>. Именно он и настраивается при авторизации.
+    </p>
+<pre class="js"><code>easyvk({
+  password: "{ПАРОЛЬ}",
+  username: "{ЛОГИН}",
+  fields: "photo_200,screen_name",
+  // Можно использовать, как массив: ["photo_200", "screen_name"]
+}).then(vk => {
+  console.log(vk.session.photo_200) // Картинка, аватарка
+})</code></pre>
+  </li>
   <li><b>session_file</b> ([<a href="#">string</a>]) <span class="default" title="По умолчанию">[/node_modules/easyvk/src/utils/.vksession]</span>
     <p>
       Путь к файлу сессии, в этот файл будет сохраняться сессия в JSON виде

@@ -202,19 +202,19 @@
 			</ul>
 		</li>
 		<li>
-			<a href="uploader.html" class="title bigger">Сессия VK [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="examples.html" class="title bigger">Сессия</a>
 			<ul>
 				<li>
-					<a href="uploader.html#uploader_getUploadURL"><span class="object">session</span>.<span class="span method">save</span>()</a>
+					<a href="session.html#save"><span class="object">session</span>.<span class="span method">save</span>()</a>
 				</li>
 				<li>
-					<a href="uploader.html#uploader_uploadFile"><span class="object">session</span>.<span class="span method">setPath</span>()</a>
+					<a href="session.html#setPath"><span class="object">session</span>.<span class="span method">setPath</span>()</a>
 				</li>
 				<li>
-					<a href="uploader.html#uploader_uploadFile"><span class="object">session</span>.<span class="span method">clear</span>()</a>
+					<a href="session.html#clear"><span class="object">session</span>.<span class="span method">clear</span>()</a>
 				</li>
 				<li>
-					<a href=""><span class="object">Метод использования</span></a>
+					<a href="session.html#usage"><span class="object">Метод использования</span></a>
 				</li>
 			</ul>
 		</li>
@@ -374,13 +374,104 @@
       </div><!--
     --><div id="content" class="v2">
         <div id="main-content" style="max-width: 910px;">
-          <div class="star" style="text-align: right;margin-top: 25px;margin-bottom: -25px;">
-            <a class="github-button" href="https://github.com/ciricc/easyvk" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ciricc/easyvk on GitHub" style="margin: 5px 15px;display: inline-block;">Мне нравится EasyVK</a>
-          </div>
-          <h1>Документация обновляется... <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:39</span></span></h1>
+          <script>
+  window.pageGot = true;
+</script>
+<h1>Сессия VK <span class="date-edit">Редактировано: <span class="det">21.10.2018 в 22:27</span></span></h1>
 <p>
-  Документация для версии <b>2.0.0</b> временно не доступна, воспользуйтесь более старыми гайдами.
+  После авторизации пользователя или группы, Easy VK создает для Вас сессию, в которую передает некоторые параметры. Так, например, при авторизации пользователя стандартный вид сессии выглядит таким образом:
 </p>
+<p>
+  Класс: <code class="h"><a href="easyvk.html">easyvk</a>.<a href="main.html#class">class</a>.EasyVKSession</code>
+</p>
+<p>
+  <b>Пользователская сессия после авторизации</b>
+</p>
+<pre class="js"><code>EasyVKSession {
+  access_token: ...,
+  first_name: ..., // Имя
+  last_name: ..., // Фамилия
+  user_id: ...
+}
+</code></pre>
+<p>
+  Вы можете использовать эти параметры после авторизации
+</p>
+<pre class="js"><code>easyvk({
+  access_token: "токен_пользователя"
+}).then(vk => {
+  
+  console.log(<a href="session.html">vk.session</a>.user_id);
+
+})</code></pre>
+<p>
+  Для группы же, будет выглядеть так:
+</p>
+<p>
+  <b>Сессия группы после авторизации</b>
+</p>
+<pre class="js"><code>EasyVKSession {
+  access_token: ...,
+  group_name: ..., // Название группы
+  screen_name: ..., // URL имя группы
+  group_id: ...
+}
+</code></pre>
+<p>
+  Как видно, объект сессии для группы и для пользователя один и тот же, но его содержимое в первозданном виде - различное. Это важно понимать.
+</p>
+<div class="big-quote">
+  <p>
+    При авторизации Вы можете указать дополнительные параметры, которые хотите сохранить в сессию после авторизации. Так, например, можно сохранить ссылку на аватарку <code class="h">photo_200</code> пользователя, чтобы дальше использовать ее в своей программе без дополнительных обращений к API ВКонтакте. Для того, чтобы это сделать, воспользуйтесь параметром <a href="easyvk.html#auth_fields_param">fields[]</a>
+  </p>
+</div>
+<p>
+  Ниже описаны методы объекта <code class="h">EasyVKSession</code>
+</p>
+<h2 id="save">session.save()</h2>
+<p>
+  Метод сохраняет сессию в <a href="#setPath">указанный файл</a>.
+</p>
+<pre class="js"><code>vk.save().then(() => {
+  console.log('Сессия сохранена успешно!');
+})</code></pre>
+<h2 id="setPath">session.setPath()</h2>
+<p>
+  Метод устанавливает путь к файлу сессии, тут происходит указание файла. <br>
+  Я не рекомендую менять свойство <code class="h">path</code> для установки пути к файлу, так как Вы можете упустить некоторые внутренние моменты синхронизации Easy VK. 
+</p>
+<pre class="js"><code>const path = require('path')
+const sessionPath = path.join(__dirname, '.current-session')
+
+
+vk.session.setPath(sessionPath)
+.then(({vk: EasyVK}) => {
+
+  console.log(EasyVK.session.path) // Путь к файлу сессии
+
+})</code></pre>
+<h2 id="clear">session.clear()</h2>
+<p>
+  Метод отчищает сессию и сохраняет ее в файл
+</p>
+<pre class="js"><code>vk.session.data = []
+vk.session.clear(() => {
+  console.log(vk.session) // {data: undefined}
+})</code></pre>
+<h2 id="usage">Метод использования</h2>
+<p>
+  Вы можете использовать сессию не только для того, чтобы сохранять данные пользователя на время, но и, чтобы меняться этими данными между программами. Поскольку я использую Easy VK всегда, когда пишу приложения API ВКонтакте под Node.js, я сталкивался с ситуациями, когда сессию надо было менять в одной программе сразу несколько раз, таким образом я сохранял работоспособность одной программы, не перезапуская постоянно алгоритм авторизации. Кроме того, в Easy VK изначально сессия предназначена для того, чтобы не авторизовывать по логину и паролю много раз, а сделать это единожды.
+</p>
+          <div class="footer">
+            <p>
+              &copy; 2018 - Кирилл Новак <br>
+            </p>
+          </div>
+          <div class="star" style="margin-bottom: 50px;">
+            <p>
+              <a class="github-button" href="https://github.com/ciricc/easyvk" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ciricc/easyvk on GitHub" style="margin: 5px 15px;display: inline-block;">Мне нравится EasyVK</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
