@@ -14,13 +14,13 @@
 
 	<title>Easy VK / Node.JS ВКонтакте API | Документация</title>
 	
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
-	<link rel="stylesheet" href="assets/selectic/selectic.css" type="text/css">
-	<link rel="stylesheet" href="assets/css/main.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
 	
 
 	<!-- Yandex.Metrika counter -->
@@ -56,7 +56,7 @@
   
     <script>
       
-      window.root = "";
+      window.root = "../";
 
     </script>
   </head>
@@ -70,15 +70,15 @@
               <div class="col-md-6 col-sm-6 col-xs-8 no-padding">
                 <span class="fa fa-bars opener"></span>
                   <a href="/" class="logo">
-                    <img src="assets/img/logo.png" alt="Easy VK логотип Node.js ВКонтакте API JavaScript" width="45" style="display: inline-block;margin-bottom: 20px;">
+                    <img src="../assets/img/logo.png" alt="Easy VK логотип Node.js ВКонтакте API JavaScript" width="45" style="display: inline-block;margin-bottom: 20px;">
                   </a>
                 <h2>Easy VK</h2>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-4" style="height: 80px;">
                 <div class="version-wrap" style="text-align: center;">
                   <select name="version" id="version">
-                    <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
-                    <a href="2.0.0/index.html"><option value="2.0.0" selected="selected">2.0.0</option></a>
+                    <a href="../1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
+                    <a href="../2.0.0/index.html"><option value="2.0.0" selected="selected">2.0.0</option></a>
                   </select>
                 </div>
               </div>
@@ -219,11 +219,11 @@
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="http.html" class="title bigger">HTTP</a>
+			<a href="uploader.html" class="title bigger">HTTP [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
 			<span>С помощью HTTP клиента можно делать то, что нельзя делать с официальным API <br>Связующие компоненты: <a href="">Client</a></span>
 			<ul>
 				<li>
-					<a href="http.html#loginByForm"><span class="object">http</span>.<span class="span method">loginByForm</span>()</a>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">http</span>.<span class="span method">loginByForm</span>()</a>
 				</li>
 			</ul>
 		</li>
@@ -375,126 +375,65 @@
     --><div id="content" class="v2">
         <div id="main-content" style="max-width: 910px;">
           <script>
-  window.pageGot = true;
+	window.pageGot = true;
 </script>
-<h1>Работа с капчей <span class="date-edit">Редактировано: <span class="det">24.10.2018 в 11:14</span></span></h1>
+<h1>HTTP <span class="date-edit">Редактировано: <span class="det">24.10.2018 в 11:12</span></span></h1>
 <p>
-  При работе с API ВКонтакте очень часто может возникнуть непредвиденная ошибка "картинки смерти". Это - капча. Когда Ваш скрипт отправляет по одному access_token'у слишком много запросов  секунду, то сервер ВКонтакте приостанавливает его активность до тех пор, пока Вы не докажете, что Вы - не бот. Такая ошибка возникет только при работе с токеном пользователя, в других ситуациях сервер ВКонтакте попросту временно заморозит Ваш токен.
+	HTTP Клиент существует в Easy VK со второй версии. Он нужен для тех случаев, когда нужно- сделать что-то такое, что не поволет официальное API ВКонтакте. Так, например, на его основе я написал Audio API. Это не значит, что я говорю "разрабы, Вы совсем зажрались", я предлагаю альтернативу, и предполагаю, что Вы не будете злоупотреблять этими возможностями.
 </p>
 <p>
-  После того, как сервер ВКонтакте "замораживает" токен пользователя, на любой его запрос будет возвращаться ошибка капчи. В этой ошибке имеются данные для решения капчи, основное - это <code class="h">SID</code> капчи (ID капчи, прикрепленный к текущей сессии, токену), и <code class="h">URL</code> капчи (URL адрес картинки капчи, переходя по которому скрипт сервера ВКонтакте автоматически сгенерирует изображение капчи с буквами)
+	HTTP Клиент работает по принципу HTTP сессии, если Вы хотя бы частично знакомы с алгоритмом работы HTTP, то знаете, что сессия там живет, пока о Вас можно собрать хоть какую-то информацию*, например, кукисы. Когда Вы авторизуетесь в обычном браузере во Вконтакте, Вы создаете сессию, и информация об этой сессии хранится в куках браузера. Чтобы сессия "поддерживалась", браузер отправляет кукисы каждый раз, когда делает запрос, вместе с самим запросом. Таким образом, сервер ВКонтакте всегда будет знать, что сделать с этим запросом, и какой пользователь его выполнил
 </p>
 <p>
-  Чтобы решить капчу, необходимо просто в любом следующем запросе отправить такие параметры, как <code class="h">captcha_sid</code>, <code class="h">captcha_key</code> (текст с картинки). Если все верно, то запрос будет выполнен. 
+	HTTP Клиент работает именно по принципу браузера, он авторизует Вас как бы "через браузер"*, и возвращает Вам объект для работы в этой авторизованной сессии. Так как авторизация происходит по протоколу HTTP, многие моменты могут перестать работать со временем, ведь ВКонтакте часто меняют свои внутренние и внешние алгоритмы, а я просто слоупок. Так, например, сейчас в HTTP клиенте не поддерживается двухфакторная авторизация, а также проверка на капчу при авторизации. Но скоро это поправится. Кроме того, так как формат ответа ВКонтакте может изменяться, ныне работающий Audio API может перестать работать (но я сделаю максимум, чтобы этого не произошло)
 </p>
 <p>
-  Я знаю, что это достаточно неудобно - контролировать все запросы на наличие этих параметров, ведь бывает так, что сразу два запроса выполняются асинхронно. Именно поэтому в EasyVK с недавних пор существует новая настройка - <b>captchaHandler</b>, которая помогает ловить капчу и автоматически ее решать
-</p>
-<h2 id="captchaHandler"><span>#</span> captchaHandler</h2>
-<p>
-  Так как все запросы при работе с Easy VK происходят через метод <code class="h">vk.call()</code>, то внутри него имеется основной хендлер - он отвечает за обработку всех ошибок внутри запроса. Это он распознает, какая именно произошла ошибка. И, если произошла ошибка капчи, он попробует запустить captchaHandler для ее решения.
+	В общем HTTP Клиент - это мощная, крутая особенность Easy VK, но его поддержка - это тяжелое дело и требует своевременного отклика на любые изменения ВКонтакте. Вы можете его использовать, а можете написать свой, на основе библиотеки <code class="h">request</code>, это не сложно. Но будьте бдительны к ошибкам.
 </p>
 <p>
-  <b>captchaHandler</b> - это просто функция, которая вызывается каждый раз, когда происходит ошибка капчи. В нее передается одним параметром следующий объект
+	Использовать HTTP Клиент нужно так:
 </p>
-<p>
-  <pre class="js"><code>{
-  captcha_sid, // SID текущей капчи
-  captcha_img,  // URL адрес капчи
-  resolve,  // Callback функция для решения капчи resolve(key){...}
-  vk // Объект EasyVK для работы в разной области видимости
-}
+<pre class="js"><code>easyvk().then(vk => {
+	vk.http.loginByForm(({client}) => {
+		// Первый шаг - авторизация в http клиенте, всегда
+		
+		client.someMethod(); // Пример работы с HTTP клиентом
+	})
+})
 </code></pre>
-</p>
+<h2 id="loginByForm">http.loginByForm()</h2>
+<div class="big-quote danger">
+	<p>
+		Для корректной работы HTTP авторизации, необходимо ВСЕГДА передавать в параметры авторизаии easyvk логин и пароль пользователя, так как по <code class="h">access_token</code> логин и пароль не получить из сессии, а сам логин и пароль не сохраняются в <a href="session.html" target="_blank">сессию</a> в целях безопасности данных
+	</p>
+</div>
 <p>
-  Чтобы задать <code class="h">captchaHandler</code>, необходимо добавить эту настройку в объект настройки Easy VK.
-</p>
-<pre class="js"><code>function captchaHandler ({captcha_sid, captcha_img:url, resolve:solve}) {
-  // В этой функции Вы решаете капчу любым удобным Вам способом
-  
-  console.log(`Ой.. Надо решить капчу, URL = ${url}`)
-
-  /* 
-    ПСЕВДОКОД:  
-    getCaptcha(url).then(key => {
-      // Получили текст с картинки с помощью Вашего алгоритма
-      solve(key).then(() => {
-        console.log('Капча решена')
-      }).catch(({err, reCall}) => {
-        // Капча не решена, пробуем снова
-        reCall()
-      });
-    })
-  */
-}
-
-easyvk({
-  captchaHandler: captchaHandler
-}).then((vk) => {
-  
-  //...
-
-}).catch(console.error)
-</code></pre>
-<p>
-  Когда вы получите текст с картинки каким-либо способом, запустите callback функцию <code class="h">resolve</code> (из основных параметров captchaHandler), которая возвращает объект <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank"/>&lt;Promise&gt;</a>. Если капча не решена, в <code class="h">reject</code> функцию этого Promis'а вернется следующий объект
+	Это самый основной метод http клиента, он запускает авторизацию во ВКонтакте, в браузере (Chrome), по Вашему текущему IP адресу. Метод возвращает объект <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank"/>&lt;Promise&gt;</a>, в случае корректной авторизации, <code class="h">resolve</code> функция получит следующий объект
 </p>
 <pre class="js"><code>{
-  err, // Ошибка и ее описание
-  reCall, // Функция для повторного запуска captchaHandler
-  vk // Объект EasyVK
+	client: HTTPClient,
+	vk: EasyVK
 }</code></pre>
-<p>
-  Ниже я привел пример рабочего кода, когда капча ловится автоматически и скрипт запрашивает ввести код капчи в консоль.
-</p>
-<div class="spoiler">
-  <div class="spoiler-name">
-    <span class="spoiler-state">[+]</span> (Спойлер) - Боевой пример работы captchaHandler
-  </div>
-  <div class="spoiler-content">
-    <pre class="js"><code>const readline = require('readline')
-const easyvk = require('easyvk')
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-const captchaHandler = ({captcha_sid, captcha_img, resolve:solve, vk}) => {
-
-  rl.question(`Введите капчу для картинки ${captcha_img} `, (key) => {
-
-    // Когда вводится капча в консоль, пробуем решить капчу
-    solve(key).then(() => {
-
-      console.log('Капча решена корректно!')
-
-    }).catch(({err, reCall: tryNewCall}) => {
-
-      // Иначе капча не решена, стоит попробовать снова
-      console.log('Капче не решена!!!\nПробуем занова')
-
-      tryNewCall() // Пробуем снова, занова запускаем наш captchaHandler, по факту...
-
-      // Не стоит самостоятельно перезапускать функцию captchaHandler, так как в EasyVK
-      // для этого имеется функция reCall, которая точно запустит все как нужно
-
-    })
+<div class="big-quote">
+	<p>
+		Для проверки данных логина и пароля, HTTP клиент проведет сразу две авторизации (первая, по официальному API, а вторая, по HTTP), так что не переживайте, если в сеансах ВКонтакте будет на одну строку больше
+	</p>
+</div>
+<pre class="js"><code>easyvk({
+  username: "логин_пользователя", 
+  password: "пароль"
+}).then(vk => {
+  
+  vk.http.loginByForm().then(({client: <a href="httpclient.html" target="_blank">HTTPClient</a>}) => {
+     
+     console.log(<a href="httpclient.html" target="_blank">HTTPClient</a>);
 
   })
 
-}
-
-easyvk({
-  captchaHandlder: captchaHandler
-}).then(vk => {
-
-  // пример: vk.call('messages.send', ...)
-
-}).catch(console.error)
-    </code></pre>
-  </div>
-</div>
+})</code></pre>
+<p>
+	Теперь Вам необходимо познакомиться с <a href="httpclient.html" target="_blank">клиентом</a> поближе, чтобы понять, что он может.
+</p>
           <div class="footer">
             <p>
               &copy; 2018 - Кирилл Новак <br>
@@ -515,8 +454,8 @@ easyvk({
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script src="assets/js/main.js"></script>
-<script src="assets/selectic/selectic.min.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/selectic/selectic.min.js"></script>
 <script>
 ;(function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
