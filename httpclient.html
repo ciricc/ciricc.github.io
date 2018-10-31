@@ -375,25 +375,11 @@
     --><div id="content" class="v2">
         <div id="main-content" style="max-width: 910px;">
           <script>
-  window.pageGot = true;
+	window.pageGot = true;
 </script>
-<h1>Статические методы <span class="date-edit">Редактировано: <span class="det">31.10.2018 в 17:56</span></span></h1>
+<h1>HTTP Клиент <span class="date-edit">Редактировано: <span class="det">31.10.2018 в 17:56</span></span></h1>
 <p>
-  Статические методы в Easy VK - это методы, для использования которых не нужна авторизация.
-  Проще говоря, - это методы свойства <code class="h">static</code> функции (объекта, но нет) easyvk (<code class="h">const easyvk = require('easyvk')</code>)
-</p>
-<p>
-  Статические методы используют так:
-</p>
-<pre class="js"><code>const easyvk = require('easyvk')
-easyvk.static.exampleStaticMethod()</code></pre>
-<h2 id="call"><span>#</span> static.call()</h2>
-<p>Метод обращается к серверу ВКонтакте и делает запрос на метод API без авторизации.</p>
-<p>
-  Вы можете столкнуться с такой ситуацией, где нужно сделать запрос без access_token'а, раньше Easy VK не позволял сделать такого, потому что все запросы были прикреплены к авторизации, но, теперь, это возможно. Этот метод - основа метода <a href="">vk.call()</a>, vk.call() является дублирующим методом static.call(), поэтому все параметры у них общие. В отличии от vk.call(), метод static.call() не требует <code class="h">access_token</code>, но Вы также можете его использовать, без авторизации. Таким образом, static.call() - своего рода "швейцарский нож", на его базе основываются все запросы Easy VK.
-</p>
-<p>
-  Описание данного метода дублируется в методе <a href="#">vk.call()</a>
+	За более подробной информацией об HTTP Клиенте обращайтесь на страницу <a href="http.html">HTTP</a>
 </p>
           <div class="footer">
             <p>
