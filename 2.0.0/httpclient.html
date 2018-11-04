@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ru-ru">
+  <head>
+  	
+  		<meta charset="utf-8">
+	
+	<meta property="og:image"              content="http://ciricc.github.io/easyvk_poster.png" />
+
+	<meta name="description" content="EasyVK (easy vk) - это полностью бесплатный и доступный модуль, написанный для поддержки API ВКонтакте на платформе Node.js">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<meta property="og:image"              content="https://psv4.userapi.com/c834502/u356607530/docs/d2/7968b5680c4c/logo.png" />
+	<meta property="og:title"              content="EasyVK / Node.JS ВКонтакте API | Документация" />
+	<meta property="og:description"        content="EasyVK (easy vk) - это полностью бесплатный и доступный модуль, написанный для поддержки API ВКонтакте на платформе Node.js" />
+
+
+	<title>Easy VK / Node.JS ВКонтакте API | Документация</title>
+	
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+	
+
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript" >
+	    (function (d, w, c) {
+	        (w[c] = w[c] || []).push(function() {
+	            try {
+	                w.yaCounter50546380 = new Ya.Metrika2({
+	                    id:50546380,
+	                    clickmap:true,
+	                    trackLinks:true,
+	                    accurateTrackBounce:true,
+	                    webvisor:true
+	                });
+	            } catch(e) { }
+	        });
+
+	        var n = d.getElementsByTagName("script")[0],
+	            s = d.createElement("script"),
+	            f = function () { n.parentNode.insertBefore(s, n); };
+	        s.type = "text/javascript";
+	        s.async = true;
+	        s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+	        if (w.opera == "[object Opera]") {
+	            d.addEventListener("DOMContentLoaded", f, false);
+	        } else { f(); }
+	    })(document, window, "yandex_metrika_callbacks2");
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/50546380" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
+
+  
+    <script>
+      
+      window.root = "../";
+
+    </script>
+  </head>
+  <body>
+    <div class="opacity-block"></div>
+    <div class="wrap-header" style="padding: 0">
+      <div class="header no-padding-mobile">
+        <div class="header-content">
+          <div class="col-md-12 no-padding-mobile">
+            <div class="col-md-5 no-padding-mobile">
+              <div class="col-md-6 col-sm-6 col-xs-8 no-padding">
+                <span class="fa fa-bars opener"></span>
+                  <a href="/" class="logo">
+                    <img src="../assets/img/logo.png" alt="Easy VK логотип Node.js ВКонтакте API JavaScript" width="45" style="display: inline-block;margin-bottom: 20px;">
+                  </a>
+                <h2>Easy VK</h2>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-4" style="height: 80px;">
+                <div class="version-wrap" style="text-align: center;">
+                  <select name="version" id="version">
+                    <a href="../1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
+                    <a href="../2.0.0/index.html"><option value="2.0.0" selected="selected">2.0.0</option></a>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7 soc no-mobile" style="height: 80px;">
+              <div class="flex-wrap">
+                <a href="https://vk.com/npm_easyvk" target="_blank" class="soc-link"><span class="fa fa-vk"></span></a>
+                <a href="https://github.com/ciricc/easyvk" target="_blank" class="soc-link"><span class="fa fa-github"></span></a>
+                <!-- Place this tag where you want the button to render. -->
+                <a href="https://npmjs.com/package/easyvk" target="_blank" class="soc-link" style="font-size: 12px;"><b>npm</b></a>
+                <a href="https://vk.com/kinock" target="_blank" class="dark-link" style="margin-left: 15px;text-decoration: none !important;">Связаться</a>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  	<div id="container">
+      <div id="sidebar">
+        <div id="sidebar-content">
+          <div class="docs-nav-wrap docs">
+	<ul class="nav">
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="index.html" class="title bigger">Начнем</a>
+			<ul>
+				<li>
+					<a href="index.html#easyvk">Для чего нужен EasyVK?</a>
+					<span>EasyVK - лучшая библиотека для работы с ВК API <br> на Node.js</span>
+				</li>
+				<li>
+					<a href="index.html#functions">Функционал EasyVK</a>
+					<span>Неограниченные возможности работы с API ВКонтакте</span>
+				</li>
+				<li>
+					<a href="index.html#installation">Установка</a>
+					<span>Простая установка</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="easyvk.html" class="title bigger">Основное</a>
+			<ul>
+				<li>
+					<a href="easyvk.html#concepts">Концепция работы с EasyVK</a>
+				</li>
+				<li>
+					<a href="easyvk.html#first_step">Первый шаг</a>
+					<span>Авторизация</span>
+				</li>
+				<li>
+					<a href="easyvk.html#2fauthentication">Двухфакторная авторизация</a>
+					<span>Сразу ДВА фактора!</span>
+				</li>
+				<li>
+					<a href="easyvk.html#faq">База знаний</a>
+					<span>FAQ</span>
+				</li>
+				<li>
+					<a href="easyvk.html#acknowledgments">Благодарности</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="examples.html" class="title bigger">Примеры и шаблоны</a>
+			<span>Познакомьтесь с Easy VK, прежде чем начать работу с документацией</span>
+			<ul>
+				<li>
+					<a href="examples.html#send_message">Отправка сообщения</a>
+					<span>Работаем с методами API ВК</span>
+				</li>
+				<li>
+					<a href="examples.html#chat_bot">Чат-бот</a>
+					<span>Работаем с LongPoll API</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="captcha.html" class="title bigger">Работа с капчей</a>
+			<span>@ Ловите капчу! Ловите!</span>
+			<ul>
+				<li>
+					<a href="captcha.html#captchaHandler">captchaHandler</a>
+					<span>Основное свойство настроек EasyVK</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="main.html" class="title bigger">Главное</a>
+			<ul>
+				<li>
+					<a href="main.html#vk_call"><span class="object">vk</span>.<span class="span method">call</span>()</a>
+					<span>Сделать запрос к ВК API</span>
+				</li>
+				<li>
+					<a href=""><span class="object">easyvk</span>.<span class="span method">is</span>()</a>
+				</li>
+				<li>
+					<a href=""><span class="object">easyvk</span>.<span class="span property">class</span></a>
+				</li>
+				<li>
+					<a href=""><span class="object">easyvk</span>.<span class="span property">version</span></a>
+				</li>
+				<li>
+					<a href=""><span class="object">easyvk</span>.<span class="span property">callbackAPI</span> </a>
+					<span>Используйте Callback API без авторизации</span>
+				</li>
+				<li>
+					<a href=""><span class="object">easyvk</span>.<span class="span property">streamingAPI</span></a>
+					<span>Используйте Streaming API без авторизации</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="staticmethods.html" class="title bigger">Статические методы</a>
+			<span>Обращение к статическим методам происходит аналогично: easyvk.static.someMethod()</span>
+			<ul>
+				<li>
+					<a href="staticmethods.html#call"><span class="object">static</span>.<span class="span method">call</span>()</a>
+					<span>Сделать запрос к ВК API без авторизации</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="examples.html" class="title bigger">Сессия</a>
+			<ul>
+				<li>
+					<a href="session.html#save"><span class="object">session</span>.<span class="span method">save</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#setPath"><span class="object">session</span>.<span class="span method">setPath</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#clear"><span class="object">session</span>.<span class="span method">clear</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#usage"><span class="object">Метод использования</span></a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="http.html" class="title bigger">HTTP</a>
+			<span>С помощью HTTP клиента можно делать то, что нельзя делать с официальным API <br>Связующие компоненты: <a href="">Client</a></span>
+			<ul>
+				<li>
+					<a href="http.html#loginByForm"><span class="object">http</span>.<span class="span method">loginByForm</span>()</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="uploader.html" class="title bigger">HTTP клиент [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">client</span>.<span class="span method">readFeedStories</span>()</a>
+					<span>Посмотреть все новые истории друзей</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">client</span>.<span class="span method">readStories</span>()</a>
+					<span>Посмотреть истории пользователя</span>
+				</li>
+				<li>
+					<a href=""><span class="object">client</span>.<span class="span span property">audio</span></a>
+					<span>
+						Это объект <a href="">AudioAPI</a>
+					</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="uploader.html" class="title bigger">Audio API [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<span>Со временем возможно устревание, следите, чтобы всегда была последняя версия Audio API</span>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">get</span>()</a>
+					<span>Получить аудиозаписи</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">getById</span>()</a>
+					<span>Получить аудиозапись</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">search</span>()</a>
+					<span>Поиск аудиозаписей (<b>BETA</b>)</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">getLyrics</span>()</a>
+					<span>(<b>ЛУЧШЕ НЕ ИСПОЛЬЗОВАТЬ</b>)</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">getCount</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">getUploadServer</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">upload</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">getURL</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">save</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">add</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">delete</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">edit</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">audio</span>.<span class="span method">reorder</span>()</a>
+				</li>
+
+			</ul>
+		</li>
+		<li>
+			<a href="uploader.html" class="title bigger">Загрузчик файлов [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<span>Свободно загружайте нужные файлы на сервера ВКонтакте</span>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">uploader</span>.<span class="span method">getUploadURL</span>()</a>
+					<span>Получите URL для загрузки</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_uploadFile"><span class="object">uploader</span>.<span class="span method">uploadFile</span>()</a>
+					<span>И загрузите файл</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="uploader.html" class="title bigger">Виджеты [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<span>Неофициальные инструменты для получения чего-либо, что нельзя получить официально через API</span>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">widgets</span>.<span class="span method">getLiveViews</span>()</a>
+					<span>Просмотры LIVE видео</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="uploader.html" class="title bigger">Debugger [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<span>Инструмент для дебага запросов и деятельности EasyVK в режиме реального времени</span>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">debugger</span>.<span class="span method">push</span>()</a>
+					<span>Метод чаще используется в разработке EasyVK, но вы  ткже можете им воспользоваться</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">debugger</span>.<span class="span method">on</span>("push")</a>
+					<span>Узнайте о новом событии в EasyVK</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
+					<span>Debugger изначально не доступен, поэтому запросы до авторизации вы можете прослушивать с помощью debuggerRun</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="uploader.html" class="title bigger">VKResponse [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">response</span>.<span class="span method">getFullResponse</span>()</a>
+				</li>
+			</ul>
+		</li>
+		<!-- <li>
+			<a href="uploader.html" class="title bigger">Загрузка файлов</a>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">uploader</span>.<span class="span method">getUploadURL</span>()</a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_uploadFile"><span class="object">uploader</span>.<span class="span method">uploadFile</span>()</a>
+				</li>
+			</ul>
+		</li> -->
+		<li>
+			<a href="uploader.html" class="title bigger">Классификация ошибок [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">vk</span>.<span class="span method">EasyVKError</span></a>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_uploadFile"><span class="object">vk</span>.<span class="span method">VKResponseError</span></a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+        </div>
+      </div><!--
+    --><div id="content" class="v2">
+        <div id="main-content" style="max-width: 910px;">
+          <script>
+	window.pageGot = true;
+</script>
+<h1>HTTP Клиент <span class="date-edit">Редактировано: <span class="det">04.11.2018 в 21:53</span></span></h1>
+<p>
+	За более подробной информацией об HTTP Клиенте обращайтесь на страницу <a href="http.html">HTTP</a>
+</p>
+<p>
+	После того, как авторизация по HTTP клиенту произошла, Вы получаете объект HTTPClient, его описание идет ниже
+</p>
+<h2 id="client_read_stories">client.readStories()</h2>
+<p>
+	Метод "просматривает" истории друзей пользователя. Когда Вы заходите на главную страницу ВКонтакте, в верхней части находятся истории друзей. Именно эти истории метод и просматривает друг за другом. Таким образом "бот" просмотрит истории от имени Вашего акканта и после чего вернет их количество. И, да, конечно, можно смотреть не все истории друзей, а лишь одну, если правильно настроить.
+</p>
+          <div class="footer">
+            <p>
+              &copy; 2018 - Кирилл Новак <br>
+            </p>
+          </div>
+          <div class="star" style="margin-bottom: 50px;">
+            <p>
+              <a class="github-button" href="https://github.com/ciricc/easyvk" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ciricc/easyvk on GitHub" style="margin: 5px 15px;display: inline-block;">Мне нравится EasyVK</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <link rel="stylesheet" href="assets/css/highlight-theme.css">
+<script src="assets/plugins/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/selectic/selectic.min.js"></script>
+<script>
+;(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://easyvkdocument.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  </body>
+</html>

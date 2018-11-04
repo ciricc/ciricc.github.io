@@ -147,7 +147,8 @@ function TemplateIt (htmlContent = "", template = "", version = "2.0.0", rootabl
 		["number", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type"],
 		["function", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function", "Function"],
 		["boolean", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type", "boolean"],
-		["Promise", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise", "Promise"]
+		["Promise", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise", "Promise"],
+		["object", "https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object", "Object"]
 	];
 
 	for (let i = 0; i < types.length; i++) {

@@ -377,26 +377,61 @@
     --><div id="content" class="v2">
         <div id="main-content" style="max-width: 910px;">
           <script>
-  window.pageGot = true;
+	window.pageGot = true;
 </script>
-<h1>Статические методы <span class="date-edit">Редактировано: <span class="det">04.11.2018 в 21:53</span></span></h1>
+<h1>Главное <span class="date-edit">Редактировано: <span class="det">04.11.2018 в 21:53</span></span></h1>
 <p>
-  Статические методы в Easy VK - это методы, для использования которых не нужна авторизация.
-  Проще говоря, - это методы свойства <code class="h">static</code> функции (объекта, но нет) easyvk (<code class="h">const easyvk = require('easyvk')</code>)
+	На этой странице описаны основные свойства и методы объекта EasyVK и функции easyvk
+</p>
+<h2><span>#</span> vk.call()</h2>
+<p>
+	Метод обращается к <a href="https://vk.com/dev" target="_blank">API ВКонтакте</a> по HTTP запросам
 </p>
 <p>
-  Статические методы используют так:
+	Аргументы метода
 </p>
-<pre class="js"><code>const easyvk = require('easyvk')
-easyvk.static.exampleStaticMethod()</code></pre>
-<h2 id="call"><span>#</span> static.call()</h2>
-<p>Метод обращается к серверу ВКонтакте и делает запрос на метод API без авторизации.</p>
-<p>
-  Вы можете столкнуться с такой ситуацией, где нужно сделать запрос без access_token'а, раньше Easy VK не позволял сделать такого, потому что все запросы были прикреплены к авторизации, но, теперь, это возможно. Этот метод - основа метода <a href="">vk.call()</a>, vk.call() является дублирующим методом static.call(), поэтому все параметры у них общие. В отличии от vk.call(), метод static.call() не требует <code class="h">access_token</code>, но Вы также можете его использовать, без авторизации. Таким образом, static.call() - своего рода "швейцарский нож", на его базе основываются все запросы Easy VK.
-</p>
-<p>
-  Описание данного метода дублируется в методе <a href="#">vk.call()</a>
-</p>
+<ul>
+	<li>
+		<b>methodName</b> <span>*</span> (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>) <span class='default' title='По умолчанию'></span>
+		<p>
+		 	Метод, к которому нужно обратиться. Например: <a href="https://vk.com/dev/messages.send">messages.send</a>
+		</p>
+		<p>
+			<pre class="js"><code>
+vk.call("messages.send")
+// или еще
+vk.call("execute")
+			</code></pre>
+		</p>
+	</li>
+	<li>
+		<b>data</b> (<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank"/>&lt;Object&gt;</a>) <span class='default' title='По умолчанию'>[ { } ]</span>
+		<p>
+			Дополитеьные параметры, которые Вы хотите передать в запрос. Вы можете сами перенастраивать все параметры, которые Easy VK вставляет по умолчанию за Вас, такие, как <code class="h">access_token</code> или <code class="h">v</code> (версия API)
+		</p>
+		<p>
+			<pre class="js"><code>
+vk.call("messages.send", {
+  message: 'Привет',
+  user_id: 1
+})
+			</code></pre>
+		</p>
+		<p>
+			Или, если Вы хотите сделать запрос от другого аккаунта, не меняя сессию
+		</p>
+		<pre class="js"><code>
+vk.call("messages.send", {
+  access_token: 'пример',
+  message: 'Привет',
+  user_id: 1
+})
+		</code></pre>
+	</li>
+	<li>
+		<b>methodType</b> (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>) <span class='default' title='По умолчанию'>["get"]</span>
+	</li>
+</ul>
           <div class="footer">
             <p>
               &copy; 2018 - Кирилл Новак <br>
