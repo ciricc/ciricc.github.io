@@ -51,6 +51,47 @@ vk.call("messages.send", {
 		</code></pre>
 	</li>
 	<li>
-		<b>methodType</b> (<a href="#">string</a>) <span class="default">["get"]</span>
+		<b>methodType</b> (<a href="#">string</a>) <span class="default">["GET"]</span>
+		<p>
+			Способ отправки запроса <code class="h">GET</code> или <code class="h">POST</code> или <code class="h">DELETE</code>
+		</p>
+		<pre class="js"><code>
+vk.call("wall.post", {
+  message: `
+  Запись с большим текстом может 
+  не поместиться в обычный GET запрос
+  `,
+}, "POST")
+		</code></pre>
 	</li>
 </ul>
+<p>
+	Метод возвращает объект <a href="#">Promise</a>, в <code class="h">resolve</code> функцию при успешном выполнении запроса вернется следующий объект
+</p>
+<pre class="js"><code>{
+  vk: <a href="main.html">EasyVK</a>
+  vkr: <a href="#">VKResponse</a> // Ответ сервера
+}
+</code></pre>
+<p>
+	В случае неудачного выполнения в <code class="h">reject</code> функцию передается один из объектов ошибки Easy VK
+</p>
+<p>
+	<b>Боевой пример использования</b>
+<pre class="js"><code>vk.call("messages.send", {
+  user_id: 1,
+  message: 'Паша, привет!'
+}).then(( { vkr: Response } ) => {
+  
+  console.log('Сообщение успешно отправлено!')
+  console.log('Выводим ответ сервера ... ')
+
+  console.log(vkr)
+
+}).catch(error => {
+	
+	console.log('Сообщение не отправлено, ошибка!')
+	console.log(error)
+
+})</code></pre>
+</p>

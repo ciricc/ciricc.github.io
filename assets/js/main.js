@@ -107,6 +107,28 @@
 
 		});
 
+		$('.tree').each(function(a, b) {
+			var th = $(b);
+
+			th.find("ul").hide();
+			th.find('li').each(function (a, li){
+				
+				if ($(this).find("> ul").length) {
+					$(this).css("margin-left", "0px");
+					$(this).find("> .name").prepend($("<span class='state'>[+] </span>"))
+					$(this).find("> .name").css("cursor", "pointer");
+					$(this).find("> .name").on("click", function () {
+						$(li).find("> ul").toggle().toggleClass("showen");
+						if ($(li).find("> ul").hasClass("showen")) {
+							$(li).find("> .name .state").html("[ - ]");
+						} else {
+							$(li).find("> .name .state").html("[+]");
+						}
+					})
+				}
+			})
+		});
+
 		($('select').selectric) ? $('select').selectric() : null;
 
 		var version = $("#version");
