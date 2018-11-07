@@ -3,6 +3,16 @@
 
 	var $ = jQuery;
 
+	jQuery.fn.justtext = function() {
+  
+		return $(this)	.clone()
+				.children()
+				.remove()
+				.end()
+				.text();
+
+	}
+
 	$.fn.animateRotate = function(angle, duration, easing, complete) {
 	  return this.each(function() {
 	    var $elem = $(this);
@@ -106,6 +116,43 @@
 			}
 
 		});
+
+		var fullOful = $('.tree ul').length;
+
+		function sortULS (iB) {
+			var ul = $($('.tree ul')[iB]);
+
+			var sortArray = [];
+
+			ul.find('> li').each(function(a, li) {
+				li = $(li)
+				if (li.hasClass("opened")) {
+					sortArray.push([li.html()])
+				} else {
+					sortArray.push(li.html())
+				}
+			});
+
+			sortArray.sort();
+			ul.find("> li").remove();
+			for (var i = 0; i < sortArray.length; i++) {
+				if (Array.isArray(sortArray[i])) {
+					ul.append($("<li class='opened'></li>").html(sortArray[i][0]))
+				} else {
+					ul.append($("<li></li>").html(sortArray[i]))
+				}
+			}
+			
+			iB = iB + 1;
+
+			if (iB < fullOful) {
+				return sortULS(iB);
+			}
+
+			return;
+		}
+
+		sortULS(0);
 
 		$('.tree').each(function(a, b) {
 			var th = $(b);
