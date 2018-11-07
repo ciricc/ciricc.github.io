@@ -117,6 +117,12 @@
 					$(this).css("margin-left", "0px");
 					$(this).find("> .name").prepend($("<span class='state'>[+] </span>"))
 					$(this).find("> .name").css("cursor", "pointer");
+					
+					if ($(this).hasClass("opened")) {
+						$(li).find("> ul").toggle().toggleClass("showen");
+						$(li).find("> .name .state").html("[ - ]");
+					}
+
 					$(this).find("> .name").on("click", function () {
 						$(li).find("> ul").toggle().toggleClass("showen");
 						if ($(li).find("> ul").hasClass("showen")) {
