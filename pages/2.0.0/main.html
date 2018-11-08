@@ -5,7 +5,7 @@
 <p>
 	На этой странице описаны основные свойства и методы объекта EasyVK и функции easyvk
 </p>
-<h2><span>#</span> vk.call()</h2>
+<h2 id="vk_call"><span>#</span> vk.call()</h2>
 <p>
 	Метод обращается к <a href="https://vk.com/dev" target="_blank">API ВКонтакте</a> по HTTP запросам
 </p>
@@ -94,4 +94,86 @@ vk.call("wall.post", {
 	console.log(error)
 
 })</code></pre>
+</p>
+<h2 id="easyvk_is">easyvk.is()</h2>
+<p>
+	Метод проверяет на соответствие переменной <code class="h">foo</code> классу <code class="h">bar</code>
+</p>
+
+<p>
+	Аргументы метода
+</p>
+<ul>
+	<li>
+		<b>foo</b> <span>*</span> (<a href="#">Object</a>) <span class="default"></span>
+		<p>
+		 	Переменная, в которой нужно проверить принадлежость к классу
+		</p>
+	</li>
+	<li>
+		<b>bar</b> <span>*</span> (<a href="#">string</a>) <span class="default"></span>
+		<p>
+		 	Строка с название класса, который мы хотим проверить
+		</p>
+	</li>
+</ul>
+<pre class="js"><code>vk.call("messages.send").then(({vkr}) => {
+	
+  console.log(easyvk.is(vkr, easyvk.class.VKResponse))
+
+}).catch(error => {
+	
+  if (console.log(easyvk.is(error, easyvk.class.EasyVKError))) {
+		
+    // Тогда ошибка произошла на стороне EasyVK
+
+  } else {
+		
+    // Иначе произошла ошибка в запросе, может быть что-то неправильно введено
+  }
+
+})</code></pre>
+<h2 id="easyvk_class">easyvk.class</h2>
+<p>
+	Это объект классов Easy VK, которые так или иначе приходится проверять, но прямого доступа для <code class="h">instanceof</code> к ним нету. Используется в связке с методом <a href="#easyvk_is">easyvk.is()</a> для проверки принадлежности к классу
+</p>
+<p>
+	Вот как выглядит объект:
+</p>
+<pre class="js"><code>{
+  VKResponse: "VKResponse",
+  VKResponseError: "VKResponseError",
+  AudioItem: "AudioItem",
+  EasyVKError: "EasyVKError"
+}</code></pre>
+<p>
+	Наглядный пример
+</p>
+<pre class="js"><code>HTTPClient.audio.get().then(({vkr}) => {
+  
+  let audio = vkr[0]
+	
+  // Проверим, что элемент массива - это аудиозапись, а не просто переменная
+  console.log(easyvk.is(audio, easyvk.class.AudioItem))
+
+})
+</code></pre>
+<h2 id="easyvk_version">easyvk.version</h2>
+<p>
+	Текущая версия установленного Easy VK
+</p>
+<pre class="js"><code>Актуальная версия: 1.5.1 (npm), в обновлении: 2.0.0</code></pre>
+<div class="big-quote danger">
+  <p>
+  	<span class="ic">!</span>
+    Читайте документацию для актуальной версии (<code class="h">1.5.1</code>), если устанавливаете через NPM
+  </p>
+</div>
+<h2 id="easyvk_callbackapi">easyvk.callbackAPI</h2>
+<p>
+	Прямой доступ к объекту <a href="#">callbackAPI</a> без авторизации
+</p>
+<h2 id="easyvk_streamingapi">easyvk.streamingAPI</h2>
+<p>
+	Прямой доступ к объекту <a href="#">streamingAPI</a> без авторизации
 </p>

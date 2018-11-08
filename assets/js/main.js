@@ -100,14 +100,16 @@
 		$('.spoiler .spoiler-name').on("click", function() {
 
 			if ($(this).data('spoiled')) {
-				$(this).parent().find('.spoiler-content').stop(true,false).slideUp('fast');
+				$(this).parent().find('> .spoiler-content').stop(true,false).slideUp('fast');
 				$(this).data('spoiled', false);
+				$(this).find('.spoiler-state').html('[+]')
 				// $('#content')[0].scroll(0, $(this).data('current-pos'));
 			} else {
+				$(this).find('.spoiler-state').html('[ - ]')
 				$(this).data('current-pos', $('#content').scrollTop());
 
 				var spoiler = $(this).parent();
-				var spolilerContent = spoiler.find('.spoiler-content');
+				var spolilerContent = spoiler.find('> .spoiler-content');
 				spolilerContent.stop(true,false).slideDown('fast', function (){
 					// $('#content')[0].scroll(0, $('#content').scrollTop() + spoiler.position().top - 25);
 				});
