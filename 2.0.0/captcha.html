@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
 	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
-	
+	<link rel="stylesheet" href="../assets/css/prism-github.css">
 
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
@@ -383,7 +383,7 @@
           <script>
   window.pageGot = true;
 </script>
-<h1>Работа с капчей <span class="date-edit">Редактировано: <span class="det">08.11.2018 в 21:34</span></span></h1>
+<h1>Работа с капчей <span class="date-edit">Редактировано: <span class="det">09.11.2018 в 01:26</span></span></h1>
 <p>
   При работе с API ВКонтакте очень часто может возникнуть непредвиденная ошибка "картинки смерти". Это - капча. Когда Ваш скрипт отправляет по одному access_token'у слишком много запросов  секунду, то сервер ВКонтакте приостанавливает его активность до тех пор, пока Вы не докажете, что Вы - не бот. Такая ошибка возникет только при работе с токеном пользователя, в других ситуациях сервер ВКонтакте попросту временно заморозит Ваш токен.
 </p>
@@ -404,7 +404,7 @@
   <b>captchaHandler</b> - это просто функция, которая вызывается каждый раз, когда происходит ошибка капчи. В нее передается одним параметром следующий объект
 </p>
 <p>
-  <pre class="js"><code>{
+  <pre  class='line-numbers normalize-whitespace'><code class='language-js'>{
   captcha_sid, // SID текущей капчи
   captcha_img,  // URL адрес капчи
   resolve,  // Callback функция для решения капчи resolve(key){...}
@@ -415,7 +415,7 @@
 <p>
   Чтобы задать <code class="h">captchaHandler</code>, необходимо добавить эту настройку в объект настройки Easy VK.
 </p>
-<pre class="js"><code>function captchaHandler ({captcha_sid, captcha_img:url, resolve:solve}) {
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>function captchaHandler ({captcha_sid, captcha_img:url, resolve:solve}) {
   // В этой функции Вы решаете капчу любым удобным Вам способом
   
   console.log(`Ой.. Надо решить капчу, URL = ${url}`)
@@ -445,7 +445,7 @@ easyvk({
 <p>
   Когда вы получите текст с картинки каким-либо способом, запустите callback функцию <code class="h">resolve</code> (из основных параметров captchaHandler), которая возвращает объект <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank"/>&lt;Promise&gt;</a>. Если капча не решена, в <code class="h">reject</code> функцию этого Promis'а вернется следующий объект
 </p>
-<pre class="js"><code>{
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>{
   err, // Ошибка и ее описание
   reCall, // Функция для повторного запуска captchaHandler
   vk // Объект EasyVK
@@ -458,7 +458,7 @@ easyvk({
     <span class="spoiler-state">[+]</span> (Спойлер) - Боевой пример работы captchaHandler
   </div>
   <div class="spoiler-content">
-    <pre class="js"><code>const readline = require('readline')
+    <pre  class='line-numbers normalize-whitespace'><code class='language-js'>const readline = require('readline')
 const easyvk = require('easyvk')
 
 const rl = readline.createInterface({
@@ -515,10 +515,11 @@ easyvk({
       </div>
     </div>
 
-    <link rel="stylesheet" href="assets/css/highlight-theme.css">
-<script src="assets/plugins/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
+    <!-- <link rel="stylesheet" href="assets/css/highlight-theme.css"> -->
+<!-- <script src="assets/plugins/highlight/highlight.pack.js"></script> -->
+<!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
+<!-- <script>hljs.initHighlightingOnLoad();</script> -->
+<script src="../assets/plugins/prism.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="../assets/js/main.js"></script>

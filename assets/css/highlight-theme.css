@@ -24,7 +24,7 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-subst {
-  color: #333;
+  color: #D73A49;
   font-weight: bold;
 }
 
@@ -38,7 +38,7 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 
 .hljs-string,
 .hljs-doctag {
-  color: #d14;
+  color: #032F62;
 }
 
 .hljs-title,

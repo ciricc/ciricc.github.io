@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
 	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/prism-github.css">
 	
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
@@ -420,7 +421,7 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1>Сессия <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:31</span></span></h1>
+          <h1>Сессия <span class="date-edit">Редактировано: <span class="det">09.11.2018 в 01:12</span></span></h1>
  <p>
    После того, как EasyVK вас авторизует, создается объект сессии - это просто объект, у которого есть свои методы и т.д. И он зависит безусовно, от файла сессии, если вы указали что необходимо сохранять сессию в файл. Вы можете изменить сессию и управлять ею через ее же методы.
  </p>
@@ -433,7 +434,7 @@
    <p>
      Данный метод сохраняет сессию по указанному файлу, если файл не был указан, то выкинится ошибка. Все просто.
    </p>
- <pre><code class="js">vk.session.cache = []
+ <pre><code >vk.session.cache = []
 
 vk.session.cache[0] = [/* Photos...*/]
 
@@ -449,7 +450,7 @@ vk.session.save().then(() => {
    <p>
      Данный метод устанавливает путь к файлу сессии, если файла не существует, он автоматически будет создан.
    </p>
-   <pre><code class="js">const path = require('path')
+   <pre><code >const path = require('path')
 const sessionPath = path.join(__dirname, '.current-session')
 
 
@@ -474,7 +475,7 @@ vk.session.setPath(sessionPath)
    <p>
      Все просто!
    </p>
-   <pre><code class="js">vk.session.data = []
+   <pre><code >vk.session.data = []
 vk.session.clear(() => {
   console.log(vk.session) // {data: undefined}
 })</code></pre> 
@@ -489,10 +490,7 @@ vk.session.clear(() => {
       </div>
     </div>
 
-    <link rel="stylesheet" href="../assets/css/highlight-theme.css">
-<script src="../assets/plugins/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
+    <script src="../assets/plugins/prism.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="../assets/js/main.js"></script>

@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
 	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/prism-github.css">
 	
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
@@ -420,7 +421,7 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1>CallBack API <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:24</span></span></h1>
+          <h1>CallBack API <span class="date-edit">Редактировано: <span class="det">09.11.2018 в 01:12</span></span></h1>
 <p>
  CallBack API работает по принципу сервера-приемщика. Ваш сервер просто слушает запросы с сервера ВКонтакте ну или просто разные запросы. ВКонтакте посылает запрос каждый раз, когда происходит какое-то событие. Данный метод передачи событий надежный, но долгий. За место него можно использовать <a href="https://vk.com/dev/bots_longpoll">LongPoll API</a>, будет значительно быстрее. Но, конечно, такой же скорости можно добиться и на CallBack API, просто создав определенные условия для сервера.
 </p>
@@ -434,7 +435,7 @@
  То есть как это происходит. Событие возникает, ваш сервер работает независимо от сервера ВКонтакте, ВКонтакте посылает POST запрос с определенным кодом, с полным событием, EasyVK проверяет, что событие относится к вашей группе, проверяет, что пароль совпадает, если это так, то вызывает событие уже в программе, которое вы можете ловить и делать с ним что-либо. Вот таков путь вашего сообщения.
 </p>
 <hr>
-<pre><code class="js">easyvk.callbackAPI.listen().then(({connection}) => {
+<pre><code >easyvk.callbackAPI.listen().then(({connection}) => {
   connection.on('message_new', (msg) => {
     console.log('[Got message]', msg)
   })
@@ -447,7 +448,7 @@
   <p>
     Так как CallBack API предназначен для прослушивания событий группы, вам следует указать EasyVK какую именно группу вы хотите слушать, указать код подтверждения сервера, чтобы ВКонтакте сделал свой первый запрос подтверждения. То есть, чтобы ВК убедились, что это правда ваш сервер, они отправят запрос подтверждения, и EasyVK вернет код подтверждения, который вы укажете в настройках. Код подтверждени берется из настроек группы, когда вы подключаете CallBAckk API. Процедура подтверждения обычно проводится единожды для одной группы, но EasyVK поддерживает и множественное слушание, когда события могут происходит на разных группах, а сервер, который их слушает - один, как и слушатели событий, они не дублируются и вы всегда можете понять в какой именно группе произошло событие. Об этом ниже.
   </p>
-  <pre><code class="js">easyvk.callbackAPI.listen({
+  <pre><code >easyvk.callbackAPI.listen({
   port: process.env.PORT || 8080, //Http port для сервера, для heroku process.env.PORT,
   groups: [
     {
@@ -471,7 +472,7 @@
   <p>
     Если вам нужно слушать всего лишь одну группу, необязательно для этого создавать массив <code class="code">groups</code>, для этого можно всего лишь передать <code class="code">groupId</code>, <code class="code">confirmCode</code>, <code class="code">secret</code> в верхний уровень объекта параметров таким образом
   </p>
-  <pre><code class="js">easyvk.callbackAPI.listen({
+  <pre><code >easyvk.callbackAPI.listen({
   groupId: '1' //ID группы,
   secret: 'SecretCodeForGroupOrJustPassword',
   confirmCode: 'TestConfirmationCode' //Код подтверждения, единожды для одной группы,
@@ -480,7 +481,7 @@
   <p>
     В EasyVK имеется также вариант использования CallBack API после инициализации easyvk таким образом
   </p>
-  <pre><code class="js">easyvk(/*параметры авторизации*/).then(vk => {
+  <pre><code >easyvk(/*параметры авторизации*/).then(vk => {
 
   // Пример
   // vk.callbackAPI.listen(/*..*/).then()
@@ -489,7 +490,7 @@
   <p>
     Также если вам необходимо внести изменения в сервере, вы можете использовать переменную <code class="code">app</code>, это Express Application
   </p>
-  <pre><code class="js">vk.callbackAPI.listen().then(({ connection, app, vk }) => {
+  <pre><code >vk.callbackAPI.listen().then(({ connection, app, vk }) => {
   app.get('/fold', (req, res) => {
     //Пример
   })
@@ -524,7 +525,7 @@
       </tr>
     </tbody>
   </table>
-  <pre><code class="js">function errorHandler ({ postData, description }) {
+  <pre><code >function errorHandler ({ postData, description }) {
   console.log(`[${ description }]`, postData)
 }
 
@@ -536,10 +537,7 @@ connection.on('eventEmpty', errorHandler)
       </div>
     </div>
 
-    <link rel="stylesheet" href="../assets/css/highlight-theme.css">
-<script src="../assets/plugins/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
+    <script src="../assets/plugins/prism.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="../assets/js/main.js"></script>

@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
 	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/prism-github.css">
 	
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
@@ -420,7 +421,7 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1>Капча <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:27</span></span></h1>
+          <h1>Капча <span class="date-edit">Редактировано: <span class="det">09.11.2018 в 01:12</span></span></h1>
 <p>
  Насущная проблема для программистов, которые пишут что либо под ВК - это капча. В EasyVK нету готовых решений для решения капчи, но есть удобные инструменты для ловли этой ошибки, для дальнейшего решения каким либо удобным способом.
 </p>
@@ -432,7 +433,7 @@
     Это и есть тот самый инструмент.
     captchaHandler - это один из параметров инициализации EasyVK, который появился в версии 1.1, и существует с того момента в следующем виде:
   </p>
-  <pre><code class="js">let captchaHandler
+  <pre><code >let captchaHandler
 
 captchaHandler = ({captcha_sid, captcha_img, resolve:solve, vk}) => {
   console.log(`Ohh.... captcha, need solve this captcha (${captcha_img})`)
@@ -443,7 +444,7 @@ easyvk({
 })</code></pre>
 <p>
   Когда возникает ошибка капчи, EasyVK вызывает эту функцию, передавая в нее такой объект: 
-  <pre><code class="js">{
+  <pre><code >{
   captcha_sid: ...,
   captcha_img: ...,
   resolve: callbackFunction () ....,
@@ -453,7 +454,7 @@ easyvk({
 <p>
   Функция <code class="code">resolve</code> - это функция, вызывая которую вы пытетесь решить капчу. То есть, если вы знаете код, необходимо вызвать эту функцию, передав в нее ответ капчи. Ниже приведен более полный пример использования captchaHandler'а
 </p>
-<pre><code class="js">const readline = require('readline')
+<pre><code >const readline = require('readline')
 const easyvk = require('easyvk')
 
 const rl = readline.createInterface({
@@ -501,10 +502,7 @@ easyvk({
       </div>
     </div>
 
-    <link rel="stylesheet" href="../assets/css/highlight-theme.css">
-<script src="../assets/plugins/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
+    <script src="../assets/plugins/prism.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="../assets/js/main.js"></script>

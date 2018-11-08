@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
 	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/prism-github.css">
 	
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
@@ -420,7 +421,7 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1>Статические методы <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:33</span></span></h1>
+          <h1>Статические методы <span class="date-edit">Редактировано: <span class="det">09.11.2018 в 01:12</span></span></h1>
  <p>
   Статические методы - это такие методы, которые не требуют инициализации объекта. То есть в нашем случае, эти методы не требуют авторизации. В большинстве случае библиотеки EasyVK статические методы - вспомогательные методы для решения каких-либо задач
  </p>
@@ -429,7 +430,7 @@
 <p>
 Обращение ко всем статическим методам происходит следующим образом.
 </p>
-<pre><code class="js">const easyvk = require('easyvk')
+<pre><code >const easyvk = require('easyvk')
 easyvk.static.call() //Пример</code></pre>
 
  <div class="theme">
@@ -437,7 +438,7 @@ easyvk.static.call() //Пример</code></pre>
   <p>
     Если вы хотите сделать запрос, который не требует авторизации, или, вам просто не хочется инициализировать объект EasyVK, а просто проверить, как все работает, то можете использовать этот метод. На пример: вам захочется обратиться к методу <a href="https://vk.com/dev/users.get" target="_blank">users.get</a>, вы можете это сделать так:
   </p>
-  <pre><code class="js">easyvk.static.call('users.get', {
+  <pre><code >easyvk.static.call('users.get', {
   user_ids: [1]
 }).then((vkr) => {
   console.log(vkr)
@@ -455,7 +456,7 @@ easyvk.static.call() //Пример</code></pre>
     Данный метод сериализует объект в URI подстроку. <br>
     Принимает всего один параметр - объект с глубиной 1, возвращает строку URI.
   </p>
-  <pre><code class="js">const request = require('request')
+  <pre><code >const request = require('request')
 
 const urlApi = 'https://api.vk.com/method/'
 const methodName = 'messages.send'
@@ -474,7 +475,7 @@ request.get(urlApi + methodName + parameters, (err, res) => {
 <p>
 Более подробно:
 </p>
-<pre><code class="js">const p = {
+<pre><code >const p = {
   foo: 'bar',
   foo2: 'bar2'
 }
@@ -488,7 +489,7 @@ console.log(easyvk.static.urlencode(p))
     Этот метод проверяет, что переменная является объектом <code class="code">Object</code>. <br>
     Использовалось в процессе разработки EasyVK, не является какой-то определенной возможностью ВКонтакте API, и лишь сделано для удобства.
   </p>
-  <pre><code class="js">function log (...arguments_) { console.log(...arguments_) }
+  <pre><code >function log (...arguments_) { console.log(...arguments_) }
 
 log(easyvk.static.isObject({
   some: "false"
@@ -506,7 +507,7 @@ log(easyvk.static.isObject(new Object())) // true</code></pre>
 Этот метод проверяет, что переменная является строкой <code class="code">String</code>. <br>
     Использовалось в процессе разработки EasyVK, не является какой-то определенной возможностью ВКонтакте API, и лишь сделано для удобства.
   </p>
-  <pre><code class="js">function log (...arguments_) { console.log(...arguments_) }
+  <pre><code >function log (...arguments_) { console.log(...arguments_) }
 
 let template_ = `${easyvk.version} - is a current version`;
 log(easyvk.static.isString({
@@ -529,7 +530,7 @@ log(easyvk.static.isString("")) // true
   <p>
     То есть, когда сервер отвечает нам текстом, мы проверяем ответ на определенные ошибки, на пример, вы попытались отправить сообщение пользователю через метод <a href="https://vk.com/dev/messages.send" target="_blank">messages.send</a>, но забыли добавить параметр <b>message</b>, тогда сервер вернет эту ошибку, и эта функция вызовет <code class="code">reject</code> функцию. Кроме того, эта функция проверяет валидность JSON, сначала проверив валидность, она проверяет на наличие ошибок через метод <a href="#checkErrors">static.checkErrors()</a>
   </p>
-  <pre><code class="js">const easyvk = require('easyvk')
+  <pre><code >const easyvk = require('easyvk')
 const request = require('request')
 
 let url = 'http://api.vk.com/method/users.get/?user_ids=1&amp;v=5.73'
@@ -555,7 +556,7 @@ request.get(url, (err, res) => {
   <p>
     Этот метод проверяет объект VKResponse на наличие серверных ошибок. То есть, когда сервер отвечает с ошибкой, этот метод дает об этом знать, что произошла определенная ошибка. Можете использовать его для разработки дополнений к EasyVK, но я хочу предупредить, что этот метод создавался только как впомогательный методы для разработки EasyVK.
   </p>
-  <pre><code class="js">const easyvk = require('easyvk')
+  <pre><code >const easyvk = require('easyvk')
 const request = require('request')
 
 let url = 'http://api.vk.com/method/users.get?user_ids=-1&v=5.73'
@@ -584,7 +585,7 @@ request.get(url, (err, res) => {
   <p>
     Этот метод декодирует строку с символами вроде <b>&amp;lt;</b>, <b>&amp;gt;</b> в обычную строку, понятную человеку. Этот метод не использовался при разработке EasyVK, и существует в нем лишь для удобства, но, скорее всего, я его уберу.
   </p>
-  <pre><code class="js">function log (...arguments_) { console.log(...arguments_) }
+  <pre><code >function log (...arguments_) { console.log(...arguments_) }
 
 let str = "Привет, Кирилл!&lt;br&gt;&lt;br&gt;"
 str += "Я сегодня посмотрел твой доклад &amp;lt;&amp;quot;Экосистема процессора&amp;quot;&amp;gt;.";
@@ -598,10 +599,7 @@ log(easyvk.static.encodeHTML(str)) // Красиво
       </div>
     </div>
 
-    <link rel="stylesheet" href="../assets/css/highlight-theme.css">
-<script src="../assets/plugins/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
+    <script src="../assets/plugins/prism.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="../assets/js/main.js"></script>

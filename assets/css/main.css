@@ -289,6 +289,10 @@ pre {
     box-sizing: border-box;
 }
 
+pre * {
+	font-weight: normal !important; 
+}
+
 pre .path {
 	position: absolute;
 	right: 0;
@@ -668,6 +672,7 @@ html {
   	border-top-left-radius: 6px;
   	border-top-right-radius: 6px;
   	overflow: hidden;
+  	margin-left: 15px;
   }
 
   .big-quote p {

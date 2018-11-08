@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
 	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/prism-github.css">
 	
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
@@ -420,7 +421,7 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1>EasyVK <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:28</span></span></h1>
+          <h1>EasyVK <span class="date-edit">Редактировано: <span class="det">09.11.2018 в 01:12</span></span></h1>
 <p>
   В этом разделе подробно описана авторизация, а также история создания EasyVK
 </p>
@@ -435,7 +436,7 @@
   <p>
     Выглядит это примерно так
   </p>
-  <pre><code class="js">const easyvk = require('easyvk')
+  <pre><code >const easyvk = require('easyvk')
 
 easyvk({
   access_token: '{ВАШ_ТОКЕН}'
@@ -451,7 +452,7 @@ easyvk({
   <p>
     Ниже вы можете посмотреть какие параметры можно передать в иницализацию функции. Напомню, что функция принимает единственный аргумент - объект инициализации, настройки вашей сессии, по факту.
   </p>
-  <pre><code class="js">//Стандартный вид инициализации
+  <pre><code >//Стандартный вид инициализации
 //По такому шаблону происходт все взаимодействия
 
 const easyvk = require('easyvk')
@@ -488,7 +489,7 @@ easyvk(sessionParams)
 <td>
   Версия ВКонтакте API, которую вы хотите использовать для всех запросов.
   <br> Не рекомендую менять этот параметр ниже версии 5, так как сама библиотека писалась именно под нее, <br> в версии 4 JSON ответы могут отличаться от версии 5.
-  <pre><code class="js">easyvk({
+  <pre><code >easyvk({
   api_v: 5.73,
   // Или
   api_v: '5.73'    
@@ -502,7 +503,7 @@ easyvk(sessionParams)
   логин и пароль. Токен может быть как группы, так и пользователя. <br>
   Библиотека самостоятельно определит какой именно это токен, <br>
   если он будет не правильным, выведется ошибка с ответом сервера ВКонтатке. <br>
-  <pre><code class="js">easyvk({
+  <pre><code >easyvk({
   access_token: 'ac56jklopas45dnbmwaahjklqfs671wd....'
 })</code> <span class="path">~/Project/index.js</span></pre>
 </td>
@@ -517,7 +518,7 @@ easyvk(sessionParams)
 <td>password</td>
 <td>Ваш пароль для аккаунта, используется в связке с параметром <code class="code">username</code>
 
-<pre><code class="js">easyvk({
+<pre><code >easyvk({
   username: 89158888888,
   password: 'qwerty', //Пример для телефона
 
@@ -534,7 +535,7 @@ easyvk(sessionParams)
 <tr>
 <td>session_file</td>
 <td>Путь к файлу сессии, в который будет сохраняться вся сессия.
-  <pre><code class="js">const path = require('path')
+  <pre><code >const path = require('path')
 const sessionPath = path.join(__dirname, '.session-vk')
 
 easyvk({
@@ -608,11 +609,11 @@ easyvk({
     И так, все основные дейтствия, которые производятся в объекте EasyVK происсходят на основе Promis'ов. Следовательно, можно ловить ошибки, но не везде. <br>
     Я рекомендую использовать событие unhandledRejection, чтобы ловить все ошибки без исключений и знать, что происходит в том или ином месте кода.
   </p>
-  <pre><code class="js">process.on('unhandledRejection', console.error)</code></pre>
+  <pre><code >process.on('unhandledRejection', console.error)</code></pre>
   <p>
     Но в основном все сводится к ловле ошибок на уровне промисов
   </p>
-  <pre><code class="js">easyvk({})
+  <pre><code >easyvk({})
 .then(vk => {})
 .catch(console.error)
 
@@ -645,10 +646,7 @@ process.on('unhandledRejection', console.error)</code></pre>
       </div>
     </div>
 
-    <link rel="stylesheet" href="../assets/css/highlight-theme.css">
-<script src="../assets/plugins/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
+    <script src="../assets/plugins/prism.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="../assets/js/main.js"></script>

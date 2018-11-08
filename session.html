@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="assets/selectic/selectic.css" type="text/css">
 	<link rel="stylesheet" href="assets/css/main.css" type="text/css">
-	
+	<link rel="stylesheet" href="assets/css/prism-github.css">
 
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
@@ -383,7 +383,7 @@
           <script>
   window.pageGot = true;
 </script>
-<h1>Сессия VK <span class="date-edit">Редактировано: <span class="det">08.11.2018 в 21:34</span></span></h1>
+<h1>Сессия VK <span class="date-edit">Редактировано: <span class="det">09.11.2018 в 01:26</span></span></h1>
 <p>
   После авторизации пользователя или группы, Easy VK создает для Вас сессию, в которую передает некоторые параметры. Так, например, при авторизации пользователя стандартный вид сессии выглядит таким образом:
 </p>
@@ -393,7 +393,7 @@
 <p>
   <b>Пользователская сессия после авторизации</b>
 </p>
-<pre class="js"><code>EasyVKSession {
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>EasyVKSession {
   access_token: ...,
   first_name: ..., // Имя
   last_name: ..., // Фамилия
@@ -403,7 +403,7 @@
 <p>
   Вы можете использовать эти параметры после авторизации
 </p>
-<pre class="js"><code>easyvk({
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>easyvk({
   access_token: "токен_пользователя"
 }).then(vk => {
   
@@ -416,7 +416,7 @@
 <p>
   <b>Сессия группы после авторизации</b>
 </p>
-<pre class="js"><code>EasyVKSession {
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>EasyVKSession {
   access_token: ...,
   group_name: ..., // Название группы
   screen_name: ..., // URL имя группы
@@ -438,7 +438,7 @@
 <p>
   Метод сохраняет сессию в <a href="#setPath">указанный файл</a>.
 </p>
-<pre class="js"><code>vk.save().then(() => {
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>vk.save().then(() => {
   console.log('Сессия сохранена успешно!');
 })</code></pre>
 <h2 id="setPath">session.setPath()</h2>
@@ -446,7 +446,7 @@
   Метод устанавливает путь к файлу сессии, тут происходит указание файла. <br>
   Я не рекомендую менять свойство <code class="h">path</code> для установки пути к файлу, так как Вы можете упустить некоторые внутренние моменты синхронизации Easy VK. 
 </p>
-<pre class="js"><code>const path = require('path')
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>const path = require('path')
 const sessionPath = path.join(__dirname, '.current-session')
 
 
@@ -460,7 +460,7 @@ vk.session.setPath(sessionPath)
 <p>
   Метод отчищает сессию и сохраняет ее в файл
 </p>
-<pre class="js"><code>vk.session.data = []
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>vk.session.data = []
 vk.session.clear(() => {
   console.log(vk.session) // {data: undefined}
 })</code></pre>
@@ -482,10 +482,11 @@ vk.session.clear(() => {
       </div>
     </div>
 
-    <link rel="stylesheet" href="assets/css/highlight-theme.css">
-<script src="assets/plugins/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
+    <!-- <link rel="stylesheet" href="assets/css/highlight-theme.css"> -->
+<!-- <script src="assets/plugins/highlight/highlight.pack.js"></script> -->
+<!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
+<!-- <script>hljs.initHighlightingOnLoad();</script> -->
+<script src="assets/plugins/prism.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="assets/js/main.js"></script>

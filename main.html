@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="assets/selectic/selectic.css" type="text/css">
 	<link rel="stylesheet" href="assets/css/main.css" type="text/css">
-	
+	<link rel="stylesheet" href="assets/css/prism-github.css">
 
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
@@ -383,7 +383,7 @@
           <script>
 	window.pageGot = true;
 </script>
-<h1>Главное <span class="date-edit">Редактировано: <span class="det">08.11.2018 в 21:34</span></span></h1>
+<h1>Главное <span class="date-edit">Редактировано: <span class="det">09.11.2018 в 01:26</span></span></h1>
 <p>
 	На этой странице описаны основные свойства и методы объекта EasyVK и функции easyvk
 </p>
@@ -401,7 +401,7 @@
 		 	Метод, к которому нужно обратиться. Например: <a href="https://vk.com/dev/messages.send">messages.send</a>
 		</p>
 		<p>
-			<pre class="js"><code>
+			<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
 vk.call("messages.send")
 // или еще
 vk.call("execute")
@@ -414,7 +414,7 @@ vk.call("execute")
 			Дополитеьные параметры, которые Вы хотите передать в запрос. Вы можете сами перенастраивать все параметры, которые Easy VK вставляет по умолчанию за Вас, такие, как <code class="h">access_token</code> или <code class="h">v</code> (версия API)
 		</p>
 		<p>
-			<pre class="js"><code>
+			<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
 vk.call("messages.send", {
   message: 'Привет',
   user_id: 1
@@ -424,7 +424,7 @@ vk.call("messages.send", {
 		<p>
 			Или, если Вы хотите сделать запрос от другого аккаунта, не меняя сессию
 		</p>
-		<pre class="js"><code>
+		<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
 vk.call("messages.send", {
   access_token: 'пример',
   message: 'Привет',
@@ -437,7 +437,7 @@ vk.call("messages.send", {
 		<p>
 			Способ отправки запроса <code class="h">GET</code> или <code class="h">POST</code> или <code class="h">DELETE</code>
 		</p>
-		<pre class="js"><code>
+		<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
 vk.call("wall.post", {
   message: `
   Запись с большим текстом может 
@@ -450,7 +450,7 @@ vk.call("wall.post", {
 <p>
 	Метод возвращает объект <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank"/>&lt;Promise&gt;</a>, в <code class="h">resolve</code> функцию при успешном выполнении запроса вернется следующий объект
 </p>
-<pre class="js"><code>{
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>{
   vk: <a href="main.html">EasyVK</a>
   vkr: <a href="#">VKResponse</a> // Ответ сервера
 }
@@ -460,7 +460,7 @@ vk.call("wall.post", {
 </p>
 <p>
 	<b>Боевой пример использования</b>
-<pre class="js"><code>vk.call("messages.send", {
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>vk.call("messages.send", {
   user_id: 1,
   message: 'Паша, привет!'
 }).then(( { vkr: Response } ) => {
@@ -499,7 +499,7 @@ vk.call("wall.post", {
 		</p>
 	</li>
 </ul>
-<pre class="js"><code>vk.call("messages.send").then(({vkr}) => {
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>vk.call("messages.send").then(({vkr}) => {
 	
   console.log(easyvk.is(vkr, easyvk.class.VKResponse))
 
@@ -522,7 +522,7 @@ vk.call("wall.post", {
 <p>
 	Вот как выглядит объект:
 </p>
-<pre class="js"><code>{
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>{
   VKResponse: "VKResponse",
   VKResponseError: "VKResponseError",
   AudioItem: "AudioItem",
@@ -531,7 +531,7 @@ vk.call("wall.post", {
 <p>
 	Наглядный пример
 </p>
-<pre class="js"><code>HTTPClient.audio.get().then(({vkr}) => {
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>HTTPClient.audio.get().then(({vkr}) => {
   
   let audio = vkr[0]
 	
@@ -544,7 +544,7 @@ vk.call("wall.post", {
 <p>
 	Текущая версия установленного Easy VK
 </p>
-<pre class="js"><code>Актуальная версия: 1.5.1 (npm), в обновлении: 2.0.0</code></pre>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>Актуальная версия: 1.5.1 (npm), в обновлении: 2.0.0</code></pre>
 <div class="big-quote danger">
   <p>
   	<span class="ic">!</span>
@@ -573,10 +573,11 @@ vk.call("wall.post", {
       </div>
     </div>
 
-    <link rel="stylesheet" href="assets/css/highlight-theme.css">
-<script src="assets/plugins/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
+    <!-- <link rel="stylesheet" href="assets/css/highlight-theme.css"> -->
+<!-- <script src="assets/plugins/highlight/highlight.pack.js"></script> -->
+<!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
+<!-- <script>hljs.initHighlightingOnLoad();</script> -->
+<script src="assets/plugins/prism.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="assets/js/main.js"></script>

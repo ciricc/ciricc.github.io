@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
 	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
-	
+	<link rel="stylesheet" href="../assets/css/prism-github.css">
 
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
@@ -383,7 +383,7 @@
           <script>
   window.pageGot = true;
 </script>
-<h1>Основное <span class="date-edit">Редактировано: <span class="det">08.11.2018 в 21:45</span></span></h1>
+<h1>Основное <span class="date-edit">Редактировано: <span class="det">09.11.2018 в 01:26</span></span></h1>
 <p>
   Познакомьтесь с Easy VK ближе, чтобы понять, как он устроен и как с ним работать
 </p>
@@ -403,7 +403,7 @@
 <p>
   Авторизция происходит таким образом
 </p>
-<pre class="js"><code>easyvk({
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>easyvk({
   password: "ваш_пароль",
   username: "ваш_логин",
   // или по токену
@@ -433,7 +433,7 @@
     <p>
       Логин и пароль для авторизации. Используются совместно при условии, что не используется настройка <b>access_token</b>
     </p>
-<pre class="js"><code>{
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>{
   password: "exampleMyPassword$%!",
   username: "+79990000000" //Number(79990000000) или просто "email@exmple.com"
 }</code></pre>
@@ -460,7 +460,7 @@
     <p>
       Версия API ВКонтакте по умолчанию.
     </p>
-<pre class="js"><code>{
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>{
   api_v: '5.75'
 }
   
@@ -471,7 +471,7 @@
     <p>
       Во время авторизации происходит запрос на метод <a href="https://vk.com/dev/groups.getById" target="_blank">groups.getById</a>, чтобы получить больше информации о группе и сохранить ее в сессию, и, кроме того, если идет авторизация пользователя, происходит запрос на метод <a href="https://vk.com/dev/users.get" target="_blank">users.get</a>, оба этих запроса принимают единый параметр <code class="code">fields</code>. Именно он и настраивается при авторизации.
     </p>
-<pre class="js"><code>easyvk({
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>easyvk({
   password: "{ПАРОЛЬ}",
   username: "{ЛОГИН}",
   fields: "photo_200,screen_name",
@@ -484,7 +484,7 @@
     <p>
       Путь к файлу сессии, в этот файл будет сохраняться сессия в JSON виде
     </p>
-<pre class="js"><code>const path = require('path')
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>const path = require('path')
 const sessionPath = path.join(__dirname, '.session-vk')
 
 easyvk({
@@ -509,7 +509,7 @@ easyvk({
   </li>
   <li><b>platform</b> (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>) <span class='default' title='По умолчанию' title="По умолчанию">[android]</span>
     <p>Название платформы, через которую будет проходить авторизация пользователя. Если у Вас есть собственное приложение, для которого нужно произвести авторизацию пользователя по логину и паролю, воспользуйтесь настройками <b>client_id</b> и <b>client_secret</b></p>
-<pre class="js"><code>{
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>{
   platform: ["android", "ios", "windows"][0]
 }</code></pre>
   </li>
@@ -518,7 +518,7 @@ easyvk({
   </li>
   <li><b>lang</b> (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>) <span class='default' title='По умолчанию' title="По умолчанию">[ru]</span>
     <p>Укажите язык по умолчанию, с которым будет работать Easy VK. Почти все ответы сервера ВК будут приходить на этом языке. Кроме того, сам Easy VK поддерживает мультиязычность и имеет перевод некоторых основных ошибок на два языка.</p>
-<pre class="js"><code>{
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>{
   lang: ["ru", "en", "uk", "kz"][0]
 }</code></pre>
   </li>
@@ -545,7 +545,7 @@ easyvk({
     <span class="spoiler-state">[+]</span> (Спойлер) - Пример кода для двухфакторной авторизации пользователя
   </div>
   <div class="spoiler-content">
-<pre class="js"><code>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
 async function main (vk) {
   // главный код вашего приложения
 }
@@ -699,10 +699,11 @@ logInWith2Auth({
       </div>
     </div>
 
-    <link rel="stylesheet" href="assets/css/highlight-theme.css">
-<script src="assets/plugins/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
+    <!-- <link rel="stylesheet" href="assets/css/highlight-theme.css"> -->
+<!-- <script src="assets/plugins/highlight/highlight.pack.js"></script> -->
+<!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
+<!-- <script>hljs.initHighlightingOnLoad();</script> -->
+<script src="../assets/plugins/prism.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="../assets/js/main.js"></script>

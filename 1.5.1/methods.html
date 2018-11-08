@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
 	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/prism-github.css">
 	
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
@@ -420,7 +421,7 @@
       </div><!--
     --><div id="content">
         <div id="main-content" style="max-width: 910px;">
-          <h1>Методы <span class="date-edit">Редактировано: <span class="det">19.10.2018 в 18:31</span></span></h1>
+          <h1>Методы <span class="date-edit">Редактировано: <span class="det">09.11.2018 в 01:12</span></span></h1>
 <p>
  Когда вы уже авторизовались, вам возвращается в функцию <code class="code">resolve</code> объект EasyVK, в котором есть сессия для авторизованных запросов. Теперь все запросы которые вы будете делать, будут происходить от того аккаунта/группы, который вы выбрали и подключили. Ниже описаны некоторые методы объекта EasyVK, которые стоит знать, чтобы с ним работать. <br>
  Методы EasyVK - это не вся его состовляющая, есть еще куча свойств, в которых хранятся дополнительные модули-объекты для работы с определенными платформами ВКонтакте API.
@@ -434,7 +435,7 @@
  <p>
    В функцию <code class="code">resolve</code> метод передает объект со следующими свойтсвами:
  </p>
-   <pre><code class="js">{
+   <pre><code >{
   vk: EasyVK,
   vkr: VKResponseJSON
 }</code></pre>
@@ -468,7 +469,7 @@
 </table>
 <p>
 Пример работы
-<pre><code class="js">const me = 356607530
+<pre><code >const me = 356607530
 
 vk.call('messages.send', {
   message: 'Hi!',
@@ -482,7 +483,7 @@ vk.call('messages.send', {
  <p>
   Или пример с отправкой поста на стену   
  </p>
-<pre><code class="js">vk.call('wall.post', {
+<pre><code >vk.call('wall.post', {
   message: 'OOOHH BIIIIIIIG POOOOST TEXXXT'
 }).then(({vkr}) => {
 
@@ -494,10 +495,7 @@ vk.call('messages.send', {
       </div>
     </div>
 
-    <link rel="stylesheet" href="../assets/css/highlight-theme.css">
-<script src="../assets/plugins/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
+    <script src="../assets/plugins/prism.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="../assets/js/main.js"></script>
