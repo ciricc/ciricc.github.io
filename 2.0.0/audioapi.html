@@ -16,14 +16,14 @@
 
 	<title>Easy VK / Node.JS ВКонтакте API | Документация</title>
 	
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
-	<link rel="stylesheet" href="assets/selectic/selectic.css" type="text/css">
-	<link rel="stylesheet" href="assets/css/main.css" type="text/css">
-	<link rel="stylesheet" href="assets/css/prism-github.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/prism-github.css">
 
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
@@ -58,7 +58,7 @@
   
     <script>
       
-      window.root = "";
+      window.root = "../";
 
     </script>
   </head>
@@ -72,15 +72,15 @@
               <div class="col-md-6 col-sm-6 col-xs-8 no-padding">
                 <span class="fa fa-bars opener"></span>
                   <a href="/" class="logo">
-                    <img src="assets/img/logo.png" alt="Easy VK логотип Node.js ВКонтакте API JavaScript" width="45" style="display: inline-block;margin-bottom: 20px;">
+                    <img src="../assets/img/logo.png" alt="Easy VK логотип Node.js ВКонтакте API JavaScript" width="45" style="display: inline-block;margin-bottom: 20px;">
                   </a>
                 <h2>Easy VK</h2>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-4" style="height: 80px;">
                 <div class="version-wrap" style="text-align: center;">
                   <select name="version" id="version">
-                    <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
-                    <a href="2.0.0/index.html"><option value="2.0.0" selected="selected">2.0.0</option></a>
+                    <a href="../1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
+                    <a href="../2.0.0/index.html"><option value="2.0.0" selected="selected">2.0.0</option></a>
                   </select>
                 </div>
               </div>
@@ -385,10 +385,566 @@
       </div><!--
     --><div id="content" class="v2">
         <div id="main-content" style="max-width: 910px;">
-          <h1>Документация обновляется... <span class="date-edit">Редактировано: <span class="det">21.11.2018 в 19:48</span></span></h1>
+          <script>
+	window.pageGot = true;
+</script>
+<h1>Audio API <span class="date-edit">Редактировано: <span class="det">21.11.2018 в 19:48</span></span></h1>
 <p>
-  Документация для версии <b>2.0.0</b> временно не доступна, воспользуйтесь более старыми гайдами.
+	Теперь в Easy VK есть Audio API. Неофициальное, да, но зато работает. <br>
+	В реализации Audio API я постарался повторить все методы, которые существовали в прошлом API ВКонтакте на основе <a href="https://vk.com/page-1_2369282" target="_blank">официальной документации</a>, которое разработчики, к слову, закрыли. Так что можно сказать, что Audio API в Easy VK - это полностью экспериментальная фитча, которая не рекомендуется для использования, но и не противопоказана  :D <br> 
+	В общем, все на Ваше усмотрение, может работать, а может и нет.
 </p>
+<p>
+	<b>ЕСТЬ ВАЖНОЕ НО!</b>
+	<br>
+	В Easy VK будут выходить периодически различные обновления, которые будут фиксить все ошибки Audio API. Я буду стараться поддерживать актуальные возможности раздела аудиозаписей ВКонтакте. Некоторые параметры просто напросто не поддерживаются в Audio API, но это только потому, что ВКонтакте сам их не поддерживает. Вот так вот. В общем, ниже я постарался описать все методы, и как с нимим работать.
+</p>
+
+<h2 id="audio_get"><span>#</span> audio.get()</h2>
+<p>
+	Метод получает список аудиозаписей из плейлиста, из группы, или из аудиозаписей пользователя.
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li>
+			<b>owner_id</b> - <span>ID пользователя или группы, чьи аудиозаписис надо достать</span>
+		</li>
+		<li>
+			<b>playlist_id</b> - <span>ID плейлиста, из которого надо взять аудозаписи</span>
+		</li>
+		<li>
+			<b>offset</b> - <span>Смещение по аудиозаписям, вернет аудозаписи, начиная с номера <code class="h">offset</code></span>
+		</li>
+	</ul>
+</p>
+<p>
+	Метод, как и многие другие методы Audio API возвращает объект <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank"/>&lt;Promise&gt;</a>, в <code class="h">resolve</code> функцию возвращаются следующие объекты
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+	{
+		<a href="#apiJSON">json</a>: <a href="#apiJSON">Object</a>, // Читайте описание в разделе JSON Audio Api 
+		vkr: VKResponse, 
+		vk: EasyVK
+	}
+</code></pre>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get({
+	owner_id: <a href="https://vk.com/club-123675921">-123675921</a>
+}).then(({vkr, json}) => {
+	let offset;
+
+	if (json.hasMore) {
+		// Есть еще аудозаписи, делаем offset
+		offset = json.nextOffset;
+	}
+
+	console.log(vkr);
+
+});
+</code></pre>
+<h2 id="audio_getbyid"><span>#</span> audio.getById()</h2>
+<p>
+	Метод возвращает аудиозапись по заданному идентифекатору
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li>
+			<b>ids</b> - <span>список идентифекаторов аудиозаписей</span>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+	"2_67859194,-683495_39822725,2_63937759"
+</code></pre>
+			<span>Или массив строк</span>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+	["2_67859194","-683495_39822725","2_63937759"]			
+</code></pre>
+		</li>
+	</ul>
+</p>
+<p>
+	Метод вернет массив аудиозаписей <a href="#audioitem">AudioItem</a>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.getById({
+	ids: '-2000506793_456239022'
+}).then(({vkr, json}) => {
+		
+	console.log(vkr[0])
+
+})
+</code></pre>
+<h2 id="audio_search"><span>#</span> audio.search()</h2>
+<p>
+	Очень-чень опасный метод, который я еще дорабатываю, но он уже вполне работает. Короче, этот метод ищет аудиозаписи
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li><b>q</b> - <span>Строка поискового запроса, например <code class="h">"MORGENSHTERN"</code></span></li>
+		<li><b>offset</b> - <span>Смещение по поисковой странице, API вернет аудиоизапись начиная с номера <code class="h">offset</code></span></li>
+	</ul>
+</p>
+<p>
+	К сожалению остальные параметры, вроде <code class="h">filter</code>, пока что не работают
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.search({
+	q: "MORGENSHTERN"
+}).then(({vkr}) => {
+	
+	console.log(vkr);
+
+});
+</code></pre>
+<h2 id="audio_getlyrics"><span>#</span> audio.getLyrics()</h2>
+<p>
+	Метод возвращает старые слова, текст к песне (то, что уже не работает на новых аудиозаписях, но актуально для старых)
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li><b>lid</b> - <span>lyrics_id</span>, можно взять из некоторых объектов аудиозаписей, которые можно получить с помощью методов <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a></li>
+	</ul>
+</p>
+<p>
+	Примеров нет, так как в целом метод старый и не рекомендуется для использования
+</p>
+<h2 id="audio_getcount"><span>#</span> audio.getCount()</h2>
+<p>
+	Метод возвращает количество аудиозаписей пользователя или группы
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li><b>owner_id</b> - <span>ID пользователя или группы, откуда нужно взять количество аудиозаписей</span></li>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.getCount({
+	owner_id: -123675921
+}).then(({vkr}) => {
+	console.log(vkr)
+})
+</code></pre>
+<h2 id="audio_getuploadserver"><span>#</span> audio.getUploadServer()</h2>
+<p>
+	Метод возвращает URL для загрузки аудиозаписи	
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	// ответ
+	upload_url: 'https://pu.vk.com/c815231/upload.php?act=load_audio&aid=0&gid=...'
+}
+</code></pre>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li>gid</li> - <span>ID группы, если есть необходимость загрузить в группу</span>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.getUploadServer().then(({vkr}) => {
+	console.log(vkr.upload_url);
+
+	// Теперь можно загружать на url файл аудиозаписи
+})
+</code></pre>
+<p>Как загружать, читайте ниже</p>
+<h2 id="audio_upload"><span>#</span> audio.upload()</h2>
+<p>
+	Метод загружает на указанный URL адрес аудиозапись, точнее, просто файл, но его можно использовать, чтобы загрузить аудиозапись в профиль в связке с методом <a href="#audio_getuploadserver">audio.getUploadServer()</a>, чтобы получить URL для загрузки.
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li>
+			<b>url</b> <span>*</span> (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>)
+			<p>
+				URL адрес сервера, на который будет идти загрузка
+			</p>
+		</li>
+		<li>
+			<b>file_path</b> <span>*</span> (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>)
+			<p>
+				Путь к файлу, который нужно загрузить
+			</p>
+		</li>
+	</ul>
+</p>
+<p>
+	Метод вернет промежуточные данные для сохранения аудиозаписи, эти данные Вы можете использовать, чтобы сохранить аудиозапись в группу или у пользователя
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+let upload_url = 'https://pu.vk.com/c815231/upload.php?act=load_audio&aid=0&gid=...';
+let mp3_path = __dirname + 'my.mp3';
+
+http.audio.upload(upload_url, mp3_path).then(({vkr}) => {
+	
+	console.log(vkr);
+
+})
+
+</code></pre>
+<p>
+	Чтобы узнать, как сохранить файл, читайте документацию метода <a href="#audio_save">audio.save()</a>
+</p>
+<h2 id="audio_save"><span>#</span> audio.save()</h2>
+<p>
+	Метод сохраняет аудиозапись после загрузки, в него надо передать только промежуточные данные, полученные с метода <a href="#audio_upload">audio.upload()</a>
+</p>
+<p>
+	Метод вернет сохраненную аудиозапись, объект <a href="#audioitem">AudioItem</a>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+
+http.audio.getUploadServer().then(({vkr}) => {
+	let upload_url = vkr.upload_url;
+	let mp3 = __dirname + 'my.mp3';
+
+	http.audio.upload(upload_url, mp3).then(({vkr}) => {
+			
+		http.audio.save(vkr).then(({vkr: audio}) => {
+			
+			console.log(audio);
+
+		})
+
+	})
+	
+
+})
+
+</code></pre>
+<h2 id="audio_geturl"><span>#</span> audio.getURL()</h2>
+<p>
+	Метод возвращает разобранный URL адрес mp3 файла аудиозаписи. Во многих местах mp3 аудиозаписи скрыт и, когда Вы попытаетесь прослушать аудиозапись из url, будет звучать что-то в роде "этому приложению не доступно прослушивание аудиозаписей ВКонтакте". Короче, нужно этот URL вставить в данный метод и он просто вернет разобранный нормальный URL по алгоритму
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+vk.call("wall.getById", {
+	posts: "-149662823_108"
+}).then(({vkr}) => {
+	let post = vkr[0];
+	
+	let audio = post.attachments[1].audio;
+	audio.url = http.audio.getURL(audio.url);
+
+	console.log(audio);
+	
+})
+</code></pre>
+
+<h2 id="audio_add"><span>#</span> audio.add()</h2>
+<p>
+	Метод добавляет выбранную аудиозапись в список аудиозаписей группы или пользователя
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li>
+			<b>audio</b> <span>*</span> <span>(<a href="#audioitem">&lt;AudioItem&gt;</a>)</span> <span>- объект <a href="#audioitem">AudioItem</a>, или просто объект такого типа</span>
+			<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	owner_id: AUDIO_OWNER_ID,
+	id: AUDIO_ID,
+	add_hash: AUDIO_ADD_HASH
+}
+			</code></pre>
+			<p>
+				Рекомендую брать данный объект из методов вроде <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a>
+			</p>
+		</li>
+		<li>
+			<b>params</b> <span>(<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank"/>&lt;Object&gt;</a>)</span> - список дополнительный настроек
+			<ul>
+				<li><b>group_id</b> <span>- id группы, в которую нужно добавить аудиозапись</span></li>
+			</ul>
+		</li>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get({
+	owner_id: -84720287
+}).then(({vkr}) => {
+	
+	let audioObject = vkr[0];
+	
+	http.audio.add(audioObject).then(({vkr}) => {
+			
+		console.log(`Аудиозапись ${audioObject.title} добавлена!`);
+
+	})
+
+})
+</code></pre>
+
+
+<h2 id="audio_delete"><span>#</span> audio.delete()</h2>
+<p>
+	Метод удаляет аудиозапись
+</p>
+<p>
+	Принимает только один аргумент - объект аудиозаписи <a href="#audioitem">AudioItem</a>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	id: AUDIO_ID,
+	owner_id: AUDIO_OWNER_ID,
+	delete_hash: AUDIO_DELETE_HASH	
+}
+</code></pre>
+</p>
+<p>
+	Рекомендую брать данный объект из методов вроде <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a>
+</p>
+
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get().then(({vkr}) => {
+	
+	let audioObject = vkr[0];
+
+	http.audio.delete(audioObject).then(({vkr}) => {
+			
+		console.log(`Аудиозапись ${audioObject.title} удалена!`);
+
+	});
+
+});
+</code></pre>
+
+
+<h2 id="audio_edit"><span>#</span> audio.edit()</h2>
+<p>
+	Метод редактирует аудиозапись
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li>
+			<b>audio</b> <span>*</span> <span>(<a href="#audioitem">&lt;AudioItem&gt;</a>)</span> <span> - объект аудиозаписи <a href="#audioitem">AudioItem</a></span> или примерно такой объект
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	owner_id: AUDIO_OWNER_ID,
+	edit_hash: AUDIO_EDIT_HASH,
+	id: AUDIO_ID
+}
+</code></pre>
+			<p>
+				Рекомендую брать данный объект из методов вроде <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a>
+			</p>
+		</li>
+		<li>
+			<b>params</b> - объект параметров запроса
+			<ul>
+				<li><span><b>title</b></span> - новое название аудиозаписи (по умолчанию не изменяется)</li>
+				<li><span><b>privacy</b></span> - аудиозапись скрыта из поиска</li>
+				<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	privacy: [0, 1][0]
+}
+			</code></pre>
+				<li><span><b>text</b></span> - текст аудиозаписи, слова</li>
+				<li><span><b>performer</b> - исполнитель трека</span></li>
+				<li><span><b>genre</b> - номер жанра, можно взять из объекта AudioAPI</span></li>
+				<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+AudioAPI.genres = {
+	1: "Rock",
+	2: "Pop",
+	3: "Rap & Hip-Hop",
+	4: "Easy Listening",
+	5: "Dance & House",
+	6: "Instrumental",
+	7: "Metal",
+	8: "Dubstep",
+	10: "Drum & Bass",
+	11: "Trance",
+	12: "Chanson",
+	13: "Ethnic",
+	14: "Acoustic & Vocal",
+	15: "Reggae",
+	16: "Classical",
+	17: "Indie Pop",
+	18: "Other",
+	19: "Speech",
+	21: "Alternative",
+	22: "Electropop & Disco",
+	1001: "Jazz & Blues",
+}
+				</code></pre>
+				<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	title: 'До зимы',
+	performer: 'Oxxxymiron',
+	genre: http.audio.genres[3]
+}
+				</code></pre>
+			</ul>
+		</li>
+	</ul>
+</p>
+<p>
+	Метод вернет отредактированную аудиозапись
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get().then(({vkr}) => {
+	
+	let audioObject = vkr[0];
+
+	http.audio.edit(audioObject, {
+		title: "Rest In Peace",
+		performer: "Astrokai",
+		genre: http.audio.genres[1001]
+	}).then(({vkr}) => {
+			
+		console.log('Отредачили!', vkr);
+
+	})
+
+})
+</code></pre>
+
+
+<h2 id="audio_reorder"><span>#</span> audio.reorder()</h2>
+<p>
+	Метод перемещает аудиозапись в списке аудиозаписей
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li>
+			<b>audio_id</b> - <span>ID аудиозаписиси, которую нужно переместить</span>
+		</li>
+		<li>
+			<b>after_audio_id</b> - <span>ID аудиозаписи, после которой в списке поместить выбранную аудиозапись. Аудиозапись переместится на место этой аудиозаписи</span>
+		</li>
+	</ul>
+</p>
+<p>
+	Пример, как я поменял 1ю аудиозапись местами со 2й
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get().then(({vkr}) => {
+	
+	let audios = vkr;
+	
+	http.audio.reorder({
+		audio_id: audios[0].id,
+		after_audio_id: audios[0].id
+	}).then(({vkr}) => {
+		
+		console.log('Переместили!', vkr);
+
+	});
+	
+});
+</code></pre>
+<h2 id="audioitem">AudioItem</h2>
+<p>
+	Это объект аудиозаписи, который Easy VK генерирует автоматически, когда работает с разделом аудиозаписей. Посмотрите, что он из себя представляет в обобщенном виде
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+AudioItem {
+	id: 456239601,
+	owner_id: 356607530,
+
+	// URL адрес mp3 файла
+	url:
+	 'https://cs1-77v4.vkuseraudio.net/p13/d2f2dafd1d0e2d.mp3?extra=ZxfD...',
+	
+	// Название трека 
+	title: 'Le clan des Siciliens',
+	
+	// Исполнитель
+	performer: 'Ennio Morricone',
+	
+	// Продолжительность в секундах
+	duration: 240, 
+
+	// Список обложек
+	covers:
+	 'https://pp.userapi.com/c639520/v639520452/20464/qNd2FPHsB-0.jpg,https://pp
+	.userapi.com/c639520/v639520452/20463/qXltktjrN1I.jpg',
+
+	// Маленький размер обложки
+	coverUrl_s: 
+	 'https://pp.userapi.com/c639520/v639520452/20464/qNd2FPHsB-0.jpg',
+
+	// Обложка размера постера
+	coverUrl_p:
+	 'https://pp.userapi.com/c639520/v639520452/20463/qXltktjrN1I.jpg', 
+
+	// Флаги аудиозаписи (hq, и т.д)
+	flags: 67,
+
+	// высокое качество аудиозаписи (с недавних пор везде false)
+	hq: false,
+	
+	// Подтверждено (типа по лицензии вроде)
+	claimed: false,
+
+	// Лицензия United Media Agency
+	uma: false,
+
+	// Взята из альбома
+	album_id: 0,
+	full_id: '356607530_456239601',
+
+	// Содержит контент откровенного содержания (откровения тут это мат)
+	explicit: false,
+
+	// Не видел нигде, может старое что-то
+	subtitle: '', 
+
+	// Можно редактировать
+	can_edit: true,
+
+	// Можно удалить
+	can_delete: true,
+
+	// Можно добавить к себе
+	can_add: true,
+
+	// Cтарые данные аудиозаписи, тут же lyrics_id
+	album: [ -2000050253, 50253, '41aa55652f111368ac' ],
+
+	// ID слов песни, чтобы получить через audio.getLyrics()
+	lyrics_id: 50253
+}
+</code></pre>
+<h2 id="apiJSON">JSON Audio Api</h2>
+<p>
+	Данный объект возвращается в большинстве методов Audio API, и HTTP клиента. В нем хранится полный JSON ответ сервера ВКонтакте, его можно использовать для дебага, а также для того чтобы использовать полные возможности HTTP клиента. Так, например, в методе <a href="#audio_get">audio.get()</a> в json возвращается объект с такимим параметрами, как <code class="h">hasMore</code>, <code class="h">nextOffset</code> и т.д
+</p>
+<p>
+	Данный объект сильно расширяет возможности клиента. Но помните один важный момент: <b>точной документации для него не дать, Вы сами должны понимать, что в нем хранится, так как он всегда может придти разным (опять про нестабильность Audio API в целом, но это не минус, просто дотошность)</b>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get({
+	owner_id: -123675921
+}).then(({json}) => {
+	console.log(json.hasMore) // Есть ли еще аудиозаписи
+	console.log(json.nextOffset)
+})
+</code></pre>
           <div class="footer">
             <p>
               &copy; 2018 - Кирилл Новак <br>
@@ -407,11 +963,11 @@
 <!-- <script src="assets/plugins/highlight/highlight.pack.js"></script> -->
 <!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
 <!-- <script>hljs.initHighlightingOnLoad();</script> -->
-<script src="assets/plugins/prism.js"></script>
+<script src="../assets/plugins/prism.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script src="assets/js/main.js"></script>
-<script src="assets/selectic/selectic.min.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/selectic/selectic.min.js"></script>
 <script>
 ;(function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
