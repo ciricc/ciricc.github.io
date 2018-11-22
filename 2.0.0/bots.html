@@ -16,14 +16,14 @@
 
 	<title>Easy VK / Node.JS ВКонтакте API | Документация</title>
 	
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
-	<link rel="stylesheet" href="assets/selectic/selectic.css" type="text/css">
-	<link rel="stylesheet" href="assets/css/main.css" type="text/css">
-	<link rel="stylesheet" href="assets/css/prism-github.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/prism-github.css">
 
 	<!-- Yandex.Metrika counter -->
 	<script type="text/javascript" >
@@ -58,7 +58,7 @@
   
     <script>
       
-      window.root = "";
+      window.root = "../";
 
     </script>
   </head>
@@ -72,15 +72,15 @@
               <div class="col-md-6 col-sm-6 col-xs-8 no-padding">
                 <span class="fa fa-bars opener"></span>
                   <a href="/" class="logo">
-                    <img src="assets/img/logo.png" alt="Easy VK логотип Node.js ВКонтакте API JavaScript" width="45" style="display: inline-block;margin-bottom: 20px;">
+                    <img src="../assets/img/logo.png" alt="Easy VK логотип Node.js ВКонтакте API JavaScript" width="45" style="display: inline-block;margin-bottom: 20px;">
                   </a>
                 <h2>Easy VK</h2>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-4" style="height: 80px;">
                 <div class="version-wrap" style="text-align: center;">
                   <select name="version" id="version">
-                    <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
-                    <a href="2.0.0/index.html"><option value="2.0.0" selected="selected">2.0.0</option></a>
+                    <a href="../1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
+                    <a href="../2.0.0/index.html"><option value="2.0.0" selected="selected">2.0.0</option></a>
                   </select>
                 </div>
               </div>
@@ -405,103 +405,21 @@
           <script>
 	window.pageGot = true;
 </script>
-<h1>Примеры <span class="date-edit">Редактировано: <span class="det">22.11.2018 в 14:44</span></span></h1>
-
+<h1>Чем отличается LongPoll API от Callback API <span class="date-edit">Редактировано: <span class="det">22.11.2018 в 14:57</span></span></h1>
 <p>
-	Прежде чем начать работу с Easy VK, познакомьтесь с ним на примерах, так будет проще понять, что он из себя представляет. Я постараюсь объяснить абсолютно все.
-</p>
-<div class="big-quote danger">
-  <p>
-    <span class="ic">!</span> Easy VK официально еще не обновлен на npm, поэтому текущие примеры работы могут не правильно отображаться для 1.5.1 версии, которая на данный момент - крайняя опубликованная версия. Если Вы хотите работать с последней версией Easy VK, скачайте его с <a href="http://github.com/ciricc/easyvk/dev">github</a> ветки <code class="code">dev</code>
-  </p>
-</div>
-<h2 id="send_message"><span>#</span> Отправка сообщения</h2>
-<p>
-	В этом примере показано, как работает Easy VK в целом, на самом простом примере - отправке сообщения самому себе, многие моменты можно опустить, и оставить только самую важную часть
-</p>
-<pre  class='line-numbers normalize-whitespace'><code class='language-js'>const easyvk = require('easyvk')
-
-easyvk({
-    // воспользуйтесь password и username, чтобы получить токен
-    // автоматически
-    access_token: "{ТОКЕН_ПОЛЬЗОВАТЕЛЯ}",
-}).then(async (vk) => { 
-    // после авторизации вы получаете объект EasyVK (vk), с которым работаете дальше
-			
-    // user_id авторизованного аккаунта (по токену)
-    const me = vk.session.user_id
-
-    // Обращаемся к методу messages.send с параметром user_id и message
-    vk.call('messages.send', {
-        user_id: me,
-        message: 'Привет!' // Текст сообщения, по мануалу ВКонтакте
-    }).then(({ vkr: response }) => {
-
-        // После выполнения запроса, ВКонтакте возвращает ответ
-        console.log(response)
-
-        // Получить полный ответ, а не только его часть response
-        console.log(response.getFullResponse()) 
-    }).catch((error) => {
-        
-        // Если произойдет ошибка при отправке запроса, она выводится в консоль
-        console.log(error);
-
-    })
-
-}).catch(console.error)</code></pre>
-
-<h2 id="chat_bot"><span>#</span> Чат-бот</h2>
-<p>
-	Теперь Вы, уже зная, как работать с методами, можете понять, как работает иерархия объектов в EasyVK. Посмотрите, как можно создать простейший чат-бот
+	Для создания бота можно использовать разные инструменты, это может быть <a href="longpollapi.html" target="_blank">LongPoll API</a>, а может быть <a href="callbackapi.html" target="_blank">Callback API</a>. Так чем же они отличаются? Что выбрать?
 </p>
 <p>
-	Данный пример показывает работу только для пользовательского LongPoll, чтобы прослушивать группы и создавать чат-бота группы, используйте Bots LongPoll API
+	LongPoll работает по принципу "сам прошу", Callback API работает по принципу "жду, а не прошу". Выбирайте, что нужно вам, а ниже я описал более подробно каждый из этих принципов
 </p>
-
-<pre  class='line-numbers normalize-whitespace'><code class='language-js'>const easyvk = require('easyvk')
-
-
-easyvk({
-  access_token: '{ТОКЕН_ПОЛЬЗОВАТЕЛЯ}'
-}).then(vk => {
-	
-  async function getMessage (msgArray = []) {
-    const MESSAGE_ID__INDEX = 1;
-	
-    return vk.call('messages.getById', {
-      message_ids: msgArray[MESSAGE_ID__INDEX]
-    })
-  }
-
-  // Подключемся к серверу для "прослушивания" пользователя
-  vk.longpoll.connect().then(({ connection }) => {
-    
-    // Слушаем сообщения пользователя
-    connection.on('message', async (msg) => {      
-      
-      // сообщение для User LongPoll хранится в массиве
-      let {vkr: fullMessage} = (await(getMessage(msg)))
-
-
-      fullMessage = fullMessage.items[0]
-
-      if (!fullMessage.out) { // если это не наше сообщение
-	    
-	    vk.call('messages.send', {
-	      user_id: fullMessage.user_id,
-	      message: 'Привет!'
-	    })
-
-      }
-
-    })
-
-  })
-
-})
-
-</code></pre>
+<h2>Сам прошу</h2>
+<p>
+	Бот работает только на машине пользователя, ему необязательно быть доступным для сервера ВКонтакте, он сам постоянно делает запросы на сервер ВКонтакте, ждет, когда тот ему вернет события, и снова запрашивает, как только получает. Работает LongPoll API быстрее, чем Callback API, так как получает события моментально, и моментально может получить новые. Все зависит от скорости интернета пользователя.
+</p>
+<h2>Жду, а не прошу</h2>
+<p>
+	Это значит, что создается сервер, который принимает запросы, ждет, когда ему что-то дадут, и, когда ему что-то дают, он сразу обрабатывает полученную информацию. Обязательно требует, чтобы сервер был доступен для сети интернет, чтоб сервер ВКонтакте мог постоянно иметь доступ к Callback серверу, на обычном компьютере запустить такого бота проблематично (лично для меня), работает медленнее, так как до того, как на сервер придет событие, его еще надо отправить (+ подключиться к серверу), это долго, и отправляется не много событий сразу, а только одно. 
+</p>
           <div class="footer">
             <p>
               &copy; 2018 - Кирилл Новак <br>
@@ -520,11 +438,11 @@ easyvk({
 <!-- <script src="assets/plugins/highlight/highlight.pack.js"></script> -->
 <!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
 <!-- <script>hljs.initHighlightingOnLoad();</script> -->
-<script src="assets/plugins/prism.js"></script>
+<script src="../assets/plugins/prism.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script src="assets/js/main.js"></script>
-<script src="assets/selectic/selectic.min.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/selectic/selectic.min.js"></script>
 <script>
 ;(function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');

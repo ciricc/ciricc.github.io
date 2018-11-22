@@ -208,19 +208,13 @@
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="examples.html" class="title bigger">Сессия</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="callbackapi.html" class="title bigger">Callback API</a>
 			<ul>
 				<li>
-					<a href="session.html#save"><span class="object">session</span>.<span class="span method">save</span>()</a>
+					<a href="callbackapi.html#listen"><span class="object">callbackAPI</span>.<span class="span method">listen</span>()</a>
 				</li>
 				<li>
-					<a href="session.html#setPath"><span class="object">session</span>.<span class="span method">setPath</span>()</a>
-				</li>
-				<li>
-					<a href="session.html#clear"><span class="object">session</span>.<span class="span method">clear</span>()</a>
-				</li>
-				<li>
-					<a href="session.html#usage"><span class="object">Метод использования</span></a>
+					<a href="callbackapi.html#events">События Callback API</a>
 				</li>
 			</ul>
 		</li>
@@ -237,17 +231,17 @@
 			<a href="httpclient.html" class="title bigger">HTTP клиент</a>
 			<ul>
 				<li>
-					<a href="httpclient.html#client_readfeedstories"><span class="object">client</span>.<span class="span method">readFeedStories</span>()</a>
-					<span>Посмотреть все новые истории друзей</span>
-				</li>
-				<li>
 					<a href="httpclient.html#client_readstories"><span class="object">client</span>.<span class="span method">readStories</span>()</a>
 					<span>Посмотреть истории пользователя</span>
 				</li>
 				<li>
+					<a href="httpclient.html#client_readfeedstories"><span class="object">client</span>.<span class="span method">readFeedStories</span>()</a>
+					<span>Посмотреть все новые истории друзей</span>
+				</li>
+				<li>
 					<a href="httpclient.html#client_audio"><span class="object">client</span>.<span class="span span property">audio</span></a>
 					<span>
-						Это объект <a href="">AudioAPI</a>
+						Это объект <a href="audioapi.html">AudioAPI</a>
 					</span>
 				</li>
 			</ul>
@@ -300,10 +294,48 @@
 					<a href="audioapi.html#audio_reorder"><span class="object">audio</span>.<span class="span method">reorder</span>()</a>
 				</li>
 				<li>
+					<a href="audioapi.html#audio_restore"><span class="object">audio</span>.<span class="span method">restore</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_getPlaylists"><span class="object">audio</span>.<span class="span method">getPlaylists</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_getPlaylistById"><span class="object">audio</span>.<span class="span method">getPlaylistById</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_followPlaylist"><span class="object">audio</span>.<span class="span method">followPlaylist</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_deletePlaylist"><span class="object">audio</span>.<span class="span method">deletePlaylist</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_moveToPlaylist"><span class="object">audio</span>.<span class="span method">moveToPlaylist</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#playlist"><span class="span method">Playlist</span></a>
+				</li>
+				<li>
 					<a href="audioapi.html#audioitem"><span class="span method">AudioItem</span></a>
 				</li>
 				<li>
 					<a href="audioapi.html#apiJSON"><span class="span method">JSON Audio API</span></a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="session.html" class="title bigger">Сессия</a>
+			<ul>
+				<li>
+					<a href="session.html#save"><span class="object">session</span>.<span class="span method">save</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#setPath"><span class="object">session</span>.<span class="span method">setPath</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#clear"><span class="object">session</span>.<span class="span method">clear</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#usage"><span class="object">Метод использования</span></a>
 				</li>
 			</ul>
 		</li>
@@ -332,50 +364,35 @@
 			</ul>
 		</li>
 		<li>
-			<a href="longpollapi.html" class="title bigger">Debugger [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg><a href="debugger.html" class="title bigger">Debugger</a>
 			<span>Инструмент для дебага запросов и деятельности EasyVK в режиме реального времени</span>
 			<ul>
 				<li>
-					<a href="longpollapi.html#uploader_getUploadURL"><span class="object">debugger</span>.<span class="span method">push</span>()</a>
-					<span>Метод чаще используется в разработке EasyVK, но вы  ткже можете им воспользоваться</span>
+					<a href="debugger.html#how_to_work"><span class="object">Debugger</span></a>
+					<span>Узнайте как использовать Debugger в своих программах</span>
 				</li>
 				<li>
-					<a href="longpollapi.html#uploader_getUploadURL"><span class="object">debugger</span>.<span class="span method">on</span>("push")</a>
-					<span>Узнайте о новом событии в EasyVK</span>
-				</li>
-				<li>
-					<a href="uploader.html#uploader_getUploadURL"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
+					<a href="debugger.html#debuggerrun"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
 					<span>Debugger изначально не доступен, поэтому запросы до авторизации вы можете прослушивать с помощью debuggerRun</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="longpollapi.html" class="title bigger">VKResponse [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="vkresponse.html" class="title bigger">VKResponse</a>
 			<ul>
 				<li>
-					<a href="longpollapi.html#uploader_getUploadURL"><span class="object">response</span>.<span class="span method">getFullResponse</span>()</a>
+					<a href="vkresponse.html#getFullResponse"><span class="object">vkr</span>.<span class="span method">getFullResponse</span>()</a>
 				</li>
 			</ul>
 		</li>
-		<!-- <li>
-			<a href="uploader.html" class="title bigger">Загрузка файлов</a>
-			<ul>
-				<li>
-					<a href="uploader.html#uploader_getUploadURL"><span class="object">uploader</span>.<span class="span method">getUploadURL</span>()</a>
-				</li>
-				<li>
-					<a href="uploader.html#uploader_uploadFile"><span class="object">uploader</span>.<span class="span method">uploadFile</span>()</a>
-				</li>
-			</ul>
-		</li> -->
 		<li>
-			<a href="longpollapi.html" class="title bigger">Классификация ошибок [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="errors.html" class="title bigger">Классификация ошибок</a>
 			<ul>
 				<li>
-					<a href="longpollapi.html#uploader_getUploadURL"><span class="object">vk</span>.<span class="span method">EasyVKError</span></a>
+					<a href="errors.html#easyvkerror"><span class="span method">EasyVKError</span></a>
 				</li>
 				<li>
-					<a href="longpollapi.html#uploader_uploadFile"><span class="object">vk</span>.<span class="span method">VKResponseError</span></a>
+					<a href="errors.html#vkresponseerror"><span class="span method">VKResponseError</span></a>
 				</li>
 			</ul>
 		</li>
@@ -392,14 +409,14 @@
 <div class="notify-block">
   <h2 style="margin: 0px;">Обновление Easy VK 2.0</h2>
   <p>
-    Еще лучше, еще больше: релиз Audio API, добавлена мультиязычность, включены внутренние новые классы и объекты, разработан HTTP Клиент, добавлены просмотры историй, и, конечно, новая, обновленная документация
+    Еще лучше, еще больше: релиз Audio API, мультиязычность, внутренние новые классы и объекты, HTTP Клиент, добавлены просмотры историй, и, конечно, новая, обновленная документация
   </p>
   <p>
     Я очень рад, что обновление наконец вышло! И думаю, оно вам понравится.
   </p>
 </div>
 
-<h1>Начнем <span class="date-edit">Редактировано: <span class="det">21.11.2018 в 19:48</span></span></h1>
+<h1>Начнем <span class="date-edit">Редактировано: <span class="det">22.11.2018 в 14:44</span></span></h1>
 <p>
   Этот сайт - документация библиотеки Easy VK (easyvk) - модуля, который предназначен для работы с API ВКонтакте под платформой Node.JS
 </p>
@@ -418,7 +435,7 @@
 
 <h2 id="functions"><span>#</span> Функционал Easy VK</h2>
 <p>
-  Easy VK предоставляет всем JavaScript программистам неограниченные возможности работы с API ВКонтакте на стороне сервера. Easy VK не имеет поддержки клиентской части (браузера), так как изначально создавался под серверную платформу Node.JS. Поэтому, нет, Easy VK - это не SDK для JavaScript клиентов, ведь такое уже есть, официально от разработчиков ВКонтакте
+  Easy VK предоставляет всем JavaScript программистам неограниченные возможности работы с API ВКонтакте на стороне сервера. Easy VK не имеет поддержки клиентской части (браузера), так как изначально создавался под серверную платформу Node.JS. Поэтому, нет, Easy VK - это не SDK для JavaScript клиентов, ведь такое уже есть, официально и тем более, от разработчиков ВКонтакте
 </p>
 <p>
   Вот некоторый список того, что Easy VK уже может
@@ -428,13 +445,13 @@
     <li>Поддержка <a href="#">Bots LongPoll</a> (боты - группы)</li>
     <li>Возможность создавать ботов на <a href="#">Callback API</a></li>
     <li>Создайте собственный ресерчер (<a href="https://translate.google.com/#en/ru/research" target="_blank">research</a>) с помощью <a href="#">Streaming API</a> </li>
-    <li>Воспользуйтесь неофициальным <a href="#">Audio API</a> (для личного использования)</li>
-    <li>Используйте все возможности дебага Easy VK (<a href="#">ловля капчи</a>, <a href="#">ошибок</a>, <a href="#">слежение за деятельностью easyvk</a>)</li>
-    <li>Воспользуйтесь <a href="#">HTTP клиентом</a> для просмотра историй (<a href="https://pikabu.ru/story/o_tom_kak_ya_ispolzoval_prosmotryi_storis_dlya_piara_v_vk_6123084" target="_blank">пример работы</a>)</li>
-    <li>Загружайте файлы с помощью удобного <a href="#">загрузчика Easy VK</a> на сервера ВКонтакте</li>
-    <li>Воспользуйтесь <a href="#">виджетами</a>, которые помогут Вам узнать, например, количество просмотров Live видео ВКонтакте</li>
-    <li>Контролируйте <a href="#">сессию</a>, сохраняйте данные в нее, удаляйте, настраивайте, как Вам удобно</li>
-    <li>В Easy VK есть поддержка мультиязычности ошибок: в Вашей команде нет иностранцев? Установите <code>lang: "ru"</code>, и <a href="#">получайте информацию об ошибках на русском языке</a></li>
+    <li>Воспользуйтесь неофициальным <a href="audioapi.html" target="_blank">Audio API</a> (для личного использования)</li>
+    <li>Используйте все возможности дебага Easy VK (<a href="captcha.html" target="_blank">ловля капчи</a>, <a href="errors.html" target="_blank">ошибок</a>, <a href="debugger.html" target="_blank">слежение за деятельностью easyvk</a>)</li>
+    <li>Воспользуйтесь <a href="httpclient.html" target="_blank">HTTP клиентом</a> для просмотра историй (<a href="https://pikabu.ru/story/o_tom_kak_ya_ispolzoval_prosmotryi_storis_dlya_piara_v_vk_6123084" target="_blank">пример работы</a>)</li>
+    <li>Загружайте файлы с помощью удобного <a href="uploader.html" target="_blank">загрузчика Easy VK</a> на сервера ВКонтакте</li>
+    <li>Воспользуйтесь <a href="widgets.html" target="_blank">виджетами</a>, которые помогут Вам узнать, например, количество просмотров Live видео ВКонтакте</li>
+    <li>Контролируйте <a href="session.html" target="_blank">сессию</a>, сохраняйте данные в нее, удаляйте, настраивайте, как Вам удобно</li>
+    <li>В Easy VK есть поддержка мультиязычности ошибок: в Вашей команде нет иностранцев? Установите <code>lang: "ru"</code>, и <a href="errors.html#language">получайте информацию об ошибках на русском языке</a></li>
   </ul>
 </p>
 

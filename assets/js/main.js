@@ -173,6 +173,7 @@
 			var th = $(b);
 
 			th.find("ul").hide();
+			th.find("a").attr("target", "_blank");
 			th.find('li').each(function (a, li){
 				
 				if ($(this).find("> ul").length) {

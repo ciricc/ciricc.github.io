@@ -1,0 +1,39 @@
+<script>
+	window.pageGot = true;
+</script>
+<h1>VKResponse</h1>
+<p>
+	VKResponse - это объект ответа сервера, приходит практически в каждом методе Easy VK и всех его модулей.
+	Очень часто VKResponse - это JSON объект, но может быть так же и числом, и булевым значением, и массивом, но при этом методы все те же, как и должны быть. Познакомьтесь с методами работы с ответом сервера
+</p>
+<h2 id="getFullResponse">vkr.getFullResponse()</h2>
+<p>
+	Метод возвращает полный ответ сервера. Дело в том, что ВКонтакте возвращает ответ обычно в таком виде
+	<pre class="js"><code>
+{
+	response: {
+		items: [...]
+	}
+}
+	</code></pre>
+	<p>Это не общий вид, конечно, но в Easy VK по умолчанию возвращается только часть <code class="h">response</code>, а та часть, что находится на уровнях выше или на одном уровне, опускается</p>
+	<pre class="js"><code>
+VKResponse {
+	items: [...]
+}
+	</code></pre>
+	<p>
+		Данный метод же позволит получить полный ответ в том виде, в котором пришел к вам
+	</p>
+	<pre class="js"><code>
+vk.call("messages.send", {
+	user_id: vk.session.user_id,
+	message: 'Привет!'
+}).then(({ vkr }) => {
+	
+	console.log(vkr); // ID последнего отправленного сообщения
+	console.log('Полная версия:', vkr.getFullResponse()); // {response: ID}
+
+})
+	</code></pre>
+</p>

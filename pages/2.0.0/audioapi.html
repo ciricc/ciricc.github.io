@@ -470,6 +470,267 @@ http.audio.get().then(({vkr}) => {
 	
 });
 </code></pre>
+<h2 id="audio_restore"><span>#</span> audio.restore()</h2>
+<p>
+	Метод восстанавливает аудиозапись в списке аудиозаписей после удаления, точно не знаю через сколько времени уже нельзя восстановить аудиозапись
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li><b>audio</b> <span>*</span> <span>( <a href="#audioitem">&lt;AudioItem&gt;</a>) - объект аудиозаписи</span>
+			<p>
+				Рекомендую брать данный объект из методов вроде <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a>
+			</p>
+		</li>
+	</ul>
+</p>
+<pre class="js"><code>
+http.audio.get().then(({vkr}) => {
+
+	let audio = vkr[0];
+
+
+	http.audio.delete(audio).then(() => {
+		
+		console.log('Удалили!');
+
+		http.audio.restore(audio).then(() => {
+			
+			console.log('Восстановили!');
+
+		})
+
+	})
+	
+})
+
+</code></pre>
+<h2 id="audio_getPlaylists"><span>#</span> audio.getPlaylists()</h2>
+<p>
+	Метод возвращает список плейлистов пользователя или группы
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li><b>owner_id</b> <span> - ID пользователя или группы, из которой надо достать список плейлистов</span>
+		</li>
+		<li>
+			<b>offset</b> <span> - смещение по номеру плейлиста, начиная с этого номера будут возвращены новые плейлисты</span>
+		</li>
+	</ul>
+</p>
+<p>
+	Метод вернет массив плейлистов объекта <a href="#playlist">Playlist</a>, читайте документацию для этого объекта.
+</p>
+<pre class="js"><code>
+http.audio.getPlaylists({
+	owner_id: -123675921
+}).then(({vkr}) => {
+
+	console.log(vkr[0].title);
+
+});
+</code></pre>
+<h2 id="audio_getPlaylistById"><span>#</span> audio.getPlaylistById()</h2>
+<p>
+	Метод возвращает плейлист по указанном параметрам
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li><b>owner_id</b> - <span>ID владельца плейлиста (группа или пользователь)</span></li>
+		<li><b>playlist_id</b> - <span>ID плейлиста, который нужно получить</span></li>
+	</ul>
+</p>
+<p>
+	Вернет объект плейлиста <a href="#playlist">Playlist</a>
+</p>
+<pre class="js"><code>
+http.audio.getPlaylistById({
+	owner_id: -123675921,
+	playlist_id: 1
+}).then(({vkr}) => {
+	
+	console.log(vkr.title);
+
+});
+</code></pre>
+<h2 id="audio_followPlaylist"><span>#</span> audio.followPlaylist()</h2>
+<p>
+	Метод добавляет плейлист в подписки (проще говоря, он добавляет чужой плейлист в список плейлистов пользователя, подписывается). Чтобы отписаться от плейлиста, надо вызвать метод повторно
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li><b>playlist</b> <span>*</span> <span>(<a href="#playlist">&lt;Playlist&gt;</a>) - объект плейлиста, или примерно такой бъект</span>
+		<pre class="js"><code>
+{
+	id: PLAYLIST_ID,
+	owner_id: PLAYLIST_OWNER_ID,
+	follow_hash: PLAYLIST_FOLLOW_HASH
+}
+		</code></pre>
+		<p>
+			Рекомендую получать данный объект через методы вроде <a href="#audio_getPlaylists">audio.getPlaylists()</a> или <a href="#audio_getPlaylistById">audio.getPlaylistById()</a>
+		</p>
+		</li>
+	</ul>
+</p>
+<pre class="js"><code>
+http.audio.getPlaylists({
+	owner_id: -123675921
+}).then(({vkr}) => {
+	
+	let playlist = vkr[0];
+
+
+	http.audio.followPlaylist(playlist).then(() => {
+		
+		console.log('Подписались!');
+
+	})
+
+})
+</code></pre>
+
+<h2 id="audio_deletePlaylist"><span>#</span> audio.deletePlaylist()</h2>
+<p>
+	Метод удаляет плейлист из списка плейлистов (только СВОЙ плейлист, чужие нельзя удалить этим методом, всмысле, что, если Вы подписались на плейлист, надо отписаться, а не удалять его!)
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li><b>playlist</b> <span>*</span> <span>(<a href="#playlist">&lt;Playlist&gt;</a>) - объект плейлиста, или примерно такой бъект</span>
+		<pre class="js"><code>
+{
+	id: PLAYLIST_ID,
+	owner_id: PLAYLIST_OWNER_ID,
+	edit_hash: PLAYLIST_EDIT_HASH
+}
+		</code></pre>
+		<p>
+			Рекомендую получать данный объект через методы вроде <a href="#audio_getPlaylists">audio.getPlaylists()</a> или <a href="#audio_getPlaylistById">audio.getPlaylistById()</a>
+		</p>
+		</li>
+	</ul>
+</p>
+<pre class="js"><code>
+http.audio.getPlaylists().then(({vkr}) => {
+	
+	let playlist = vkr[0];
+
+
+	http.audio.deletePlaylist(playlist).then(() => {
+		
+		console.log('Удалили плейлист!');
+
+	})
+
+})
+</code></pre>
+<h2 id="audio_moveToPlaylist"><span>#</span> audio.moveToPlaylist()</h2>
+<p>
+	Метод добавляет аудиозапись в выбранный плейлист
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li>
+			<b>audio</b> <span>*</span> (<a href="#audioitem">&lt;AudioItem&gt;</a>) - Объект аудиозаписи
+			<p>
+				Рекомендую брать данный объект из методов вроде <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a>
+			</p>
+		</li>
+		<li>
+			<b>playlist</b> <span>*</span> (<a href="#playlist">&lt;Playlist&gt;</a>) - Объект плейлиста
+			<p>
+				Рекомендую получать данный объект через методы вроде <a href="#audio_getPlaylists">audio.getPlaylists()</a> или <a href="#audio_getPlaylistById">audio.getPlaylistById()</a>
+			</p>
+		</li>
+	</ul>
+</p>
+<pre class="js"><code>
+http.audio.get().then(({vkr}) => {
+	
+	let audio = vkr[0];
+
+	http.audio.getPlaylists().then(({vkr: playlists}) => {
+		let playlist = playlists[0];
+
+		http.audio.moveToPlaylist(audio, playlist).then(({vkr}) => {
+			
+			console.log('Добавили аудиозапись в плейлист!');
+
+		})
+
+	})
+
+})
+</code></pre>
+<h2 id="playlist">Playlist</h2>
+<p>
+	Это объект плейлиста, который Easy VK генерирует автоматически при работе с плейлистами. В обобщенном виде он выглядет так:
+</p>
+<pre class="js"><code>
+{
+	// ID плейлиста
+	id: playlist.id,
+
+	// ID владельца плейлиста
+	owner_id: playlist.ownerId,
+
+	// Полный идентифекатор плейлиста
+	raw_id: playlist.ownerId + '_' + playlist.id,
+
+	// Название плейлиста
+	title: playlist.title,
+
+	// Обложка плейлиста
+	cover_url: playlist.coverUrl,
+
+	// Дата последнего обновления
+	last_updated: playlist.lastUpdated,
+
+	// Содержит откровенный контент (мат)
+	explicit: playlist.isExplicit,
+
+	// Подписан ли пользователь на плейлист
+	followed: playlist.isFollowed,
+
+	// Подтвержденный плейлист (лицензия и т.п)
+	official: playlist.isOfficial,
+
+	// Сколько людей прослушали плейлист
+	listens: playlist.listens,
+
+	// Количество аудиозаписей в плейлисте
+	size: playlist.size,
+	
+	// Все типы обложек
+	covers: playlist.grid_covers,
+
+	// Описание плейлиста
+	description: playlist.description,
+
+	// Маленькое описание плейлиста + HTML код
+	raw_description: playlist.rawDescription,
+
+	// Аудиозаписи плейлиста
+	list: playlist.list
+}
+</code></pre>
 <h2 id="audioitem">AudioItem</h2>
 <p>
 	Это объект аудиозаписи, который Easy VK генерирует автоматически, когда работает с разделом аудиозаписей. Посмотрите, что он из себя представляет в обобщенном виде

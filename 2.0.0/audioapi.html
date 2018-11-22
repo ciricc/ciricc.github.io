@@ -208,19 +208,13 @@
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="examples.html" class="title bigger">Сессия</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="callbackapi.html" class="title bigger">Callback API</a>
 			<ul>
 				<li>
-					<a href="session.html#save"><span class="object">session</span>.<span class="span method">save</span>()</a>
+					<a href="callbackapi.html#listen"><span class="object">callbackAPI</span>.<span class="span method">listen</span>()</a>
 				</li>
 				<li>
-					<a href="session.html#setPath"><span class="object">session</span>.<span class="span method">setPath</span>()</a>
-				</li>
-				<li>
-					<a href="session.html#clear"><span class="object">session</span>.<span class="span method">clear</span>()</a>
-				</li>
-				<li>
-					<a href="session.html#usage"><span class="object">Метод использования</span></a>
+					<a href="callbackapi.html#events">События Callback API</a>
 				</li>
 			</ul>
 		</li>
@@ -237,17 +231,17 @@
 			<a href="httpclient.html" class="title bigger">HTTP клиент</a>
 			<ul>
 				<li>
-					<a href="httpclient.html#client_readfeedstories"><span class="object">client</span>.<span class="span method">readFeedStories</span>()</a>
-					<span>Посмотреть все новые истории друзей</span>
-				</li>
-				<li>
 					<a href="httpclient.html#client_readstories"><span class="object">client</span>.<span class="span method">readStories</span>()</a>
 					<span>Посмотреть истории пользователя</span>
 				</li>
 				<li>
+					<a href="httpclient.html#client_readfeedstories"><span class="object">client</span>.<span class="span method">readFeedStories</span>()</a>
+					<span>Посмотреть все новые истории друзей</span>
+				</li>
+				<li>
 					<a href="httpclient.html#client_audio"><span class="object">client</span>.<span class="span span property">audio</span></a>
 					<span>
-						Это объект <a href="">AudioAPI</a>
+						Это объект <a href="audioapi.html">AudioAPI</a>
 					</span>
 				</li>
 			</ul>
@@ -300,10 +294,48 @@
 					<a href="audioapi.html#audio_reorder"><span class="object">audio</span>.<span class="span method">reorder</span>()</a>
 				</li>
 				<li>
+					<a href="audioapi.html#audio_restore"><span class="object">audio</span>.<span class="span method">restore</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_getPlaylists"><span class="object">audio</span>.<span class="span method">getPlaylists</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_getPlaylistById"><span class="object">audio</span>.<span class="span method">getPlaylistById</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_followPlaylist"><span class="object">audio</span>.<span class="span method">followPlaylist</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_deletePlaylist"><span class="object">audio</span>.<span class="span method">deletePlaylist</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_moveToPlaylist"><span class="object">audio</span>.<span class="span method">moveToPlaylist</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#playlist"><span class="span method">Playlist</span></a>
+				</li>
+				<li>
 					<a href="audioapi.html#audioitem"><span class="span method">AudioItem</span></a>
 				</li>
 				<li>
 					<a href="audioapi.html#apiJSON"><span class="span method">JSON Audio API</span></a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="session.html" class="title bigger">Сессия</a>
+			<ul>
+				<li>
+					<a href="session.html#save"><span class="object">session</span>.<span class="span method">save</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#setPath"><span class="object">session</span>.<span class="span method">setPath</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#clear"><span class="object">session</span>.<span class="span method">clear</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#usage"><span class="object">Метод использования</span></a>
 				</li>
 			</ul>
 		</li>
@@ -332,50 +364,35 @@
 			</ul>
 		</li>
 		<li>
-			<a href="longpollapi.html" class="title bigger">Debugger [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg><a href="debugger.html" class="title bigger">Debugger</a>
 			<span>Инструмент для дебага запросов и деятельности EasyVK в режиме реального времени</span>
 			<ul>
 				<li>
-					<a href="longpollapi.html#uploader_getUploadURL"><span class="object">debugger</span>.<span class="span method">push</span>()</a>
-					<span>Метод чаще используется в разработке EasyVK, но вы  ткже можете им воспользоваться</span>
+					<a href="debugger.html#how_to_work"><span class="object">Debugger</span></a>
+					<span>Узнайте как использовать Debugger в своих программах</span>
 				</li>
 				<li>
-					<a href="longpollapi.html#uploader_getUploadURL"><span class="object">debugger</span>.<span class="span method">on</span>("push")</a>
-					<span>Узнайте о новом событии в EasyVK</span>
-				</li>
-				<li>
-					<a href="uploader.html#uploader_getUploadURL"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
+					<a href="debugger.html#debuggerrun"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
 					<span>Debugger изначально не доступен, поэтому запросы до авторизации вы можете прослушивать с помощью debuggerRun</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="longpollapi.html" class="title bigger">VKResponse [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="vkresponse.html" class="title bigger">VKResponse</a>
 			<ul>
 				<li>
-					<a href="longpollapi.html#uploader_getUploadURL"><span class="object">response</span>.<span class="span method">getFullResponse</span>()</a>
+					<a href="vkresponse.html#getFullResponse"><span class="object">vkr</span>.<span class="span method">getFullResponse</span>()</a>
 				</li>
 			</ul>
 		</li>
-		<!-- <li>
-			<a href="uploader.html" class="title bigger">Загрузка файлов</a>
-			<ul>
-				<li>
-					<a href="uploader.html#uploader_getUploadURL"><span class="object">uploader</span>.<span class="span method">getUploadURL</span>()</a>
-				</li>
-				<li>
-					<a href="uploader.html#uploader_uploadFile"><span class="object">uploader</span>.<span class="span method">uploadFile</span>()</a>
-				</li>
-			</ul>
-		</li> -->
 		<li>
-			<a href="longpollapi.html" class="title bigger">Классификация ошибок [ВРЕМЕННО НЕ РАБОТАЕТ]</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="errors.html" class="title bigger">Классификация ошибок</a>
 			<ul>
 				<li>
-					<a href="longpollapi.html#uploader_getUploadURL"><span class="object">vk</span>.<span class="span method">EasyVKError</span></a>
+					<a href="errors.html#easyvkerror"><span class="span method">EasyVKError</span></a>
 				</li>
 				<li>
-					<a href="longpollapi.html#uploader_uploadFile"><span class="object">vk</span>.<span class="span method">VKResponseError</span></a>
+					<a href="errors.html#vkresponseerror"><span class="span method">VKResponseError</span></a>
 				</li>
 			</ul>
 		</li>
@@ -388,7 +405,7 @@
           <script>
 	window.pageGot = true;
 </script>
-<h1>Audio API <span class="date-edit">Редактировано: <span class="det">21.11.2018 в 19:48</span></span></h1>
+<h1>Audio API <span class="date-edit">Редактировано: <span class="det">22.11.2018 в 14:44</span></span></h1>
 <p>
 	Теперь в Easy VK есть Audio API. Неофициальное, да, но зато работает. <br>
 	В реализации Audio API я постарался повторить все методы, которые существовали в прошлом API ВКонтакте на основе <a href="https://vk.com/page-1_2369282" target="_blank">официальной документации</a>, которое разработчики, к слову, закрыли. Так что можно сказать, что Audio API в Easy VK - это полностью экспериментальная фитча, которая не рекомендуется для использования, но и не противопоказана  :D <br> 
@@ -856,6 +873,267 @@ http.audio.get().then(({vkr}) => {
 	});
 	
 });
+</code></pre>
+<h2 id="audio_restore"><span>#</span> audio.restore()</h2>
+<p>
+	Метод восстанавливает аудиозапись в списке аудиозаписей после удаления, точно не знаю через сколько времени уже нельзя восстановить аудиозапись
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li><b>audio</b> <span>*</span> <span>( <a href="#audioitem">&lt;AudioItem&gt;</a>) - объект аудиозаписи</span>
+			<p>
+				Рекомендую брать данный объект из методов вроде <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a>
+			</p>
+		</li>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get().then(({vkr}) => {
+
+	let audio = vkr[0];
+
+
+	http.audio.delete(audio).then(() => {
+		
+		console.log('Удалили!');
+
+		http.audio.restore(audio).then(() => {
+			
+			console.log('Восстановили!');
+
+		})
+
+	})
+	
+})
+
+</code></pre>
+<h2 id="audio_getPlaylists"><span>#</span> audio.getPlaylists()</h2>
+<p>
+	Метод возвращает список плейлистов пользователя или группы
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li><b>owner_id</b> <span> - ID пользователя или группы, из которой надо достать список плейлистов</span>
+		</li>
+		<li>
+			<b>offset</b> <span> - смещение по номеру плейлиста, начиная с этого номера будут возвращены новые плейлисты</span>
+		</li>
+	</ul>
+</p>
+<p>
+	Метод вернет массив плейлистов объекта <a href="#playlist">Playlist</a>, читайте документацию для этого объекта.
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.getPlaylists({
+	owner_id: -123675921
+}).then(({vkr}) => {
+
+	console.log(vkr[0].title);
+
+});
+</code></pre>
+<h2 id="audio_getPlaylistById"><span>#</span> audio.getPlaylistById()</h2>
+<p>
+	Метод возвращает плейлист по указанном параметрам
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li><b>owner_id</b> - <span>ID владельца плейлиста (группа или пользователь)</span></li>
+		<li><b>playlist_id</b> - <span>ID плейлиста, который нужно получить</span></li>
+	</ul>
+</p>
+<p>
+	Вернет объект плейлиста <a href="#playlist">Playlist</a>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.getPlaylistById({
+	owner_id: -123675921,
+	playlist_id: 1
+}).then(({vkr}) => {
+	
+	console.log(vkr.title);
+
+});
+</code></pre>
+<h2 id="audio_followPlaylist"><span>#</span> audio.followPlaylist()</h2>
+<p>
+	Метод добавляет плейлист в подписки (проще говоря, он добавляет чужой плейлист в список плейлистов пользователя, подписывается). Чтобы отписаться от плейлиста, надо вызвать метод повторно
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li><b>playlist</b> <span>*</span> <span>(<a href="#playlist">&lt;Playlist&gt;</a>) - объект плейлиста, или примерно такой бъект</span>
+		<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	id: PLAYLIST_ID,
+	owner_id: PLAYLIST_OWNER_ID,
+	follow_hash: PLAYLIST_FOLLOW_HASH
+}
+		</code></pre>
+		<p>
+			Рекомендую получать данный объект через методы вроде <a href="#audio_getPlaylists">audio.getPlaylists()</a> или <a href="#audio_getPlaylistById">audio.getPlaylistById()</a>
+		</p>
+		</li>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.getPlaylists({
+	owner_id: -123675921
+}).then(({vkr}) => {
+	
+	let playlist = vkr[0];
+
+
+	http.audio.followPlaylist(playlist).then(() => {
+		
+		console.log('Подписались!');
+
+	})
+
+})
+</code></pre>
+
+<h2 id="audio_deletePlaylist"><span>#</span> audio.deletePlaylist()</h2>
+<p>
+	Метод удаляет плейлист из списка плейлистов (только СВОЙ плейлист, чужие нельзя удалить этим методом, всмысле, что, если Вы подписались на плейлист, надо отписаться, а не удалять его!)
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li><b>playlist</b> <span>*</span> <span>(<a href="#playlist">&lt;Playlist&gt;</a>) - объект плейлиста, или примерно такой бъект</span>
+		<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	id: PLAYLIST_ID,
+	owner_id: PLAYLIST_OWNER_ID,
+	edit_hash: PLAYLIST_EDIT_HASH
+}
+		</code></pre>
+		<p>
+			Рекомендую получать данный объект через методы вроде <a href="#audio_getPlaylists">audio.getPlaylists()</a> или <a href="#audio_getPlaylistById">audio.getPlaylistById()</a>
+		</p>
+		</li>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.getPlaylists().then(({vkr}) => {
+	
+	let playlist = vkr[0];
+
+
+	http.audio.deletePlaylist(playlist).then(() => {
+		
+		console.log('Удалили плейлист!');
+
+	})
+
+})
+</code></pre>
+<h2 id="audio_moveToPlaylist"><span>#</span> audio.moveToPlaylist()</h2>
+<p>
+	Метод добавляет аудиозапись в выбранный плейлист
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li>
+			<b>audio</b> <span>*</span> (<a href="#audioitem">&lt;AudioItem&gt;</a>) - Объект аудиозаписи
+			<p>
+				Рекомендую брать данный объект из методов вроде <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a>
+			</p>
+		</li>
+		<li>
+			<b>playlist</b> <span>*</span> (<a href="#playlist">&lt;Playlist&gt;</a>) - Объект плейлиста
+			<p>
+				Рекомендую получать данный объект через методы вроде <a href="#audio_getPlaylists">audio.getPlaylists()</a> или <a href="#audio_getPlaylistById">audio.getPlaylistById()</a>
+			</p>
+		</li>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get().then(({vkr}) => {
+	
+	let audio = vkr[0];
+
+	http.audio.getPlaylists().then(({vkr: playlists}) => {
+		let playlist = playlists[0];
+
+		http.audio.moveToPlaylist(audio, playlist).then(({vkr}) => {
+			
+			console.log('Добавили аудиозапись в плейлист!');
+
+		})
+
+	})
+
+})
+</code></pre>
+<h2 id="playlist">Playlist</h2>
+<p>
+	Это объект плейлиста, который Easy VK генерирует автоматически при работе с плейлистами. В обобщенном виде он выглядет так:
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	// ID плейлиста
+	id: playlist.id,
+
+	// ID владельца плейлиста
+	owner_id: playlist.ownerId,
+
+	// Полный идентифекатор плейлиста
+	raw_id: playlist.ownerId + '_' + playlist.id,
+
+	// Название плейлиста
+	title: playlist.title,
+
+	// Обложка плейлиста
+	cover_url: playlist.coverUrl,
+
+	// Дата последнего обновления
+	last_updated: playlist.lastUpdated,
+
+	// Содержит откровенный контент (мат)
+	explicit: playlist.isExplicit,
+
+	// Подписан ли пользователь на плейлист
+	followed: playlist.isFollowed,
+
+	// Подтвержденный плейлист (лицензия и т.п)
+	official: playlist.isOfficial,
+
+	// Сколько людей прослушали плейлист
+	listens: playlist.listens,
+
+	// Количество аудиозаписей в плейлисте
+	size: playlist.size,
+	
+	// Все типы обложек
+	covers: playlist.grid_covers,
+
+	// Описание плейлиста
+	description: playlist.description,
+
+	// Маленькое описание плейлиста + HTML код
+	raw_description: playlist.rawDescription,
+
+	// Аудиозаписи плейлиста
+	list: playlist.list
+}
 </code></pre>
 <h2 id="audioitem">AudioItem</h2>
 <p>

@@ -8,7 +8,7 @@
 <p>
 	После того, как авторизация по HTTP клиенту произошла, Вы получаете объект HTTPClient, его описание идет ниже
 </p>
-<h2 id="client_read_stories">client.readStories()</h2>
+<h2 id="client_readstories">client.readStories()</h2>
 <p>
 	Метод "просматривает" истории пользователя. Метод просмотрит все доступные истории, или же вы можете указать точно, какую историю хотите просмотреть. 
 </p>
@@ -73,7 +73,7 @@ client.readStories(users["dayana"].id, 34).then((count) => {
 <p>
 	После успешного выполнения функции в <code class="h">resolve</code> функцию вернется переменная <code class="h">count</code>. Она показывает сколько историй было просмотрено
 </p>
-<h2>client.readFeedStories()</h2>
+<h2 id="client_readfeedstories">client.readFeedStories()</h2>
 <p>
 	Метод просмтривает все истории, которые выложены друзьями пользователя за последние 24 часа.
 	То есть все истории с главной страницы. Тоже возвращает в <code class="h">resolve</code> функцию переменную <code class="h">count</code> - количество просмотренных историй
@@ -83,7 +83,7 @@ client.readFeedStories().then(count => {
 	console.log(count)
 })
 </code></pre>
-<h2>client.audio</h2>
+<h2 id="client_audio">client.audio</h2>
 <p>
-	В этом свойстве хранится объект <a href="uploader.html">AudioAPI</a>, он преднозначен для работы с аудиозаписями (да-да, без официального API).
+	В этом свойстве хранится объект <a href="audioapi.html">AudioAPI</a>, он преднозначен для работы с аудиозаписями (да-да, без официального API).
 </p>
