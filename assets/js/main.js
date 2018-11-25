@@ -249,7 +249,7 @@
 				logo.animateRotate(360, 1000);
 				setTimeout(function() {
 					logo.animate({
-						width: 45
+						width: 55
 					});
 				}, 1000);
 			}
