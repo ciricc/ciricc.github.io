@@ -230,7 +230,8 @@
 		var v = parseFloat(loc[loc.length - 2]);
 
 		if (page == "") {
-			document.location = ((v) ? ("/" + loc[loc.length - 2] + "/") : "") + "index.html";
+			// document.location = ((v) ? ("/" + loc[loc.length - 2] + "/") : "") + "index.html";
+			page = "index.html";
 		}
 
 		var dots = 0;
@@ -247,7 +248,7 @@
 
 		if (v == 2 || !v) {
 			var logo = $('.logo img');
-			
+
 			function rotateLogo (){
 				logo.animate({
 					width: 20
