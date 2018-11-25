@@ -771,7 +771,7 @@ html {
     }
 
     .soc, .logo{
-      display: none;
+      /*display: none;*/
     }
 
     #container {
