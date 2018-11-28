@@ -164,6 +164,36 @@ function TemplateIt (htmlContent = "", template = "", version = "2.1.0", rootabl
 	template = template.replace(/class=\"js\"/g, '')
 	template = template.replace(/\<pre><code>/g, "<pre$1 class='line-numbers normalize-whitespace'><code class='language-js'>")
 	template = template.replace(/\<pre(.*?)\>(.*?)<code>/g, "<pre$1 class='line-numbers normalize-whitespace'>$2<code class='language-js'>")
+	
+	let templateVariables = template.match(/\{\#(.*?)\|(.*?)\}/g) || [];
+
+	templateVariables = templateVariables.map((variable) => {
+		// console.log(variable.match(/\#(.*?)\|(.*?)\}/));
+		return {
+			name: variable.match(/\#(.*?)\|(.*?)\}/)[1],
+			value: variable.match(/\#(.*?)\|(.*?)\}/)[2],
+			input: variable.match(/\#(.*?)\|(.*?)\}/).input
+		}
+	});
+
+	let vars = {}
+
+	templateVariables.forEach((variable) => {
+		// let regexp = new RegExp("\{\#"+variable.name+"\|"+variable.value+"\}", "g");
+		// console.log(template.match(regexp));
+		template = template.replace(variable.input, "");
+		vars[variable.name] = variable.value;
+	});
+
+	// console.log(re);
+
+	for (let v in vars) {
+		let regexp = new RegExp("\{\#"+v+"\#\}", "g");
+		template = template.replace(regexp, vars[v]);
+	}
+
+	require('fs').writeFileSync('out.txt', JSON.stringify(vars));
+
 	return template;
 } 
 
