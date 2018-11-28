@@ -1,0 +1,295 @@
+<script>
+	window.pageGot = true;
+</script>
+<h1>Структура EasyVK</h1>
+<p>
+	Познакомиться максимально близко с Easy VK Вам поможет дерево структуры Easy VK, прочитайте его, чтобы понять, что, где находится и что от чего зависит
+</p>
+<style>
+	.st-map ul {
+		margin-top: 15px;
+		margin-bottom: 15px;
+		list-style-type: none;
+		border-left: solid 1px #f0f0f0;
+		margin-left: 0px;
+		padding-left: 15px;
+		color: #333;
+	}
+
+	.st-map ul li {
+		margin-left: 40px;
+	}
+
+	.st-map .state {
+		margin-right: 15px;
+	}
+
+</style>
+<div class="st-map">
+	<ul style="list-style-type: none;" class="tree">
+		<li class="opened"><div class="name"><a href="easyvk.html#first_step">easyvk Function()</a> <b>[Promise]</b> <span> - Функция авторизации</span></div>
+			<ul>
+				<li class="opened">
+					<div class="name"><b>.then</b>(<a href="main.html">EasyVK</a>)</div>
+					<ul>
+						<li>
+							<div class="name">EasyVK<a href="session.html">.session</a></div>
+							<ul>
+								<li>
+									session<a href="session.html#setPath">.setPath()</a>
+								</li>
+								<li>
+									session<a href="session.html#save">.save()</a>
+								</li>
+								<li>
+									session<a href="session.html#clear">.clear()</a>
+								</li>
+								<li>
+									session<a href="session.html">.access_token</a>
+								</li>
+								<li>
+									session<a href="session.html">[userData]</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div class="name">EasyVK<a href="main.html#vk_call">.call()</a> <span><b>[Promise]</b></span></div>
+							<ul>
+								<li>
+									<div class="name">.then({vkr: <a href="vkresponse.html">VKResponse</a>, vk: <a href="main.html">EasyVK</a>})</div>
+									<ul>
+										<li>
+											VKResponse<a href="vkresponse.html#getFullResponse">.getFullResponse()</a>
+										</li>
+									</ul>
+								</li>
+								<li><div class="name">.catch(<a href="errors.html#vkresponseerror">VKResponseError</a>)</div>
+									<ul>
+										<li>
+											VKResponseError<a href="errors.html#vkresponseerror">.error_code</a>
+										</li>
+										<li>
+											VKResponseError<a href="errors.html#vkresponseerror">.error_msg</a>
+										</li>
+										<li>
+											VKResponseError<a href="errors.html#vkresponseerror">.request_params</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div class="name">EasyVK<a href="http.html">.http</a></div>
+							<ul>
+								<li>
+									<div class="name">http<a href="http.html#loginByForm">.loginByForm()</a> <span><b>[Promise]</b></span></div>
+									<ul>
+										<li>
+										<div class="name"><b>.then</b>({client: <a href="httpclient.html">HTTPClient</a>, vk: <a href="main.html">EasyVK</a>})</div>
+										<ul>
+											<li>HTTPClient<a href="httpclient.html#client_readfeedstories">.readFeedStories()</a></li>
+											<li>HTTPClient<a href="httpclient.html#client_readstories">.readStories()</a></li>
+											<li>
+												<div class="name">HTTPClient<a href="audioapi.html">.audio</a></div>
+												<ul>
+													<li>
+														audio<a href="audioapi.html#audio_geturl">.getURL()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_get">.get()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_getcount">.getCount()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_getbyid">.getById()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_getlyrics">.getLyrics()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_getuploadserver">.getUploadServer()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_upload">.upload()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_save">.save()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_search">.search()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_add">.add()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_delete">.delete()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_restore">.restore()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_edit">.edit()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_reorder">.reorder()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_getPlaylists">.getPlaylists()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_getPlaylistById">.getPlaylistById()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_followPlaylist">.followPlaylist()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_moveToPlaylist">.moveToPlaylist()</a>
+													</li>
+													<li>
+														audio<a href="audioapi.html#audio_deletePlaylist">.deletePlaylist()</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div class="name">EasyVK<a href="uploader.html">.uploader</a></div>
+							<ul>
+								<li>
+									uploader<a href="uploader.html#uploader_uploadFile">.uploadFile()</a>
+								</li>
+								<li>
+									uploader<a href="uploader.html#uploader_getUploadURL">.getUploadURL()</a>
+								</li>
+							</ul>
+						</li>
+						<li><div class="name">EasyVK<a href="widgets.html">.widgets</a></div>
+							<ul>
+								<li>widgets<a href="widgets.html#widgets_getliveviews">.getLiveViews()</a></li>
+							</ul>
+						</li>
+						<li><div class="name">EasyVK.bots<a href="botslongpollapi.html">.longpoll</a></div>
+						</li>
+						<li><div class="name">EasyVK<a href="longpollapi.html">.longpoll</a></div>
+							<ul>
+								<li>
+									<div class="name">longpoll<a href="longpollapi.html#connect">.connect()</a> <span><b>[Promise]</b></span></div>
+									<ul>
+										<li>
+											<div class="name">.then({connection, vk: <a href="main.html">EasyVK</a>})</div>
+											<ul>
+												<li>connetion<a href="longpollapi.html#lpcon_debug">.debug()</a></li>
+												<li>connetion<a href="longpollapi.html#lpcon_close">.close()</a></li>
+												<li>connetion<a href="longpollapi.html#lpcon_addEventCodeListener">.addEventCodeListener()</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>EasyVK<a href="debugger.html">.debugger</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="name">.catch(<a href="errors.html#easyvkerror">EasyVKError</a>)</div>
+					<ul>
+						<li>
+						EasyVKError<a href="errors.html#easyvkerror">.error_code</a>
+						</li>
+						<li>
+							EasyVKError<a href="errors.html#easyvkerror">.easyvk_error</a>
+						</li>
+						<li>
+							EasyVKError<a href="errors.html#easyvkerror">.data</a>
+						</li>
+						<li>
+							EasyVKError<a href="errors.html#easyvkerror">.name</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					easyvk<a href="main.html#easyvk_is">.is()</a> <span></span>
+				</li>
+				<li>
+					easyvk<a href="main.html#easyvk_version">.version</a>
+				</li>
+				<li>
+					easyvk<a href="main.html#easyvk_class">.class</a>
+				</li>
+				<li>
+					<div class="name">easyvk<a href="staticmethods.html">.static</a> <span> - статические методы</span></div>
+					<ul>
+						<li>
+							static<a href="staticmethods.html#call">.call()</a>
+						</li>
+						<li>
+							static<a href="notdocs.html">.urlencode()</a>
+						</li>
+						<li>
+							static<a href="notdocs.html">.isString()</a>
+						</li>
+						<li>
+							static<a href="notdocs.html">.checkJSONErrors()</a>
+						</li>
+						<li>
+							static<a href="notdocs.html">.checkErrors()</a>
+						</li>
+						<li>
+							static<a href="notdocs.html">.isObject()</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<div class="name">easyvk<a href="streamingapi.html">.streamingAPI</a></div>
+					<ul>
+						<li>
+							<div class="name">streamingAPI<a href="streamingapi.html#connect">.connect()</a> <b>[Promise]</b></div>
+							<ul>
+								<li>
+									<div class="name"><b>.then</b>({connection: <a href="streamingapi.html">stream</a>, vk: <a href="main.html">EasyVK</a>})</div>
+									<ul>
+										<li>stream<a href="streamingapi.html#stream_addRule">.addRule()</a></li>
+										<li>stream<a href="streamingapi.html#stream_deleteRule">.deleteRule()</a></li>
+										<li>stream<a href="streamingapi.html#stream_initRules">.initRules()</a></li>
+										<li>stream<a href="streamingapi.html#stream_getRules">.getRules()</a></li>
+										<li>stream<a href="streamingapi.html#stream_deleteAllRules">.deleteAllRules()</a></li>
+										<li>stream<a href="streamingapi.html#stream_close">.close()</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<div class="name">easyvk<a href="callbackapi.html">.callbackAPI</a></div>
+					<ul>
+						<li>
+							<div class="name">callbackAPI<a href="callbackapi.html#listen">.listen()</a> <b>[Promise]</b></div>
+							<ul>
+								<li>
+									<b>.then</b>({connection, vk: <a href="main.html">EasyVK</a>})
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<div class="name">easyvk<a href="debugger.html#debuggerrun">.debuggerRun</a></div>
+					<ul>
+						<li>
+							debuggerRun<a href="notdocs.html">.lastLog()</a>
+						</li>
+						<li>
+							dubuggerRun<a href="debugger.html#how_to_work">.push()</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>

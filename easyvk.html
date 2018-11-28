@@ -86,7 +86,8 @@
                 <div class="version-wrap" style="text-align: center;">
                   <select name="version" id="version">
                     <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
-                    <a href="2.0.0/index.html"><option value="2.0.0" selected="selected">2.0.0</option></a>
+                    <a href="2.0.0/index.html"><option value="2.0.0">2.0.0</option></a>
+                    <a href="2.1.0/index.html"><option value="2.1.0" selected="selected">2.1.0</option></a>
                   </select>
                 </div>
               </div>
@@ -139,6 +140,17 @@
 				<li>
 					<a href="easyvk.html#first_step">Первый шаг</a>
 					<span>Авторизация</span>
+				</li>
+				<li>
+					<a href="easyvk.html#group_auth">Авторизация группы</a>
+				</li>
+				<li>
+					<a href="easyvk.html#cred_flow">Client Credentials Flow</a>
+					<span>Для использования secure методов</span>
+				</li>
+				<li>
+					<a href="easyvk.html#app_auth">Авторизация приложения</a>
+					<span>Воспользуйтесь всеми возможностями API</span>
 				</li>
 				<li>
 					<a href="easyvk.html#2fauthentication">Двухфакторная авторизация</a>
@@ -471,7 +483,7 @@
           <script>
   window.pageGot = true;
 </script>
-<h1>Основное <span class="date-edit">Редактировано: <span class="det">25.11.2018 в 03:31</span></span></h1>
+<h1>Основное <span class="date-edit">Редактировано: <span class="det">28.11.2018 в 21:30</span></span></h1>
 <p>
   Познакомьтесь с Easy VK ближе, чтобы понять, как он устроен и как с ним работать
 </p>
@@ -567,6 +579,9 @@
 }).then(vk => {
   console.log(vk.session.photo_200) // Картинка, аватарка
 })</code></pre>
+      <p>
+        Для авторизации приложения о значениях <code class="h">fields</code> читайте на <a href="https://vk.com/dev/apps.get" target="_blank">этой странице</a>
+      </p>
   </li>
   <li><b>session_file</b> ([<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>]) <span class='default' title='По умолчанию' title="По умолчанию">[/node_modules/easyvk/src/utils/.vksession]</span>
     <p>
@@ -603,6 +618,9 @@ easyvk({
   </li>
   <li><b>client_id</b>, <b>client_secret</b> ([<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" target="_blank"/>&lt;number&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>], <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>)<span class='default' title='По умолчанию' title="По умолчанию">[-]</span>
     <p>Если у Вас есть необходимость авторизовать пользователя по данным Вашего приложения, через Ваше приложение, укажите ID и SECRET код Вашего приложения в эти настройки</p>
+    <p>
+      Кроме того, данные параметры используются для авторизации по методу <a href="#cred_flow">Client Credentials Flow</a>
+    </p>
   </li>
   <li><b>lang</b> (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>) <span class='default' title='По умолчанию' title="По умолчанию">[ru]</span>
     <p>Укажите язык по умолчанию, с которым будет работать Easy VK. Почти все ответы сервера ВК будут приходить на этом языке. Кроме того, сам Easy VK поддерживает мультиязычность и имеет перевод некоторых основных ошибок на два языка.</p>
@@ -618,6 +636,73 @@ easyvk({
   </li>
 
 </ul>
+
+<h2 id="group_auth"><span>#</span> Авторизация группы</h2>
+<p>
+  Чтобы обращаться к API ВКонтакте от имени группы, Вам необходимо авторизоваться, как группа. Для этого необходимо взять <code class="h">access_token</code> группы (из настроек группы) и воспользоваться следующим примером
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+easyvk({
+  access_token: '{GROUP_TOKEN}'
+}).then(vk => {
+  
+  console.log(vk.session.group_id);
+
+
+})
+</code></pre>
+<p>
+  После авторизации группы, в объекте <a href="session.html">сессии</a> будут доступны некоторые свойства группы
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+  {
+    group_id,
+    group_name,
+    group_screen // буквенный ID группы 
+  }
+</code></pre>
+<h2 id="cred_flow"><span>#</span> Client Credentials Flow</h2>
+<p>
+  С обновления Easy VK версии <code class="h">2.1.0</code> идет поддержка Client Credentials Flow. Ранее его не было, оно было костыльным, и в большинстве случаев Easy VK сам выполнял все задачи, которые должны контролировать пользователи, но теперь это не так и я рад, что такое упущение было устранено. Теперь можно воспользоваться авторизацией Cred Flow для получения сервисного ключа доступа, который нужен для <a href="https://vk.com/dev/secure" target="_blank">secure</a> методов. Для этого Вам нужно получить ID Вашего приложения и секретный ключ (защищенный) и настроить авторизацию
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+  easyvk({
+    client_id: '{APP_ID}',
+    client_secret: '{APP_SECRET_CODE}'
+  }).then(vk => {
+    
+    
+
+  })
+</code></pre>
+<h2 id="app_auth"><span>#</span> Авторизация приложения</h2>
+<p>
+  С обновления Easy VK версии <code class="h">2.1.0</code> идет поддержка Client Credentials Flow, а вместе с ним еще и авторизация приложения по токену приложения. Для авторизации приложения Вам необходимо взять сервисный ключ приложения и воспользоваться им, как указано ниже
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+  easyvk({
+    access_token: "{APP_TOKEN}"
+  }).then(vk => {
+    
+    console.log(vk.session.app_id);
+
+  })
+</code></pre>
+<p>
+  После авторизации приложения в объекте <a href="session.html">сессии</a> будет доступна некоторая информация о Вашем приложении.
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+  {
+    app_id: 0,
+    app_title: '',
+    app_type: '',
+    app_icons: ['', ''],
+    author: {
+      id: 0
+    },
+    app_members: 0
+  }
+</code></pre>
 
 <h2 id="2fauthentication"><span>#</span> Двухфакторная авторизация</h2>
 <div class="big-quote danger">
