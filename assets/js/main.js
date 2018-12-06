@@ -115,7 +115,9 @@
 	}
 
 	$(document).ready(function () {
-			
+		
+		$('.nav svg').remove();
+		
 		$('.spoiler .spoiler-name').on("click", function() {
 
 			if ($(this).data('spoiled')) {

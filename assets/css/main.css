@@ -53,6 +53,23 @@ body, html {
 	display: none;
 }
 
+button {
+	background-color: rgba(0,195,151,.5);
+	color: #fff;
+	border: none;
+	border-radius: 10px;
+	padding: 5px 15px;
+	box-shadow: 0px 0px 5px rgba(0,0,0,.1);
+	/*font-weight: bold;*/
+	font-size: 18px;
+	min-width: 120px;
+	outline: none;
+}
+
+button:hover {
+	background-color: rgba(0,195,151,.6);
+}
+
 code.h {
 	background: #FBFCFE;
 	border-radius: 3px;
@@ -140,8 +157,9 @@ section.body-develop {
 }
 
 .bigger {
-	font-size: 1.5em;
+	font-size: 1.8em;
 	font-weight: bold;
+	line-height: 1.4em;
 }
 
 
@@ -213,8 +231,8 @@ section.body-develop {
 }
 
 .nav > li {
-	margin-top: 18px;
-	margin-bottom: 18px;
+	margin-top: 15px;
+	margin-bottom: 10px;
 	padding-right: 15px;
 }
 
@@ -825,7 +843,7 @@ html {
 	}
 
 	.big-quote {
-		width: 100%;
+		display: block;
 	}
 
 	#content.v2 {
@@ -893,5 +911,13 @@ html {
 
 	.no-mobile {
 		display: none;
+	}
+
+	.big-quote p .ic {
+		display: none;
+	}
+
+	ul {
+		padding-left: 30px;
 	}
 }
