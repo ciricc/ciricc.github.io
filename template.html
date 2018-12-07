@@ -13,12 +13,14 @@
 	<meta property="og:title"              content="EasyVK / Node.JS ВКонтакте API | Документация" />
 	<meta property="og:description"        content="EasyVK (easy vk) - это полностью бесплатный и доступный модуль, написанный для поддержки API ВКонтакте на платформе Node.js" />
 
-
+	
+	
 	<title>Easy VK / Node.JS ВКонтакте API | Документация</title>
 	
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
-
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" href="assets/selectic/selectic.css" type="text/css">
@@ -109,6 +111,12 @@
       <div id="sidebar">
         <div id="sidebar-content">
           <div class="docs-nav-wrap docs">
+	<div class="flex-wrap" style="margin-bottom: 25px;margin-top: 55px;justify-content: flex-start;padding-left: 25px;height:auto;">
+		<a href="https://vk.com/npm_easyvk" target="_blank" class="soc-link"><span class="fa fa-vk"></span></a>
+		<a href="https://github.com/ciricc/easyvk" target="_blank" class="soc-link"><span class="fa fa-github"></span></a>
+		<!-- Place this tag where you want the button to render. -->
+		<a href="https://npmjs.com/package/easyvk" target="_blank" class="soc-link" style="font-size: 12px;"><b>npm</b></a>
+	</div>
 	<ul class="nav">
 		<li>
 			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="index.html" class="title bigger">Начнем</a>
@@ -128,10 +136,6 @@
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="tree.html" class="title bigger">Структура EasyVK (карта)</a>
-			<span>Познакомьтесь со структурным деревом Easy VK, чтобы ориентироваться в документации</span>
-		</li>
-		<li>
 			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="easyvk.html" class="title bigger">Основное</a>
 			<ul>
 				<li>
@@ -140,6 +144,17 @@
 				<li>
 					<a href="easyvk.html#first_step">Первый шаг</a>
 					<span>Авторизация</span>
+				</li>
+				<li>
+					<a href="easyvk.html#group_auth">Авторизация группы</a>
+				</li>
+				<li>
+					<a href="easyvk.html#cred_flow">Client Credentials Flow</a>
+					<span>Для использования secure методов</span>
+				</li>
+				<li>
+					<a href="easyvk.html#app_auth">Авторизация приложения</a>
+					<span>Воспользуйтесь всеми возможностями API</span>
 				</li>
 				<li>
 					<a href="easyvk.html#2fauthentication">Двухфакторная авторизация</a>
@@ -155,9 +170,21 @@
 			</ul>
 		</li>
 		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="tree.html" class="title bigger">Структура EasyVK (карта)</a>
+			<span>Познакомьтесь со структурным деревом Easy VK, чтобы ориентироваться в документации</span>
+		</li>
+		<li>
 			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="examples.html" class="title bigger">Примеры и шаблоны</a>
 			<span>Познакомьтесь с Easy VK, прежде чем начать работу с документацией</span>
 			<ul>
+				<li>
+					<a href="examples.html#bot_game">Чат-бот игра "Виселица"</a>
+					<span>Опробуйте игру виселица на реальном примере чат-бота!</span>
+				</li>
+				<li>
+					<a href="examples.html#stories_bot">Бот, который смотрит сторис</a>
+					<span>Хотели создать бота, которы будет за Вас смотреть все истории пользователей? Есть вариант!</span>
+				</li>
 				<li>
 					<a href="examples.html#send_message">Отправка сообщения</a>
 					<span>Работаем с методами API ВК</span>
@@ -468,6 +495,7 @@
         </div>
       </div><!--
     --><div id="content" class="v2">
+       
         <div id="main-content" style="max-width: 910px;">
           <!DOCTYPE html>
 <html lang="ru-ru">
@@ -531,8 +559,53 @@
         </div>
       </div><!--
     --><div id="content" class="v2">
+       
         <div id="main-content" style="max-width: 910px;">
           {% content %}
+        </div>
+        <div class="col-md-12 no-padding">
+          <div class="col-md-11 no-padding">
+            <div class="col-md-4">
+              <div class="notify-block post" style="background:url('https://cdn.dribbble.com/users/282053/screenshots/1771906/_2014-10-19_-performance.png');">
+                <div class="op">
+                  <h2 style="margin: 0px;" class="post-title">Повышение производтельности Easy VK</h2>
+                  <p>
+                    Теперь в два раза быстрее: обновление производительности в Easy VK
+                  </p>
+                </div>
+                 <div class="white">
+                    <a href="https://vk.com/@npm_easyvk-kak-ustanovit-i-ispolzovat-sbotdy" target="_blank"><button>Продолжение ...</button></a>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="notify-block post" style="background:url('https://avatars.mds.yandex.net/get-pdb/1008348/18a26d23-cbb0-4ccf-8b9f-7caeba30bf54/orig');">
+                <div class="op">
+                  <h2 style="margin: 0px;" class="post-title">Пиар в ВК с помощью просмотров историй</h2>
+                  <p>
+                    Речь пойдет о ВКонтакте, и о том, как я лично опробовал бесплатный пиар через просмотры историй.
+                  </p>
+                </div>
+                 <div class="white">
+                    <a href="https://vk.com/@npm_easyvk-o-tom-kak-ya-vospolzovalsya-prosmotrami-istorii-dlya-piara-v" target="_blank"><button>Продолжение ...</button></a>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="notify-block post" style="background:url('https://i.ytimg.com/vi/qFK2oQ1-Q9g/maxresdefault.jpg');">
+                <div class="op">
+                  <h2 style="margin: 0px;" class="post-title">Обновление Easy VK 2.0</h2>
+                  <p>
+                    Релиз Audio API, мультиязычность, новые классы и объекты, HTTP Клиент, просмотры историй
+                  </p>
+                </div>
+                 <div class="white">
+                    <a href="easyvk.html#first_step"><button>Приступить ...</button></a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          </div>
           <div class="footer">
             <p>
               &copy; 2018 - Кирилл Новак <br>
@@ -543,7 +616,6 @@
               <a class="github-button" href="https://github.com/ciricc/easyvk" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ciricc/easyvk on GitHub" style="margin: 5px 15px;display: inline-block;">Мне нравится EasyVK</a>
             </p>
           </div>
-        </div>
       </div>
     </div>
 
@@ -552,6 +624,50 @@
   </body>
 </html>
 
+        </div>
+        <div class="col-md-12 no-padding">
+          <div class="col-md-11 no-padding">
+            <div class="col-md-4">
+              <div class="notify-block post" style="background:url('https://cdn.dribbble.com/users/282053/screenshots/1771906/_2014-10-19_-performance.png');">
+                <div class="op">
+                  <h2 style="margin: 0px;" class="post-title">Повышение производтельности Easy VK</h2>
+                  <p>
+                    Теперь в два раза быстрее: обновление производительности в Easy VK
+                  </p>
+                </div>
+                 <div class="white">
+                    <a href="https://vk.com/@npm_easyvk-kak-ustanovit-i-ispolzovat-sbotdy" target="_blank"><button>Продолжение ...</button></a>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="notify-block post" style="background:url('https://avatars.mds.yandex.net/get-pdb/1008348/18a26d23-cbb0-4ccf-8b9f-7caeba30bf54/orig');">
+                <div class="op">
+                  <h2 style="margin: 0px;" class="post-title">Пиар в ВК с помощью просмотров историй</h2>
+                  <p>
+                    Речь пойдет о ВКонтакте, и о том, как я лично опробовал бесплатный пиар через просмотры историй.
+                  </p>
+                </div>
+                 <div class="white">
+                    <a href="https://vk.com/@npm_easyvk-o-tom-kak-ya-vospolzovalsya-prosmotrami-istorii-dlya-piara-v" target="_blank"><button>Продолжение ...</button></a>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="notify-block post" style="background:url('https://i.ytimg.com/vi/qFK2oQ1-Q9g/maxresdefault.jpg');">
+                <div class="op">
+                  <h2 style="margin: 0px;" class="post-title">Обновление Easy VK 2.0</h2>
+                  <p>
+                    Релиз Audio API, мультиязычность, новые классы и объекты, HTTP Клиент, просмотры историй
+                  </p>
+                </div>
+                 <div class="white">
+                    <a href="easyvk.html#first_step"><button>Приступить ...</button></a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          </div>
           <div class="footer">
             <p>
               &copy; 2018 - Кирилл Новак <br>
@@ -562,7 +678,6 @@
               <a class="github-button" href="https://github.com/ciricc/easyvk" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ciricc/easyvk on GitHub" style="margin: 5px 15px;display: inline-block;">Мне нравится EasyVK</a>
             </p>
           </div>
-        </div>
       </div>
     </div>
 
