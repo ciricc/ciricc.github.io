@@ -502,7 +502,7 @@
 <script>
   window.pageGot = true;
 </script>
-<h1>Основное <span class="date-edit">Редактировано: <span class="det">07.12.2018 в 21:12</span></span></h1>
+<h1>Основное <span class="date-edit">Редактировано: <span class="det">13.12.2018 в 04:00</span></span></h1>
 <p>
   Познакомьтесь с Easy VK ближе, чтобы понять, как он устроен и как с ним работать
 </p>
@@ -738,21 +738,29 @@ easyvk({
   </div>
   <div class="spoiler-content">
 <pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+const easyvk = require("easyvk");
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 async function main (vk) {
-  // главный код вашего приложения
+  // главный код вашего приложения  
+  console.log(vk.session);
 }
 
 async function logInWith2Auth (params) {
   return new Promise((_2faNeed) => {
 
     function relogIn (_2faCode = "") {
-      
+
       if (_2faCode) params.code = _2faCode
 
-      easyvk(params).then(main).catch(({err}) => {
+      easyvk(params).then(main).catch((err) => {
 
         if (!err.easyvk_error) {
-          
           if (err.error_code == "need_validation") {
             _2faNeed({
               err: err,
@@ -771,19 +779,21 @@ async function logInWith2Auth (params) {
 }
 
 logInWith2Auth({
-  username: "username@exmaple.com",
-  password: "...",
+  username: "Логин",
+  password: "Пароль",
+  reauth: true,
 }).then(({err: error, relogIn}) => {
 
-  console.log(error["2fa_sms"] || error["2fa_app"])
+  console.log(error.validation_type);
   
-  // тут вы каким-то образом получаете код авторизации ...
+  rl.question(error.error + " ", (answer) => {
 
-  let code = "..."
-  
+    let code = answer;
+    relogIn(code);
 
-  // занова запускаем авторизацию
-  relogIn(code)
+    rl.close();
+
+  });
 
 })
 </code>
@@ -923,7 +933,7 @@ logInWith2Auth({
           </div>
           <div class="footer">
             <p>
-              &copy; 2018 - Кирилл Новак <br>
+              Easy VK &copy; 2018 - Кирилл Новак<br>
             </p>
           </div>
           <div class="star" style="margin-bottom: 50px;">

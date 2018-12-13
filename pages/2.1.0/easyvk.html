@@ -238,21 +238,29 @@ easyvk({
   </div>
   <div class="spoiler-content">
 <pre class="js"><code>
+const easyvk = require("easyvk");
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 async function main (vk) {
-  // главный код вашего приложения
+  // главный код вашего приложения  
+  console.log(vk.session);
 }
 
 async function logInWith2Auth (params) {
   return new Promise((_2faNeed) => {
 
     function relogIn (_2faCode = "") {
-      
+
       if (_2faCode) params.code = _2faCode
 
-      easyvk(params).then(main).catch(({err}) => {
+      easyvk(params).then(main).catch((err) => {
 
         if (!err.easyvk_error) {
-          
           if (err.error_code == "need_validation") {
             _2faNeed({
               err: err,
@@ -271,19 +279,21 @@ async function logInWith2Auth (params) {
 }
 
 logInWith2Auth({
-  username: "username@exmaple.com",
-  password: "...",
+  username: "Логин",
+  password: "Пароль",
+  reauth: true,
 }).then(({err: error, relogIn}) => {
 
-  console.log(error["2fa_sms"] || error["2fa_app"])
+  console.log(error.validation_type);
   
-  // тут вы каким-то образом получаете код авторизации ...
+  rl.question(error.error + " ", (answer) => {
 
-  let code = "..."
-  
+    let code = answer;
+    relogIn(code);
 
-  // занова запускаем авторизацию
-  relogIn(code)
+    rl.close();
+
+  });
 
 })
 </code>
