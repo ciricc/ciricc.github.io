@@ -162,7 +162,7 @@ function TemplateIt (htmlContent = "", template = "", version = "2.1.0", rootabl
 	
 	template = template.replace(/class\=\"default\"/g, "class='default' title='По умолчанию'");
 	template = template.replace(/class=\"js\"/g, '')
-	template = template.replace(/\<pre><code>/g, "<pre$1 class='line-numbers normalize-whitespace'><code class='language-js'>")
+	template = template.replace(/\<pre><code>/g, "<pre class='line-numbers normalize-whitespace'><code class='language-js'>")
 	template = template.replace(/\<pre(.*?)\>(.*?)<code>/g, "<pre$1 class='line-numbers normalize-whitespace'>$2<code class='language-js'>")
 	
 	let templateVariables = template.match(/\{\#(.*?)\|(.*?)\}/g) || [];

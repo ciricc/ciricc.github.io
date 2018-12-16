@@ -1,0 +1,87 @@
+body{
+	color: #B8B8B8;
+}
+
+#content,.header,#sidebar {
+	background-color: #111111;
+	color: #B8B8B8;
+}
+.header {
+	background: #0E0E0E;
+}
+
+.logo {
+	display: none;
+}
+
+.logo-white {
+	display: inline-block;
+}
+
+pre, code {
+  background: #2E2E2E !important;
+  border: none !important;
+}
+
+code[class*="language-"], pre[class*="language-"] {
+	text-shadow: none;;
+	color: #B8B8B8;
+}
+
+.big-quote p,.soc-link, .nav li.active{
+	background: #222222 !important;
+	border: none;
+}
+
+.post .white {
+	background: #111111 !important;
+	border: none;
+	width: 110%;
+}
+.post {
+	background-color: #111111;
+	box-shadow: none;
+	border-radius: 0px;
+}
+
+.nav li.active {
+	background: #0D0D0D !important;
+}
+
+p,.soc-link {
+	color: #DADADA !important;
+}
+
+#sidebar {
+	border-right: none;
+}
+
+.nav li.active > a {
+	color: #EEEEEE;
+}
+
+.nav li a {
+	color: #B8B8B8;
+}
+
+.nav .method {
+	color: #07A282;
+}
+
+.nav .object {
+	color: #C6C6C6;
+}
+
+.nav .property {
+	color:  #07A282;
+}
+
+.selectric, .selectric .button, select {
+	background: #222222 !important;
+	color: #EEEEEE !important; 
+}
+
+.selectric .label, .selectric .button:after {
+	color: #EEEEEE !important;
+	border-top-color: #EEEEEE;
+}

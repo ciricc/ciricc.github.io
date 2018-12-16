@@ -122,7 +122,6 @@ section.header {
 	position: relative;
 }
 
-
 section.body-develop {
 	position: absolute;
 	left: 0;
@@ -434,6 +433,11 @@ img {
 	color: #fff;
 }
 
+.notify-block.white {
+	background: #fff;
+	color: #333;
+}
+
 .opacity-block .tap-me {
 	display: none;
 }
@@ -685,6 +689,138 @@ html {
     height: 100%;
     padding: 0px 15px;
   }
+ 
+ .lightrope-container {
+  position: absolute;
+  display: block;
+  white-space: nowrap;
+  width: 100%;
+  z-index: 1;
+  margin: -20px 0 0 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.lightrope {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0;
+  margin: -20px 0 0 -80px;
+  margin-top: -20px;
+  margin-bottom: 60px;
+}
+
+.lightrope:first-of-type {
+  margin-left: 0;
+}
+
+.lightrope .light {
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50% 50%;
+  list-style: none;
+  margin: 20px;
+  background: RGBA(255, 243, 138, 1.00);
+  box-shadow: 0 0 24px 3px #fff;
+  animation-name: flash;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+/**/
+.lightrope .light:before {
+  content: "";
+  position: absolute;
+  background: RGBA(255, 243, 138, 1.00);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  top: -5px;
+  left: 1px;
+  filter: blur(3px);
+  animation: blink 1s infinite;
+}
+
+.lightrope .light:after {
+  content: "";
+  top: -14px;
+  left: 9px;
+  position: absolute;
+  width: 42px;
+  height: 18px;
+  border-bottom: 2px solid rgba(22,22,22,0.35);
+  border-radius: 50%;
+}
+/**/
+.lightrope .light:last-child:after {
+  content: none;
+}
+
+.lightrope .light:first-child {
+  transform: rotate(36deg);
+}
+
+.lightrope .light:nth-child(2) {
+  transform: rotate(12deg) translate3d(-10px, 21px, 0) scale(1, -1);
+}
+
+.lightrope .light:nth-child(3) {
+  transform: rotate(-6deg) translate3d(-28px, 34px,0);
+}
+
+.lightrope .light:nth-child(4) {
+  transform: rotate(-36deg) translate3d(-40px, -1px, 0) scale(1, -1);
+}
+
+.lightrope .light:nth-child(5) {
+  transform: rotate(-48deg) translate3d(-30px, -30px, 0);
+}
+
+.lightrope .light:nth-child(2n):after {
+  transform: translate3d(0, 10px, 0) scale(1, -1);
+}
+
+.lightropt .light:nth-child(2n+1) {
+  animation-duration: 0.4s;
+}
+
+.lightrope li:nth-child(odd) {
+  animation-duration: 1.8s;
+}
+
+.lightrope li:nth-child(3n+1) {
+  animation-duration: 1.4s;
+}
+
+@keyframes flash {
+  0%, 100% { 
+    box-shadow: 0 5px 24px 3px RGBA(255, 243, 138, 1.00); 
+  }
+  
+  50% { 
+    background: RGBA(255, 243, 138, 0.4);
+    box-shadow: 0 5px 24px 3px RGBA(255, 243, 138, 0.2); 
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.christ {
+	position: absolute;
+	bottom: 0;
+	margin-bottom: -60px;
+	z-index: -1;
+	width: 100%;
+	overflow: hidden;
+	height: 80px;
+}
 
   .wrap-header {
     height: 80px;
