@@ -1,5 +1,43 @@
+function setCookie(name, value, options) {
+  options = options || {};
+
+  var expires = options.expires;
+
+  if (typeof expires == "number" && expires) {
+    var d = new Date();
+    d.setTime(d.getTime() + expires * 1000);
+    expires = options.expires = d;
+  }
+  if (expires && expires.toUTCString) {
+    options.expires = expires.toUTCString();
+  }
+
+  value = encodeURIComponent(value);
+
+  var updatedCookie = name + "=" + value;
+
+  for (var propName in options) {
+    updatedCookie += "; " + propName;
+    var propValue = options[propName];
+    if (propValue !== true) {
+      updatedCookie += "=" + propValue;
+    }
+  }
+
+  document.cookie = updatedCookie;
+}
+
+function getCookie(name) {
+  var matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+	
 !(function(){
 	"use strict";
+
+
 
 	var isMobile = false; //initiate as false
 	// device detection
@@ -31,6 +69,7 @@
 				.text();
 
 	}
+
 
 	$.fn.animateRotate = function(angle, duration, easing, complete) {
 	  return this.each(function() {
@@ -116,6 +155,28 @@
 
 	$(document).ready(function () {
 		
+		var switcherMode = $('.switch-mode');
+		var darkThemeCss = "body{color:#B8B8B8}#content,#sidebar,.docs,.header{background-color:#111!important;color:#B8B8B8!important}.header{background:#0E0E0E!important}.logo{display:none}.logo-white{display:inline-block}code,pre{background:#1D1D1D!important;border:none!important}code[class*=language-],pre[class*=language-]{text-shadow:none;color:#B8B8B8}.big-quote p,.nav li.active,.soc-link{background:#222!important;border:none}.post .white{background:#111!important;border:none;width:110%}.post{background-color:#111;box-shadow:none;border-radius:0}.nav li.active{background:#0D0D0D!important}.soc-link,p{color:#DADADA!important}#sidebar{border-right:none}.nav li.active>a{color:#EEE}.nav li a{color:#B8B8B8}.nav .method{color:#07A282}.nav .object{color:#C6C6C6}.nav .property{color:#07A282}.selectric,.selectric .button,select{background:#222!important;color:#EEE!important}.selectric .button:after,.selectric .label{color:#EEE!important;border-top-color:#EEE}.token.punctuation{color:#B8B8AB}.token.class-name,.token.function{color:#FFA33D}.token.string{color:#39BAB9}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#F29718}.spoiler .spoiler-name,.token.interpolation{color:#B8B8B8}.spoiler{border:none;background-color:#0C0C0C}.line-numbers .line-numbers-rows{color:#000!important;border-right-color:#B8B8B8!important}.line-numbers-rows>span:before{color:#B8B8B8!important}.nav>li>ul li a:hover{background-color:#171717}.nav>li>a:focus,.nav>li>a:hover{background-color:#0E0E0E}img{opacity:.7}.selectric-items{background:#222}.selectric-items li.selected{background:#191919}.selectric-items li{color:#EEE}.selectric-items li:hover{background:#191919;color:#EEE}.notify-block.white{background:#0D0D0D}";
+		var hours = new Date().getHours()
+		if (getCookie("dark-mode") == "yes" || (hours >= 22 || hours < 8)) {
+			
+			if ((hours >= 22 || hours < 8) && getCookie("dark-mode") == "no") {
+			} else {
+				switcherMode.find("span").removeClass("fa-moon-o").addClass("fa-sun-o");
+				loadDarkTheme();
+			}
+		}
+
+		function loadDarkTheme() {
+			$("#theme-mode").text(darkThemeCss);
+			// $.ajax({
+			// 	url: "/assets/css/dark-theme.css",
+			// 	success: function (data) {
+			// 		$("#theme-mode").text(darkThemeCss);
+			// 	}
+			// });
+		}
+
 		$('.nav svg').remove();
 		
 		$('.spoiler .spoiler-name').on("click", function() {
@@ -267,7 +328,28 @@
 				setInterval(rotateLogo, 16000);
 				setTimeout(rotateLogo, 1000);
 			}
-		}	
+		}
+
+		switcherMode.on("click", function () {
+			if (getCookie("dark-mode") == "no") {
+				setCookie("dark-mode", "yes", {
+					expires: 3600 * 24
+				});
+				
+				loadDarkTheme();
+
+				return switcherMode.find("span").removeClass("fa-moon-o").addClass("fa-sun-o");
+			} else {
+				setCookie("dark-mode", "no", {
+					expires: 3600 * 24
+				});
+
+				$("#theme-mode").text("");
+
+				return switcherMode.find("span").removeClass("fa-sun-o").addClass("fa-moon-o");
+			}
+
+		});
 
 
 	});

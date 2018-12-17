@@ -975,6 +975,11 @@ html {
 	overflow: hidden;
 }
 
+.switch-mode {
+	margin-top: 20px;position: absolute;right:0;top:0;font-size: 28px;cursor: pointer;
+	margin-right: 15px;
+}
+
   @media (max-width: 998px) {
 
     #sidebar {
