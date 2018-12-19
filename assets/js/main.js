@@ -120,8 +120,6 @@
 	$(document).ready(function () {
 		
 		var switcherMode = $('.switch-mode');
-		
-		var hours = new Date().getHours()
 		if (getCookie("dark-mode") == "yes" || (hours >= 22 || hours < 8)) {
 
 			if ((hours >= 22 || hours < 8) && getCookie("dark-mode") == "no") {

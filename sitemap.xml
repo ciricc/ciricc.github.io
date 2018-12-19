@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://ciricc.github.io/</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/1.5.1/index.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/index.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/index.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/index.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/easyvk.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/tree.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/examples.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/captcha.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/main.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/staticmethods.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/callbackapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/streamingapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/longpollapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/botslongpollapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/http.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/httpclient.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/audioapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/session.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/uploader.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/widgets.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/debugger.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/vkresponse.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/errors.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/1.5.1/easyvk.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/1.5.1/captcha.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/1.5.1/methods.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/1.5.1/session.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/1.5.1/staticmethods.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/1.5.1/streamingapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/1.5.1/longpollapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/1.5.1/botslongpollapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/1.5.1/callbackapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/1.5.1/uploader.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/1.5.1/widgets.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/tree.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/easyvk.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/examples.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/captcha.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/main.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/staticmethods.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/callbackapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/streamingapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/longpollapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/botslongpollapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/http.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/httpclient.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/audioapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/session.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/uploader.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/widgets.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/debugger.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/vkresponse.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/errors.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/easyvk.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/tree.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/examples.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/captcha.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/main.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/staticmethods.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/callbackapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/streamingapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/longpollapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/botslongpollapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/http.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/httpclient.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/audioapi.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/session.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/uploader.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/widgets.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/debugger.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/vkresponse.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/errors.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/notdocs.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/bots.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/notdocs.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.0.0/bots.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/notdocs.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ciricc.github.io/2.1.0/bots.html</loc>
+  <lastmod>2018-12-18T16:56:31+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
