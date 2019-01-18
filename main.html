@@ -129,7 +129,7 @@
                   <select name="version" id="version">
                     <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
                     <a href="2.0.0/index.html"><option value="2.0.0">2.0.0</option></a>
-                    <a href="2.1.0/index.html"><option value="2.1.0" selected="selected">2.1.0</option></a>
+                    <a href="2.1.3/index.html"><option value="2.1.3" selected="selected">2.1.3</option></a>
                   </select>
                 </div>
               </div>
@@ -251,6 +251,10 @@
 				<li>
 					<a href="main.html#vk_call"><span class="object">vk</span>.<span class="span method">call</span>()</a>
 					<span>Сделать запрос к ВК API</span>
+				</li>
+				<li>
+					<a href="main.html#vk_post"><span class="object">vk</span>.<span class="span method">post</span>()</a>
+					<span>Сделать запрос к ВК API по POST методу</span>
 				</li>
 				<li>
 					<a href="main.html#easyvk_is"><span class="object">easyvk</span>.<span class="span method">is</span>()</a>
@@ -542,7 +546,7 @@
 	window.pageGot = true;
 </script>
 
-<h1>Главное <span class="date-edit">Редактировано: <span class="det">20.12.2018 в 02:11</span></span></h1>
+<h1>Главное <span class="date-edit">Редактировано: <span class="det">18.01.2019 в 22:25</span></span></h1>
 <p>
 	На этой странице описаны основные свойства и методы объекта EasyVK и функции easyvk
 </p>
@@ -636,6 +640,86 @@ vk.call("wall.post", {
 
 })</code></pre>
 </p>
+
+
+<h2 id="vk_post"><span>#</span> vk.post()</h2>
+<p>
+	Метод обращается к <a href="https://vk.com/dev" target="_blank">API ВКонтакте</a> по HTTP запросам, используя за основу метод <a href="#vk_call">vk.call()</a> с заранее установленным параметром methodType = "post"
+</p>
+<p>
+	Аргументы метода
+</p>
+<ul>
+	<li>
+		<b>а</b> <span>*</span> (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>) <span class='default' title='По умолчанию'></span>
+		<p>
+		 	Метод, к которому нужно обратиться. Например: <a href="https://vk.com/dev/messages.send">messages.send</a>
+		</p>
+		<p>
+			<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+vk.post("messages.send")
+// или еще
+vk.post("execute")
+			</code></pre>
+		</p>
+	</li>
+	<li>
+		<b>data</b> (<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank"/>&lt;Object&gt;</a>) <span class='default' title='По умолчанию'>[ { } ]</span>
+		<p>
+			Дополитеьные параметры, которые Вы хотите передать в запрос. Вы можете сами перенастраивать все параметры, которые Easy VK вставляет по умолчанию за Вас, такие, как <code class="h">access_token</code> или <code class="h">v</code> (версия API)
+		</p>
+		<p>
+			<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+vk.post("messages.send", {
+  message: 'Привет',
+  user_id: 1
+})
+			</code></pre>
+		</p>
+		<p>
+			Или, если Вы хотите сделать запрос от другого аккаунта, не меняя сессию
+		</p>
+		<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+vk.post("messages.send", {
+  access_token: 'пример',
+  message: 'Привет',
+  user_id: 1
+})
+		</code></pre>
+	</li>
+</ul>
+<p>
+	Метод возвращает объект <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank"/>&lt;Promise&gt;</a>, в <code class="h">resolve</code> функцию при успешном выполнении запроса вернется следующий объект
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>{
+  vk: <a href="main.html">EasyVK</a>
+  vkr: <a href="#">VKResponse</a> // Ответ сервера
+}
+</code></pre>
+<p>
+	В случае неудачного выполнения в <code class="h">reject</code> функцию передается один из объектов ошибки Easy VK
+</p>
+<p>
+	<b>Боевой пример использования</b>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>vk.post("messages.send", {
+  user_id: 1,
+  message: 'Паша, привет!'
+}).then(( { vkr: Response } ) => {
+  
+  console.log('Сообщение успешно отправлено!')
+  console.log('Выводим ответ сервера ... ')
+
+  console.log(vkr)
+
+}).catch(error => {
+	
+	console.log('Сообщение не отправлено, ошибка!')
+	console.log(error)
+
+})</code></pre>
+</p>
+
+
 <h2 id="easyvk_is">easyvk.is()</h2>
 <p>
 	Метод проверяет на соответствие переменной <code class="h">foo</code> классу <code class="h">bar</code>
@@ -703,11 +787,11 @@ vk.call("wall.post", {
 <p>
 	Текущая версия установленного Easy VK
 </p>
-<pre  class='line-numbers normalize-whitespace'><code class='language-js'>Актуальная версия: 2.1.14 (npm)</code></pre>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>Актуальная версия: 2.1.3 (npm)</code></pre>
 <div class="big-quote danger">
   <p>
   	<span class="ic">!</span>
-    Читайте документацию для актуальной версии (<code class="h">2.1.14</code>), если устанавливаете через NPM
+    Читайте документацию для актуальной версии (<code class="h">2.1.3</code>), если устанавливаете через NPM
   </p>
 </div>
 <h2 id="easyvk_callbackapi">easyvk.callbackAPI</h2>

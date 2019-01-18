@@ -129,7 +129,7 @@
                   <select name="version" id="version">
                     <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
                     <a href="2.0.0/index.html"><option value="2.0.0">2.0.0</option></a>
-                    <a href="2.1.0/index.html"><option value="2.1.0" selected="selected">2.1.0</option></a>
+                    <a href="2.1.3/index.html"><option value="2.1.3" selected="selected">2.1.3</option></a>
                   </select>
                 </div>
               </div>
@@ -251,6 +251,10 @@
 				<li>
 					<a href="main.html#vk_call"><span class="object">vk</span>.<span class="span method">call</span>()</a>
 					<span>Сделать запрос к ВК API</span>
+				</li>
+				<li>
+					<a href="main.html#vk_post"><span class="object">vk</span>.<span class="span method">post</span>()</a>
+					<span>Сделать запрос к ВК API по POST методу</span>
 				</li>
 				<li>
 					<a href="main.html#easyvk_is"><span class="object">easyvk</span>.<span class="span method">is</span>()</a>
@@ -541,7 +545,7 @@
 <script>
 	window.pageGot = true;
 </script>
-<h1>HTTP <span class="date-edit">Редактировано: <span class="det">20.12.2018 в 02:11</span></span></h1>
+<h1>HTTP <span class="date-edit">Редактировано: <span class="det">18.01.2019 в 22:30</span></span></h1>
 <p>
 	HTTP Клиент существует в Easy VK со второй версии. Он нужен для тех случаев, когда нужно- сделать что-то такое, что не поволет официальное API ВКонтакте. Так, например, на его основе я написал Audio API. Это не значит, что я говорю "разрабы, Вы совсем зажрались", я предлагаю альтернативу, и предполагаю, что Вы не будете злоупотреблять этими возможностями.
 </p>
@@ -583,12 +587,34 @@
 		Для проверки данных логина и пароля, HTTP клиент проведет сразу две авторизации (первая, по официальному API, а вторая, по HTTP), так что не переживайте, если в сеансах ВКонтакте будет на одну строку больше
 	</p>
 </div>
+<p>
+	Аргументы метода
+</p>
+<ul>
+	<li>
+		<b>params</b> (<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank"/>&lt;Object&gt;</a>) <span class='default' title='По умолчанию'>{}</span>
+		<p>
+		 	Настройки HTTP Клиента, посмотрите, что из себя представляют настройки
+		</p>
+		<p>
+			<pre  class='line-numbers normalize-whitespace'><code class='language-js'>{
+  cookies: __dirname + "/my-cookies.json" // Путь к файлу, где будут храниться кукисы,
+
+  // User-agent клиента, через который будут делаться запросы (можно взять браузера любого)
+  user_agent: "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71...."
+}
+			</code></pre>
+		</p>
+	</li>
+</ul>
 <pre  class='line-numbers normalize-whitespace'><code class='language-js'>easyvk({
   username: "логин_пользователя", 
   password: "пароль"
 }).then(vk => {
   
-  vk.http.loginByForm().then(({client: <a href="httpclient.html" target="_blank">HTTPClient</a>}) => {
+  vk.http.loginByForm({
+    cookies: __dirname + "/my-cookies.json"
+  }).then(({client: <a href="httpclient.html" target="_blank">HTTPClient</a>}) => {
      
      console.log(<a href="httpclient.html" target="_blank">HTTPClient</a>);
 
