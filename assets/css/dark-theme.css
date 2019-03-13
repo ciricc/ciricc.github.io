@@ -163,3 +163,7 @@ img {
 .st-map ul {
 	color: #B8B8B8 !important;
 }
+
+.nav li > span > a {
+	color: #08997B;
+}
