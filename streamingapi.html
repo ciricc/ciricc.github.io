@@ -129,7 +129,7 @@
                   <select name="version" id="version">
                     <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
                     <a href="2.0.0/index.html"><option value="2.0.0">2.0.0</option></a>
-                    <a href="2.2.0/index.html"><option value="2.2.0" selected="selected">2.2.0</option></a>
+                    <a href="2.4.1/index.html"><option value="2.4.1" selected="selected">2.4.1</option></a>
                   </select>
                 </div>
               </div>
@@ -218,6 +218,10 @@
 			<span>Разработки, созданные под Easy VK</span>
 			<ul>
 				<li>
+					<a href="https://github.com/khok/vk-bots" target="_blank">vk-bots BETA</a>
+					<span>Модуль для создания чат-ботов под Easy VK</span>
+				</li>
+				<li>
 					<a href="https://github.com/khok/simple-bots" target="_blank">simple-bots</a>
 					<span>Надстройка для создания чат-ботов с удобным интерфейсом</span>
 				</li>
@@ -292,6 +296,10 @@
 				<li>
 					<a href="staticmethods.html#call"><span class="object">static</span>.<span class="span method">call</span>()</a>
 					<span>Сделать запрос к ВК API без авторизации</span>
+				</li>
+				<li>
+					<a href="staticmethods.html#createExecute"><span class="object">static</span>.<span class="span method">createExecute</span>()</a>
+					<span>Создать VK Script запроса к API</span>
 				</li>
 			</ul>
 		</li>
@@ -528,8 +536,24 @@
 					<span>Узнайте как использовать Debugger в своих программах</span>
 				</li>
 				<li>
-					<a href="debugger.html#debuggerrun"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
-					<span>Debugger изначально не доступен, поэтому запросы до авторизации вы можете прослушивать с помощью debuggerRun</span>
+					<a href="debugger.html#connect"><span class="object">Подключение</span></a>
+					<span>Используем дебаг в Easy VK</span>
+				</li>
+				<li>
+					<a href="debugger.html#EVENTS"><span class="object">Debugger EVENTS</span></a>
+					<span>Типы событий в объекте</span>
+				</li>
+				<li>
+					<a href="debugger.html#EventContext"><span class="object">EventContext</span></a>
+					<span>Объект события и работа с ним</span>
+				</li>
+				<li>
+					<a href="debugger.html#request"><span class="object">Запрос</span></a>
+					<span>События запроса</span>
+				</li>
+				<li>
+					<a href="debugger.html#response"><span class="object">Ответ</span></a>
+					<span>События ответа</span>
 				</li>
 			</ul>
 		</li>
@@ -563,12 +587,23 @@
 <script>
 	window.pageGot = true;
 </script>
-<h1>Streaming API <span class="date-edit">Редактировано: <span class="det">13.03.2019 в 03:42</span></span></h1>
+<h1>Streaming API <span class="date-edit">Редактировано: <span class="det">19.04.2019 в 15:36</span></span></h1>
+<div class="big-quote danger">
+  <div class="p">
+    <span class="ic">{...}</span> Для включения или отключения используйте utils.streamingAPI <br/></br/>
+    <pre  class='line-numbers normalize-whitespace'><code class='language-js'>easyvk({
+  utils: {
+    streamingAPI: true
+  }
+})</code></pre></br/>
+    <i>Unknow method ... of undefined</i>
+  </div>
+</div>
 <p>
-	Streaming API - это удобный инструмент, который может помочь вашим рекламщикам, вашей компании или рекламному агентству собирать данные о популярности тех или иных продуктах / проектах и т.д. Проще говоря, вы подключаете Streaming API к своему серверу или куда-хотите, на пример, в программу, как-то вязанную с метрикой вашего продукта, и затем, собираете данные из ВКонтакте. Как только, какой-то польователь поубликует пост / делает комментарий, в котором идет упоминание вашего продута, вы собираете это в данные затем составляете метрику популярности. Анализ данных, короче говоря.
+	Streaming API - это удобный инструмент, который может помочь вашим рекламщикам, вашей компании или рекламному агентству собирать данные о популярности тех или иных продуктах / проектах и т.д. Проще говоря, вы подключаете Streaming API к своему серверу или куда-хотите, на пример, в программу, как-то вязанную с метрикой вашего продукта, и затем, собираете данные из ВКонтакте. Как только, какой-то пользователь публикует пост / делает комментарий, в котором идет упоминание вашего продута, вы собираете это в данные затем составляете метрику популярности. Анализ данных, короче говоря.
 </p>
 <p>
-	В EasyVK Streaming API имеет большое приемущество среди остальных возможностей, так как на прямую может принести пользу многим сервисам.
+	В EasyVK Streaming API имеет большое преимущество среди остальных возможностей, так как на прямую может принести пользу многим сервисам.
 </p>
 <p>
 	<b>Техническая справка</b>
@@ -767,6 +802,9 @@ stream.close()
 		</li>
 		<li>
 			<b>failure</b> <span> - Подключение разорвалось или упало</span>
+		</li>
+		<li>
+			<b>pullEvent</b> <span> - Произошло какое-то событие стрима (дублирует все события в одно)</span>
 		</li>
 		<li>
 			<b>post</b> <span> - Пользователь сделал пост, в котором нашлись совпадения по Вашим правилам стрима</span>

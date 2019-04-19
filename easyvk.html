@@ -129,7 +129,7 @@
                   <select name="version" id="version">
                     <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
                     <a href="2.0.0/index.html"><option value="2.0.0">2.0.0</option></a>
-                    <a href="2.2.0/index.html"><option value="2.2.0" selected="selected">2.2.0</option></a>
+                    <a href="2.4.1/index.html"><option value="2.4.1" selected="selected">2.4.1</option></a>
                   </select>
                 </div>
               </div>
@@ -218,6 +218,10 @@
 			<span>Разработки, созданные под Easy VK</span>
 			<ul>
 				<li>
+					<a href="https://github.com/khok/vk-bots" target="_blank">vk-bots BETA</a>
+					<span>Модуль для создания чат-ботов под Easy VK</span>
+				</li>
+				<li>
 					<a href="https://github.com/khok/simple-bots" target="_blank">simple-bots</a>
 					<span>Надстройка для создания чат-ботов с удобным интерфейсом</span>
 				</li>
@@ -292,6 +296,10 @@
 				<li>
 					<a href="staticmethods.html#call"><span class="object">static</span>.<span class="span method">call</span>()</a>
 					<span>Сделать запрос к ВК API без авторизации</span>
+				</li>
+				<li>
+					<a href="staticmethods.html#createExecute"><span class="object">static</span>.<span class="span method">createExecute</span>()</a>
+					<span>Создать VK Script запроса к API</span>
 				</li>
 			</ul>
 		</li>
@@ -528,8 +536,24 @@
 					<span>Узнайте как использовать Debugger в своих программах</span>
 				</li>
 				<li>
-					<a href="debugger.html#debuggerrun"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
-					<span>Debugger изначально не доступен, поэтому запросы до авторизации вы можете прослушивать с помощью debuggerRun</span>
+					<a href="debugger.html#connect"><span class="object">Подключение</span></a>
+					<span>Используем дебаг в Easy VK</span>
+				</li>
+				<li>
+					<a href="debugger.html#EVENTS"><span class="object">Debugger EVENTS</span></a>
+					<span>Типы событий в объекте</span>
+				</li>
+				<li>
+					<a href="debugger.html#EventContext"><span class="object">EventContext</span></a>
+					<span>Объект события и работа с ним</span>
+				</li>
+				<li>
+					<a href="debugger.html#request"><span class="object">Запрос</span></a>
+					<span>События запроса</span>
+				</li>
+				<li>
+					<a href="debugger.html#response"><span class="object">Ответ</span></a>
+					<span>События ответа</span>
 				</li>
 			</ul>
 		</li>
@@ -563,7 +587,7 @@
 <script>
   window.pageGot = true;
 </script>
-<h1>Основное <span class="date-edit">Редактировано: <span class="det">13.03.2019 в 03:42</span></span></h1>
+<h1>Основное <span class="date-edit">Редактировано: <span class="det">19.04.2019 в 15:29</span></span></h1>
 <p>
   Познакомьтесь с Easy VK ближе, чтобы понять, как он устроен и как с ним работать
 </p>
@@ -581,7 +605,7 @@
   Как было сказано выше, самый первый шаг в работе с Easy VK - авторизация. Вся настройка происходит именно на этом этапе, и, к сожалению, это самая сложная часть в освоении.
 </p>
 <p>
-  Авторизция происходит таким образом
+  Авторизация происходит таким образом
 </p>
 <pre  class='line-numbers normalize-whitespace'><code class='language-js'>easyvk({
   password: "ваш_пароль",
@@ -632,7 +656,10 @@
   <li>
     <b>reauth</b> (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" target="_blank"/>&lt;boolean&gt;</a>) <span class='default' title='По умолчанию' title="По умолчанию">[false]</span>
     <p>
-      Если есть необходимость занова авторизоваться с новыми данными, или просто обновить токен текущей сессии, выставите этот параметр как <code class="h">true</code>
+      Если есть необходимость заново авторизоваться с новыми данными, или просто обновить токен текущей сессии, выставите этот параметр как <code class="h">true</code>
+    </p>
+    <p>
+      <i>С версии 2.4.0 сессия сменяется автоматически, если данные были изменены. Если данные не изменены, но, например, вы хотите получить новый токен, лучше всего для этого использовать <code class="h">reauth</code></i>
     </p>
   </li>
   <li>
@@ -645,6 +672,46 @@
 }
   
 </code></pre>
+  </li>
+  <li><b>mode</b> ([<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank"/>&lt;Object&gt;</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>])
+    <p>Режим работы Easy VK</p>
+    <p>
+      В Easy VK есть поддержка работы через метод <a href="https://vk.com/dev/execute" target="_blank">execute</a> - это, когда все запросы выполняются через данный метод. Это немного упрощает ответы (так как execute не является полным зеркалом запросов и ответов ВК API, в некоторых моментах), но и значительно улучшает работу с API ВК.
+    </p>
+    <p>
+      <b>Почему highload?</b>
+      <p>
+        Если вам нужно, чтобы все запросы выполнялись "в очереди" через один запрос к execute, вы не хотите нагружать свой сервер запросами или хотите сделать, чтобы ваш бот отвечал быстрее большему количеству людей, то этот режим работы вам точно подойдет
+      </p>
+      <pre  class='line-numbers normalize-whitespace'><code class='language-js'>{
+  mode: 'highload', // Самая простая настройка
+  mode: {
+    name: 'highload',
+
+    // Каждые 15 МС вся очередь гарантированно будет выполняться (точнее читайте ниже)
+    timeout: 15 
+  }
+}
+      </code></pre>
+    </p>
+    <p>
+      Данный подход обещает выполнять сразу 25 запросов к API всего за один запрос к серверу. То есть, если 25 человек почти в одно и то же время написали боту (а такое происходит не редко), то вместо того, чтобы делать для каждого из них запрос к messages.send, отправится всего 1 запрос к execute с 25 запросами к messages.send
+    </p>
+    <p>
+      <b>timeout</b> - это время (МС), через которое вся очередь гарантированно выполнится, если не поступило новых запросов. Таким образом, настраивая этот параметр, вы настраиваете скорость обработки запросов. Чем меньше значение - тем больше запросов будет делать ваш сервер. <br/>
+
+      Когда вы обращаетесь к vk.call(), метод записывается в очередь по access_token'у вызываемого метода. Следующий запрос к vk.call() запишется в очередь к тому же токену (если он не изменился), но вся очередь выполнится только через <b>timeout</b> времени после последнего добавления запроса.
+    </p>
+    <p>
+      <b>Настройка языка и версии API для внутренних запросов execute не поддерживается самим ВК. Поэтому в обращении к execute будет использована глобальная настройка params.lang и params.api_v</b>
+    </p>
+    <p>
+      <i>При общих ошибках каждый ответ запроса execute будет получать значение false (так устроено в ВК API). Поэтому, если вы хотите ловить ошибка, понимать, что произошло не так, рекомендуется иногда отключать режим, чтобы видеть полное описание ошибки.</i>
+      <br/><br/>
+      <i>
+        Общие ошибки вроде капчи или flood control ВК возвращает с полным описанием, их будет получать самый последний <code class="h">reject</code>, который был добавлен в очередь.
+      </i>
+    </p>
   </li>
   <li id="auth_fields_param"><b>fields</b> (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>,<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank"/>&lt;Array&gt;</a>) <span class='default' title='По умолчанию'>[]</span> 
     <p>Список полей, которые Вы хотите сохранить в текущую сессию после авторизации</p>
@@ -729,6 +796,42 @@ easyvk({
   userAgent: 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 ...'
 }</code></pre>
   </li>
+  <li><b>utils</b> (<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank"/>&lt;Object&gt;</a>)
+    <p>Объект настроек для подключения внутренних утилит easyvk, если какие-то утилиты отключены, они не будут занимать место в оперативной памяти. По умолчанию Easy VK отключает некоторые утилиты самостоятельно, в зависимости от типа авторизации (например, для группы не будут доступны User LongPoll и StreamingAPI и т.д). Вы можете включать их, если это необходимо</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>{
+  bots: true, // Bots LongPoll
+  longpoll: true, // User LongPoll (возможна нестабильная работа в связи с ограничениями ВКонтакте на секцию messages)
+  http: true, // HTTP Клиент для работы с Audio API
+  widgets: true, // Дополнительные виджеты
+  uploader: true, // Внутреннее решение для загрузки файлов на сервер
+  callbackAPI: true, // Callback API
+  streamingAPI: true, // Streaming API 
+}</code></pre>
+  </li>
+  <li><b>debug</b> (<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank"/>&lt;Object&gt;</a> Debugger)
+    <p>Объект <code class="h">Debugger</code> от Easy VK для удобного дебага запросов и ответов сервера</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+const easyvk = require('easyvk')
+const { Debugger } = easyvk
+
+let debug = new Debugger();
+
+debug.on('response', ({body}) => {
+  console.log(body)
+})
+
+debug.on('request', ({query, url, method}) => {
+  console.log(method, url, query)
+})
+
+easyvk({
+  debug,
+  ...{}
+}).then(vk => {
+  // ...
+})
+</code></pre>
+  </li>
 
 </ul>
 
@@ -753,7 +856,8 @@ easyvk({
   {
     group_id,
     group_name,
-    group_screen // буквенный ID группы 
+    group_screen, // буквенный ID группы
+    ...({...fields})  // Поля, которые были указаны в настройках Easy VK
   }
 </code></pre>
 <h2 id="cred_flow"><span>#</span> Client Credentials Flow</h2>
@@ -765,9 +869,7 @@ easyvk({
     client_id: '{APP_ID}',
     client_secret: '{APP_SECRET_CODE}'
   }).then(vk => {
-    
-    
-
+    // Работаем с кодом дальше
   })
 </code></pre>
 <h2 id="app_auth"><span>#</span> Авторизация приложения</h2>
@@ -778,9 +880,7 @@ easyvk({
   easyvk({
     access_token: "{APP_TOKEN}"
   }).then(vk => {
-    
     console.log(vk.session.app_id);
-
   })
 </code></pre>
 <p>
@@ -795,7 +895,8 @@ easyvk({
     author: {
       id: 0
     },
-    app_members: 0
+    app_members: 0,
+    client_id: parseInt('233_ID_приложения', 10)
   }
 </code></pre>
 

@@ -129,7 +129,7 @@
                   <select name="version" id="version">
                     <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
                     <a href="2.0.0/index.html"><option value="2.0.0">2.0.0</option></a>
-                    <a href="2.2.0/index.html"><option value="2.2.0" selected="selected">2.2.0</option></a>
+                    <a href="2.4.1/index.html"><option value="2.4.1" selected="selected">2.4.1</option></a>
                   </select>
                 </div>
               </div>
@@ -218,6 +218,10 @@
 			<span>Разработки, созданные под Easy VK</span>
 			<ul>
 				<li>
+					<a href="https://github.com/khok/vk-bots" target="_blank">vk-bots BETA</a>
+					<span>Модуль для создания чат-ботов под Easy VK</span>
+				</li>
+				<li>
 					<a href="https://github.com/khok/simple-bots" target="_blank">simple-bots</a>
 					<span>Надстройка для создания чат-ботов с удобным интерфейсом</span>
 				</li>
@@ -292,6 +296,10 @@
 				<li>
 					<a href="staticmethods.html#call"><span class="object">static</span>.<span class="span method">call</span>()</a>
 					<span>Сделать запрос к ВК API без авторизации</span>
+				</li>
+				<li>
+					<a href="staticmethods.html#createExecute"><span class="object">static</span>.<span class="span method">createExecute</span>()</a>
+					<span>Создать VK Script запроса к API</span>
 				</li>
 			</ul>
 		</li>
@@ -528,8 +536,24 @@
 					<span>Узнайте как использовать Debugger в своих программах</span>
 				</li>
 				<li>
-					<a href="debugger.html#debuggerrun"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
-					<span>Debugger изначально не доступен, поэтому запросы до авторизации вы можете прослушивать с помощью debuggerRun</span>
+					<a href="debugger.html#connect"><span class="object">Подключение</span></a>
+					<span>Используем дебаг в Easy VK</span>
+				</li>
+				<li>
+					<a href="debugger.html#EVENTS"><span class="object">Debugger EVENTS</span></a>
+					<span>Типы событий в объекте</span>
+				</li>
+				<li>
+					<a href="debugger.html#EventContext"><span class="object">EventContext</span></a>
+					<span>Объект события и работа с ним</span>
+				</li>
+				<li>
+					<a href="debugger.html#request"><span class="object">Запрос</span></a>
+					<span>События запроса</span>
+				</li>
+				<li>
+					<a href="debugger.html#response"><span class="object">Ответ</span></a>
+					<span>События ответа</span>
 				</li>
 			</ul>
 		</li>
@@ -563,7 +587,18 @@
 <script>
 	window.pageGot = true;
 </script>
-<h1>Загрузчик файлов <span class="date-edit">Редактировано: <span class="det">13.03.2019 в 03:42</span></span></h1>
+<h1>Загрузчик файлов <span class="date-edit">Редактировано: <span class="det">19.04.2019 в 15:21</span></span></h1>
+<div class="big-quote danger">
+  <div class="p">
+    <span class="ic">{...}</span> Для включения или отключения используйте utils.uploader <br/></br/>
+    <pre  class='line-numbers normalize-whitespace'><code class='language-js'>easyvk({
+  utils: {
+    uploader: true
+  }
+})</code></pre></br/>
+    <i>Unknow method ... of undefined</i>
+  </div>
+</div>
 <p>
 	Загрузчик файлов может понадобиться в те моменты, когда нужно загрузить какой-то файл на сервер. К счастью, в Easy VK такой инструмент есть и я его постоянно использую во многих случаях
 </p>
@@ -623,7 +658,7 @@ vk.uploader.getUploadURL(method, {
 		<b>url</b> <span>*</span> <span>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>)</span> - URL адрес сервера, на него будет отправлен файл
 	</li>
 	<li>
-		<b>filePath</b> <span>*</span> <span>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>)</span> - Путь к файлу, который нужно загрузить
+		<b>filePath</b> <span>*</span> <span>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>, <a href="#">fs.readStream</a>)</span> - Путь к файлу или объект <code class="h">fs.readStream</code>, который нужно загрузить
 	</li>
 	<li>
 		<b>fieldName</b> <span>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>)</span> <span class='default' title='По умолчанию'>["file"]</span> - название поля, в котором отправится файл, проще говоря - это то, как для сервера будет называться файл, например (php) <code class="h">$_FILES['photo']</code> и т.д Как называть данный параметр, уточняйте в документации API ВКонтакте

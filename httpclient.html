@@ -129,7 +129,7 @@
                   <select name="version" id="version">
                     <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
                     <a href="2.0.0/index.html"><option value="2.0.0">2.0.0</option></a>
-                    <a href="2.2.0/index.html"><option value="2.2.0" selected="selected">2.2.0</option></a>
+                    <a href="2.4.1/index.html"><option value="2.4.1" selected="selected">2.4.1</option></a>
                   </select>
                 </div>
               </div>
@@ -218,6 +218,10 @@
 			<span>Разработки, созданные под Easy VK</span>
 			<ul>
 				<li>
+					<a href="https://github.com/khok/vk-bots" target="_blank">vk-bots BETA</a>
+					<span>Модуль для создания чат-ботов под Easy VK</span>
+				</li>
+				<li>
 					<a href="https://github.com/khok/simple-bots" target="_blank">simple-bots</a>
 					<span>Надстройка для создания чат-ботов с удобным интерфейсом</span>
 				</li>
@@ -292,6 +296,10 @@
 				<li>
 					<a href="staticmethods.html#call"><span class="object">static</span>.<span class="span method">call</span>()</a>
 					<span>Сделать запрос к ВК API без авторизации</span>
+				</li>
+				<li>
+					<a href="staticmethods.html#createExecute"><span class="object">static</span>.<span class="span method">createExecute</span>()</a>
+					<span>Создать VK Script запроса к API</span>
 				</li>
 			</ul>
 		</li>
@@ -528,8 +536,24 @@
 					<span>Узнайте как использовать Debugger в своих программах</span>
 				</li>
 				<li>
-					<a href="debugger.html#debuggerrun"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
-					<span>Debugger изначально не доступен, поэтому запросы до авторизации вы можете прослушивать с помощью debuggerRun</span>
+					<a href="debugger.html#connect"><span class="object">Подключение</span></a>
+					<span>Используем дебаг в Easy VK</span>
+				</li>
+				<li>
+					<a href="debugger.html#EVENTS"><span class="object">Debugger EVENTS</span></a>
+					<span>Типы событий в объекте</span>
+				</li>
+				<li>
+					<a href="debugger.html#EventContext"><span class="object">EventContext</span></a>
+					<span>Объект события и работа с ним</span>
+				</li>
+				<li>
+					<a href="debugger.html#request"><span class="object">Запрос</span></a>
+					<span>События запроса</span>
+				</li>
+				<li>
+					<a href="debugger.html#response"><span class="object">Ответ</span></a>
+					<span>События ответа</span>
 				</li>
 			</ul>
 		</li>
@@ -563,7 +587,7 @@
 <script>
 	window.pageGot = true;
 </script>
-<h1>HTTP Клиент <span class="date-edit">Редактировано: <span class="det">13.03.2019 в 03:42</span></span></h1>
+<h1>HTTP Клиент <span class="date-edit">Редактировано: <span class="det">19.04.2019 в 15:39</span></span></h1>
 <p>
 	За более подробной информацией об HTTP Клиенте обращайтесь на страницу <a href="http.html">HTTP</a>
 </p>
@@ -653,7 +677,7 @@ client.readStories(users["dayana"].id, 34).then((count) => {
 		 	Параметры добавления бота (группы) в беседу
 		</p>
 		<pre  class='line-numbers normalize-whitespace'><code class='language-js'>{
-  peer_ids: '2000000001, 2000000002, ... 2000000000 + N' // Список идентифекаторов бесед (2000000000 + ID беседы),
+  peer_ids: '2000000001, 2000000002, ... 2000000000 + N' // Список идентификаторов бесед (2000000000 + ID беседы),
   group_id: Number // ID группы (бота), которую надо пригласить в беседу
 }
 		</code></pre>
@@ -670,7 +694,7 @@ client.addBotToConf({
 </p>
 <h2 id="client_readfeedstories">client.readFeedStories()</h2>
 <p>
-	Метод просмтривает все истории, которые выложены друзьями пользователя за последние 24 часа.
+	Метод просматривает все истории, которые выложены друзьями пользователя за последние 24 часа.
 	То есть все истории с главной страницы. Тоже возвращает в <code class="h">resolve</code> функцию переменную <code class="h">count</code> - количество просмотренных историй
 </p>
 <pre  class='line-numbers normalize-whitespace'><code class='language-js'>
@@ -680,7 +704,7 @@ client.readFeedStories().then(count => {
 </code></pre>
 <h2 id="client_audio">client.audio</h2>
 <p>
-	В этом свойстве хранится объект <a href="audioapi.html">AudioAPI</a>, он преднозначен для работы с аудиозаписями (да-да, без официального API).
+	В этом свойстве хранится объект <a href="audioapi.html">AudioAPI</a>, он предназначен для работы с аудиозаписями (да-да, без официального API).
 </p>
         </div>
         <div class="col-md-12 no-padding">

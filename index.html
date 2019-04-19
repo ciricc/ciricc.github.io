@@ -129,7 +129,7 @@
                   <select name="version" id="version">
                     <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
                     <a href="2.0.0/index.html"><option value="2.0.0">2.0.0</option></a>
-                    <a href="2.2.0/index.html"><option value="2.2.0" selected="selected">2.2.0</option></a>
+                    <a href="2.4.1/index.html"><option value="2.4.1" selected="selected">2.4.1</option></a>
                   </select>
                 </div>
               </div>
@@ -218,6 +218,10 @@
 			<span>Разработки, созданные под Easy VK</span>
 			<ul>
 				<li>
+					<a href="https://github.com/khok/vk-bots" target="_blank">vk-bots BETA</a>
+					<span>Модуль для создания чат-ботов под Easy VK</span>
+				</li>
+				<li>
 					<a href="https://github.com/khok/simple-bots" target="_blank">simple-bots</a>
 					<span>Надстройка для создания чат-ботов с удобным интерфейсом</span>
 				</li>
@@ -292,6 +296,10 @@
 				<li>
 					<a href="staticmethods.html#call"><span class="object">static</span>.<span class="span method">call</span>()</a>
 					<span>Сделать запрос к ВК API без авторизации</span>
+				</li>
+				<li>
+					<a href="staticmethods.html#createExecute"><span class="object">static</span>.<span class="span method">createExecute</span>()</a>
+					<span>Создать VK Script запроса к API</span>
 				</li>
 			</ul>
 		</li>
@@ -528,8 +536,24 @@
 					<span>Узнайте как использовать Debugger в своих программах</span>
 				</li>
 				<li>
-					<a href="debugger.html#debuggerrun"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
-					<span>Debugger изначально не доступен, поэтому запросы до авторизации вы можете прослушивать с помощью debuggerRun</span>
+					<a href="debugger.html#connect"><span class="object">Подключение</span></a>
+					<span>Используем дебаг в Easy VK</span>
+				</li>
+				<li>
+					<a href="debugger.html#EVENTS"><span class="object">Debugger EVENTS</span></a>
+					<span>Типы событий в объекте</span>
+				</li>
+				<li>
+					<a href="debugger.html#EventContext"><span class="object">EventContext</span></a>
+					<span>Объект события и работа с ним</span>
+				</li>
+				<li>
+					<a href="debugger.html#request"><span class="object">Запрос</span></a>
+					<span>События запроса</span>
+				</li>
+				<li>
+					<a href="debugger.html#response"><span class="object">Ответ</span></a>
+					<span>События ответа</span>
 				</li>
 			</ul>
 		</li>
@@ -562,23 +586,9 @@
           <script>
   window.pageGot = true;
 </script>
-<!-- <div class="notify-block white col-md-12" style="margin-bottom: 50px;">
-  <div class="col-md-12">
-    <div class="col-md-4">
-      <img src="assets/img/main-logo.png" alt="">
-    </div>
-    <div class="col-md-8">
-      <h2>Анонимный чат-бот на Easy VK</h2>
-      <p>
-        Для того, чтобы показать, что может Easy VK в чат ботах, я сделал бота Роги. Это анонимный чат-бот, написав которому, можно найти собеседника ВКонтакте и переписываться с ним анонимно. <a href="https://vk.com/rogi_bot" target="_blank" style="color: #fff;text-decoration: underline;">Сам бот</a>
-      </p>
-      <br>
-    </div>
-  </div>
-</div> -->
 
 <div style="max-width: 910px;">
-  <h1>Начнем <span class="date-edit">Редактировано: <span class="det">13.03.2019 в 03:42</span></span></h1>
+  <h1>Начнем <span class="date-edit">Редактировано: <span class="det">19.04.2019 в 15:25</span></span></h1>
 <p>
   Этот сайт - документация библиотеки Easy VK (easyvk) - модуля, который предназначен для работы с API ВКонтакте под платформой Node.JS
 </p>
@@ -609,7 +619,21 @@
     <li>В Easy VK есть поддержка мультиязычности ошибок: в Вашей команде нет иностранцев? Установите <code>lang: "ru"</code>, и <a href="errors.html#language">получайте информацию об ошибках на русском языке</a></li>
   </ul>
 </p>
-
+<!--<div class="notify-block white col-md-12" style="margin-bottom: 50px;">
+  <div class="col-md-12">
+    <div class="col-md-4">
+      <img src="https://psv4.userapi.com/c848436/u356607530/docs/d9/6f84035a7987/lal.png?extra=QlA_3Uq7CtIkLyp-vzcdx3tntP0e8ihvnH_TcF0BR4ZZIB3fGN87kfg2X_Ayp_1-MRpnBbHvcb-eI1M2gRAEwgN2PKVeGbirs1F5wzTkQpAoU63BEW2VcAhYNu6e6F4_bB5_5F-QH74LsvZLlCruAqY" alt="">
+    </div>
+    <div class="col-md-8">
+      <h2>Анонимные письма | Бот</h2>
+      <p>
+        Этот бот написан полностью на основе easyvk и дополнения vk-bots. <br>
+        Если вы хотите посомтреть, как это работает, то <a href="https://vk.com/anonletters" target="_blank" style="color: #fff;text-decoration: underline;">анонимные письма</a> пока что единственный пример работы easyvk в чат-ботах 
+      </p>
+      <br>
+    </div>
+  </div>
+</div> -->
 <h2 id="installation"><span>#</span> Установка</h2>
 <div class="big-quote">
   <p>
@@ -652,9 +676,35 @@
     </li>
   </ul>
   <p>
+    Дополним наш код простым действием
+    <pre  class='line-numbers normalize-whitespace'><code class='language-js'>easyvk({
+  username: 'ваш_логин',
+  password: 'ваш_пароль',
+  session_file: __dirname + '/.my-session'
+}).then(async vk => {
+  
+  /*
+    Этот код сначала авторизует вас по логину и паролю,
+    а затем отправит текстовое сообщение вам
+  */
+  
+  // делаем запрос на GET api.vk.com/method/messages.send
+  let { vkr } = await vk.call('messages.send', {
+    peer_id: vk.session.user_id,
+    message: 'Привет!'
+  });
+  
+
+  // выводим ответ сервера
+  console.log(vkr);
+
+})</code></pre>
+  </p>
+  <p>
     Теперь Вы можете использовать главный файл для работы с Easy VK и Node.JS. Чтобы запустить программу, необходимо ввести следующую команду
     <pre class='line-numbers normalize-whitespace'><code class='language-js'>node index.js</code></pre>
   </p>
+
 </p>
 <p>
   <a href="easyvk.html"><p>ШАГ 2: Продолжение документации, авторизация</p></a>

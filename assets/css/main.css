@@ -434,7 +434,7 @@ img {
 }
 
 .notify-block.white {
-	background-image: linear-gradient(15deg, #398EDE 0%, #F607AA 100%);
+	background-image: linear-gradient(15deg, #FF6A40 0%, #FE8E81 100%);
 }
 
 .opacity-block .tap-me {
@@ -885,7 +885,7 @@ html {
   	margin-left: 15px;
   }
 
-  .big-quote p {
+  .big-quote p, .big-quote .p {
 	display: block;
 	border-top: solid 7px #00C397;
 	/*border-bottom: solid 1px #f0f0f0;*/
@@ -898,15 +898,15 @@ html {
 	margin-left: 0px !important;
   }
 
-  .big-quote.danger p {
+  .big-quote.danger p, .big-quote.danger .p {
   	border-top-color: #FF5252;
   }
 
-  .big-quote.danger p .ic {
+  .big-quote.danger p .ic, .big-quote.danger .p .ic {
   	color: #FF5252;
   }
 
-  .big-quote p .ic {
+  .big-quote p .ic, .big-quote .p .ic {
   	font-size: 24px;
   	color: #00C397;
   	font-weight: bold;

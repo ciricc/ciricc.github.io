@@ -1,0 +1,130 @@
+{#title|Easy VK / Node.JS ВКонтакте API | Debugger}
+<script>
+	window.pageGot = true;
+</script>
+<h1>Debugger</h1>
+<p>
+	Очень часто приходится дебажить программы, и, так как в Easy VK много моментов скрыто от программиста, я написал дебагер, который раскрывает все эти моменты и дает понять, что вообще происходит в Easy VK, куда он делает запросы, что отправляет, что получает в ответ. Таким образом, даже в тех программах, где кажется вообще нереально понять, что произошло, можно использовать Debugger для выяснения обстоятельств.
+</p>
+<h2 id="how_to_work"><span>#</span> Как это работает?</h2>
+<p>
+	Когда Easy VK делает запросы, получает ответы, отправляет данные, дебаггер получает всю эту информацию. Он работает по принципу слушателя, когда он получает информацию, в нем вызывается событие, и Вы таким образом можете получать данные, которые приходят в дебагер
+</p>
+<p>
+	Раньше в Easy VK использовались разны дебагеры для разных этапом работы Easy VK: авторизация, и непосредственно сама работа с API
+</p>
+<p>
+	Теперь все дебагеры объеденены в один класс easyvk.Debugger, который вы можете подключать к своему проекту очень просто
+</p>
+<h2 id="connect">Подключение</h2>
+<pre class="js"><code>const easyvk = require('easyvk')
+const { Debugger } = easyvk
+
+let myDebugger = new Debugger();
+
+myDebugger.on('request', (event) => {
+  console.log(event)
+})
+
+myDebugger.on('response', (event) => {
+  console.log(event)
+})
+
+easyvk({
+  debug: myDebugger, // Подключаем выбранный дебаг
+  ... {}
+}).then(vk => {
+	
+  vk.call(...['', {}]).catch(console.error)
+
+})
+</code></pre>
+<h2 id="EVENTS">Debugger.EVENTS</h2>
+<p>
+	Вы всегда можете использовать внутренние обозначения событий, если что-то вдруг изменилось
+</p>
+<pre class="js"><code>
+myDebugger.on(Deubgger.EVENT_REQUEST_TYPE, () => {
+  console.log('Request!')
+})
+
+myDebugger.on(Deubgger.EVENT_RESPONSE_TYPE, () => {
+  console.log('Response!')
+})
+
+</code></pre>
+<h2 id="EventContext">EventContext</h2>
+<p>
+	Это объект самого события (обобщенного)
+</p>
+<p>
+	<b>EventContext.toString()</b> - представляет события в строковом виде для ведения логов
+</p>
+<p>
+	<b>EventContext.moment</b> - момент времени, в которое произошло событие
+</p>
+<p>
+	<b>EventContext.type</b> - тип события (Debugger.EVENT_RESPONSE_TYPE или Debugger.EVENT_REQUEST_TYPE)
+</p>
+<pre class="js"><code>myDebugger.on('request', (event) => {
+  console.log(event.toString())
+})
+</code></pre>
+<h2 id="request">Запрос</h2>
+<p>
+	Событие запроса имеет общий вид, поэтому несложно будет понять, где именно произошло событие и когда
+</p>
+<ul>
+	<li>
+		<b>url</b> - адрес сервера, на который делается запрос
+	</li>
+	<li>
+		<b>query</b> - данные запроса (для GET метода строка querystring, для POST объект form)
+	</li>
+	<li>
+		<b>method</b> - метод запроса <code class="h">GET</code> или <code class="h">POST</code>
+	</li>
+	<li>
+		<b>section</b> - есть только в дочерних модулях Easy VK (секция, в которой произошел запрос)
+		<p>
+			Возможные значения:
+		</p>
+		<p>
+			<b>httpClient</b> - HTTP клиент <br/>
+			<b>longpoll</b> - User LongPoll <br/>
+			<b>httpClient</b> - HTTP клиент <br/>
+			<b>vk.call</b> - Запрос метода vk.call <br/>
+			<b>streamingAPI</b> - Streaming API <br/>
+			<b>widgets</b> - Виджеты <br/>
+		</p>
+	</li>
+</ul>
+<pre class="js"><code>myDebugger.on('request', ({method, query}) => {
+  console.log('[Request] on ', method, query)
+})</code></pre>
+<h2 id="response">Ответ</h2>
+<p>
+	Событие ответа тоже имеет общий вид.
+</p>
+<ul>
+	<li>
+		<b>body</b> - тело ответа сервера (оригинальный)
+	</li>
+	<li>
+		<b>section</b> - есть только в дочерних модулях Easy VK (секция, в которой произошел запрос)
+		<p>
+			Возможные значения:
+		</p>
+		<p>
+			<b>httpClient</b> - HTTP клиент <br/>
+			<b>longpoll</b> - User LongPoll <br/>
+			<b>httpClient</b> - HTTP клиент <br/>
+			<b>vk.call</b> - Запрос метода vk.call <br/>
+			<b>streamingAPI</b> - Streaming API <br/>
+			<b>widgets</b> - Виджеты <br/>
+		</p>
+	</li>
+</ul>
+<pre class="js"><code>myDebugger.on('response', ({body}) => {
+  console.log('[Responsed] width ', body)
+})</code></pre>

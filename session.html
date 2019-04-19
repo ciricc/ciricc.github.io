@@ -129,7 +129,7 @@
                   <select name="version" id="version">
                     <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
                     <a href="2.0.0/index.html"><option value="2.0.0">2.0.0</option></a>
-                    <a href="2.2.0/index.html"><option value="2.2.0" selected="selected">2.2.0</option></a>
+                    <a href="2.4.1/index.html"><option value="2.4.1" selected="selected">2.4.1</option></a>
                   </select>
                 </div>
               </div>
@@ -218,6 +218,10 @@
 			<span>Разработки, созданные под Easy VK</span>
 			<ul>
 				<li>
+					<a href="https://github.com/khok/vk-bots" target="_blank">vk-bots BETA</a>
+					<span>Модуль для создания чат-ботов под Easy VK</span>
+				</li>
+				<li>
 					<a href="https://github.com/khok/simple-bots" target="_blank">simple-bots</a>
 					<span>Надстройка для создания чат-ботов с удобным интерфейсом</span>
 				</li>
@@ -292,6 +296,10 @@
 				<li>
 					<a href="staticmethods.html#call"><span class="object">static</span>.<span class="span method">call</span>()</a>
 					<span>Сделать запрос к ВК API без авторизации</span>
+				</li>
+				<li>
+					<a href="staticmethods.html#createExecute"><span class="object">static</span>.<span class="span method">createExecute</span>()</a>
+					<span>Создать VK Script запроса к API</span>
 				</li>
 			</ul>
 		</li>
@@ -528,8 +536,24 @@
 					<span>Узнайте как использовать Debugger в своих программах</span>
 				</li>
 				<li>
-					<a href="debugger.html#debuggerrun"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
-					<span>Debugger изначально не доступен, поэтому запросы до авторизации вы можете прослушивать с помощью debuggerRun</span>
+					<a href="debugger.html#connect"><span class="object">Подключение</span></a>
+					<span>Используем дебаг в Easy VK</span>
+				</li>
+				<li>
+					<a href="debugger.html#EVENTS"><span class="object">Debugger EVENTS</span></a>
+					<span>Типы событий в объекте</span>
+				</li>
+				<li>
+					<a href="debugger.html#EventContext"><span class="object">EventContext</span></a>
+					<span>Объект события и работа с ним</span>
+				</li>
+				<li>
+					<a href="debugger.html#request"><span class="object">Запрос</span></a>
+					<span>События запроса</span>
+				</li>
+				<li>
+					<a href="debugger.html#response"><span class="object">Ответ</span></a>
+					<span>События ответа</span>
 				</li>
 			</ul>
 		</li>
@@ -563,7 +587,7 @@
 <script>
   window.pageGot = true;
 </script>
-<h1>Сессия VK <span class="date-edit">Редактировано: <span class="det">13.03.2019 в 03:42</span></span></h1>
+<h1>Сессия VK <span class="date-edit">Редактировано: <span class="det">19.04.2019 в 15:45</span></span></h1>
 <p>
   После авторизации пользователя или группы, Easy VK создает для Вас сессию, в которую передает некоторые параметры. Так, например, при авторизации пользователя стандартный вид сессии выглядит таким образом:
 </p>
@@ -571,13 +595,14 @@
   Класс: <code class="h"><a href="easyvk.html">easyvk</a>.<a href="main.html#class">class</a>.EasyVKSession</code>
 </p>
 <p>
-  <b>Пользователская сессия после авторизации</b>
+  <b>Пользовательская сессия после авторизации</b>
 </p>
 <pre  class='line-numbers normalize-whitespace'><code class='language-js'>EasyVKSession {
   access_token: ...,
   first_name: ..., // Имя
   last_name: ..., // Фамилия
-  user_id: ...
+  user_id: ...,
+  username: ... // Логин для входа в аккаунт (только для корректной авто-смены сессий)
 }
 </code></pre>
 <p>
@@ -646,7 +671,7 @@ vk.session.clear(() => {
 })</code></pre>
 <h2 id="usage">Метод использования</h2>
 <p>
-  Вы можете использовать сессию не только для того, чтобы сохранять данные пользователя на время, но и, чтобы меняться этими данными между программами. Поскольку я использую Easy VK всегда, когда пишу приложения API ВКонтакте под Node.js, я сталкивался с ситуациями, когда сессию надо было менять в одной программе сразу несколько раз, таким образом я сохранял работоспособность одной программы, не перезапуская постоянно алгоритм авторизации. Кроме того, в Easy VK изначально сессия предназначена для того, чтобы не авторизовывать по логину и паролю много раз, а сделать это единожды.
+  Вы можете использовать сессию не только для того, чтобы сохранять данные пользователя на время, но и, чтобы меняться этими данными между программами. Поскольку я использую Easy VK всегда, когда пишу приложения API ВКонтакте под Node.js, я сталкивался с ситуациями, когда сессию надо было менять в одной программе сразу несколько раз, таким образом я сохранял работоспособность одной программы, не перезапуская постоянно алгоритм авторизации. Кроме того, в Easy VK изначально сессия предназначена для того, чтобы не авторизовать по логину и паролю много раз, а сделать это единожды.
 </p>
         </div>
         <div class="col-md-12 no-padding">

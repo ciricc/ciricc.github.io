@@ -129,7 +129,7 @@
                   <select name="version" id="version">
                     <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
                     <a href="2.0.0/index.html"><option value="2.0.0">2.0.0</option></a>
-                    <a href="2.2.0/index.html"><option value="2.2.0" selected="selected">2.2.0</option></a>
+                    <a href="2.4.1/index.html"><option value="2.4.1" selected="selected">2.4.1</option></a>
                   </select>
                 </div>
               </div>
@@ -218,6 +218,10 @@
 			<span>Разработки, созданные под Easy VK</span>
 			<ul>
 				<li>
+					<a href="https://github.com/khok/vk-bots" target="_blank">vk-bots BETA</a>
+					<span>Модуль для создания чат-ботов под Easy VK</span>
+				</li>
+				<li>
 					<a href="https://github.com/khok/simple-bots" target="_blank">simple-bots</a>
 					<span>Надстройка для создания чат-ботов с удобным интерфейсом</span>
 				</li>
@@ -292,6 +296,10 @@
 				<li>
 					<a href="staticmethods.html#call"><span class="object">static</span>.<span class="span method">call</span>()</a>
 					<span>Сделать запрос к ВК API без авторизации</span>
+				</li>
+				<li>
+					<a href="staticmethods.html#createExecute"><span class="object">static</span>.<span class="span method">createExecute</span>()</a>
+					<span>Создать VK Script запроса к API</span>
 				</li>
 			</ul>
 		</li>
@@ -528,8 +536,24 @@
 					<span>Узнайте как использовать Debugger в своих программах</span>
 				</li>
 				<li>
-					<a href="debugger.html#debuggerrun"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
-					<span>Debugger изначально не доступен, поэтому запросы до авторизации вы можете прослушивать с помощью debuggerRun</span>
+					<a href="debugger.html#connect"><span class="object">Подключение</span></a>
+					<span>Используем дебаг в Easy VK</span>
+				</li>
+				<li>
+					<a href="debugger.html#EVENTS"><span class="object">Debugger EVENTS</span></a>
+					<span>Типы событий в объекте</span>
+				</li>
+				<li>
+					<a href="debugger.html#EventContext"><span class="object">EventContext</span></a>
+					<span>Объект события и работа с ним</span>
+				</li>
+				<li>
+					<a href="debugger.html#request"><span class="object">Запрос</span></a>
+					<span>События запроса</span>
+				</li>
+				<li>
+					<a href="debugger.html#response"><span class="object">Ответ</span></a>
+					<span>События ответа</span>
 				</li>
 			</ul>
 		</li>
@@ -563,7 +587,7 @@
 <script>
 	window.pageGot = true;
 </script>
-<h1>Audio API <span class="date-edit">Редактировано: <span class="det">13.03.2019 в 03:42</span></span></h1>
+<h1>Audio API <span class="date-edit">Редактировано: <span class="det">19.04.2019 в 15:44</span></span></h1>
 <p>
 	Теперь в Easy VK есть Audio API. Неофициальное, да, но зато работает. <br>
 	В реализации Audio API я постарался повторить все методы, которые существовали в прошлом API ВКонтакте на основе <a href="https://vk.com/page-1_2369282" target="_blank">официальной документации</a>, которое разработчики, к слову, закрыли. Так что можно сказать, что Audio API в Easy VK - это полностью экспериментальная фитча, которая не рекомендуется для использования, но и не противопоказана  :D <br> 
@@ -572,7 +596,7 @@
 <p>
 	<b>ЕСТЬ ВАЖНОЕ НО!</b>
 	<br>
-	В Easy VK будут выходить периодически различные обновления, которые будут фиксить все ошибки Audio API. Я буду стараться поддерживать актуальные возможности раздела аудиозаписей ВКонтакте. Некоторые параметры просто напросто не поддерживаются в Audio API, но это только потому, что ВКонтакте сам их не поддерживает. Вот так вот. В общем, ниже я постарался описать все методы, и как с нимим работать.
+	В Easy VK будут выходить периодически различные обновления, которые будут фиксить все ошибки Audio API. Я буду стараться поддерживать актуальные возможности раздела аудиозаписей ВКонтакте. Некоторые параметры просто напросто не поддерживаются в Audio API, но это только потому, что ВКонтакте сам их не поддерживает. Вот так вот. В общем, ниже я постарался описать все методы, и как с ними работать.
 </p>
 
 <h2 id="audio_get"><span>#</span> audio.get()</h2>
@@ -588,10 +612,10 @@
 			<b>owner_id</b> - <span>ID пользователя или группы, чьи аудиозаписис надо достать</span>
 		</li>
 		<li>
-			<b>playlist_id</b> - <span>ID плейлиста, из которого надо взять аудозаписи</span>
+			<b>playlist_id</b> - <span>ID плейлиста, из которого надо взять аудиозаписи</span>
 		</li>
 		<li>
-			<b>offset</b> - <span>Смещение по аудиозаписям, вернет аудозаписи, начиная с номера <code class="h">offset</code></span>
+			<b>offset</b> - <span>Смещение по аудиозаписям, вернет аудиозаписи, начиная с номера <code class="h">offset</code></span>
 		</li>
 		<li>
 			<b>count</b> - <span>Максимальное количество обрабатываемых аудиозаписей (для того, чтобы ВК не блокировал за большое количество запросов при > 250 аудио в выдаче)</span>
@@ -615,7 +639,7 @@ http.audio.get({
 	let offset;
 
 	if (json.hasMore) {
-		// Есть еще аудозаписи, делаем offset
+		// Есть еще аудиозаписи, делаем offset
 		offset = json.nextOffset;
 	}
 
@@ -637,7 +661,7 @@ http.audio.get({
 <p>
 	<ul>
 		<li><b>q</b> - <span>Строка поискового запроса, например <code class="h">"MORGENSHTERN"</code></span></li>
-		<li><b>offset</b> - <span>Смещение по поисковой странице, API вернет аудиоизапись начиная с номера <code class="h">offset</code></span></li>
+		<li><b>offset</b> - <span>Смещение по поисковой странице, API вернет аудиозапись начиная с номера <code class="h">offset</code></span></li>
 	</ul>
 </p>
 <p>
@@ -1000,7 +1024,7 @@ http.audio.get().then(({vkr}) => {
 <p>
 	<ul>
 		<li>
-			<b>audio_id</b> - <span>ID аудиозаписиси, которую нужно переместить</span>
+			<b>audio_id</b> - <span>ID аудиозаписи, которую нужно переместить</span>
 		</li>
 		<li>
 			<b>after_audio_id</b> - <span>ID аудиозаписи, после которой в списке поместить выбранную аудиозапись. Аудиозапись переместится на место этой аудиозаписи</span>
@@ -1126,7 +1150,7 @@ http.audio.getPlaylistById({
 </p>
 <p>
 	<ul>
-		<li><b>playlist</b> <span>*</span> <span>(<a href="#playlist">&lt;Playlist&gt;</a>) - объект плейлиста, или примерно такой бъект</span>
+		<li><b>playlist</b> <span>*</span> <span>(<a href="#playlist">&lt;Playlist&gt;</a>) - объект плейлиста, или примерно такой объект</span>
 		<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
 {
 	id: PLAYLIST_ID,
@@ -1159,14 +1183,14 @@ http.audio.getPlaylists({
 
 <h2 id="audio_deletePlaylist"><span>#</span> audio.deletePlaylist()</h2>
 <p>
-	Метод удаляет плейлист из списка плейлистов (только СВОЙ плейлист, чужие нельзя удалить этим методом, всмысле, что, если Вы подписались на плейлист, надо отписаться, а не удалять его!)
+	Метод удаляет плейлист из списка плейлистов (только СВОЙ плейлист, чужие нельзя удалить этим методом, в смысле, что, если Вы подписались на плейлист, надо отписаться, а не удалять его!)
 </p>
 <p>
 	Аргументы
 </p>
 <p>
 	<ul>
-		<li><b>playlist</b> <span>*</span> <span>(<a href="#playlist">&lt;Playlist&gt;</a>) - объект плейлиста, или примерно такой бъект</span>
+		<li><b>playlist</b> <span>*</span> <span>(<a href="#playlist">&lt;Playlist&gt;</a>) - объект плейлиста, или примерно такой объект</span>
 		<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
 {
 	id: PLAYLIST_ID,
@@ -1237,7 +1261,7 @@ http.audio.get().then(({vkr}) => {
 </code></pre>
 <h2 id="playlist">Playlist</h2>
 <p>
-	Это объект плейлиста, который Easy VK генерирует автоматически при работе с плейлистами. В обобщенном виде он выглядет так:
+	Это объект плейлиста, который Easy VK генерирует автоматически при работе с плейлистами. В обобщенном виде он выглядит так:
 </p>
 <pre  class='line-numbers normalize-whitespace'><code class='language-js'>
 {
@@ -1247,7 +1271,7 @@ http.audio.get().then(({vkr}) => {
 	// ID владельца плейлиста
 	owner_id: playlist.ownerId,
 
-	// Полный идентифекатор плейлиста
+	// Полный идентификатор плейлиста
 	raw_id: playlist.ownerId + '_' + playlist.id,
 
 	// Название плейлиста
@@ -1357,12 +1381,18 @@ AudioItem {
 	album: [ -2000050253, 50253, '41aa55652f111368ac' ],
 
 	// ID слов песни, чтобы получить через audio.getLyrics()
-	lyrics_id: 50253
+	lyrics_id: 50253,
+	
+	// Заблокирован ли трек на территории IP адреса сервера
+	is_restriction: false,
+	
+	// JSON данные для более подробного выяснения причин блокировки
+	extra: "{}"
 }
 </code></pre>
 <h2 id="apiJSON">JSON Audio Api</h2>
 <p>
-	Данный объект возвращается в большинстве методов Audio API, и HTTP клиента. В нем хранится полный JSON ответ сервера ВКонтакте, его можно использовать для дебага, а также для того чтобы использовать полные возможности HTTP клиента. Так, например, в методе <a href="#audio_get">audio.get()</a> в json возвращается объект с такимим параметрами, как <code class="h">hasMore</code>, <code class="h">nextOffset</code> и т.д
+	Данный объект возвращается в большинстве методов Audio API, и HTTP клиента. В нем хранится полный JSON ответ сервера ВКонтакте, его можно использовать для дебага, а также для того чтобы использовать полные возможности HTTP клиента. Так, например, в методе <a href="#audio_get">audio.get()</a> в json возвращается объект с такими параметрами, как <code class="h">hasMore</code>, <code class="h">nextOffset</code> и т.д
 </p>
 <p>
 	Данный объект сильно расширяет возможности клиента. Но помните один важный момент: <b>точной документации для него не дать, Вы сами должны понимать, что в нем хранится, так как он всегда может придти разным (опять про нестабильность Audio API в целом, но это не минус, просто дотошность)</b>

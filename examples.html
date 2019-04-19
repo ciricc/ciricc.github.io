@@ -129,7 +129,7 @@
                   <select name="version" id="version">
                     <a href="1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
                     <a href="2.0.0/index.html"><option value="2.0.0">2.0.0</option></a>
-                    <a href="2.2.0/index.html"><option value="2.2.0" selected="selected">2.2.0</option></a>
+                    <a href="2.4.1/index.html"><option value="2.4.1" selected="selected">2.4.1</option></a>
                   </select>
                 </div>
               </div>
@@ -218,6 +218,10 @@
 			<span>Разработки, созданные под Easy VK</span>
 			<ul>
 				<li>
+					<a href="https://github.com/khok/vk-bots" target="_blank">vk-bots BETA</a>
+					<span>Модуль для создания чат-ботов под Easy VK</span>
+				</li>
+				<li>
 					<a href="https://github.com/khok/simple-bots" target="_blank">simple-bots</a>
 					<span>Надстройка для создания чат-ботов с удобным интерфейсом</span>
 				</li>
@@ -292,6 +296,10 @@
 				<li>
 					<a href="staticmethods.html#call"><span class="object">static</span>.<span class="span method">call</span>()</a>
 					<span>Сделать запрос к ВК API без авторизации</span>
+				</li>
+				<li>
+					<a href="staticmethods.html#createExecute"><span class="object">static</span>.<span class="span method">createExecute</span>()</a>
+					<span>Создать VK Script запроса к API</span>
 				</li>
 			</ul>
 		</li>
@@ -528,8 +536,24 @@
 					<span>Узнайте как использовать Debugger в своих программах</span>
 				</li>
 				<li>
-					<a href="debugger.html#debuggerrun"><span class="object">easyvk</span>.<span class="span property">debuggerRun</span></a>
-					<span>Debugger изначально не доступен, поэтому запросы до авторизации вы можете прослушивать с помощью debuggerRun</span>
+					<a href="debugger.html#connect"><span class="object">Подключение</span></a>
+					<span>Используем дебаг в Easy VK</span>
+				</li>
+				<li>
+					<a href="debugger.html#EVENTS"><span class="object">Debugger EVENTS</span></a>
+					<span>Типы событий в объекте</span>
+				</li>
+				<li>
+					<a href="debugger.html#EventContext"><span class="object">EventContext</span></a>
+					<span>Объект события и работа с ним</span>
+				</li>
+				<li>
+					<a href="debugger.html#request"><span class="object">Запрос</span></a>
+					<span>События запроса</span>
+				</li>
+				<li>
+					<a href="debugger.html#response"><span class="object">Ответ</span></a>
+					<span>События ответа</span>
 				</li>
 			</ul>
 		</li>
@@ -563,14 +587,14 @@
 <script>
 	window.pageGot = true;
 </script>
-<h1>Примеры <span class="date-edit">Редактировано: <span class="det">13.03.2019 в 03:42</span></span></h1>
+<h1>Примеры <span class="date-edit">Редактировано: <span class="det">19.04.2019 в 15:33</span></span></h1>
 
 <p>
 	Прежде чем начать работу с Easy VK, познакомьтесь с ним на примерах, так будет проще понять, что он из себя представляет. Я постараюсь объяснить абсолютно все.
 </p>
 <h2 id="bot_game"><span>#</span> Чат-бот игра "Виселица"</h2>
 <p>
-  Когда-то давно я писал игру "Виселица" в виде игры-бота, этот пример доступен, его можно скачать и воспользоваться бесплатно. Если возникнут вопросы, или Вы захотие попросить меня его запустить, пишите.
+  Когда-то давно я писал игру "Виселица" в виде игры-бота, этот пример доступен, его можно скачать и воспользоваться бесплатно. Если возникнут вопросы, или Вы захотите попросить меня его запустить, пишите.
 </p>
 <p>
   <img src="https://pp.userapi.com/c851324/v851324290/5995d/WVSOaN1Vaok.jpg" alt="Easy VK пример чат-бота игра виселица" width="320" style="max-width: 100%;">
@@ -580,7 +604,7 @@
 </p>
 <h2 id="stories_bot"><span>#</span> Бот который смотрит истории</h2>
 <p>
-  Если у Вас появилась идея смотреть истории пользователей со своего аккаунта с помощью бота, но Вы не знаете, что для этого нужно, я коротко Вам отвечу: Вам нужен Easy VK! О том, зачем вообще может понадобится бот, который смотрит сторис, я писал в этой статье (<a href="https://pikabu.ru/story/o_tom_kak_ya_ispolzoval_prosmotryi_storis_dlya_piara_v_vk_6123084" target="_blank">О том, как я использовал просмотры сторис для пиара в ВК.</a>). А вот, что из этого получилось, Вы можете видеть на кратинках ниже.
+  Если у Вас появилась идея смотреть истории пользователей со своего аккаунта с помощью бота, но Вы не знаете, что для этого нужно, я коротко Вам отвечу: Вам нужен Easy VK! О том, зачем вообще может понадобится бот, который смотрит сторис, я писал в этой статье (<a href="https://pikabu.ru/story/o_tom_kak_ya_ispolzoval_prosmotryi_storis_dlya_piara_v_vk_6123084" target="_blank">О том, как я использовал просмотры сторис для пиара в ВК.</a>). А вот, что из этого получилось, Вы можете видеть на картинках ниже.
 </p>
 <p>
   <img src="https://cs11.pikabu.ru/post_img/2018/08/29/11/153556746211558763.png" alt="Прирост популярности диаграмма Easy VK">
@@ -647,7 +671,7 @@ easyvk({
     })
   }
 
-  // Подключемся к серверу для "прослушивания" пользователя
+  // Подключаемся к серверу для "прослушивания" пользователя
   vk.longpoll.connect().then(({ connection }) => {
     
     // Слушаем сообщения пользователя
