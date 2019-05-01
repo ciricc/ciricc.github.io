@@ -114,3 +114,19 @@ easyvk({
 })
 
 </code></pre>
+
+<h3>Тот же пример, но для vk-bots</h3>
+<p>
+  EasyVK внутри себя не поддерживает удобную работу с ботами, он предоставляет функционал для создания подобных утилит, с максимальным доступом. Поэтому сейчас для создания ботов я сделал под easyvk модуль <code class="h">vk-bots</code>, его можно скачать здесь <a href="https://github.com/ciricc/vk-bots">github.com/ciricc/vk-bots</a>
+</p>
+<p>
+  Точно такого же бота, который описан сверху, можно написать с помощью <code class="h">vk-bots</code> за пару строк. Единственное отличие - это токены. В первом случае используется User LongPoll API, а в vk-bots - Bots LongPoll API
+</p>
+<pre class="js"><code>const { Bot } = require('vk-bots')
+
+let bot = new Bot({token: '{ТОКЕН_ГРУППЫ}'})
+
+bot.command('.*', (message) => message.reply('Привет!'))
+bot.start()
+
+</code></pre>
