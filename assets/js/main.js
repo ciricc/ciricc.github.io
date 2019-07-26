@@ -233,7 +233,7 @@
 		($('select').selectric) ? $('select').selectric() : null;
 
 		var version = $("#version");
-		var currentVersion = "2.4.1";
+		var currentVersion = "2.5.1";
 
 		var loc = document.location;
 			loc = loc.pathname.split('/');

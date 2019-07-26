@@ -1,0 +1,1506 @@
+
+<!DOCTYPE html>
+<html lang="ru-ru">
+  <head>
+  	
+  		<meta charset="utf-8">
+	
+	<meta property="og:image"              content="http://ciricc.github.io/easyvk_poster.png" />
+	
+	<meta name="theme-color" content="#fff" id="theme-color">
+
+	<meta name="description" content="EasyVK (easy vk) - это полностью бесплатный и доступный модуль, написанный для поддержки API ВКонтакте на платформе Node.js">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<meta property="og:image"              content="https://psv4.userapi.com/c834502/u356607530/docs/d2/7968b5680c4c/logo.png" />
+	<meta property="og:title"              content="EasyVK / Node.JS ВКонтакте API | Документация" />
+	<meta property="og:description"        content="EasyVK (easy vk) - это полностью бесплатный и доступный модуль, написанный для поддержки API ВКонтакте на платформе Node.js" />
+
+	
+	
+	<title>Easy VK / Node.JS ВКонтакте API | Audio API</title>
+	
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
+	<link rel="stylesheet" href="../assets/css/prism-github.css">
+	<style id="theme-mode"></style>
+	
+	<script>
+		function setCookie(e,o,n){var t=(n=n||{}).expires;if("number"==typeof t&&t){var i=new Date;i.setTime(i.getTime()+1e3*t),t=n.expires=i}t&&t.toUTCString&&(n.expires=t.toUTCString());var r=e+"="+(o=encodeURIComponent(o));for(var c in n){r+="; "+c;var a=n[c];!0!==a&&(r+="="+a)}document.cookie=r}function getCookie(e){var o=document.cookie.match(new RegExp("(?:^|; )"+e.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g,"\\ ")+"=([^;]*)"));return o?decodeURIComponent(o[1]):void 0}
+		
+		var darkThemeCss = "body{color:#B8B8B8}#content,#sidebar,.docs,.header{background-color:#111!important;color:#B8B8B8!important}.header{background:#0E0E0E!important}.logo{display:none}.logo-white{display:inline-block}code,pre{background:#1D1D1D!important;border:none!important}code[class*=language-],pre[class*=language-]{text-shadow:none;color:#B8B8B8}.big-quote p,.nav li.active,.soc-link{background:#222!important;border:none}.post .white{background:#111!important;border:none;width:110%}.post{background-color:#111;box-shadow:none;border-radius:0}.nav li.active{background:#0D0D0D!important}.soc-link,p{color:#DADADA!important}#sidebar{border-right:none}.nav li.active>a{color:#EEE}.nav li a{color:#B8B8B8}.nav .method{color:#07A282}.nav .object{color:#C6C6C6}.nav .property{color:#07A282}.selectric,.selectric .button,select{background:#222!important;color:#EEE!important}.selectric .button:after,.selectric .label{color:#EEE!important;border-top-color:#EEE}.token.punctuation{color:#B8B8AB}.token.class-name,.token.function{color:#FFA33D}.token.string{color:#39BAB9}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#F29718}.spoiler .spoiler-name,.token.interpolation{color:#B8B8B8}.spoiler{border:none;background-color:#0C0C0C}.line-numbers .line-numbers-rows{color:#000!important;border-right-color:#B8B8B8!important}.line-numbers-rows>span:before{color:#B8B8B8!important}.nav>li>ul li a:hover{background-color:#171717}.nav>li>a:focus,.nav>li>a:hover{background-color:#0E0E0E}img{opacity:.7}.selectric-items{background:#222}.selectric-items li.selected{background:#191919}.selectric-items li{color:#EEE}.selectric-items li:hover{background:#191919;color:#EEE}.notify-block.white{background:#0D0D0D}.st-map ul{color:#B8B8B8!important}.nav li>span>a{color:#08997B}.soc-link:hover{color:white !important;text-decoration:none !important;} a.dark-link{color:#B8B8B8 !important;}#sidebar{border-right:none !important;} hr{display:none;}.big-quote p, .big-quote .p{background-color: transparent !important; border: none !important;}";
+		var hours = new Date().getHours()
+
+		;(function(){
+			var themeMode = document.getElementById("theme-mode");
+			var meta = document.getElementById("theme-color");
+
+			if (getCookie("dark-mode") == "yes" || (hours >= 22 || hours < 8)) {
+
+			if ((hours >= 22 || hours < 8) && getCookie("dark-mode") == "no") {
+				} else {
+					loadDarkTheme();
+				}
+			}
+
+			function loadDarkTheme() {
+			themeMode.cssText = darkThemeCss;
+			meta.setAttribute("content", "#0E0E0E");
+
+				// $.ajax({
+				// 	url: "/assets/css/dark-theme.css",
+				// 	success: function (data) {
+				// 		$("#theme-mode").text(darkThemeCss);
+				// 	}
+				// });
+			}
+		})();
+
+	</script>
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript" >
+	    (function (d, w, c) {
+	        (w[c] = w[c] || []).push(function() {
+	            try {
+	                w.yaCounter50546380 = new Ya.Metrika2({
+	                    id:50546380,
+	                    clickmap:true,
+	                    trackLinks:true,
+	                    accurateTrackBounce:true,
+	                    webvisor:true
+	                });
+	            } catch(e) { }
+	        });
+
+	        var n = d.getElementsByTagName("script")[0],
+	            s = d.createElement("script"),
+	            f = function () { n.parentNode.insertBefore(s, n); };
+	        s.type = "text/javascript";
+	        s.async = true;
+	        s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+	        if (w.opera == "[object Opera]") {
+	            d.addEventListener("DOMContentLoaded", f, false);
+	        } else { f(); }
+	    })(document, window, "yandex_metrika_callbacks2");
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/50546380" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
+
+  
+    <script>
+      
+      window.root = "../";
+
+    </script>
+  </head>
+  <body>
+    <div class="opacity-block">
+      <div class="tap-me">
+        <div class="cursor">
+          <div class="tap tap--1"></div>
+        </div>
+        Закрыть
+      </div>
+    </div>
+    <div class="wrap-header" style="padding: 0">
+      <div class="header no-padding-mobile">
+        <div class="header-content">
+          <div class="col-md-12 no-padding-mobile">
+            <div class="col-md-5 no-padding-mobile">
+              <div class="col-md-6 col-sm-6 col-xs-8 no-padding" style="text-align: left;">
+                <span class="fa fa-bars opener"></span>
+                  <a href="/" class="logo">
+                    <img src="../assets/img/logo.png" style="margin-top: 12px;" alt="Easy VK логотип Node.js ВКонтакте API JavaScript" width="55" style="display: inline-block;margin-bottom: 20px;">
+                  </a>
+                  <a href="/" class="logo-white">
+                    <img src="../assets/img/logo-white.png" style="margin-top: 12px;" alt="Easy VK логотип Node.js ВКонтакте API JavaScript" width="55" style="display: inline-block;margin-bottom: 20px;">
+                  </a>
+                  <span  class="switch-mode"><span class="fa fa-moon-o"></span></span>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-4" style="height: 80px;">
+                <div class="version-wrap" style="text-align: center;">
+                  <select name="version" id="version">
+                    <a href="../1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
+                    <a href="../2.0.0/index.html"><option value="2.0.0">2.0.0</option></a>
+                    <a href="../2.4.1/index.html"><option value="2.5.1" selected="selected">2.5.1</option></a>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7 soc no-mobile" style="height: 80px;">
+              <div class="flex-wrap">
+                <a href="https://vk.com/npm_easyvk" target="_blank" class="soc-link"><span class="fa fa-vk"></span></a>
+                <a href="https://github.com/ciricc/easyvk" target="_blank" class="soc-link"><span class="fa fa-github"></span></a>
+                <!-- Place this tag where you want the button to render. -->
+                <a href="https://npmjs.com/package/easyvk" target="_blank" class="soc-link" style="font-size: 12px;"><b>npm</b></a>
+                <a href="https://vk.com/kinock" target="_blank" class="dark-link" style="margin-left: 15px;text-decoration: none !important;">Связаться</a>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  	<div id="container">
+      <div id="sidebar">
+        <div id="sidebar-content">
+          <div class="docs-nav-wrap docs">
+	<div class="flex-wrap" style="margin-bottom: 25px;margin-top: 55px;justify-content: flex-start;padding-left: 25px;height:auto;">
+		<a href="https://vk.com/npm_easyvk" target="_blank" class="soc-link"><span class="fa fa-vk"></span></a>
+		<a href="https://github.com/ciricc/easyvk" target="_blank" class="soc-link"><span class="fa fa-github"></span></a>
+		<!-- Place this tag where you want the button to render. -->
+		<a href="https://npmjs.com/package/easyvk" target="_blank" class="soc-link" style="font-size: 12px;"><b>npm</b></a>
+	</div>
+	<ul class="nav">
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="index.html" class="title bigger">Начнем</a>
+			<ul>
+				<li>
+					<a href="index.html#easyvk">Для чего нужен EasyVK?</a>
+					<span>EasyVK - лучшая библиотека для работы с ВК API <br> на Node.js</span>
+				</li>
+				<li>
+					<a href="index.html#functions">Функционал EasyVK</a>
+					<span>Неограниченные возможности работы с API ВКонтакте</span>
+				</li>
+				<li>
+					<a href="index.html#installation">Установка</a>
+					<span>Простая установка</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="easyvk.html" class="title bigger">Основное</a>
+			<ul>
+				<li>
+					<a href="easyvk.html#concepts">Концепция работы с EasyVK</a>
+				</li>
+				<li>
+					<a href="easyvk.html#first_step">Первый шаг</a>
+					<span>Авторизация</span>
+				</li>
+				<li>
+					<a href="easyvk.html#group_auth">Авторизация группы</a>
+				</li>
+				<li>
+					<a href="easyvk.html#cred_flow">Client Credentials Flow</a>
+					<span>Для использования secure методов</span>
+				</li>
+				<li>
+					<a href="easyvk.html#app_auth">Авторизация приложения</a>
+					<span>Воспользуйтесь всеми возможностями API</span>
+				</li>
+				<li>
+					<a href="easyvk.html#2fauthentication">Двухфакторная авторизация</a>
+					<span>Сразу ДВА фактора!</span>
+				</li>
+				<li>
+					<a href="easyvk.html#faq">База знаний</a>
+					<span>FAQ</span>
+				</li>
+				<li>
+					<a href="easyvk.html#acknowledgments">Благодарности</a>
+				</li>
+			</ul>
+		</li>
+		<!--<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="tree.html" class="title bigger">Структура EasyVK (карта)</a>
+			<span>Познакомьтесь со структурным деревом Easy VK, чтобы ориентироваться в документации</span>
+		</li> -->
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="addons.html" class="title bigger">Дополнения к Easy VK</a>
+			<span>Разработки, созданные под Easy VK</span>
+			<ul>
+				<li>
+					<a href="https://github.com/ciricc/vk-bots" target="_blank">vk-bots BETA</a>
+					<span>Модуль для создания чат-ботов под Easy VK</span>
+				</li>
+				<li>
+					<a href="https://github.com/ciricc/storybot" target="_blank">storybot BETA</a>
+					<span>Бот для просмотра историй ВКонтакте (масслукинга)</span>
+				</li>
+				<li>
+					<a href="https://github.com/khok/simple-bots" target="_blank">simple-bots</a>
+					<span>Надстройка для создания чат-ботов с удобным интерфейсом</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="examples.html" class="title bigger">Примеры и шаблоны</a>
+			<span>Познакомьтесь с Easy VK, прежде чем начать работу с документацией</span>
+			<ul>
+				<li>
+					<a href="examples.html#bot_game">Чат-бот игра "Виселица"</a>
+					<span>Опробуйте игру виселица на реальном примере чат-бота!</span>
+				</li>
+				<li>
+					<a href="examples.html#stories_bot">Бот, который смотрит сторис</a>
+					<span>Хотели создать бота, которы будет за Вас смотреть все истории пользователей? Есть вариант!</span>
+				</li>
+				<li>
+					<a href="examples.html#send_message">Отправка сообщения</a>
+					<span>Работаем с методами API ВК</span>
+				</li>
+				<li>
+					<a href="examples.html#chat_bot">Чат-бот</a>
+					<span>Работаем с LongPoll API</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="captcha.html" class="title bigger">Работа с капчей</a>
+			<span>@ Ловите капчу! Ловите!</span>
+			<ul>
+				<li>
+					<a href="captcha.html#captchaHandler">captchaHandler</a>
+					<span>Основное свойство настроек EasyVK</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="main.html" class="title bigger">Главное</a>
+			<ul>
+				<li>
+					<a href="main.html#vk_call"><span class="object">vk</span>.<span class="span method">call</span>()</a>
+					<span>Сделать запрос к ВК API</span>
+				</li>
+				<li>
+					<a href="main.html#vk_post"><span class="object">vk</span>.<span class="span method">post</span>()</a>
+					<span>Сделать запрос к ВК API по POST методу</span>
+				</li>
+				<li>
+					<a href="main.html#easyvk_is"><span class="object">easyvk</span>.<span class="span method">is</span>()</a>
+				</li>
+				<li>
+					<a href="main.html#easyvk_class"><span class="object">easyvk</span>.<span class="span property">class</span></a>
+				</li>
+				<li>
+					<a href="main.html#easyvk_version"><span class="object">easyvk</span>.<span class="span property">version</span></a>
+				</li>
+				<li>
+					<a href="main.html#easyvk_callbackapi"><span class="object">easyvk</span>.<span class="span property">callbackAPI</span> </a>
+					<span>Используйте Callback API без авторизации</span>
+				</li>
+				<li>
+					<a href="main.html#easyvk_streamingapi"><span class="object">easyvk</span>.<span class="span property">streamingAPI</span></a>
+					<span>Используйте Streaming API без авторизации</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="staticmethods.html" class="title bigger">Статические методы</a>
+			<span>Обращение к статическим методам происходит аналогично: easyvk.static.someMethod()</span>
+			<ul>
+				<li>
+					<a href="staticmethods.html#call"><span class="object">static</span>.<span class="span method">call</span>()</a>
+					<span>Сделать запрос к ВК API без авторизации</span>
+				</li>
+				<li>
+					<a href="staticmethods.html#createExecute"><span class="object">static</span>.<span class="span method">createExecute</span>()</a>
+					<span>Создать VK Script запроса к API</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="callbackapi.html" class="title bigger">Callback API</a>
+			<ul>
+				<li>
+					<a href="callbackapi.html#listen"><span class="object">callbackAPI</span>.<span class="span method">listen</span>()</a>
+				</li>
+				<li>
+					<a href="callbackapi.html#events">События Callback API</a>
+				</li>
+			</ul>
+		</li>
+			<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="streamingapi.html" class="title bigger">Streaming API</a>
+			<ul>
+				<li>
+					<a href="streamingapi.html#connect"><span class="object">streamingAPI</span>.<span class="span method">connect</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_addRule"><span class="object">stream</span>.<span class="span method">addRule</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_deleteRule"><span class="object">stream</span>.<span class="span method">deleteRule</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_initRules"><span class="object">stream</span>.<span class="span method">initRules</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_deleteAllRules"><span class="object">stream</span>.<span class="span method">deleteAllRules</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_getRules"><span class="object">stream</span>.<span class="span method">getRules</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_close"><span class="object">stream</span>.<span class="span method">close</span>()</a>
+				</li>
+				<li>
+					<a href="streamingapi.html#stream_events">События стрима</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="longpollapi.html" class="title bigger">LongPoll API</a>
+			<ul>
+				<li>
+					<a href="longpollapi.html#connect"><span class="object">longpoll</span>.<span class="span method">connect</span>()</a>
+				</li>
+				<li>
+					<a href="longpollapi.html#lpcon_addEventCodeListener"><span class="object">lpcon</span>.<span class="span method">addEventCodeListener</span>()</a>
+				</li>
+				<li>
+					<a href="longpollapi.html#lpcon_debug"><span class="object">lpcon</span>.<span class="span method">debug</span>()</a>
+				</li>
+				<li>
+					<a href="longpollapi.html#lpcon_close"><span class="object">lpcon</span>.<span class="span method">close</span>()</a>
+				</li>
+				<li>
+					<a href="longpollapi.html#longpoll_events">События</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="botslongpollapi.html" class="title bigger">[Bots] LongPoll API</a>
+			<ul>
+				<li>
+					<a href="botslongpollapi.html#description">Описание</a>
+				</li>
+				<li>
+					<a href="botslongpollapi.html#events">События</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="http.html" class="title bigger">HTTP</a>
+			<span>С помощью HTTP клиента можно делать то, что нельзя делать с официальным API <br>Связующие компоненты: <a href="">Client</a></span>
+			<ul>
+				<li>
+					<a href="http.html#loginByForm"><span class="object">http</span>.<span class="span method">loginByForm</span>()</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="httpclient.html" class="title bigger">HTTP клиент</a>
+			<ul>
+				<li>
+					<a href="httpclient.html#client_readstories"><span class="object">client</span>.<span class="span method">readStories</span>()</a>
+					<span>Посмотреть истории пользователя</span>
+				</li>
+				<li>
+					<a href="httpclient.html#client_addbottoconf"><span class="object">client</span>.<span class="span method">addBotToConf</span>()</a>
+					<span>Добавить бота в беседу</span>
+				</li>
+				<li>
+					<a href="httpclient.html#client_readfeedstories"><span class="object">client</span>.<span class="span method">readFeedStories</span>()</a>
+					<span>Посмотреть все новые истории друзей</span>
+				</li>
+				<li>
+					<a href="httpclient.html#client_audio"><span class="object">client</span>.<span class="span span property">audio</span></a>
+					<span>
+						Это объект <a href="audioapi.html">AudioAPI</a>
+					</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="audioapi.html" class="title bigger">Audio API</a>
+			<span>Со временем возможно устревание, следите, чтобы всегда была последняя версия Audio API</span>
+			<ul>
+				<li>
+					<a href="audioapi.html#audio_get"><span class="object">audio</span>.<span class="span method">get</span>()</a>
+					<span>Получить аудиозаписи</span>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_getbyid"><span class="object">audio</span>.<span class="span method">getById</span>()</a>
+					<span>Получить аудиозапись</span>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_search"><span class="object">audio</span>.<span class="span method">search</span>()</a>
+					<span>Поиск аудиозаписей</span>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_searchall"><span class="object">audio</span>.<span class="span method">searchAll</span>()</a>
+					<span>Поиск множества аудиозаписей сразу</span>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_getlyrics"><span class="object">audio</span>.<span class="span method">getLyrics</span>()</a>
+					<span>(<b>ЛУЧШЕ НЕ ИСПОЛЬЗОВАТЬ</b>)</span>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_getcount"><span class="object">audio</span>.<span class="span method">getCount</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_getuploadserver"><span class="object">audio</span>.<span class="span method">getUploadServer</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_upload"><span class="object">audio</span>.<span class="span method">upload</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_save"><span class="object">audio</span>.<span class="span method">save</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_geturl"><span class="object">audio</span>.<span class="span method">getURL</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_add"><span class="object">audio</span>.<span class="span method">add</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_delete"><span class="object">audio</span>.<span class="span method">delete</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_edit"><span class="object">audio</span>.<span class="span method">edit</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_reorder"><span class="object">audio</span>.<span class="span method">reorder</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_restore"><span class="object">audio</span>.<span class="span method">restore</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_getPlaylists"><span class="object">audio</span>.<span class="span method">getPlaylists</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_getPlaylistById"><span class="object">audio</span>.<span class="span method">getPlaylistById</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_followPlaylist"><span class="object">audio</span>.<span class="span method">followPlaylist</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_deletePlaylist"><span class="object">audio</span>.<span class="span method">deletePlaylist</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#audio_moveToPlaylist"><span class="object">audio</span>.<span class="span method">moveToPlaylist</span>()</a>
+				</li>
+				<li>
+					<a href="audioapi.html#playlist"><span class="span method">Playlist</span></a>
+				</li>
+				<li>
+					<a href="audioapi.html#audioitem"><span class="span method">AudioItem</span></a>
+				</li>
+				<li>
+					<a href="audioapi.html#apiJSON"><span class="span method">JSON Audio API</span></a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="session.html" class="title bigger">Сессия</a>
+			<ul>
+				<li>
+					<a href="session.html#save"><span class="object">session</span>.<span class="span method">save</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#setPath"><span class="object">session</span>.<span class="span method">setPath</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#clear"><span class="object">session</span>.<span class="span method">clear</span>()</a>
+				</li>
+				<li>
+					<a href="session.html#usage"><span class="object">Метод использования</span></a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg><a href="uploader.html" class="title bigger">Загрузчик файлов</a>
+			<span>Свободно загружайте нужные файлы на сервера ВКонтакте</span>
+			<ul>
+				<li>
+					<a href="uploader.html#uploader_getUploadURL"><span class="object">uploader</span>.<span class="span method">getUploadURL</span>()</a>
+					<span>Получите URL для загрузки</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_uploadFile"><span class="object">uploader</span>.<span class="span method">uploadFile</span>()</a>
+					<span>И загрузите файл</span>
+				</li>
+				<li>
+					<a href="uploader.html#uploader_uploadFetchedFile"><span class="object">uploader</span>.<span class="span method">uploadFetchedFile</span>()</a>
+					<span>Все само</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg><a href="widgets.html" class="title bigger">Виджеты</a>
+			<span>Неофициальные инструменты для получения чего-либо, что нельзя получить официально через API</span>
+			<ul>
+				<li>
+					<a href="widgets.html#widgets_getliveviews"><span class="object">widgets</span>.<span class="span method">getLiveViews</span>()</a>
+					<span>Просмотры LIVE видео</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg><a href="debugger.html" class="title bigger">Debugger</a>
+			<span>Инструмент для дебага запросов и деятельности EasyVK в режиме реального времени</span>
+			<ul>
+				<li>
+					<a href="debugger.html#how_to_work"><span class="object">Debugger</span></a>
+					<span>Узнайте как использовать Debugger в своих программах</span>
+				</li>
+				<li>
+					<a href="debugger.html#connect"><span class="object">Подключение</span></a>
+					<span>Используем дебаг в Easy VK</span>
+				</li>
+				<li>
+					<a href="debugger.html#EVENTS"><span class="object">Debugger EVENTS</span></a>
+					<span>Типы событий в объекте</span>
+				</li>
+				<li>
+					<a href="debugger.html#EventContext"><span class="object">EventContext</span></a>
+					<span>Объект события и работа с ним</span>
+				</li>
+				<li>
+					<a href="debugger.html#request"><span class="object">Запрос</span></a>
+					<span>События запроса</span>
+				</li>
+				<li>
+					<a href="debugger.html#response"><span class="object">Ответ</span></a>
+					<span>События ответа</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="vkresponse.html" class="title bigger">VKResponse</a>
+			<ul>
+				<li>
+					<a href="vkresponse.html#getFullResponse"><span class="object">vkr</span>.<span class="span method">getFullResponse</span>()</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="errors.html" class="title bigger">Классификация ошибок</a>
+			<ul>
+				<li>
+					<a href="errors.html#easyvkerror"><span class="span method">EasyVKError</span></a>
+				</li>
+				<li>
+					<a href="errors.html#vkresponseerror"><span class="span method">VKResponseError</span></a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+        </div>
+      </div><!--
+    --><div id="content" class="v2">
+       
+        <div id="main-content" style="max-width: 910px;">
+          
+<script>
+	window.pageGot = true;
+</script>
+<h1>Audio API <span class="date-edit">Редактировано: <span class="det">26.07.2019 в 22:10</span></span></h1>
+<p>
+	Теперь в Easy VK есть Audio API. Неофициальное, да, но зато работает. <br>
+	В реализации Audio API я постарался повторить все методы, которые существовали в прошлом API ВКонтакте на основе <a href="https://vk.com/page-1_2369282" target="_blank">официальной документации</a>, которое разработчики, к слову, закрыли. Так что можно сказать, что Audio API в Easy VK - это полностью экспериментальная фитча, которая не рекомендуется для использования, но и не противопоказана  :D <br> 
+	В общем, все на Ваше усмотрение, может работать, а может и нет.
+</p>
+<p>
+	<b>ЕСТЬ ВАЖНОЕ НО!</b>
+	<br>
+	В Easy VK будут выходить периодически различные обновления, которые будут фиксить все ошибки Audio API. Я буду стараться поддерживать актуальные возможности раздела аудиозаписей ВКонтакте. Некоторые параметры просто напросто не поддерживаются в Audio API, но это только потому, что ВКонтакте сам их не поддерживает. Вот так вот. В общем, ниже я постарался описать все методы, и как с ними работать.
+</p>
+<div class="big-quote info">
+  <div class="p">
+    <span class="ic">DYK ?</span> Для того, чтобы работать с API аудиозаписей, необязательно использовать функционал ниже. В некоторых случаях может быть достаточно использовать готовые авторизованные токены с User-Agent для Kate Mobile<br/></br/>
+    <pre  class='line-numbers normalize-whitespace'><code class='language-js'>easyvk({
+  access_token: 'АКТИВИРОВАННЫЙ_ТОКЕН_KATE_MOBILE',
+  userAgent: "KateMobileAndroid/45 lite-421 (Android 5.0; SDK 21; armeabi-v7a; LENOVO Lenovo A1000; ru)"
+}).then(vk => {
+  vk.call('audio.get').then(({vkr}) => console.log(vkr))
+})</code></pre></br/>
+    <i>Я вам об этом не говорил</i>
+  </div>
+</div>
+<h2 id="audio_get"><span>#</span> audio.get()</h2>
+<p>
+	Метод получает список аудиозаписей из плейлиста, из группы, или из аудиозаписей пользователя.
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li>
+			<b>owner_id</b> - <span>ID пользователя или группы, чьи аудиозаписис надо достать</span>
+		</li>
+		<li>
+			<b>playlist_id</b> - <span>ID плейлиста, из которого надо взять аудиозаписи</span>
+		</li>
+		<li>
+			<b>offset</b> - <span>Смещение по аудиозаписям, вернет аудиозаписи, начиная с номера <code class="h">offset</code></span>
+		</li>
+		<li>
+			<b>count</b> - <span>Максимальное количество обрабатываемых аудиозаписей (для того, чтобы ВК не блокировал за большое количество запросов при > 250 аудио в выдаче)</span>
+		</li>
+	</ul>
+</p>
+<p>
+	Метод, как и многие другие методы Audio API возвращает объект <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank"/>&lt;Promise&gt;</a>, в <code class="h">resolve</code> функцию возвращаются следующие объекты
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+	{
+		<a href="#apiJSON">json</a>: <a href="#apiJSON">Object</a>, // Читайте описание в разделе JSON Audio Api 
+		vkr: VKResponse, 
+		vk: EasyVK
+	}
+</code></pre>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get({
+	owner_id: <a href="https://vk.com/club-123675921">-123675921</a>
+}).then(({vkr, json}) => {
+	let offset;
+
+	if (json.hasMore) {
+		// Есть еще аудиозаписи, делаем offset
+		offset = json.nextOffset;
+	}
+
+	console.log(vkr);
+
+});
+</code></pre>
+<h2 id="audio_getbyid"><span>#</span> audio.getById()</h2>
+<p>
+	Метод более не поддерживается (в библиотеке он еще остается, но его суть пока что не исполняется библиотекой полностью из-за того, что я еще не нашел способа взять аудизапись без дополнительных хешей, только по ее ID и OWNER_ID)
+</p>
+<h2 id="audio_search"><span>#</span> audio.search()</h2>
+<p>
+	Очень-чень опасный метод, который я еще дорабатываю, но он уже вполне работает. Короче, этот метод ищет аудиозаписи
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li><b>q</b> - <span>Строка поискового запроса, например <code class="h">"MORGENSHTERN"</code></span></li>
+		<li><b>offset</b> - <span>Смещение по поисковой странице, API вернет аудиозапись начиная с номера <code class="h">offset</code></span></li>
+	</ul>
+</p>
+<p>
+	К сожалению остальные параметры, вроде <code class="h">filter</code>, пока что не работают
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.search({
+	q: "MORGENSHTERN"
+}).then(({vkr}) => {
+	
+	console.log(vkr);
+
+});
+</code></pre>
+<h2 id="audio_searchall"><span>#</span> audio.searchAll()</h2>
+<p>
+	Метод для поиска большого количества аудиозаписей за раз. (Так сказать, утилита из коробки с оптимизацией от души)
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li><b>q</b> <span>*</span> <span>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>)</span> - искомая аудиозапись</li>
+		<li><b>count</b> <span>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" target="_blank"/>&lt;number&gt;</a>)</span> - количество аудиозаписей, которое нужно получить сразу</li>
+	</ul>
+</p>
+<p>
+	В <code class="h">resolve</code> метод возвращается не <code class="h">VKResponse</code>, а конечный массив аудиозаписей.
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>http.audio.searchAll("MORGENSHTERN", 1500).then((audios) => {
+	console.log(audios);
+});
+</code></pre>
+<h2 id="audio_getlyrics"><span>#</span> audio.getLyrics()</h2>
+<p>
+	Метод возвращает старые слова, текст к песне (то, что уже не работает на новых аудиозаписях, но актуально для старых)
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li><b>lid</b> - <span>lyrics_id</span>, можно взять из некоторых объектов аудиозаписей, которые можно получить с помощью методов <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a></li>
+	</ul>
+</p>
+<p>
+	Примеров нет, так как в целом метод старый и не рекомендуется для использования
+</p>
+<h2 id="audio_getcount"><span>#</span> audio.getCount()</h2>
+<p>
+	Метод возвращает количество аудиозаписей пользователя или группы
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li><b>owner_id</b> - <span>ID пользователя или группы, откуда нужно взять количество аудиозаписей</span></li>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.getCount({
+	owner_id: -123675921
+}).then(({vkr}) => {
+	console.log(vkr)
+})
+</code></pre>
+<h2 id="audio_getuploadserver"><span>#</span> audio.getUploadServer()</h2>
+<p>
+	Метод возвращает URL для загрузки аудиозаписи	
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	// ответ
+	upload_url: 'https://pu.vk.com/c815231/upload.php?act=load_audio&aid=0&gid=...'
+}
+</code></pre>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li>gid</li> - <span>ID группы, если есть необходимость загрузить в группу</span>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.getUploadServer().then(({vkr}) => {
+	console.log(vkr.upload_url);
+
+	// Теперь можно загружать на url файл аудиозаписи
+})
+</code></pre>
+<p>Как загружать, читайте ниже</p>
+<h2 id="audio_upload"><span>#</span> audio.upload()</h2>
+<p>
+	Метод загружает на указанный URL адрес аудиозапись, точнее, просто файл, но его можно использовать, чтобы загрузить аудиозапись в профиль в связке с методом <a href="#audio_getuploadserver">audio.getUploadServer()</a>, чтобы получить URL для загрузки.
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li>
+			<b>url</b> <span>*</span> (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>)
+			<p>
+				URL адрес сервера, на который будет идти загрузка
+			</p>
+		</li>
+		<li>
+			<b>file_path</b> <span>*</span> (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" target="_blank"/>&lt;string&gt;</a>)
+			<p>
+				Путь к файлу, который нужно загрузить
+			</p>
+		</li>
+	</ul>
+</p>
+<p>
+	Метод вернет промежуточные данные для сохранения аудиозаписи, эти данные Вы можете использовать, чтобы сохранить аудиозапись в группу или у пользователя
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+let upload_url = 'https://pu.vk.com/c815231/upload.php?act=load_audio&aid=0&gid=...';
+let mp3_path = __dirname + 'my.mp3';
+
+http.audio.upload(upload_url, mp3_path).then(({vkr}) => {
+	
+	console.log(vkr);
+
+})
+
+</code></pre>
+<p>
+	Чтобы узнать, как сохранить файл, читайте документацию метода <a href="#audio_save">audio.save()</a>
+</p>
+<h2 id="audio_save"><span>#</span> audio.save()</h2>
+<p>
+	Метод сохраняет аудиозапись после загрузки, в него надо передать только промежуточные данные, полученные с метода <a href="#audio_upload">audio.upload()</a>
+</p>
+<p>
+	Метод вернет сохраненную аудиозапись, объект <a href="#audioitem">AudioItem</a>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+
+http.audio.getUploadServer().then(({vkr}) => {
+	let upload_url = vkr.upload_url;
+	let mp3 = __dirname + 'my.mp3';
+
+	http.audio.upload(upload_url, mp3).then(({vkr}) => {
+			
+		http.audio.save(vkr).then(({vkr: audio}) => {
+			
+			console.log(audio);
+
+		})
+
+	})
+	
+
+})
+
+</code></pre>
+<h2 id="audio_geturl"><span>#</span> audio.getURL()</h2>
+<p>
+	Метод возвращает разобранный URL адрес mp3 файла аудиозаписи. Во многих местах mp3 аудиозаписи скрыт и, когда Вы попытаетесь прослушать аудиозапись из url, будет звучать что-то в роде "этому приложению не доступно прослушивание аудиозаписей ВКонтакте". Короче, нужно этот URL вставить в данный метод и он просто вернет разобранный нормальный URL по алгоритму
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+vk.call("wall.getById", {
+	posts: "-149662823_108"
+}).then(({vkr}) => {
+	let post = vkr[0];
+	
+	let audio = post.attachments[1].audio;
+	audio.url = http.audio.getURL(audio.url);
+
+	console.log(audio);
+	
+})
+</code></pre>
+
+<h2 id="audio_add"><span>#</span> audio.add()</h2>
+<p>
+	Метод добавляет выбранную аудиозапись в список аудиозаписей группы или пользователя
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li>
+			<b>audio</b> <span>*</span> <span>(<a href="#audioitem">&lt;AudioItem&gt;</a>)</span> <span>- объект <a href="#audioitem">AudioItem</a>, или просто объект такого типа</span>
+			<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	owner_id: AUDIO_OWNER_ID,
+	id: AUDIO_ID,
+	add_hash: AUDIO_ADD_HASH
+}
+			</code></pre>
+			<p>
+				Рекомендую брать данный объект из методов вроде <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a>
+			</p>
+		</li>
+		<li>
+			<b>params</b> <span>(<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank"/>&lt;Object&gt;</a>)</span> - список дополнительный настроек
+			<ul>
+				<li><b>group_id</b> <span>- id группы, в которую нужно добавить аудиозапись</span></li>
+			</ul>
+		</li>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get({
+	owner_id: -84720287
+}).then(({vkr}) => {
+	
+	let audioObject = vkr[0];
+	
+	http.audio.add(audioObject).then(({vkr}) => {
+			
+		console.log(`Аудиозапись ${audioObject.title} добавлена!`);
+
+	})
+
+})
+</code></pre>
+
+
+<h2 id="audio_delete"><span>#</span> audio.delete()</h2>
+<p>
+	Метод удаляет аудиозапись
+</p>
+<p>
+	Принимает только один аргумент - объект аудиозаписи <a href="#audioitem">AudioItem</a>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	id: AUDIO_ID,
+	owner_id: AUDIO_OWNER_ID,
+	delete_hash: AUDIO_DELETE_HASH	
+}
+</code></pre>
+</p>
+<p>
+	Рекомендую брать данный объект из методов вроде <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a>
+</p>
+
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get().then(({vkr}) => {
+	
+	let audioObject = vkr[0];
+
+	http.audio.delete(audioObject).then(({vkr}) => {
+			
+		console.log(`Аудиозапись ${audioObject.title} удалена!`);
+
+	});
+
+});
+</code></pre>
+
+
+<h2 id="audio_edit"><span>#</span> audio.edit()</h2>
+<p>
+	Метод редактирует аудиозапись
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li>
+			<b>audio</b> <span>*</span> <span>(<a href="#audioitem">&lt;AudioItem&gt;</a>)</span> <span> - объект аудиозаписи <a href="#audioitem">AudioItem</a></span> или примерно такой объект
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	owner_id: AUDIO_OWNER_ID,
+	edit_hash: AUDIO_EDIT_HASH,
+	id: AUDIO_ID
+}
+</code></pre>
+			<p>
+				Рекомендую брать данный объект из методов вроде <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a>
+			</p>
+		</li>
+		<li>
+			<b>params</b> - объект параметров запроса
+			<ul>
+				<li><span><b>title</b></span> - новое название аудиозаписи (по умолчанию не изменяется)</li>
+				<li><span><b>privacy</b></span> - аудиозапись скрыта из поиска</li>
+				<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	privacy: [0, 1][0]
+}
+			</code></pre>
+				<li><span><b>text</b></span> - текст аудиозаписи, слова</li>
+				<li><span><b>performer</b> - исполнитель трека</span></li>
+				<li><span><b>genre</b> - номер жанра, можно взять из объекта AudioAPI</span></li>
+				<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+AudioAPI.genres = {
+	1: "Rock",
+	2: "Pop",
+	3: "Rap & Hip-Hop",
+	4: "Easy Listening",
+	5: "Dance & House",
+	6: "Instrumental",
+	7: "Metal",
+	8: "Dubstep",
+	10: "Drum & Bass",
+	11: "Trance",
+	12: "Chanson",
+	13: "Ethnic",
+	14: "Acoustic & Vocal",
+	15: "Reggae",
+	16: "Classical",
+	17: "Indie Pop",
+	18: "Other",
+	19: "Speech",
+	21: "Alternative",
+	22: "Electropop & Disco",
+	1001: "Jazz & Blues",
+}
+				</code></pre>
+				<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	title: 'До зимы',
+	performer: 'Oxxxymiron',
+	genre: http.audio.genres[3]
+}
+				</code></pre>
+			</ul>
+		</li>
+	</ul>
+</p>
+<p>
+	Метод вернет отредактированную аудиозапись
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get().then(({vkr}) => {
+	
+	let audioObject = vkr[0];
+
+	http.audio.edit(audioObject, {
+		title: "Rest In Peace",
+		performer: "Astrokai",
+		genre: http.audio.genres[1001]
+	}).then(({vkr}) => {
+			
+		console.log('Отредачили!', vkr);
+
+	})
+
+})
+</code></pre>
+
+
+<h2 id="audio_reorder"><span>#</span> audio.reorder()</h2>
+<p>
+	Метод перемещает аудиозапись в списке аудиозаписей
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li>
+			<b>audio_id</b> - <span>ID аудиозаписи, которую нужно переместить</span>
+		</li>
+		<li>
+			<b>after_audio_id</b> - <span>ID аудиозаписи, после которой в списке поместить выбранную аудиозапись. Аудиозапись переместится на место этой аудиозаписи</span>
+		</li>
+	</ul>
+</p>
+<p>
+	Пример, как я поменял 1ю аудиозапись местами со 2й
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get().then(({vkr}) => {
+	
+	let audios = vkr;
+	
+	http.audio.reorder({
+		audio_id: audios[0].id,
+		after_audio_id: audios[0].id
+	}).then(({vkr}) => {
+		
+		console.log('Переместили!', vkr);
+
+	});
+	
+});
+</code></pre>
+<h2 id="audio_restore"><span>#</span> audio.restore()</h2>
+<p>
+	Метод восстанавливает аудиозапись в списке аудиозаписей после удаления, точно не знаю через сколько времени уже нельзя восстановить аудиозапись
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li><b>audio</b> <span>*</span> <span>( <a href="#audioitem">&lt;AudioItem&gt;</a>) - объект аудиозаписи</span>
+			<p>
+				Рекомендую брать данный объект из методов вроде <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a>
+			</p>
+		</li>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get().then(({vkr}) => {
+
+	let audio = vkr[0];
+
+
+	http.audio.delete(audio).then(() => {
+		
+		console.log('Удалили!');
+
+		http.audio.restore(audio).then(() => {
+			
+			console.log('Восстановили!');
+
+		})
+
+	})
+	
+})
+
+</code></pre>
+<h2 id="audio_getPlaylists"><span>#</span> audio.getPlaylists()</h2>
+<p>
+	Метод возвращает список плейлистов пользователя или группы
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li><b>owner_id</b> <span> - ID пользователя или группы, из которой надо достать список плейлистов</span>
+		</li>
+		<li>
+			<b>offset</b> <span> - смещение по номеру плейлиста, начиная с этого номера будут возвращены новые плейлисты</span>
+		</li>
+	</ul>
+</p>
+<p>
+	Метод вернет массив плейлистов объекта <a href="#playlist">Playlist</a>, читайте документацию для этого объекта.
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.getPlaylists({
+	owner_id: -123675921
+}).then(({vkr}) => {
+
+	console.log(vkr[0].title);
+
+});
+</code></pre>
+<h2 id="audio_getPlaylistById"><span>#</span> audio.getPlaylistById()</h2>
+<p>
+	Метод возвращает плейлист по указанном параметрам
+</p>
+<p>
+	Параметры
+</p>
+<p>
+	<ul>
+		<li><b>owner_id</b> - <span>ID владельца плейлиста (группа или пользователь)</span></li>
+		<li><b>playlist_id</b> - <span>ID плейлиста, который нужно получить</span></li>
+	</ul>
+</p>
+<p>
+	Вернет объект плейлиста <a href="#playlist">Playlist</a>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.getPlaylistById({
+	owner_id: -123675921,
+	playlist_id: 1
+}).then(({vkr}) => {
+	
+	console.log(vkr.title);
+
+});
+</code></pre>
+<h2 id="audio_followPlaylist"><span>#</span> audio.followPlaylist()</h2>
+<p>
+	Метод добавляет плейлист в подписки (проще говоря, он добавляет чужой плейлист в список плейлистов пользователя, подписывается). Чтобы отписаться от плейлиста, надо вызвать метод повторно
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li><b>playlist</b> <span>*</span> <span>(<a href="#playlist">&lt;Playlist&gt;</a>) - объект плейлиста, или примерно такой объект</span>
+		<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	id: PLAYLIST_ID,
+	owner_id: PLAYLIST_OWNER_ID,
+	follow_hash: PLAYLIST_FOLLOW_HASH
+}
+		</code></pre>
+		<p>
+			Рекомендую получать данный объект через методы вроде <a href="#audio_getPlaylists">audio.getPlaylists()</a> или <a href="#audio_getPlaylistById">audio.getPlaylistById()</a>
+		</p>
+		</li>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.getPlaylists({
+	owner_id: -123675921
+}).then(({vkr}) => {
+	
+	let playlist = vkr[0];
+
+
+	http.audio.followPlaylist(playlist).then(() => {
+		
+		console.log('Подписались!');
+
+	})
+
+})
+</code></pre>
+
+<h2 id="audio_deletePlaylist"><span>#</span> audio.deletePlaylist()</h2>
+<p>
+	Метод удаляет плейлист из списка плейлистов (только СВОЙ плейлист, чужие нельзя удалить этим методом, в смысле, что, если Вы подписались на плейлист, надо отписаться, а не удалять его!)
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li><b>playlist</b> <span>*</span> <span>(<a href="#playlist">&lt;Playlist&gt;</a>) - объект плейлиста, или примерно такой объект</span>
+		<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	id: PLAYLIST_ID,
+	owner_id: PLAYLIST_OWNER_ID,
+	edit_hash: PLAYLIST_EDIT_HASH
+}
+		</code></pre>
+		<p>
+			Рекомендую получать данный объект через методы вроде <a href="#audio_getPlaylists">audio.getPlaylists()</a> или <a href="#audio_getPlaylistById">audio.getPlaylistById()</a>
+		</p>
+		</li>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.getPlaylists().then(({vkr}) => {
+	
+	let playlist = vkr[0];
+
+
+	http.audio.deletePlaylist(playlist).then(() => {
+		
+		console.log('Удалили плейлист!');
+
+	})
+
+})
+</code></pre>
+<h2 id="audio_moveToPlaylist"><span>#</span> audio.moveToPlaylist()</h2>
+<p>
+	Метод добавляет аудиозапись в выбранный плейлист
+</p>
+<p>
+	Аргументы
+</p>
+<p>
+	<ul>
+		<li>
+			<b>audio</b> <span>*</span> (<a href="#audioitem">&lt;AudioItem&gt;</a>) - Объект аудиозаписи
+			<p>
+				Рекомендую брать данный объект из методов вроде <a href="#audio_get">audio.get()</a> или <a href="#audio_getbyid">audio.getById()</a>
+			</p>
+		</li>
+		<li>
+			<b>playlist</b> <span>*</span> (<a href="#playlist">&lt;Playlist&gt;</a>) - Объект плейлиста
+			<p>
+				Рекомендую получать данный объект через методы вроде <a href="#audio_getPlaylists">audio.getPlaylists()</a> или <a href="#audio_getPlaylistById">audio.getPlaylistById()</a>
+			</p>
+		</li>
+	</ul>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get().then(({vkr}) => {
+	
+	let audio = vkr[0];
+
+	http.audio.getPlaylists().then(({vkr: playlists}) => {
+		let playlist = playlists[0];
+
+		http.audio.moveToPlaylist(audio, playlist).then(({vkr}) => {
+			
+			console.log('Добавили аудиозапись в плейлист!');
+
+		})
+
+	})
+
+})
+</code></pre>
+<h2 id="playlist">Playlist</h2>
+<p>
+	Это объект плейлиста, который Easy VK генерирует автоматически при работе с плейлистами. В обобщенном виде он выглядит так:
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+{
+	// ID плейлиста
+	id: playlist.id,
+
+	// ID владельца плейлиста
+	owner_id: playlist.ownerId,
+
+	// Полный идентификатор плейлиста
+	raw_id: playlist.ownerId + '_' + playlist.id,
+
+	// Название плейлиста
+	title: playlist.title,
+
+	// Обложка плейлиста
+	cover_url: playlist.coverUrl,
+
+	// Дата последнего обновления
+	last_updated: playlist.lastUpdated,
+
+	// Содержит откровенный контент (мат)
+	explicit: playlist.isExplicit,
+
+	// Подписан ли пользователь на плейлист
+	followed: playlist.isFollowed,
+
+	// Подтвержденный плейлист (лицензия и т.п)
+	official: playlist.isOfficial,
+
+	// Сколько людей прослушали плейлист
+	listens: playlist.listens,
+
+	// Количество аудиозаписей в плейлисте
+	size: playlist.size,
+	
+	// Все типы обложек
+	covers: playlist.grid_covers,
+
+	// Описание плейлиста
+	description: playlist.description,
+
+	// Маленькое описание плейлиста + HTML код
+	raw_description: playlist.rawDescription,
+
+	// Аудиозаписи плейлиста
+	list: playlist.list
+}
+</code></pre>
+<h2 id="audioitem">AudioItem</h2>
+<p>
+	Это объект аудиозаписи, который Easy VK генерирует автоматически, когда работает с разделом аудиозаписей. Посмотрите, что он из себя представляет в обобщенном виде
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+AudioItem {
+	id: 456239601,
+	owner_id: 356607530,
+
+	// URL адрес mp3 файла
+	url:
+	 'https://cs1-77v4.vkuseraudio.net/p13/d2f2dafd1d0e2d.mp3?extra=ZxfD...',
+	
+	// Название трека 
+	title: 'Le clan des Siciliens',
+	
+	// Исполнитель
+	performer: 'Ennio Morricone',
+	
+	// Продолжительность в секундах
+	duration: 240, 
+
+	// Список обложек
+	covers:
+	 'https://pp.userapi.com/c639520/v639520452/20464/qNd2FPHsB-0.jpg,https://pp
+	.userapi.com/c639520/v639520452/20463/qXltktjrN1I.jpg',
+
+	// Маленький размер обложки
+	coverUrl_s: 
+	 'https://pp.userapi.com/c639520/v639520452/20464/qNd2FPHsB-0.jpg',
+
+	// Обложка размера постера
+	coverUrl_p:
+	 'https://pp.userapi.com/c639520/v639520452/20463/qXltktjrN1I.jpg', 
+
+	// Флаги аудиозаписи (hq, и т.д)
+	flags: 67,
+
+	// высокое качество аудиозаписи (с недавних пор везде false)
+	hq: false,
+	
+	// Подтверждено (типа по лицензии вроде)
+	claimed: false,
+
+	// Лицензия United Media Agency
+	uma: false,
+
+	// Взята из альбома
+	album_id: 0,
+	full_id: '356607530_456239601',
+
+	// Содержит контент откровенного содержания (откровения тут это мат)
+	explicit: false,
+
+	// Не видел нигде, может старое что-то
+	subtitle: '', 
+
+	// Можно редактировать
+	can_edit: true,
+
+	// Можно удалить
+	can_delete: true,
+
+	// Можно добавить к себе
+	can_add: true,
+
+	// Cтарые данные аудиозаписи, тут же lyrics_id
+	album: [ -2000050253, 50253, '41aa55652f111368ac' ],
+
+	// ID слов песни, чтобы получить через audio.getLyrics()
+	lyrics_id: 50253,
+	
+	// Заблокирован ли трек на территории IP адреса сервера
+	is_restriction: false,
+	
+	// JSON данные для более подробного выяснения причин блокировки
+	extra: "{}"
+}
+</code></pre>
+<h2 id="apiJSON">JSON Audio Api</h2>
+<p>
+	Данный объект возвращается в большинстве методов Audio API, и HTTP клиента. В нем хранится полный JSON ответ сервера ВКонтакте, его можно использовать для дебага, а также для того чтобы использовать полные возможности HTTP клиента. Так, например, в методе <a href="#audio_get">audio.get()</a> в json возвращается объект с такими параметрами, как <code class="h">hasMore</code>, <code class="h">nextOffset</code> и т.д
+</p>
+<p>
+	Данный объект сильно расширяет возможности клиента. Но помните один важный момент: <b>точной документации для него не дать, Вы сами должны понимать, что в нем хранится, так как он всегда может придти разным (опять про нестабильность Audio API в целом, но это не минус, просто дотошность)</b>
+</p>
+<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
+http.audio.get({
+	owner_id: -123675921
+}).then(({json}) => {
+	console.log(json.hasMore) // Есть ли еще аудиозаписи
+	console.log(json.nextOffset)
+})
+</code></pre>
+        </div>
+        <div class="col-md-12 no-padding">
+          <div class="col-md-11 no-padding">
+            <div class="col-md-4">
+              <div class="notify-block post" style="background:url('https://cdn.dribbble.com/users/282053/screenshots/1771906/_2014-10-19_-performance.png');">
+                <div class="op">
+                  <h2 style="margin: 0px;" class="post-title">Повышение производительности Easy VK</h2>
+                  <p>
+                    Теперь в два раза быстрее: обновление производительности в Easy VK
+                  </p>
+                </div>
+                 <div class="white">
+                    <a href="https://vk.com/npm_easyvk?w=wall-162208999_230%2Fall" target="_blank"><button>Продолжение ...</button></a>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="notify-block post" style="background:url('https://avatars.mds.yandex.net/get-pdb/1008348/18a26d23-cbb0-4ccf-8b9f-7caeba30bf54/orig');">
+                <div class="op">
+                  <h2 style="margin: 0px;" class="post-title">Пиар в ВК с помощью просмотров историй</h2>
+                  <p>
+                    Речь пойдет о ВКонтакте, и о том, как я лично опробовал бесплатный пиар через просмотры историй.
+                  </p>
+                </div>
+                 <div class="white">
+                    <a href="https://vk.com/@npm_easyvk-o-tom-kak-ya-vospolzovalsya-prosmotrami-istorii-dlya-piara-v" target="_blank"><button>Продолжение ...</button></a>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="notify-block post" style="background:url('https://i.ytimg.com/vi/qFK2oQ1-Q9g/maxresdefault.jpg');">
+                <div class="op">
+                  <h2 style="margin: 0px;" class="post-title">Обновление Easy VK 2.0</h2>
+                  <p>
+                    Релиз Audio API, мультиязычность, новые классы и объекты, HTTP Клиент, просмотры историй
+                  </p>
+                </div>
+                 <div class="white">
+                    <a href="easyvk.html#first_step"><button>Приступить ...</button></a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="footer">
+            <p>
+              Easy VK &copy; 2018 - Кирилл Новак<br>
+            </p>
+          </div>
+          <div class="star" style="margin-bottom: 50px;">
+            <p>
+              <a class="github-button" href="https://github.com/ciricc/easyvk" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ciricc/easyvk on GitHub" style="margin: 5px 15px;display: inline-block;">Мне нравится EasyVK</a>
+            </p>
+          </div>
+      </div>
+    </div>
+
+    <!-- <link rel="stylesheet" href="assets/css/highlight-theme.css"> -->
+<!-- <script src="assets/plugins/highlight/highlight.pack.js"></script> -->
+<!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
+<!-- <script>hljs.initHighlightingOnLoad();</script> -->
+<script src="../assets/plugins/prism.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/selectic/selectic.min.js"></script>
+<script>
+;(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://easyvkdocument.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  </body>
+</html>

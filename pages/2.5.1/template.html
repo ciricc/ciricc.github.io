@@ -1,0 +1,131 @@
+{#version|2.5.1}
+<!DOCTYPE html>
+<html lang="ru-ru">
+  <head>
+  	
+  	{% head %}
+  
+    <script>
+      
+      window.root = "{root}";
+
+    </script>
+  </head>
+  <body>
+    <div class="opacity-block">
+      <div class="tap-me">
+        <div class="cursor">
+          <div class="tap tap--1"></div>
+        </div>
+        Закрыть
+      </div>
+    </div>
+    <div class="wrap-header" style="padding: 0">
+      <div class="header no-padding-mobile">
+        <div class="header-content">
+          <div class="col-md-12 no-padding-mobile">
+            <div class="col-md-5 no-padding-mobile">
+              <div class="col-md-6 col-sm-6 col-xs-8 no-padding" style="text-align: left;">
+                <span class="fa fa-bars opener"></span>
+                  <a href="/" class="logo">
+                    <img src="{root}assets/img/logo.png" style="margin-top: 12px;" alt="Easy VK логотип Node.js ВКонтакте API JavaScript" width="55" style="display: inline-block;margin-bottom: 20px;">
+                  </a>
+                  <a href="/" class="logo-white">
+                    <img src="{root}assets/img/logo-white.png" style="margin-top: 12px;" alt="Easy VK логотип Node.js ВКонтакте API JavaScript" width="55" style="display: inline-block;margin-bottom: 20px;">
+                  </a>
+                  <span  class="switch-mode"><span class="fa fa-moon-o"></span></span>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-4" style="height: 80px;">
+                <div class="version-wrap" style="text-align: center;">
+                  <select name="version" id="version">
+                    <a href="{root}1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
+                    <a href="{root}2.0.0/index.html"><option value="2.0.0">2.0.0</option></a>
+                    <a href="{root}2.4.1/index.html"><option value="2.5.1" selected="selected">2.5.1</option></a>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7 soc no-mobile" style="height: 80px;">
+              <div class="flex-wrap">
+                <a href="https://vk.com/npm_easyvk" target="_blank" class="soc-link"><span class="fa fa-vk"></span></a>
+                <a href="https://github.com/ciricc/easyvk" target="_blank" class="soc-link"><span class="fa fa-github"></span></a>
+                <!-- Place this tag where you want the button to render. -->
+                <a href="https://npmjs.com/package/easyvk" target="_blank" class="soc-link" style="font-size: 12px;"><b>npm</b></a>
+                <a href="https://vk.com/kinock" target="_blank" class="dark-link" style="margin-left: 15px;text-decoration: none !important;">Связаться</a>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  	<div id="container">
+      <div id="sidebar">
+        <div id="sidebar-content">
+          {% nav %}
+        </div>
+      </div><!--
+    --><div id="content" class="v2">
+       {#style|style="max-width: 910px;"}
+        <div id="main-content" {#style#}>
+          {% content %}
+        </div>
+        <div class="col-md-12 no-padding">
+          <div class="col-md-11 no-padding">
+            <div class="col-md-4">
+              <div class="notify-block post" style="background:url('https://cdn.dribbble.com/users/282053/screenshots/1771906/_2014-10-19_-performance.png');">
+                <div class="op">
+                  <h2 style="margin: 0px;" class="post-title">Повышение производительности Easy VK</h2>
+                  <p>
+                    Теперь в два раза быстрее: обновление производительности в Easy VK
+                  </p>
+                </div>
+                 <div class="white">
+                    <a href="https://vk.com/npm_easyvk?w=wall-162208999_230%2Fall" target="_blank"><button>Продолжение ...</button></a>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="notify-block post" style="background:url('https://avatars.mds.yandex.net/get-pdb/1008348/18a26d23-cbb0-4ccf-8b9f-7caeba30bf54/orig');">
+                <div class="op">
+                  <h2 style="margin: 0px;" class="post-title">Пиар в ВК с помощью просмотров историй</h2>
+                  <p>
+                    Речь пойдет о ВКонтакте, и о том, как я лично опробовал бесплатный пиар через просмотры историй.
+                  </p>
+                </div>
+                 <div class="white">
+                    <a href="https://vk.com/@npm_easyvk-o-tom-kak-ya-vospolzovalsya-prosmotrami-istorii-dlya-piara-v" target="_blank"><button>Продолжение ...</button></a>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="notify-block post" style="background:url('https://i.ytimg.com/vi/qFK2oQ1-Q9g/maxresdefault.jpg');">
+                <div class="op">
+                  <h2 style="margin: 0px;" class="post-title">Обновление Easy VK 2.0</h2>
+                  <p>
+                    Релиз Audio API, мультиязычность, новые классы и объекты, HTTP Клиент, просмотры историй
+                  </p>
+                </div>
+                 <div class="white">
+                    <a href="easyvk.html#first_step"><button>Приступить ...</button></a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="footer">
+            <p>
+              Easy VK &copy; 2018 - Кирилл Новак<br>
+            </p>
+          </div>
+          <div class="star" style="margin-bottom: 50px;">
+            <p>
+              <a class="github-button" href="https://github.com/ciricc/easyvk" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ciricc/easyvk on GitHub" style="margin: 5px 15px;display: inline-block;">Мне нравится EasyVK</a>
+            </p>
+          </div>
+      </div>
+    </div>
+
+    {% scripts %}
+
+  </body>
+</html>
