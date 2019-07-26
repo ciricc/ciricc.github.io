@@ -1,1 +1,1 @@
-{"version":"2.5.1","title":"Easy VK / Node.JS ВКонтакте API | Работа с капчей","style":"style=\"max-width: 910px;\""}
+{"version":"2.5.1","title":"Easy VK / Node.JS ВКонтакте API | Знакомство","style":"style=\"max-width: 910px;\""}

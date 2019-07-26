@@ -7,6 +7,14 @@
   Познакомьтесь с Easy VK ближе, чтобы понять, как он устроен и как с ним работать
 </p>
 
+<p>
+  <img src="https://api.codacy.com/project/badge/Grade/cfce75d7342d487c8b8766b7d2085d1d?isInternal=true" alt="codacy quality code"/>
+  <img src="https://travis-ci.org/ciricc/easyvk.svg?branch=master" alt="build state"/>
+  <img src="https://img.shields.io/npm/dm/easyvk.svg" alt="downloads"/>
+  <img src="https://img.shields.io/github/issues/ciricc/easyvk.svg?style=flat" alt="issues"/>
+  <img src="https://img.shields.io/node/v/easyvk.svg?style=flat" alt="minimal node version"/>
+</p>
+
 <h2 id="concepts"><span>#</span> Концепция работы с Easy VK</h2>
 <p>
   Многие возможности Easy VK ограничены до тех пор, пока вы не авторизуетесь. Чтобы не нарушался концепт <code class="h">log-in</code>, в Easy VK предусмотрен алгоритм последовательной авторизации. То есть, Вы не получите объекта для работы с ВКонтакте до тех пор, пока не произойдет корректная авторизация. Таким образом, внутри Easy VK гарантирует сам для себя, и для Вас, что все компоненты будут работать внутри одной сессии, не застрагивая посторонние (если такие имеются) программы и компоненты.
