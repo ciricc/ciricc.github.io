@@ -1,0 +1,61 @@
+{#title|Easy VK / Node.JS ВКонтакте API | Статические методы}
+<script>
+  window.pageGot = true;
+</script>
+<h1>Статические методы</h1>
+<p>
+  Статические методы в Easy VK - это методы, для использования которых не нужна авторизация.
+  Проще говоря, - это методы свойства <code class="h">static</code> функции (объекта, но нет) easyvk (<code class="h">const easyvk = require('easyvk')</code>)
+</p>
+<p>
+  Статические методы используют так:
+</p>
+<pre class="js"><code>const easyvk = require('easyvk')
+easyvk.static.exampleStaticMethod()</code></pre>
+<h2 id="call"><span>#</span> static.call()</h2>
+<p>Метод обращается к серверу ВКонтакте и делает запрос на метод API без авторизации.</p>
+<p>
+  Вы можете столкнуться с такой ситуацией, где нужно сделать запрос без access_token'а, раньше Easy VK не позволял сделать такого, потому что все запросы были прикреплены к авторизации, но, теперь, это возможно. Этот метод - основа метода <a href="">vk.call()</a>, vk.call() является дублирующим методом static.call(), поэтому все параметры у них общие. В отличии от vk.call(), метод static.call() не требует <code class="h">access_token</code>, но Вы также можете его использовать, без авторизации. Таким образом, static.call() - своего рода "швейцарский нож", на его базе основываются все запросы Easy VK.
+</p>
+
+<h2 id="createExecute"><span>#</span> static.createExecute()</h2>
+<p>Метод создает строковое представления запроса для VK Script.</p>
+<p>
+  Может понадобится для простого обращения к API ВК через метод <code class="h">execute</code>
+</p>
+<p>
+  Параметры
+</p>
+<p>
+  <ul>
+    <li>
+      <b>methodName</b> - <span>Название метода</span>
+    </li>
+    <li>
+      <b>params</b> - <span>Параметры запроса</span>
+    </li>
+  </ul>
+</p>
+<pre class="js"><code>let res = easyvk.static.createExecute('messages.send', {
+  random_id: new Date().getTime().toString() + 
+  (Math.floor(Math.random() * 10000).toString()),
+  v: '5.92',
+  lang: 'en',
+  message: 'Hello!',
+  peer_id: 1 
+})
+
+console.log(res) 
+// API.messages.send({"random_id":"15556740277713697","message":"Hello!","peer_id":1})
+</code></pre>
+<p>
+  Параметр <b>v</b> и <b>lang</b> заменяются на undefined, так как в execute ВКонтакте нет поддержки внутренних версий запроса (к сожалению)
+</p>
+
+<h2 id="randomId"><span>#</span> static.randomId()</h2>
+<p>Метод генерирует случайное число для отправки сообщения</p>
+<pre class="js"><code>let res = await vk.call('messages.send', {
+  peer_id: 1,
+  message: "Привет!",
+  random_id: easyvk.randomId()
+})</code></pre>

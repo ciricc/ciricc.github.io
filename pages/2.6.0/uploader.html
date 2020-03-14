@@ -1,0 +1,309 @@
+{#title|Easy VK / Node.JS ВКонтакте API | Загрузка файлов}
+<script>
+  window.pageGot = true;
+</script>
+<h1>Загрузчик файлов</h1>
+<div class="big-quote danger">
+  <div class="p">
+    <span class="ic">{...}</span> Для включения или отключения используйте utils.uploader <br/></br/>
+    <pre class="js"><code>easyvk({
+  utils: {
+    uploader: true
+  }
+})</code></pre></br/>
+    <i>This util not connected. Make params.utils[uploader] = true</i>
+  </div>
+</div>
+<p>
+  Загрузчик файлов может понадобиться в те моменты, когда нужно загрузить какой-то файл на сервер. К счастью, в Easy VK такой инструмент есть и я его постоянно использую во многих проектах
+</p>
+<h2 id="uploader_getUploadURL">uploader.getUploadURL()</h2>
+<p>
+  Метод позволяет быстро получить URL адрес сервера для загрузки файла
+</p>
+<p>
+  Аргументы
+</p>
+<p>
+  <ul>
+    <li>
+      <b>methodName</b> <span>*</span> <span>(<a href="#">string</a>)</span> - метод, обращаясь к которому, мы хотим получить URL адрес для загрузки файла, например, <a href="https://vk.com/dev/photos.getWallUploadServer" target="_blank">photos.getWallUploadServer</a>
+    </li>
+    <li>
+      <b>params</b> <span>(<a href="#">object</a>)</span> - параметры запроса, эти параметры будут высланы вместе с запросом получения URL
+    </li>
+    <li>
+      <b>returnAll</b> <span>(<a href="#">boolean</a> )</span> <span> - нужно ли возвращать весь ответ, или только url адрес</span>
+    </li>
+  </ul>
+</p>
+<p>
+  Метод в ответе вернет строку - адрес для загрузки файла.
+  В случае, если указана опция <code>returnAll</code>, то вернется следующий объект
+</p>
+<pre class="js"><code>
+{
+  url: UPLOAD_URL,
+  vkr: VKResponse // если выбран 3 аргумент
+}
+</code></pre>
+<pre class="js"><code>
+
+const method = 'photos.getWallUploadServer' 
+
+vk.uploader.getUploadURL(method, {
+  group_id: '153044419'
+}).then((url) => {
+  console.log(url);
+});
+</code></pre>
+
+<h2 id="uploader_uploadFile">uploader.uploadFile()</h2>
+<p>
+  Метод загружает указанный файл на указанный URL адрес сервера, используйте его в связке с методом 
+  <a href="#uploader_getUploadURL">uploader.getUploadURL()</a> для большего удобства
+</p>
+<p>
+  Аргументы
+</p>
+<ul>
+  <li>
+    <b>url</b> <span>*</span> <span>(<a href="#">string</a>)</span> - URL адрес сервера, на него будет отправлен файл
+  </li>
+  <li>
+    <b>filePath</b> <span>*</span> <span>(<a href="#">string</a>, <a href="#">fs.readStream</a>)</span> - Путь к файлу или объект <code class="h">fs.readStream</code>, который нужно загрузить
+  </li>
+  <li>
+    <b>fieldName</b> <span>(<a href="#">string</a>)</span> <span class="default">["file"]</span> - название поля, в котором отправится файл, проще говоря - это то, как для сервера будет называться файл, например (php) <code class="h">$_FILES['photo']</code> и т.д Как называть данный параметр, уточняйте в документации API ВКонтакте
+  </li>
+  <li>
+    <b>params</b> <span>(<a href="#">object</a>)</span> - параметры, которые отправятся вместе с файлом в запросе
+  </li>
+</ul>
+<p>
+  Посмотрите боевой пример использования загрузчика файлов
+</p>
+<div class="spoiler">
+  <div class="spoiler-name">
+      <span class="spoiler-state">[+]</span> (Спойлер) - Боевой пример использования загрузчика (uploadFile)
+  </div>
+  <div class="spoiler-content">
+    <pre class="js"><code>
+const path = require('path')
+const easyvk = require('easyvk')
+
+let vk = null;
+
+easyvk(/*параметры для авторизации*/).then(_vk => {
+    
+    vk = _vk;
+    // Получаем URL для загрузки
+    return vk.uploader.getUploadURL(
+      'photos.getMessagesUploadServer', {}, true
+    )
+
+}).then(async ({url, vkr}) => {
+
+    const field = 'photo'
+    const server = vk.uploader
+    const me = 356607530
+    const filePath = path.join(__dirname, 'photo.png')
+
+
+    url = url.upload_url
+
+    // Загружаем файл тут
+    let fileData = await server.uploadFile(url, filePath, field, {})
+
+    //Сохраняем фотографию, чтобы дальше ее прикреплять к сообщениям или куда-то еще
+    
+    fileData = await vk.post('photos.saveMessagesPhoto', fileData)  
+    fileData = fileData[0]
+
+    // Прикрепляем к сообщению сохраненную фотку
+    
+    const attachments = [
+      `photo${fileData.owner_id}_${fileData.id}_${fileData.access_key}`
+    ]
+
+
+    // Отправляем себе фотку
+    
+    return vk.call('messages.send', {
+      user_id: me,
+      attachment: attachments,
+      message: 'Hello! Отправляю тебе мою фотку. Как тебе?'
+    });
+})
+    </code></pre>
+  </div>
+</div>
+<h2 id="uploader_uploadFetchedFile">uploader.uploadFetchedFile()</h2>
+<p>
+  Метод загружает указанный файл с удаленного сервера (сайта) на указанный URL адрес сервера ВК, используйте его в связке с методом 
+  <a href="#uploader_getUploadURL">uploader.getUploadURL()</a> для большего удобства
+</p>
+<p>
+  Аргументы
+</p>
+<ul>
+  <li>
+    <b>url</b> <span>*</span> <span>(<a href="#">string</a>)</span> - URL адрес сервера, на него будет отправлен файл
+  </li>
+  <li>
+    <b>fileUrl</b> <span>*</span> <span>(<a href="#">string</a>)</span> - URL адрес изображния, которое надо загрузить на сервер ВКонтакте. <b>Файл будет скачан в оперативную память и не сохранится на диске!</b>
+  </li>
+  <li>
+    <b>fieldName</b> <span>(<a href="#">string</a>)</span> <span class="default">["file"]</span> - название поля, в котором отправится файл, проще говоря - это то, как для сервера будет называться файл, например (php) <code class="h">$_FILES['photo']</code> и т.д Как называть данный параметр, уточняйте в документации API ВКонтакте
+  </li>
+  <li>
+    <b>params</b> <span>(<a href="#">object</a>)</span> - параметры, которые отправятся вместе с файлом в запросе
+  </li>
+</ul>
+<p>
+  Посмотрите боевой пример использования загрузчика файлов с данным способом
+</p>
+<div class="spoiler">
+  <div class="spoiler-name">
+      <span class="spoiler-state">[+]</span> (Спойлер) - Боевой пример использования загрузчика (uploadFetchedFile)
+  </div>
+  <div class="spoiler-content">
+    <pre class="js"><code>
+const path = require('path')
+const easyvk = require('easyvk')
+
+let vk = null;
+
+easyvk(/*параметры для авторизации*/).then(_vk => {
+  	
+  	vk = _vk;
+    // Получаем URL для загрузки
+
+    return vk.uploader.getUploadURL(
+      'photos.getMessagesUploadServer', {}, true
+    )
+
+}).then(async ({url, vkr}) => {
+
+    const field = 'photo'
+    const server = vk.uploader
+    const me = 356607530
+    const fileUrl = 'https://vk.com/images/camera_400.png'
+
+
+    url = url.upload_url
+
+    // Загружаем файл тут
+    let fileData = await server.uploadFetchedFile(url, fileUrl, field, {})
+
+    //Сохраняем фотографию, чтобы дальше ее прикреплять к сообщениям или куда-то еще
+    
+    fileData = await vk.post('photos.saveMessagesPhoto', fileData)
+    fileData = fileData[0]
+
+    // Прикрепляем к сообщению сохраненную фотку
+    
+    const attachments = [
+      `photo${fileData.owner_id}_${fileData.id}_${fileData.access_key}`
+    ]
+
+
+    // Отправляем себе фотку
+    return vk.call('messages.send', {
+      user_id: me,
+      attachment: attachments,
+      message: 'Hello! Отправляю тебе мою фотку. Как тебе?'
+    })
+})
+    </code></pre>
+  </div>
+</div>
+
+<h2 id="uploader_upload">uploader.upload()</h2>
+<p>
+	Универсальный метод для загрузки файла. Упрощает загрузку до одного метода, но немного усложняет понимание работы. На основе этого методы Вы можете писать в своем коде загрузчики-обертки, чтобы, например, загружать только аудиосообщения, или только фотографии, или фотографии в публичный альбом и т.д.
+</p>
+<p>
+	Метод принимает один объект с настройками, о них речь ниже
+</p>
+<ul>
+  <li>
+    <b>getUrlMethod</b> <span>*(<a href="#">string</a>)</span>
+    <p>Метод, к которому надо обратиться, чтобы получить URL адрес сервера для загрузки, такой как <code>photos.getMarketAlbumUploadServer</code> и другие</p>
+  </li>
+  <li>
+  	<b>getUrlParams</b> <span>(<a href="#">Object</a>)</span>
+  	<p>Параметры, которые отправятся вместе с запросом на получение URL адреса сервера</p>
+  	<pre class="js"><code>vk.uploader.upload({
+  getUrlMethod: "photos.getMarketAlbumUploadServer",
+  getUrlParams: {
+	  group_id: 1
+  },
+  ...
+})</code></pre>
+  </li>
+  <li>
+  	<b>saveMethod</b> <span>*(<a href="#">string</a>)</span>
+  	<p>
+  		Метод, с помощью которого загруженный файл нужно сохранить, такой, как например <code>photos.saveMarketAlbumPhoto</code>
+  	</p>
+  	<pre class="js"><code>vk.uploader.upload({
+  getUrlMethod: "photos.getMarketAlbumUploadServer",
+  getUrlParams: {
+	  group_id: 1
+  },
+  saveMethod: "photos.saveMarketAlbumPhoto",
+  ...
+})</code></pre>
+  </li>
+  <li>
+  	<b>saveParams</b> <span>(<a href="#">Object</a>)</span>
+  	<p>Параметры, которые отправятся вместе с запросом на сохранение файла</p>
+  	<pre class="js"><code>vk.uploader.upload({
+  getUrlMethod: "photos.getMarketAlbumUploadServer",
+  getUrlParams: {
+	  group_id: 1
+  },
+  saveMethod: "photos.saveMarketAlbumPhoto",
+  saveParams: {
+    group_id: 1,
+    // server, hash подставятся автоматически
+	}
+  ...
+})</code></pre>
+  </li>
+  <li>
+  	<b>file</b> <span>*(<a href="#">Object</a>)</span>
+  	<p>Путь к файлу, который надо загрузить (URL, или файл на диске)</p>
+  	<pre class="js"><code>vk.uploader.upload({
+  getUrlMethod: "photos.getMarketAlbumUploadServer",
+  getUrlParams: {
+	  group_id: 1
+  },
+  saveMethod: "photos.saveMarketAlbumPhoto",
+  saveParams: {
+    group_id: 1,
+    // server, hash подставятся автоматически
+  },
+  file: './file.png'
+  ...
+})</code></pre>
+  </li>
+  <li>
+  	<b>isWeb</b> <span>(<a href="#">boolean</a>)</span>
+  	<p>Если указать эту опцию, как true, то загрузчик попробует сначала скачать файл с указанного URL. Указывайте эту опцию только, если файл не находится на жестком диске, а, например, где-то на другом сервере</p>
+  	<pre class="js"><code>vk.uploader.upload({
+  getUrlMethod: "photos.getMarketAlbumUploadServer",
+  getUrlParams: {
+	  group_id: 1
+  },
+  saveMethod: "photos.saveMarketAlbumPhoto",
+  saveParams: {
+    group_id: 1,
+    // server, hash подставятся автоматически
+  },
+  file: 'https://vk.com/images/community_50.png',
+  isWeb: true
+  ...
+})</code></pre>
+  </li>
