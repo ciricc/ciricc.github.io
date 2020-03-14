@@ -601,7 +601,7 @@
 <script>
 	window.pageGot = true;
 </script>
-<h1>Классификация ошибок <span class="date-edit">Редактировано: <span class="det">14.03.2020 в 20:27</span></span></h1>
+<h1>Классификация ошибок <span class="date-edit">Редактировано: <span class="det">14.03.2020 в 20:35</span></span></h1>
 <p>
 	Во время работы с Easy VK могут встретиться различные ошибки, чаще всего, это, конечно ошибки в коде, но кроме них есть еще системные ошибки, которые возникают при неправильном использовании софта. Короче в Easy VK они тоже есть
 </p>
@@ -643,7 +643,8 @@ vk.call().then(({vkr}) => {
 </p>
 <pre  class='line-numbers normalize-whitespace'><code class='language-js'>
 vk.call("messages.send", {
-	user_id: vk.session.user_id	
+	user_id: vk.session.user_id,
+	random_id: easyvk.randomId()
 }).then().catch(error => {
 	
 	console.log(error);

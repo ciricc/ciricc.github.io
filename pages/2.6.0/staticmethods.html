@@ -37,8 +37,7 @@ easyvk.static.exampleStaticMethod()</code></pre>
   </ul>
 </p>
 <pre class="js"><code>let res = easyvk.static.createExecute('messages.send', {
-  random_id: new Date().getTime().toString() + 
-  (Math.floor(Math.random() * 10000).toString()),
+  random_id: easyvk.randomId(),
   v: '5.92',
   lang: 'en',
   message: 'Hello!',
@@ -46,7 +45,7 @@ easyvk.static.exampleStaticMethod()</code></pre>
 })
 
 console.log(res) 
-// API.messages.send({"random_id":"15556740277713697","message":"Hello!","peer_id":1})
+// API.messages.send({"random_id":15556740277713697,"message":"Hello!","peer_id":1})
 </code></pre>
 <p>
   Параметр <b>v</b> и <b>lang</b> заменяются на undefined, так как в execute ВКонтакте нет поддержки внутренних версий запроса (к сожалению)

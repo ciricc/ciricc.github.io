@@ -29,8 +29,9 @@ VKResponse {
 	<pre class="js"><code>
 vk.call("messages.send", {
 	user_id: vk.session.user_id,
-	message: 'Привет!'
-}).then(({ vkr }) => {
+	message: 'Привет!',
+	random_id: easyvk.randomId()
+}).then((vkr) => {
 	
 	console.log(vkr); // ID последнего отправленного сообщения
 	console.log('Полная версия:', vkr.getFullResponse()); // {response: ID}

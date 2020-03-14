@@ -46,7 +46,8 @@ easyvk({
     // Обращаемся к методу messages.send с параметром user_id и message
     vk.call('messages.send', {
         user_id: me,
-        message: 'Привет!' // Текст сообщения, по мануалу ВКонтакте
+        message: 'Привет!', // Текст сообщения, по мануалу ВКонтакте
+        random_id: easyvk.randomId()
     }).then((response) => {
 
         // После выполнения запроса, ВКонтакте возвращает ответ
@@ -102,7 +103,8 @@ easyvk({
 	    
 	      vk.call('messages.send', {
 	        user_id: fullMessage.user_id,
-	        message: 'Привет!'
+	        message: 'Привет!',
+          random_id: easyvk.randomId()
 	      });
 
       }

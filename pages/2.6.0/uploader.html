@@ -132,7 +132,8 @@ easyvk(/*параметры для авторизации*/).then(_vk => {
     return vk.call('messages.send', {
       user_id: me,
       attachment: attachments,
-      message: 'Hello! Отправляю тебе мою фотку. Как тебе?'
+      message: 'Hello! Отправляю тебе мою фотку. Как тебе?',
+      random_id: easyvk.randomId()
     });
 })
     </code></pre>
@@ -212,7 +213,8 @@ easyvk(/*параметры для авторизации*/).then(_vk => {
     return vk.call('messages.send', {
       user_id: me,
       attachment: attachments,
-      message: 'Hello! Отправляю тебе мою фотку. Как тебе?'
+      message: 'Hello! Отправляю тебе мою фотку. Как тебе?',
+      random_id: easyvk.randomId()
     })
 })
     </code></pre>

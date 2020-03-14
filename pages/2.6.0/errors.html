@@ -45,7 +45,8 @@ vk.call().then(({vkr}) => {
 </p>
 <pre class="js"><code>
 vk.call("messages.send", {
-	user_id: vk.session.user_id	
+	user_id: vk.session.user_id,
+	random_id: easyvk.randomId()
 }).then().catch(error => {
 	
 	console.log(error);

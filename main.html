@@ -601,7 +601,7 @@
 	window.pageGot = true;
 </script>
 
-<h1>Главное <span class="date-edit">Редактировано: <span class="det">14.03.2020 в 20:20</span></span></h1>
+<h1>Главное <span class="date-edit">Редактировано: <span class="det">14.03.2020 в 20:35</span></span></h1>
 <p>
 	На этой странице описаны основные свойства и методы объекта EasyVK и функции easyvk
 </p>
@@ -635,7 +635,8 @@ vk.call("execute")
 			<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
 vk.call("messages.send", {
   message: 'Привет',
-  user_id: 1
+  user_id: 1,
+  random_id: easyvk.randomId()
 })
 			</code></pre>
 		</p>
@@ -646,7 +647,8 @@ vk.call("messages.send", {
 vk.call("messages.send", {
   access_token: 'пример',
   message: 'Привет',
-  user_id: 1
+  user_id: 1,
+  random_id: easyvk.randomId()
 })
 		</code></pre>
 	</li>
@@ -675,7 +677,8 @@ vk.call("wall.post", {
 	<b>Боевой пример использования</b>
 <pre  class='line-numbers normalize-whitespace'><code class='language-js'>vk.call("messages.send", {
   user_id: 1,
-  message: 'Паша, привет!'
+  message: 'Паша, привет!',
+  random_id: easyvk.randomId()
 }).then((vkr) => {
   
   console.log('Сообщение успешно отправлено!')
@@ -722,7 +725,8 @@ vk.post("execute")
 			<pre  class='line-numbers normalize-whitespace'><code class='language-js'>
 vk.post("messages.send", {
   message: 'Привет',
-  user_id: 1
+  user_id: 1,
+  random_id: easyvk.randomId()
 })
 			</code></pre>
 		</p>
@@ -733,7 +737,8 @@ vk.post("messages.send", {
 vk.post("messages.send", {
   access_token: 'пример',
   message: 'Привет',
-  user_id: 1
+  user_id: 1,
+  random_id: easyvk.randomId()
 })
 		</code></pre>
 	</li>
@@ -748,7 +753,8 @@ vk.post("messages.send", {
 	<b>Боевой пример использования</b>
 <pre  class='line-numbers normalize-whitespace'><code class='language-js'>vk.post("messages.send", {
   user_id: 1,
-  message: 'Паша, привет!'
+  message: 'Паша, привет!',
+  random_id: easyvk.randomId()
 }).then((vkr) => {
   
   console.log('Сообщение успешно отправлено!')

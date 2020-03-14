@@ -107,7 +107,8 @@ easyvk({
   // делаем запрос на GET api.vk.com/method/messages.send
   let vkr = await vk.call('messages.send', {
     peer_id: vk.session.user_id,
-    message: 'Привет!'
+    message: 'Привет!',
+    random_id: easyvk.randomId()
   });
   
 
