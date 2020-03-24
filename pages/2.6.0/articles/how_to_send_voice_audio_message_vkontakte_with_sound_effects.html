@@ -1,0 +1,315 @@
+{#root|./../}
+{#title|Отправляем голосовое сообщение ВКонтакте с эффектами}
+<h1>Отправляем голосовое сообщение ВКонтакте с эффектами</h1>
+<b>Структура статьи</b>
+<p>
+  <ul>
+    <li>
+      <a href="#history">Предыстория</a>
+    </li>
+    <li><a href="#recording">О записи звука</a></li>
+    <li><a href="#coding">Код</a>
+      <ul>
+        <li><a href="#coding_record">Запись звука</a></li>
+        <li><a href="#coding_effects">Обработка звука</a></li>
+        <li><a href="#coding_what_effects">Какие эффекты наложены</a></li>
+        <li><a href="#coding_send_audio_message">Отправка сообщения</a></li>
+        <li><a href="#coding_play_effects">Играем с эффектами</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Итог</a></li>
+  </ul>
+</p>
+<h2><span id="history"></span>Предыстория</h2>
+<p>
+  Когда-то давно, помню, мне пришла идея сделать чат-бота, который бы обрабатывал голосовые сообщения. Я не совсем понял, зачем. Но мне показалась эта идея прикольной. А потом я увлекся музыкой, начал делать биты, че-то какой-то реп стал записывать с другом, и получилось, что про эту идею я забыл. (Кстати о репе и битосах. Подписывайтесь - <a href="https://vk.com/lovtnt" target="_blank">LovTnt.</a>)
+</p>
+<p>
+  Когда начал изучать работу с аудио, узнал что такое VST плагины, как работают некоторые эффекты, какой софт есть в музыкальной индустрии, как вообще блин это все работает. Поэтому, делая то, что я сейчас буду описывать статье, я примерно понимал, что к чему и как. Но только примерно.
+</p>
+
+<h2><span id="recording"></span>О записи звука</h2>
+<p>
+  И так. Для того, чтобы отправить голосовое сообщение ВКонтакте, нам надо его сначала записать. Я тестировал все только на Windows 10, кто знает, тот поймет, почему что-то подобное можно будет легко и просто запустить на компьютере с Linux. Главное, чтобы у вас был микрофон и нормальный софт (драйвера, кодеки всякие)
+</p>
+<p>
+  Мы будем записывать голос прямо из Node.js. Для этого мы воспользуемся очень удобной программой - <a href="http://sox.sourceforge.net/" target="_blank">SoX</a>. По сути это аудиоредактор, который не имеет графического интерфейса, и в нем все работает через командную строку. 
+</p>
+<p>
+  Я тестировал программу на версии SoX 14.4.2, но с ней у меня ничего не получилось, поэтому я воспользовался более старой версией, в которой не было тех проблем, которые я не знал, как решить. Поэтому и вам рекоменудю качать именно версию <a href="https://sourceforge.net/projects/sox/files/sox/14.4.1/">14.4.1</a>
+</p>
+<p>
+  <img src="https://imgur.com/GLXx7VK.jpg" alt="Ссылки для скачивания находятся ниже">
+</p>
+<p>
+  После установки софта, вам необходимо добавить папку с этой программой в переменную PATH, для того, чтобы вы могли запустить ее из любого места. Можно, конечно, так не делать, но это если знаете, как сделать по-другому.
+</p>
+<p>
+  Для того, чтобы добавить папку в PATH, необходимо открыть свойства компьютера и найти там параметры среды.
+</p>
+<p>
+  <img src="https://imgur.com/qvvXku5.jpg" alt="Свойства мой компьютер">
+</p>
+<p>
+  <img src="https://imgur.com/lS3wB5I.jpg" alt="Дополнительные параметры">
+</p>
+<p>
+  <img src="https://imgur.com/wYgYVRQ.jpg" alt="Параметры среды">
+</p>
+<p>
+  Ищем Path, нажимаем изменить и добавляем адрес к папке, в которой лежит SoX
+  <img src="https://imgur.com/42PZjDQ.jpg" alt="PATH -> Изменить">
+</p>
+<p>
+  <img src="https://imgur.com/MztU661.jpg" alt="Вот так">
+</p>
+<p>
+  На этом установка SoX заканчивается, теперь мы переходим к части Node.js
+</p>
+<h2><span id="coding"></span>Ближе к коду</h2>
+
+<p>
+  Вся программа будет делится на четрые этапа
+  <ul>
+    <li>Запись аудиофайла</li>
+    <li>Обработка записанного аудиофайла</li>
+    <li>Загрузка файла на сервер</li>
+    <li>Отправка его в сообщении</li>
+  </ul>
+</p>
+<p>
+  Первые два этапа можно объединить в один, но я сделал так специально, потому что предполагаю, что кто-нибудь все-таки захочет написать чат-бота для обработок чужих голосовых.
+</p>
+<h3><span id="coding_record"></span> Запись</h3>
+<p>
+  Мы воспользуемся npm пакетом <code>node-audiorecorder</code>, который тоже использует SoX для записи, настраивая его на вывод данных в <code>stdout</code>
+</p>
+<pre class="shell"><code>npm init -y && npm install node-audiorecorder easyvk && touch index.js</code></pre>
+<p>
+  Теперь мы можем писать код в файле <code>index.js</code> (Node.js 10)
+</p>
+<pre class="js"><code>const easyvk = require('easyvk')
+const fs = require('fs')
+
+const AudioRecorder = require('node-audiorecorder')
+
+const options = {
+  program: `sox`,
+  device: null,
+  bits: 16,
+  channels: 1,
+  encoding: `signed-integer`,
+  format: `S16_LE`,
+  rate: 16000,
+  type: 'wav',
+  keepSilence: false  
+};
+
+let audioRecorder = new AudioRecorder(options, console);
+
+easyvk({
+  username: 'ВАШ ЛОГИН',
+  password: 'ВАШ ПАРОЛЬ',
+  v: '5.103'
+}).then(async vk => {
+
+  /** Файл, в который идет запись */
+  let fileName = 'record.wav'
+  let fileStream = fs.createWriteStream(fileName, { encoding: 'binary' })
+  
+  /** Начинаем запись */
+  audioRecorder.start().on('close', console.log)
+  audioRecorder.stream().pipe(fileStream)
+
+})</code></pre>
+<p>
+  Если вы запустите данный код, то SoX начнет записывать ваш голос в файл <code>record.wav</code>. Чтобы остановить запись, нажмите клавиши <code class="h">Ctrl + C</code>
+</p>
+<p>
+  C записью разобрались, но лично меня не устривает, что <code>Ctrl + C</code> убивает весь софт моментально, поэтому мы сделаем так, чтобы на вход требовалась команда, отправляя которую скрипт самостоятельно остановит запись. Сделаем это.
+</p>
+<pre class="js"><code>const readline = require('readline')
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+})
+
+easyvk({...}).then(async vk => {
+  /** Файл, в который идет запись */
+  let fileName = 'record.wav'
+  let fileStream = fs.createWriteStream(fileName, { encoding: 'binary' })
+  
+  /** Начинаем запись */
+  audioRecorder.start().on('close', console.log)
+  audioRecorder.stream().pipe(fileStream)
+  
+  rl.question('Нажмите клавишу Enter, чтобы остановить запись ', ()=>audioRecorder.stop())
+
+})</code></pre>
+<h3><span id="coding_effects"></span> Обработка аудио</h3>
+<p>
+  Теперь перейдем к эффектам. Они создаются все тем же SoX.
+  Как только стрим audiorecorder'а с входящим аудио завершается, мы будем обрабатывать получивший аудиофайл. Посмотрим, как это выглядит.
+</p>
+<p>
+  Ловим событие <code>close</code> у стрима.
+</p>
+<pre class="js"><code>audioRecorder.start().on('close', makeEffects)</code></pre>
+<p>Теперь перейдем к коду функции <code>makeEffects</code></p>
+<pre class="js"><code>async function makeEffects () {
+  child_process.exec('sox '+ fileName +' '+ fileNameOutput +' pitch -320 bass +20', (err) => {
+    if (err) throw err;
+    sendAudioMessage()
+  })
+}</code></pre>
+<p>
+  Переменная <code>child_process</code> хранит в себе объект для работы с дочернимим программами. С помощью метода <code>exec</code> мы запускаем программу SoX, говоря ей, что ей надо обработать файл <code>.wav</code>, а результат сохранить в файл <code>.ogg</code>. После выполнения программы, мы уже вызываем функцию <code>sendAudioMessage</code>, которая отправляет полученный файл.
+</p>
+<p>
+  Теперь полностью. Эффекты.
+</p>
+<pre class="js"><code>const child_process = require('child_process')
+
+easyvk({...}).then(async vk => {
+  
+  /** Файл, в который идет запись */
+  let fileName = 'record.wav'
+  /** Обработанный файл */
+  let fileNameOutput = 'result.ogg'
+
+  let fileStream = fs.createWriteStream(fileName, { encoding: 'binary' })
+
+  /** Начинаем запись */
+  audioRecorder.start().on('close', makeEffects)
+  audioRecorder.stream().pipe(fileStream)
+  
+  rl.question('Нажмите клавишу Enter, чтобы остановить запись ', ()=>audioRecorder.stop())
+  
+  async function makeEffects () {
+    child_process.exec('sox '+ fileName +' '+ fileNameOutput +' pitch -320 bass +20', (err) => {
+      if (err) throw err;
+      sendAudioMessage()
+    })
+  }
+
+})</code></pre>
+<p>
+  Код будет работать только, если вы скажете хотябы пару слов в микрофон.
+</p>
+<h3> <span id="coding_what_effects"></span> Какие эффекты наложены?</h3>
+<p>
+  В данном примере я добавил эффект <code>pith</code> на -320, а также <code>bass</code> +20. 
+  <br>
+  Эффект bass отвечает за подъем или спуск уровня бассовых частот, pith за понижение или повышения тона. 
+</p>
+<h3><span id="coding_send_audio_message"></span>Отправка голосового сообщения</h3>
+<p>
+  Самое сложно уже позади. Осталось получившийся файл загрузить на сервер и отправить в личное сообщение. Сделаем и это.
+</p>
+<pre class="js"><code>async function sendAudioMessage () {
+
+  /** Получаем URL для загрузки */
+  let {upload_url: uploadUrl} = await vk.call('docs.getMessagesUploadServer', {
+    peer_id: peerId,
+    type: "audio_message"
+  })
+
+  /** Загружаем файл */
+  let file =  await vk.uploader.uploadFile(uploadUrl, fileNameOutput);
+
+  /** Сохраняем */
+  let doc = await vk.post('docs.save', file)
+  doc = doc.audio_message;
+  
+  /** Отправляем */
+  await vk.call('messages.send', {
+    peer_id: peerId,
+    attachment: `doc${doc.owner_id}_${doc.id}_${doc.access_key}`,
+    random_id: easyvk.randomId()
+  })
+}</code></pre>
+<p>
+  Переменная <code>peerId</code> хранит ID принимающего сообщение. Может быть беседой, сообществом, другим пользователем. Теперь полная картина.
+</p>
+<pre class="js"><code>easyvk({...}).then(async vk => {
+  
+  /** ID принимающего сообщение */
+  let peerId = vk.session.user_id
+
+  /** Файл, в который идет запись */
+  let fileName = 'record.wav'
+  /** Обработанный файл */
+  let fileNameOutput = 'result.ogg'
+
+  let fileStream = fs.createWriteStream(fileName, { encoding: 'binary' })
+
+  /** Начинаем запись */
+  audioRecorder.start().on('close', makeEffects)
+  audioRecorder.stream().pipe(fileStream)
+  
+  rl.question('Нажмите клавишу Enter, чтобы остановить запись ', ()=>audioRecorder.stop())
+  
+  async function makeEffects () {
+    child_process.exec('sox '+ fileName +' '+ fileNameOutput +' pitch -320 bass +20', (err) => {
+      if (err) throw err;
+      sendAudioMessage()
+    })
+  }
+
+  async function sendAudioMessage () {
+
+    /** Получаем URL для загрузки */
+    let {upload_url: uploadUrl} = await vk.call('docs.getMessagesUploadServer', {
+      peer_id: peerId,
+      type: "audio_message"
+    })
+
+    /** Загружаем файл */
+    let file =  await vk.uploader.uploadFile(uploadUrl, fileNameOutput);
+
+    /** Сохраняем */
+    let doc = await vk.post('docs.save', file)
+    doc = doc.audio_message;
+    
+    /** Отправляем */
+    await vk.call('messages.send', {
+      peer_id: peerId,
+      attachment: `doc${doc.owner_id}_${doc.id}_${doc.access_key}`,
+      random_id: easyvk.randomId()
+    })
+    
+    process.exit(0)
+  }
+
+})</code></pre>
+<p>
+  Вауля! Сообщение отправлено!
+</p>
+<p>
+  <img src="https://imgur.com/nVqrMbs.jpg" alt="Голосовое сообщение вконтакте">
+</p>
+<p>
+  <audio src="{root}assets/audio/result.ogg" type="audio/ogg" controls="controls"></audio>
+</p>
+<h3><span id="coding_play_effects"></span>Поиграемся с эффектами</h3>
+<p>
+  <code>reverb pitch -320 bass +20</code> <br> <br>
+   <audio src="{root}assets/audio/result-reverb.ogg" type="audio/ogg" controls="controls"></audio>
+</p>
+<p>
+  <code>reverse pitch -320 bass +20</code> <br> <br>
+   <audio src="{root}assets/audio/result-reverse.ogg" type="audio/ogg" controls="controls"></audio>
+</p>
+<p>
+  Со всеми остальными эффектами вы можете познакомиться <a href="https://sox.fandom.com/wiki/EFFECTS">здесь</a>
+</p>
+<h2><span id="conclusion"></span>Итог</h2>
+<p>
+  Каков итог? <br><br> Возможно, вы впервые научились отправлять голосовые сообщения. Возможно, впервые узнали, что есть такая замечательная программа, как SoX. Возможно, впервые узнали, как пользоваться <code>child_process</code>, возможно, впервые попробовали записать голосовое сообщение через Node.js <br><br>Надеюсь, что статья кому-то в чем-то помогла и принесла пользу. <br><br>
+  Спасибо, что дочитали до конца!) 
+</p>
+<div class="comments-wrap">
+  <div class="comments-wrap-header"><h4>Комментарии к статье</h4> <div id="vk_like"></div></div>
+  <div id="vk_comments"></div>
+</div>

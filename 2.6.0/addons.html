@@ -29,8 +29,10 @@
 	<link rel="stylesheet" href="../assets/selectic/selectic.css" type="text/css">
 	<link rel="stylesheet" href="../assets/css/main.css" type="text/css">
 	<link rel="stylesheet" href="../assets/css/prism-github.css">
+	<link rel="stylesheet" href="../assets/plugins/viewer/viewer.min.css">
 	<style id="theme-mode"></style>
 	
+	<script type="text/javascript" src="https://vk.com/js/api/openapi.js?167"></script>
 	<script>
 		function setCookie(e,o,n){var t=(n=n||{}).expires;if("number"==typeof t&&t){var i=new Date;i.setTime(i.getTime()+1e3*t),t=n.expires=i}t&&t.toUTCString&&(n.expires=t.toUTCString());var r=e+"="+(o=encodeURIComponent(o));for(var c in n){r+="; "+c;var a=n[c];!0!==a&&(r+="="+a)}document.cookie=r}function getCookie(e){var o=document.cookie.match(new RegExp("(?:^|; )"+e.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g,"\\ ")+"=([^;]*)"));return o?decodeURIComponent(o[1]):void 0}
 		
@@ -113,8 +115,8 @@
       <div class="header no-padding-mobile">
         <div class="header-content">
           <div class="col-md-12 no-padding-mobile">
-            <div class="col-md-5 no-padding-mobile">
-              <div class="col-md-6 col-sm-6 col-xs-8 no-padding" style="text-align: left;">
+            <div class="col-md-6 no-padding-mobile">
+              <div class="col-md-8 col-sm-6 col-xs-8 no-padding" style="text-align: left;">
                 <span class="fa fa-bars opener"></span>
                   <a href="/" class="logo">
                     <img src="../assets/img/logo.png" style="margin-top: 12px;" alt="Easy VK логотип Node.js ВКонтакте API JavaScript" width="55" style="display: inline-block;margin-bottom: 20px;">
@@ -124,7 +126,7 @@
                   </a>
                   <span  class="switch-mode"><span class="fa fa-moon-o"></span></span>
               </div>
-              <div class="col-md-6 col-sm-6 col-xs-4" style="height: 80px;">
+              <div class="col-md-4 col-sm-6 col-xs-4" style="height: 80px;">
                 <div class="version-wrap" style="text-align: center;">
                   <select name="version" id="version">
                     <a href="../1.5.1/index.html"><option value="1.5.1">1.5.1</option></a>
@@ -134,7 +136,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-7 soc no-mobile" style="height: 80px;">
+            <div class="col-md-6 soc no-mobile" style="height: 80px;">
               <div class="flex-wrap">
                 <a href="https://vk.com/npm_easyvk" target="_blank" class="soc-link"><span class="fa fa-vk"></span></a>
                 <a href="https://teleg.one/easyvk" target="_blank" class="soc-link" style="padding-top:1px;padding-right: 1px;"><span class="fa fa-telegram"></span></a>
@@ -160,58 +162,58 @@
 	</div>
 	<ul class="nav">
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="index.html" class="title bigger">Начнем</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../index.html" class="title bigger">Начнем</a>
 			<ul>
 				<li>
-					<a href="index.html#easyvk">Для чего нужен EasyVK?</a>
+					<a href="../index.html#easyvk">Для чего нужен EasyVK?</a>
 					<span>EasyVK - лучшая библиотека для работы с ВК API <br> на Node.js</span>
 				</li>
 				<li>
-					<a href="index.html#functions">Функционал EasyVK</a>
+					<a href="../index.html#functions">Функционал EasyVK</a>
 					<span>Неограниченные возможности работы с API ВКонтакте</span>
 				</li>
 				<li>
-					<a href="index.html#installation">Установка</a>
+					<a href="../index.html#installation">Установка</a>
 					<span>Простая установка</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="easyvk.html" class="title bigger">Основное</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../easyvk.html" class="title bigger">Основное</a>
 			<ul>
 				<li>
-					<a href="easyvk.html#concepts">Концепция работы с EasyVK</a>
+					<a href="../easyvk.html#concepts">Концепция работы с EasyVK</a>
 				</li>
 				<li>
-					<a href="easyvk.html#first_step">Первый шаг</a>
+					<a href="../easyvk.html#first_step">Первый шаг</a>
 					<span>Авторизация</span>
 				</li>
 				<li>
-					<a href="easyvk.html#group_auth">Авторизация группы</a>
+					<a href="../easyvk.html#group_auth">Авторизация группы</a>
 				</li>
 				<li>
-					<a href="easyvk.html#cred_flow">Client Credentials Flow</a>
+					<a href="../easyvk.html#cred_flow">Client Credentials Flow</a>
 					<span>Для использования secure методов</span>
 				</li>
 				<li>
-					<a href="easyvk.html#app_auth">Авторизация приложения</a>
+					<a href="../easyvk.html#app_auth">Авторизация приложения</a>
 					<span>Воспользуйтесь всеми возможностями API</span>
 				</li>
 				<li>
-					<a href="easyvk.html#2fauthentication">Двухфакторная авторизация</a>
+					<a href="../easyvk.html#2fauthentication">Двухфакторная авторизация</a>
 					<span>Сразу ДВА фактора!</span>
 				</li>
 				<li>
-					<a href="easyvk.html#faq">База знаний</a>
+					<a href="../easyvk.html#faq">База знаний</a>
 					<span>FAQ</span>
 				</li>
 				<li>
-					<a href="easyvk.html#acknowledgments">Благодарности</a>
+					<a href="../easyvk.html#acknowledgments">Благодарности</a>
 				</li>
 			</ul>
 		</li>
 		<!--<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="tree.html" class="title bigger">Структура EasyVK (карта)</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../tree.html" class="title bigger">Структура EasyVK (карта)</a>
 			<span>Познакомьтесь со структурным деревом Easy VK, чтобы ориентироваться в документации</span>
 		</li> -->
 		<!-- <li>
@@ -233,174 +235,178 @@
 			</ul>
 		</li> -->
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="examples.html" class="title bigger">Примеры и шаблоны</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg><a href="../articles.html" class="title bigger">Статьи и гайды</a>
+			<span>Пишу сам, для всех нуждающихся</span>
+		</li>
+		<li>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../examples.html" class="title bigger">Примеры и шаблоны</a>
 			<span>Познакомьтесь с Easy VK, прежде чем начать работу с документацией</span>
 			<ul>
 				<li>
-					<a href="examples.html#bot_game">Чат-бот игра "Виселица"</a>
+					<a href="../examples.html#bot_game">Чат-бот игра "Виселица"</a>
 					<span>Опробуйте игру виселица на реальном примере чат-бота!</span>
 				</li>
 				<li>
-					<a href="examples.html#stories_bot">Бот, который смотрит сторис</a>
+					<a href="../examples.html#stories_bot">Бот, который смотрит сторис</a>
 					<span>Хотели создать бота, которы будет за Вас смотреть все истории пользователей? Есть вариант!</span>
 				</li>
 				<li>
-					<a href="examples.html#send_message">Отправка сообщения</a>
+					<a href="../examples.html#send_message">Отправка сообщения</a>
 					<span>Работаем с методами API ВК</span>
 				</li>
 				<li>
-					<a href="examples.html#chat_bot">Чат-бот</a>
+					<a href="../examples.html#chat_bot">Чат-бот</a>
 					<span>Работаем с LongPoll API</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="captcha.html" class="title bigger">Работа с капчей</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../captcha.html" class="title bigger">Работа с капчей</a>
 			<span>@ Ловите капчу! Ловите!</span>
 			<ul>
 				<li>
-					<a href="captcha.html#captchaHandler">captchaHandler</a>
+					<a href="../captcha.html#captchaHandler">captchaHandler</a>
 					<span>Основное свойство настроек EasyVK</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="main.html" class="title bigger">Главное</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../main.html" class="title bigger">Главное</a>
 			<ul>
 				<li>
-					<a href="main.html#vk_call"><span class="object">vk</span>.<span class="span method">call</span>()</a>
+					<a href="../main.html#vk_call"><span class="object">vk</span>.<span class="span method">call</span>()</a>
 					<span>Сделать запрос к ВК API</span>
 				</li>
 				<li>
-					<a href="main.html#vk_post"><span class="object">vk</span>.<span class="span method">post</span>()</a>
+					<a href="../main.html#vk_post"><span class="object">vk</span>.<span class="span method">post</span>()</a>
 					<span>Сделать запрос к ВК API по POST методу</span>
 				</li>
 				<li>
-					<a href="main.html#easyvk_is"><span class="object">easyvk</span>.<span class="span method">is</span>()</a>
+					<a href="../main.html#easyvk_is"><span class="object">easyvk</span>.<span class="span method">is</span>()</a>
 				</li>
 				<li>
-					<a href="main.html#easyvk_class"><span class="object">easyvk</span>.<span class="span property">class</span></a>
+					<a href="../main.html#easyvk_class"><span class="object">easyvk</span>.<span class="span property">class</span></a>
 				</li>
 				<li>
-					<a href="main.html#easyvk_version"><span class="object">easyvk</span>.<span class="span property">version</span></a>
+					<a href="../main.html#easyvk_version"><span class="object">easyvk</span>.<span class="span property">version</span></a>
 				</li>
 				<li>
-					<a href="main.html#easyvk_callbackapi"><span class="object">easyvk</span>.<span class="span property">callbackAPI</span> </a>
+					<a href="../main.html#easyvk_callbackapi"><span class="object">easyvk</span>.<span class="span property">callbackAPI</span> </a>
 					<span>Используйте Callback API без авторизации</span>
 				</li>
 				<li>
-					<a href="main.html#easyvk_streamingapi"><span class="object">easyvk</span>.<span class="span property">streamingAPI</span></a>
+					<a href="../main.html#easyvk_streamingapi"><span class="object">easyvk</span>.<span class="span property">streamingAPI</span></a>
 					<span>Используйте Streaming API без авторизации</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="staticmethods.html" class="title bigger">Статические методы</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../staticmethods.html" class="title bigger">Статические методы</a>
 			<span>Обращение к статическим методам происходит аналогично: easyvk.static.someMethod()</span>
 			<ul>
 				<li>
-					<a href="staticmethods.html#call"><span class="object">static</span>.<span class="span method">call</span>()</a>
+					<a href="../staticmethods.html#call"><span class="object">static</span>.<span class="span method">call</span>()</a>
 					<span>Сделать запрос к ВК API без авторизации</span>
 				</li>
 				<li>
-					<a href="staticmethods.html#createExecute"><span class="object">static</span>.<span class="span method">createExecute</span>()</a>
+					<a href="../staticmethods.html#createExecute"><span class="object">static</span>.<span class="span method">createExecute</span>()</a>
 					<span>Создать VK Script запроса к API</span>
 				</li>
 				<li>
-					<a href="staticmethods.html#randomId"><span class="object">static</span>.<span class="span method">randomId</span>()</a>
+					<a href="../staticmethods.html#randomId"><span class="object">static</span>.<span class="span method">randomId</span>()</a>
 					<span>Случайное число</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="callbackapi.html" class="title bigger">Callback API</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../callbackapi.html" class="title bigger">Callback API</a>
 			<ul>
 				<li>
-					<a href="callbackapi.html#listen"><span class="object">callbackAPI</span>.<span class="span method">listen</span>()</a>
+					<a href="../callbackapi.html#listen"><span class="object">callbackAPI</span>.<span class="span method">listen</span>()</a>
 				</li>
 				<li>
-					<a href="callbackapi.html#events">События Callback API</a>
+					<a href="../callbackapi.html#events">События Callback API</a>
 				</li>
 			</ul>
 		</li>
 			<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="streamingapi.html" class="title bigger">Streaming API</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../streamingapi.html" class="title bigger">Streaming API</a>
 			<ul>
 				<li>
-					<a href="streamingapi.html#connect"><span class="object">streamingAPI</span>.<span class="span method">connect</span>()</a>
+					<a href="../streamingapi.html#connect"><span class="object">streamingAPI</span>.<span class="span method">connect</span>()</a>
 				</li>
 				<li>
-					<a href="streamingapi.html#stream_addRule"><span class="object">stream</span>.<span class="span method">addRule</span>()</a>
+					<a href="../streamingapi.html#stream_addRule"><span class="object">stream</span>.<span class="span method">addRule</span>()</a>
 				</li>
 				<li>
-					<a href="streamingapi.html#stream_deleteRule"><span class="object">stream</span>.<span class="span method">deleteRule</span>()</a>
+					<a href="../streamingapi.html#stream_deleteRule"><span class="object">stream</span>.<span class="span method">deleteRule</span>()</a>
 				</li>
 				<li>
-					<a href="streamingapi.html#stream_initRules"><span class="object">stream</span>.<span class="span method">initRules</span>()</a>
+					<a href="../streamingapi.html#stream_initRules"><span class="object">stream</span>.<span class="span method">initRules</span>()</a>
 				</li>
 				<li>
-					<a href="streamingapi.html#stream_deleteAllRules"><span class="object">stream</span>.<span class="span method">deleteAllRules</span>()</a>
+					<a href="../streamingapi.html#stream_deleteAllRules"><span class="object">stream</span>.<span class="span method">deleteAllRules</span>()</a>
 				</li>
 				<li>
-					<a href="streamingapi.html#stream_getRules"><span class="object">stream</span>.<span class="span method">getRules</span>()</a>
+					<a href="../streamingapi.html#stream_getRules"><span class="object">stream</span>.<span class="span method">getRules</span>()</a>
 				</li>
 				<li>
-					<a href="streamingapi.html#stream_close"><span class="object">stream</span>.<span class="span method">close</span>()</a>
+					<a href="../streamingapi.html#stream_close"><span class="object">stream</span>.<span class="span method">close</span>()</a>
 				</li>
 				<li>
-					<a href="streamingapi.html#stream_events">События стрима</a>
+					<a href="../streamingapi.html#stream_events">События стрима</a>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="longpollapi.html" class="title bigger">LongPoll API</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../longpollapi.html" class="title bigger">LongPoll API</a>
 			<ul>
 				<li>
-					<a href="longpollapi.html#connect"><span class="object">longpoll</span>.<span class="span method">connect</span>()</a>
+					<a href="../longpollapi.html#connect"><span class="object">longpoll</span>.<span class="span method">connect</span>()</a>
 				</li>
 				<li>
-					<a href="longpollapi.html#lpcon_addEventCodeListener"><span class="object">lpcon</span>.<span class="span method">addEventCodeListener</span>()</a>
+					<a href="../longpollapi.html#lpcon_addEventCodeListener"><span class="object">lpcon</span>.<span class="span method">addEventCodeListener</span>()</a>
 				</li>
 				<li>
-					<a href="longpollapi.html#lpcon_debug"><span class="object">lpcon</span>.<span class="span method">debug</span>()</a>
+					<a href="../longpollapi.html#lpcon_debug"><span class="object">lpcon</span>.<span class="span method">debug</span>()</a>
 				</li>
 				<li>
-					<a href="longpollapi.html#lpcon_close"><span class="object">lpcon</span>.<span class="span method">close</span>()</a>
+					<a href="../longpollapi.html#lpcon_close"><span class="object">lpcon</span>.<span class="span method">close</span>()</a>
 				</li>
 				<li>
-					<a href="longpollapi.html#longpoll_events">События</a>
+					<a href="../longpollapi.html#longpoll_events">События</a>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="botslongpollapi.html" class="title bigger">[Bots] LongPoll API</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../botslongpollapi.html" class="title bigger">[Bots] LongPoll API</a>
 			<ul>
 				<li>
-					<a href="botslongpollapi.html#description">Описание</a>
+					<a href="../botslongpollapi.html#description">Описание</a>
 				</li>
 				<li>
-					<a href="botslongpollapi.html#events">События</a>
+					<a href="../botslongpollapi.html#events">События</a>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="http.html" class="title bigger">HTTP</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../http.html" class="title bigger">HTTP</a>
 			<span>С помощью HTTP клиента можно делать то, что нельзя делать с официальным API <br>Связующие компоненты: <a href="">Client</a></span>
 			<ul>
 				<li>
-					<a href="http.html#loginByForm"><span class="object">http</span>.<span class="span method">loginByForm</span>()</a>
+					<a href="../http.html#loginByForm"><span class="object">http</span>.<span class="span method">loginByForm</span>()</a>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="httpclient.html" class="title bigger">HTTP клиент</a>
+			<a href="../httpclient.html" class="title bigger">HTTP клиент</a>
 			<ul>
 				<li>
-					<a href="httpclient.html#client_readstories"><span class="object">client</span>.<span class="span method">readStories</span>()</a>
+					<a href="../httpclient.html#client_readstories"><span class="object">client</span>.<span class="span method">readStories</span>()</a>
 					<span>Посмотреть истории пользователя</span>
 				</li>
 				<li>
-					<a href="httpclient.html#client_readfeedstories"><span class="object">client</span>.<span class="span method">readFeedStories</span>()</a>
+					<a href="../httpclient.html#client_readfeedstories"><span class="object">client</span>.<span class="span method">readFeedStories</span>()</a>
 					<span>Посмотреть все новые истории друзей</span>
 				</li>
 				<!-- <li>
@@ -492,76 +498,76 @@
 			</ul>
 		</li> -->
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="session.html" class="title bigger">Сессия</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../session.html" class="title bigger">Сессия</a>
 			<ul>
 				<li>
-					<a href="session.html#save"><span class="object">session</span>.<span class="span method">save</span>()</a>
+					<a href="../session.html#save"><span class="object">session</span>.<span class="span method">save</span>()</a>
 				</li>
 				<li>
-					<a href="session.html#setPath"><span class="object">session</span>.<span class="span method">setPath</span>()</a>
+					<a href="../session.html#setPath"><span class="object">session</span>.<span class="span method">setPath</span>()</a>
 				</li>
 				<li>
-					<a href="session.html#clear"><span class="object">session</span>.<span class="span method">clear</span>()</a>
+					<a href="../session.html#clear"><span class="object">session</span>.<span class="span method">clear</span>()</a>
 				</li>
 				<li>
-					<a href="session.html#usage"><span class="object">Метод использования</span></a>
+					<a href="../session.html#usage"><span class="object">Метод использования</span></a>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg><a href="uploader.html" class="title bigger">Загрузчик файлов</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg><a href="../uploader.html" class="title bigger">Загрузчик файлов</a>
 			<span>Свободно загружайте нужные файлы на сервера ВКонтакте</span>
 			<ul>
 				<li>
-					<a href="uploader.html#uploader_getUploadURL"><span class="object">uploader</span>.<span class="span method">getUploadURL</span>()</a>
+					<a href="../uploader.html#uploader_getUploadURL"><span class="object">uploader</span>.<span class="span method">getUploadURL</span>()</a>
 					<span>Получите URL для загрузки</span>
 				</li>
 				<li>
-					<a href="uploader.html#uploader_uploadFile"><span class="object">uploader</span>.<span class="span method">uploadFile</span>()</a>
+					<a href="../uploader.html#uploader_uploadFile"><span class="object">uploader</span>.<span class="span method">uploadFile</span>()</a>
 					<span>И загрузите файл</span>
 				</li>
 				<li>
-					<a href="uploader.html#uploader_uploadFetchedFile"><span class="object">uploader</span>.<span class="span method">uploadFetchedFile</span>()</a>
+					<a href="../uploader.html#uploader_uploadFetchedFile"><span class="object">uploader</span>.<span class="span method">uploadFetchedFile</span>()</a>
 					<span>Все само</span>
 				</li>
 				<li>
-					<a href="uploader.html#uploader_upload"><span class="object">uploader</span>.<span class="span method">upload</span>()</a>
+					<a href="../uploader.html#uploader_upload"><span class="object">uploader</span>.<span class="span method">upload</span>()</a>
 					<span>Швейцарский нож</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg><a href="widgets.html" class="title bigger">Виджеты</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg><a href="../widgets.html" class="title bigger">Виджеты</a>
 			<span>Неофициальные инструменты для получения чего-либо, что нельзя получить официально через API</span>
 			<ul>
 				<li>
-					<a href="widgets.html#widgets_getliveviews"><span class="object">widgets</span>.<span class="span method">getLiveViews</span>()</a>
+					<a href="../widgets.html#widgets_getliveviews"><span class="object">widgets</span>.<span class="span method">getLiveViews</span>()</a>
 					<span>Просмотры LIVE видео</span>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg><a href="debugger.html" class="title bigger">Debugger</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg><a href="../debugger.html" class="title bigger">Debugger</a>
 			<span>Инструмент для дебага запросов и деятельности EasyVK в режиме реального времени</span>
 			<ul>
 				<li>
-					<a href="debugger.html#how_to_work"><span class="object">Debugger</span></a>
+					<a href="../debugger.html#how_to_work"><span class="object">Debugger</span></a>
 					<span>Узнайте как использовать Debugger в своих программах</span>
 				</li>
 				<li>
-					<a href="debugger.html#connect"><span class="object">Подключение</span></a>
+					<a href="../debugger.html#connect"><span class="object">Подключение</span></a>
 					<span>Используем дебаг в Easy VK</span>
 				</li>
 				<li>
-					<a href="debugger.html#EVENTS"><span class="object">Debugger EVENTS</span></a>
+					<a href="../debugger.html#EVENTS"><span class="object">Debugger EVENTS</span></a>
 					<span>Типы событий в объекте</span>
 				</li>
 				<li>
-					<a href="debugger.html#EventContext"><span class="object">EventContext</span></a>
+					<a href="../debugger.html#EventContext"><span class="object">EventContext</span></a>
 					<span>Объект события и работа с ним</span>
 				</li>
 				<li>
-					<a href="debugger.html#request"><span class="object">Запрос</span></a>
+					<a href="../debugger.html#request"><span class="object">Запрос</span></a>
 					<span>События запроса</span>
 				</li>
 				<li>
@@ -571,21 +577,21 @@
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="vkresponse.html" class="title bigger">VKResponse</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../vkresponse.html" class="title bigger">VKResponse</a>
 			<ul>
 				<li>
-					<a href="vkresponse.html#getFullResponse"><span class="object">vkr</span>.<span class="span method">getFullResponse</span>()</a>
+					<a href="../vkresponse.html#getFullResponse"><span class="object">vkr</span>.<span class="span method">getFullResponse</span>()</a>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="errors.html" class="title bigger">Классификация ошибок</a>
+			<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg> <a href="../errors.html" class="title bigger">Классификация ошибок</a>
 			<ul>
 				<li>
-					<a href="errors.html#easyvkerror"><span class="span method">EasyVKError</span></a>
+					<a href="../errors.html#easyvkerror"><span class="span method">EasyVKError</span></a>
 				</li>
 				<li>
-					<a href="errors.html#vkresponseerror"><span class="span method">VKResponseError</span></a>
+					<a href="../errors.html#vkresponseerror"><span class="span method">VKResponseError</span></a>
 				</li>
 			</ul>
 		</li>
@@ -601,7 +607,7 @@
   window.pageGot = true;
 </script>
 
-<h1>Дополнения к Easy VK <span class="date-edit">Редактировано: <span class="det">17.03.2020 в 14:57</span></span></h1>
+<h1>Дополнения к Easy VK <span class="date-edit">Редактировано: <span class="det">24.03.2020 в 11:35</span></span></h1>
 <p>
   В этом разделе я собираю все дополнения, которые были сделаны стороннимм разработчиками и мною специально для Easy VK
 </p>
@@ -651,6 +657,8 @@
 <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 <script src="../assets/plugins/prism.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../assets/plugins/viewer/viewer.min.js"></script>
+<script src="../assets/plugins/viewer/jquery-viewer.min.js"></script>
 
 <script src="../assets/js/main.js"></script>
 <script src="../assets/selectic/selectic.min.js"></script>
@@ -665,6 +673,13 @@ s.setAttribute('data-timestamp', +new Date());
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+<script type="text/javascript">
+  VK.init({apiId: 6843296, onlyWidgets: true});
+</script>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 20, attach: "*"});
+VK.Widgets.Like("vk_like", {type: "button"});
+</script>
 
   </body>
 </html>

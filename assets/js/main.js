@@ -1,8 +1,6 @@
 !(function(){
 	"use strict";
 
-
-
 	var isMobile = false; //initiate as false
 	// device detection
 	if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
@@ -76,7 +74,7 @@
 		active.addClass('active');
 
 		$('#sidebar,.docs-nav-wrap').animate({
-			scrollTop: active.offset().top - 170
+			scrollTop: active.offset() ? active.offset().top - 170 : 0
 		}, 'fast');
 
 		return this;
@@ -120,6 +118,9 @@
 	$(document).ready(function () {
 		
 		var switcherMode = $('.switch-mode');
+
+		$('img').viewer();
+
 		if (getCookie("dark-mode") == "yes" || (hours >= 22 || hours < 8)) {
 
 			if ((hours >= 22 || hours < 8) && getCookie("dark-mode") == "no") {

@@ -1,0 +1,466 @@
+{#root|./../}
+{#title|Как отправить сообщение через API ВК на Node.js}
+<h1>Как отправить сообщение через API ВК на Node.js</h1>
+<b>Структура статьи</b>
+<p>
+  <ul>
+    <li><a href="#begin">Знакомство с методом messages.send</a></li>
+    <li><a href="#send_user_message">Отправка сообщения от лица пользователя</a></li>
+    <li><a href="#send_group_message">Отправка сообщения от лица сообщества</a></li>
+    <li><a href="#send_message_conversation">Отправка сообщения в беседу</a></li>
+    <li><a href="#send_group_message_conversation">Отправка сообщения в беседу от имени сообщества</a></li>
+    <li><a href="#send_after_join">Как отправлять сообщение от имени сообщества после приглашения в беседу</a></li>
+    <li><a href="#send_sticker">Как отправить стикер</a></li>
+    <li><a href="#send_sticker_like_graffiti">Отправляем стикер в виде граффити</a></li>
+    <li><a href="#send_voice_audio_message">Как отправить голосовое сообщение</a></li>
+    <li><a href="#send_image">Как отправить изображение</a></li>
+  </ul>
+</p>
+<h3><span id="begin"></span>Знакомство с методом messages.send</h3>
+<p>
+  Если вы уже знакомы с тем, как использовать API ВКонтакте, то скорее всего вы захотели сделать первый шаг в работе с ним. Лично я начал свое погружение в VK API именно с секции сообщений. Сначала это была просто тестовая отправка сообщения.
+</p>
+<p>
+  И так, для того, чтобы отправлять сообщения, в VK API есть метод <a href="https://vk.com/dev/messages.send" target="_blank">messages.send</a>
+</p>
+<p>
+  Минимальные параметры для отправки
+  <ul>
+    <li>
+      <b>peer_id</b> - ID отправителя: беседа, или человек, или сообщество
+    </li>
+    <li>
+      <b>message</b> - Текст сообщения, если не указан параметр attachment или sticker_id
+    </li>
+    <li>
+      <b>attachment</b> - Массив с прикреплениями (точнее, строка, разделяющая прикрепления через запятую)
+    </li>
+    <li>
+      <b>sticker_id</b> - ID стикера
+    </li>
+    <li><b>random_id</b> - Случайное число, для предотвращения дубликатов сообщений. Для простоты генерации, привязывайте его к текущей дате</li>
+  </ul>
+</p>
+<p>
+  Чтобы обращаться к VK API на Node.js, я всегда использую модуль <a href="/">easyvk</a>. Есть и другие варианты, например, <a href="https://www.npmjs.com/package/vk-io" target="_blank">vk-io</a> или <a href="https://www.npmjs.com/package/node-vk-bot-api" target="_blank">node-vk-bot-api</a>. Что использовать, решать вам. Но писать статьи я решил с примерами использования easyvk, так как эта библиотека мне знакома больше, чем любая другая, хотябы потому что я ее автор :)
+</p>
+<p>
+  На <a href="https://ciricc.github.io">сайте-документации</a> модуля написано подробно о том, как его установить и использовать. 
+</p>
+<h2>Примеры</h2>
+<p>
+  Чтобы эта и другие мои статьи о VK API не получились как все типичные статьи из интернета, я буду меньше говорить, и больше показывать.
+</p>
+<h3><span id="send_user_message"></span>Отправка сообщения от лица пользователя</h3>
+<p>
+  Чтобы отправить сообщение от лица пользователя, вам понадобится:
+  <ul>
+    <li>Токен пользователя</li>
+    <li>Доступ к секции <b>messages</b></li>
+  </ul>
+</p>
+<p>
+  Хотелось бы напомнить, что Messages API официально закрыт для аккаунтов ВКонтакте, но это не значит, что им нельзя пользоваться. В библиотеке easyvk, для получения доступа, авторизация происходит по данным официальных клиентов ВКонтакте (Приложение для Android, например), которые уже имеют доступ к секции Messages API. Вам почти ничего не надо делать для успешной отправки первого сообщения.
+</p>
+<p>
+  Теперь сам пример
+</p>
+<pre class="js"><code>const easyvk = require('easyvk') // Подключаем easyvk
+
+easyvk({ /** Авторизуемся */
+  username: 'ВАШ_ЛОГИН',
+  password: 'ВАШ_ПАРОЛЬ'
+}).then(async (vk) => {
+  
+  /** Отправляем сообщение */
+  let response = await vk.call('messages.send', {
+    /** Отправляем самому себе */
+    peer_id: vk.session.user_id,
+    message: "Привет!",
+    /** Получаем случайное число с привязкой к дате*/
+    random_id: easyvk.randomId()
+  })
+  
+  console.log(response) // Выводим ID отправленного сообщения
+
+})</code></pre>
+<p>
+  Если все получилось, вам придет сообщение с текстом <code>Привет!</code>
+</p>
+<h3><span id="send_group_message"></span>Отправка сообщения от лица сообщества</h3>
+<p>
+  Чтобы отправить сообщение от лица сообщества, вам понадобится:
+  <ul>
+    <li>Токен сообщества</li>
+    <li>Доступ к секции <b>messages</b></li>
+    <li>Доступ к диалогку с пользователем, которому хотите отправить сообщение</li>
+  </ul>
+</p>
+<p>
+  Как получить токен сообщества самым простым методом, я описал в <a href="how_to_get_group_token_easy.html" target="_blank">этой статье </a>
+</p>
+<p>
+  Чтобы получить доступ к диалогу с пользователем, он должен отправить вам любое сообщение
+</p>
+<p>
+  Параметры все те же.
+</p>
+<pre class="js"><code>const easyvk = require('easyvk')
+
+easyvk({
+  token: 'ВАШ ТОКЕН СООБЩЕСТВА'
+}).then(async vk => {
+    
+  let peerId = 1 // ID получателя
+
+  /** Отправляем сообщение */
+  let response = await vk.call('messages.send', {
+    peer_id: peerId,
+    message: "Привет!",
+    /** Получаем случайное число с привязкой к дате*/
+    random_id: easyvk.randomId()
+  })
+  
+  console.log(response) // Выводим ID отправленного сообщения
+})</code></pre>
+<p>
+  Если все получилось, сообщество отправило сообщение с текстом <code>Привет!</code>
+</p>
+<h3><span id="send_message_conversation"></span>Отправка сообщения в беседу</h3>
+<p>
+  Для отправки сообщения в беседу в параметре <b>peer_id</b> нужно указать число <code>2000000000 + ID беседы</code>. ID беседы вы можете получить любым удобным способом: через метод <a href="https://vk.com/dev/messages.getConversations" target="_blank">messages.getConversations</a> или по ссылке ВКонтакте <br>
+  <img src="https://imgur.com/uu0Kc9L.png" alt="https://vk.com/im?sel=c{ID беседы}">
+</p>
+<pre class="js"><code>const easyvk = require('easyvk') // Подключаем easyvk
+
+easyvk({
+  username: 'ВАШ_ЛОГИН',
+  password: 'ВАШ_ПАРОЛЬ'
+}).then(async vk => {
+  
+  /** Получаем список бесед */
+  let conversations = await vk.call('messages.getConversations')
+  conversations = conversations.items.filter(a => 
+    a.conversation && a.conversation.peer.type === "chat"
+  )
+  
+  if (conversations.length) {
+    let response = await vk.call('messages.send', {
+      peer_id: conversations[0].conversation.peer.id,
+      message: "Всем привет!"
+    })
+
+    console.log(response)
+  }
+
+})</code></pre>
+<h3><span id="send_group_message_conversation"></span>Отправка сообщения в беседу от имени сообщества</h3>
+<p>
+  Чтобы сообщество могло отправлять сообщения в беседу, сначала необходимо это сообщество пригласить в эту самую беседу. Для этого в настройках сообщества надо включить возможности для чат-ботов и открыть специальный сервис для приглашений.
+</p>
+<p>
+  <img src="https://imgur.com/CAdM4ZI.png" alt="Настройки сообщества">
+</p>
+<p>
+  Сервис можно будет найти в меню сообщества
+</p>
+<p>
+  <img src="https://imgur.com/WRAOGhe.png" alt="Сервис для приглашений">
+</p>
+<p>
+  Пишем код
+</p>
+<pre class="js"><code>const easyvk = require('easyvk') // Подключаем easyvk
+
+easyvk({
+  token: 'ТОКЕН СООБЩЕСТВА'
+}).then(async vk => {
+  
+  let response = await vk.call('messages.send', {
+    /** 
+      ID беседы для сообщества.
+      Как его получить, читайте ниже
+    */
+    peer_id: 2000000009,
+    message: "Всем привет!"
+  })
+
+  console.log(response) // Всегда 0
+
+})
+</code></pre>
+<h3><span id="send_after_join"></span>Как отправлять сообщение от имени сообщества после приглашения в беседу</h3>
+<p>
+  Это мы уже переходим к разработке мини-чат-бота. Но, конечно, это не он.
+</p>
+<p>
+  Сначала включаем Bots LongPoll (пример будет описан на нем, так как его сможет запустить каждый желающий, позже я буду показывать примеры создания чат-ботов с помощью Callback API тоже)
+</p>
+<p>
+  Для этого заходим в настройки сообщества. И включаем все, что касается LongPoll. А именно: 
+</p>
+<p>
+  <img src="https://imgur.com/mGvN0Wp.png" alt="Настройки сообщества (Работа с API, выставляйте новейшую версию API)">
+</p>
+<p>
+  Мы будем отправлять сообщение сразу после того, как сообщество пригласили в беседу. Включим поддержку события входящего сообщения в настройках, так как информация о приглашении придет именно как сообщение.
+</p>
+<p>
+  <img src="https://imgur.com/jewPY3f.png" alt="Включаем событие входящего сообщения">
+</p>
+<p>
+  Теперь подключим Bots LongPoll в easyvk. Не забываем, что приглашение - это обычное входящее сообщение.
+</p>
+<pre class="js"><code>const easyvk = require('easyvk')
+
+easyvk({
+  token: 'ТОКЕН СООБЩЕСТВА',
+  reauth: true,
+  v: '5.103' // Обязательно используем новейшую версию ВКонтакте
+}).then(async vk => {
+  
+  /** Подключаемся к LongPoll */
+  let connection = await vk.bots.longpoll.connect();
+  
+  /** Выставляем прослушивание сообщений */
+  connection.on("message_new", async (msg) => {
+    
+    /** Проверяем, что это приглашение в беседу */
+    if (
+      msg.message && 
+      msg.message.action && 
+      msg.message.action.type === "chat_invite_user" &&
+
+      /** Проверка, что пригласили именно наше сообщество */
+      msg.message.action.member_id === -vk.session.group_id) {
+  
+      /** Отправляем приветственное сообщение */
+      let res = await sendHelloMessage(msg.message.peer_id)
+      
+      console.log(res) // Всегда 0
+    }
+  })
+  
+  async function sendHelloMessage (peerId) {
+    return vk.call('messages.send', {
+      peer_id: peerId,
+      random_id: easyvk.randomId(),
+      message: "Всем привет!"
+    })
+  }
+
+})</code></pre>
+<p>
+  Теперь сообщество будет кидать всем беседам приветственное сообщение сразу после приглашения.
+</p>
+<h3><span id="send_sticker"></span>Отправка стикера</h3>
+<p>
+  ВКонтакте позволяет отправлять стикеры в сообщениях. Честно говоря, мне доводилось только один раз прибегать к отправке стикера. Это было, когда я писал чат-бота для глобальных бесед. Там надо было как-то реализовать пересылку любого стикера, который бы отправил пользователь. По-моему, у меня не получилось. Точнее, это работало только с бесплатными стикерами. Самое время разобраться в этом вопросе поглубже.
+</p>
+<p>
+  Все тот же messages.send
+</p>
+<pre class="js"><code>
+easyvk({
+  username: 'ВАШ_ЛОГИН',
+  password: 'ВАШ_ПАРОЛЬ'
+}).then(async vk => {
+
+  /** Получаем недавно использованные стикеры */
+  let response = await vk.call('messages.getRecentStickers')
+  let recentStickers = response.items;
+  
+  /** Отправляем самому себе стикер */
+  await vk.call('messages.send', {
+    peer_id: vk.session.user_id,
+    sticker_id: recentStickers[0].sticker_id,
+    random_id: easyvk.randomId()
+  })
+
+})
+</code></pre>
+<p>
+  Если все получилось, то стикер отправился.
+</p>
+<h3><span id="send_sticker_like_graffiti"></span>Отправка стикера как граффити</h3>
+<p>
+  Да-да. И такое бывает. Особенно в последнее время. На сколько мне известно, на данный момент ВКонтакте хранит у себя на серверах 19к стикеров (там почти 20). И все они очень разные, прикольные. Некоторые уже нигде не найти. Но они все равно хранятся. Как в общем-то и любая другая информация в ВК. И это если не считать кастомных стикеров, которые люди загружают как граффити. Разберемся, как они это делают.
+</p>
+<p>
+  Граффити - это обычный документ, загруженный как png изображение. В ВК граффити отображается почти также, как стикер. В некоторых местах, разве что, он бывает в разы больше стикера. А значит и загружать мы его будем как документ.
+</p>
+<p>
+  Для примера возьмем вот такой прикольный стикер <a href="https://vk.com/sticker/1-5041-352" target="_blank">https://vk.com/sticker/1-5041-352</a> <br>
+  <img src="https://vk.com/sticker/1-5041-256" alt="Тупа я каждый день">
+</p>
+<p>
+  Воспользуемся компонентом <code>uploader</code> для загрузки файла.
+</p>
+<pre class="js"><code>
+easyvk({
+  username: 'ВАШ_ЛОГИН',
+  password: 'ВАШ_ПАРОЛЬ'
+}).then(async vk => {
+
+  /** Получаем URL для загрузки документа */
+  let {upload_url: uploadUrl} = await vk.call('docs.getUploadServer', {
+    type: 'graffiti'
+  });
+  
+  /** Загружаем документ как graffiti */
+  let file = await vk.uploader.uploadFetchedFile(
+    uploadUrl, 'https://vk.com/sticker/1-5041-256'
+  );
+  
+  /** Сохраняем */
+  let res = await vk.post('docs.save', file)
+  let graffiti = res.graffiti
+  
+  /** Отправляем самому себе */
+  await vk.call('messages.send', {
+    peer_id: vk.session.user_id,
+    attachment: `graffiti${graffiti.owner_id}_${graffiti.id}`,
+    random_id: easyvk.randomId()
+  })
+
+})
+</code></pre>
+<p>
+  Вот есть еще такие стикосы
+</p>
+
+<img src="https://vk.com/sticker/1-9486-256" alt="">
+<img src="https://vk.com/sticker/1-3045-256" alt="">
+<img src="https://vk.com/sticker/1-16896-256" alt="">
+<h3><span id="send_voice_audio_message"></span>Отправка голосового сообщения</h3>
+<p>
+  Происходит таким же образом, как и отправка любого документа.
+</p>
+<p>
+  Чтобы отправить голосовое сообщене, вам необходимо его записать в формате Ogg Opus (.ogg). Вы можете записать его в любом другом формате, а затем воспользоваться <code>ffmpeg</code> для форматирования его уже в .ogg, но главное, чтобы в итоге у вас получился файл <code>ogg</code>!
+</p>
+<pre class="shell"><code>ffmpeg -i audio.wav  -acodec libvorbis audio.ogg</code></pre>
+<p>
+  Если вам интересна тема работы с аудио и тем, как я сделал наложение эффектов на голосовое сообщение (реверберация, дисторшн и другие), то можете почитать <a href="">эту статью</a>
+</p>
+<p>
+  А пока что я покажу простейший пример отправки голосового сообщения
+</p>
+<pre class="js"><code>const easyvk = require('easyvk')
+
+easyvk({
+  username: 'ВАШ_ЛОГИН',
+  password: 'ВАШ_ПАРОЛЬ'
+}).then(async vk => {
+  let peerId = vk.session.user_id
+  let fileName = 'file.ogg'
+  
+  /** Получаем URL для загрузки */
+  let {upload_url: uploadUrl} = await vk.call('docs.getMessagesUploadServer', {
+    peer_id: peerId,
+    type: "audio_message"
+  })
+  
+  /** Загружаем файл */
+  let file =  await vk.uploader.uploadFile(uploadUrl, fileName)
+  let doc = await vk.post('docs.save', file)
+
+  doc = doc.audio_message;
+  
+  await vk.call('messages.send', {
+    peer_id: peerId,
+
+    /** Прикрепляем файл как обычный документ */
+    attachment: `doc${doc.owner_id}_${doc.id}_${doc.access_key}`,
+    random_id: easyvk.randomId()
+  })
+
+})
+</code></pre>
+<p>
+  Кстати говоря, отправка аудио сообщений работает и для сообществ! Просто используйте <code>access_token</code> сообщества для настройки под вас.
+</p>
+<h3><span id="send_image"></span>Отправляем изображение</h3>
+<p>
+  Вообще, есть два варианта отправки изображения.
+  <ul>
+    <li>Изображение с жесткого диска</li>
+    <li>Изображение с удаленного сервера (по URL)</li>
+  </ul>
+</p>
+<p>
+  Оба способа поддерживаются в easyvk, поэтому я покажу оба варианта загрузки.
+</p>
+<p>
+  Возьмем какую-нибудь забугорную картинку, почему - не знаю. Просто так. Загрузим ее куда-нибудь в личные сообщения.
+</p>
+<p>
+  <img src="https://i.imgur.com/PXajpyw.jpg" alt="Panic Kalm memes" width="420">
+</p>
+<p>
+  Для загрузки файла с другого сервера в easyvk есть метод <code>vk.uploader.uploadFetchedFile()</code>
+</p>
+<p>
+  Для загрузки файла с жесткого диска в easyvk есть метод <code>vk.uploader.uploadFile()</code>
+</p>
+<p>
+  Напишем код
+</p>
+<pre class="js"><code>const easyvk = require('easyvk')
+
+easyvk({
+  username: 'ВАШ_ЛОГИН',
+  password: 'ВАШ_ПАРОЛЬ'
+}).then(async vk => {
+  let peerId = vk.session.user_id
+  let fileName = 'https://i.imgur.com/PXajpyw.jpg'
+
+  /** Локальная картинка */
+  let localFileName = './img.png'
+  
+  /** Получаем URL для загрузки */
+  let {upload_url: uploadUrl} = await vk.call('photos.getMessagesUploadServer', {
+    peer_id: peerId
+  })
+  
+  /** Загружаем файл (url, file, field - photo, как в документации) */
+  let file =  await vk.uploader.uploadFetchedFile(uploadUrl, fileName, 'photo')
+  let localFile =  await vk.uploader.uploadFile(uploadUrl, localFileName, 'photo')
+
+  /** Сохряняем оба изображения */
+  let photo = await vk.post('photos.saveMessagesPhoto', file)
+  let localPhoto = await vk.post('photos.saveMessagesPhoto', localFile)
+
+  photo = photo[0]
+  localPhoto = localPhoto[0]
+
+
+  /** Отправляем сообщение */
+  await vk.call('messages.send', {
+    peer_id: peerId,
+
+    /** Прикрепляем файл как обычный документ */
+    attachment: [
+      `photo${photo.owner_id}_${photo.id}_${photo.access_key}`, 
+      `photo${localPhoto.owner_id}_${localPhoto.id}_${localPhoto.access_key}`
+    ],
+    random_id: easyvk.randomId()
+  })
+
+})
+</code></pre>
+<p>
+  На этом все! Спасибо, что дочитали до конца. Надеюсь, что эта статья вам хоть чем-то помогла и вы научились чему-то новому :)
+</p>
+<p>
+  Ссылки
+  <ul>
+    <li><a href="how_to_get_group_token_easy.html" target="_blank">Как получить токен сообщества ВКонтакте самым простым методом</a></li>
+    <li><a href="how_to_send_voice_audio_message_vkontakte_with_sound_effects.html" target="_blank">Отправляем голосовое сообщение ВКонтакте с эффектами</a></li>
+  </ul>
+</p>
+
+<div class="comments-wrap">
+  <div class="comments-wrap-header"><h4>Комментарии к статье</h4> <div id="vk_like"></div></div>
+  <div id="vk_comments"></div>
+</div>

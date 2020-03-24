@@ -9,8 +9,7 @@
 
 const fs = require('fs')
 const _ = __dirname;
-
-
+const path = require('path')
 
 const versions = [
 	'1.5.1',
@@ -90,7 +89,32 @@ function Update (file = "", version = "2.6.0", isLastVersion = false) {
 		fs.mkdirSync(dirname);
 	}
 
+	if (file.match("\\" + path.sep)) {
+		let filePath = file.split(path.sep)
+		let pathJoin = dirname
+		filePath.forEach((a, i) => {
+			if (i !== filePath.length - 1) {
+				pathJoin = path.join(pathJoin, a)
+				if (!fs.existsSync(pathJoin)) {
+					fs.mkdirSync(pathJoin)
+				}
+			}
+		})
+		if (isLastVersion) {
+			let pathJoin = _;
+			filePath.forEach((a, i) => {
+				if (i !== filePath.length - 1) {
+					pathJoin = path.join(pathJoin, a)
+					if (!fs.existsSync(pathJoin)) {
+						fs.mkdirSync(pathJoin)
+					}
+				}
+			});
+		}
+	}
+
 	let fTemplate;
+
 	try {
 		fTemplate = fs.readFileSync(dirname + file).toString();
 	} catch (e) {
@@ -120,8 +144,9 @@ function Update (file = "", version = "2.6.0", isLastVersion = false) {
 function TemplateIt (htmlContent = "", template = "", version = "2.6.0", rootable = false) {
 	let templatesFiles = fs.readdirSync(templatesDir + version);
 
-	function scanRoot (html) {
-		return html.toString().replace(/\{root\}/g, ((rootable) ? "" : "../"));
+	function scanRoot (html, variables) {
+		// console.log(variables)
+		return html.toString().replace(/\{root\}/g, ((rootable) ? variables.root ? variables.root : "" : variables.root ? variables.root : "../"));
 	}
 
 	for (let t = 0; t < templatesFiles.length; t++) {
@@ -140,7 +165,6 @@ function TemplateIt (htmlContent = "", template = "", version = "2.6.0", rootabl
 	let regexp = new RegExp("{%(.*?)" + "content.html".replace(".html", "") + "(.*?)%}", "g");
 
 	template = template.replace(regexp, htmlContent);
-	template = scanRoot(template);
 
 	let types = [
 		["string", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type"],
@@ -167,6 +191,7 @@ function TemplateIt (htmlContent = "", template = "", version = "2.6.0", rootabl
 	
 	let templateVariables = template.match(/\{\#(.*?)\|(.*?)\}/g) || [];
 
+	
 	templateVariables = templateVariables.map((variable) => {
 		// console.log(variable.match(/\#(.*?)\|(.*?)\}/));
 		return {
@@ -185,6 +210,7 @@ function TemplateIt (htmlContent = "", template = "", version = "2.6.0", rootabl
 		vars[variable.name] = variable.value;
 	});
 
+	template = scanRoot(template, vars);
 	// console.log(re);
 
 	for (let v in vars) {
@@ -202,6 +228,23 @@ for (let v = 0; v < versions.length; v++) {
 	let pagesPath = pagesDir + versions[v];
 	//get templates for this version, and then get files from this version
 	let pages = fs.readdirSync(pagesPath);
+	
+	let i = 0;
+	for (let page of pages) {
+		if (!page.match(/\.html/)) {
+			let _pages = fs.readdirSync(path.join(pagesPath, page));
+			
+			_pages.forEach(pageIn => {
+				pages.push(path.join(page, pageIn))
+			});
+			
+			if (pages.indexOf(page) !== -1) {
+				pages.splice(pages.indexOf(page), 1)
+			}
+		}
+		i++;
+	}
+
 	let templates = fs.readdirSync(templatesPath);
 
 	fs.watch(pagesPath, (event, path) => {
