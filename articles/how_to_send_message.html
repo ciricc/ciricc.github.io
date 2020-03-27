@@ -409,6 +409,10 @@
 					<a href="./../httpclient.html#client_readfeedstories"><span class="object">client</span>.<span class="span method">readFeedStories</span>()</a>
 					<span>Посмотреть все новые истории друзей</span>
 				</li>
+				<li>
+					<a href="./../httpclient.html#client_request"><span class="object">client</span>.<span class="span method">request</span>()</a>
+					<span>Управляй сам</span>
+				</li>
 				<!-- <li>
 					<a href="httpclient.html#client_audio"><span class="object">client</span>.<span class="span span property">audio</span></a>
 					<span>
@@ -604,7 +608,7 @@
         <div id="main-content" style="max-width: 910px;">
           
 
-<h1>Как отправить сообщение через API ВК на Node.js <span class="date-edit">Редактировано: <span class="det">24.03.2020 в 14:57</span></span></h1>
+<h1>Как отправить сообщение через API ВК на Node.js <span class="date-edit">Редактировано: <span class="det">27.03.2020 в 16:37</span></span></h1>
 <b>Структура статьи</b>
 <p>
   <ul>
@@ -906,20 +910,16 @@ easyvk({
   password: 'ВАШ_ПАРОЛЬ'
 }).then(async vk => {
 
-  /** Получаем URL для загрузки документа */
-  let {upload_url: uploadUrl} = await vk.call('docs.getUploadServer', {
-    type: 'graffiti'
-  });
-  
-  /** Загружаем документ как graffiti */
-  let file = await vk.uploader.uploadFetchedFile(
-    uploadUrl, 'https://vk.com/sticker/1-5041-256'
-  );
-  
-  /** Сохраняем */
-  let res = await vk.post('docs.save', file)
-  let graffiti = res.graffiti
-  
+  let {graffiti} = await vk.uploader.upload({
+    getUrlMethod: 'docs.getUploadServer', // Метод получения URL
+    getUrlParams: {
+      type: 'graffiti' // Отправляем как граффити
+    },
+    file: 'https://vk.com/sticker/1-162-256', // Что загружаем
+    isWeb: true, // Просим скачать файл с удаленного сервера
+    saveMethod: 'docs.save' // Сохраняем этим методом
+  })
+
   /** Отправляем самому себе */
   await vk.call('messages.send', {
     peer_id: vk.session.user_id,

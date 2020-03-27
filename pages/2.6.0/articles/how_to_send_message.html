@@ -302,20 +302,16 @@ easyvk({
   password: 'ВАШ_ПАРОЛЬ'
 }).then(async vk => {
 
-  /** Получаем URL для загрузки документа */
-  let {upload_url: uploadUrl} = await vk.call('docs.getUploadServer', {
-    type: 'graffiti'
-  });
-  
-  /** Загружаем документ как graffiti */
-  let file = await vk.uploader.uploadFetchedFile(
-    uploadUrl, 'https://vk.com/sticker/1-5041-256'
-  );
-  
-  /** Сохраняем */
-  let res = await vk.post('docs.save', file)
-  let graffiti = res.graffiti
-  
+  let {graffiti} = await vk.uploader.upload({
+    getUrlMethod: 'docs.getUploadServer', // Метод получения URL
+    getUrlParams: {
+      type: 'graffiti' // Отправляем как граффити
+    },
+    file: 'https://vk.com/sticker/1-162-256', // Что загружаем
+    isWeb: true, // Просим скачать файл с удаленного сервера
+    saveMethod: 'docs.save' // Сохраняем этим методом
+  })
+
   /** Отправляем самому себе */
   await vk.call('messages.send', {
     peer_id: vk.session.user_id,
