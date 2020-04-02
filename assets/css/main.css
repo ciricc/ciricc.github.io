@@ -147,13 +147,13 @@ section.body-develop {
 	line-height: 24px;
 }
 
-/*.docs {
-	overflow-x: auto;
+.docs {
+	overflow-y: auto;
 }
 
 .docs::-webkit-scrollbar-thumb {
 	background-color: rgba(255,255,255,.4)
-}*/
+}
 
 
 .small {
