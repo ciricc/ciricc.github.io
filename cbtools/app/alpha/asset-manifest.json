@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/cbtools/app/alpha/static/css/main.5f5b65c1.chunk.css",
+    "main.js": "/cbtools/app/alpha/static/js/main.1d90dccc.chunk.js",
+    "main.js.map": "/cbtools/app/alpha/static/js/main.1d90dccc.chunk.js.map",
+    "runtime-main.js": "/cbtools/app/alpha/static/js/runtime-main.23072f5e.js",
+    "runtime-main.js.map": "/cbtools/app/alpha/static/js/runtime-main.23072f5e.js.map",
+    "static/css/2.e5597a30.chunk.css": "/cbtools/app/alpha/static/css/2.e5597a30.chunk.css",
+    "static/js/2.fb486556.chunk.js": "/cbtools/app/alpha/static/js/2.fb486556.chunk.js",
+    "static/js/2.fb486556.chunk.js.map": "/cbtools/app/alpha/static/js/2.fb486556.chunk.js.map",
+    "index.html": "/cbtools/app/alpha/index.html",
+    "precache-manifest.63bc7ef2578885e3d96ed0cc2b3f91c7.js": "/cbtools/app/alpha/precache-manifest.63bc7ef2578885e3d96ed0cc2b3f91c7.js",
+    "service-worker.js": "/cbtools/app/alpha/service-worker.js",
+    "static/css/2.e5597a30.chunk.css.map": "/cbtools/app/alpha/static/css/2.e5597a30.chunk.css.map",
+    "static/css/main.5f5b65c1.chunk.css.map": "/cbtools/app/alpha/static/css/main.5f5b65c1.chunk.css.map",
+    "static/js/2.fb486556.chunk.js.LICENSE.txt": "/cbtools/app/alpha/static/js/2.fb486556.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.23072f5e.js",
+    "static/css/2.e5597a30.chunk.css",
+    "static/js/2.fb486556.chunk.js",
+    "static/css/main.5f5b65c1.chunk.css",
+    "static/js/main.1d90dccc.chunk.js"
+  ]
+}
