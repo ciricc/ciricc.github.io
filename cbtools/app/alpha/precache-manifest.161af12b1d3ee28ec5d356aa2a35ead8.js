@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1b33d37dec8d25f62d37fe9a9760374c",
+    "revision": "8f9710633bef15437074e4130e7fbccc",
     "url": "/cbtools/app/alpha/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cbtools/app/alpha/static/css/2.e5597a30.chunk.css"
   },
   {
-    "revision": "f6bf7b3daeff3c85bf8a",
+    "revision": "06ea4bff7e349a46c795",
     "url": "/cbtools/app/alpha/static/css/main.5f5b65c1.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cbtools/app/alpha/static/js/2.fb486556.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f6bf7b3daeff3c85bf8a",
-    "url": "/cbtools/app/alpha/static/js/main.1d90dccc.chunk.js"
+    "revision": "06ea4bff7e349a46c795",
+    "url": "/cbtools/app/alpha/static/js/main.0d0ec351.chunk.js"
   },
   {
     "revision": "cd6389993555b75494dd",
