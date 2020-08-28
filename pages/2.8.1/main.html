@@ -1,0 +1,262 @@
+{#title|Easy VK / Node.JS ВКонтакте API | Главное}
+<script>
+	window.pageGot = true;
+</script>
+
+<h1>Главное</h1>
+<p>
+	На этой странице описаны основные свойства и методы объекта EasyVK и функции easyvk
+</p>
+<h2 id="vk_call"><span>#</span> vk.call()</h2>
+<p>
+	Метод обращается к <a href="https://vk.com/dev" target="_blank">API ВКонтакте</a> по HTTP запросам
+</p>
+<p>
+	Аргументы метода
+</p>
+<ul>
+	<li>
+		<b>method</b> <span>*</span> (<a href="#">string</a>) <span class="default"></span>
+		<p>
+		 	Метод, к которому нужно обратиться. Например: <a href="https://vk.com/dev/messages.send">messages.send</a>
+		</p>
+		<p>
+			<pre class="js"><code>
+vk.call("messages.send")
+// или еще
+vk.call("execute")
+			</code></pre>
+		</p>
+	</li>
+	<li>
+		<b>data</b> (<a href="#">object</a>) <span class="default">[ { } ]</span>
+		<p>
+			Дополительные параметры, которые Вы хотите передать в запрос. Вы можете сами перенастраивать все параметры, которые Easy VK вставляет по умолчанию за Вас, такие, как <code class="h">access_token</code> или <code class="h">v</code> (версия API)
+		</p>
+		<p>
+			<pre class="js"><code>
+vk.call("messages.send", {
+  message: 'Привет',
+  user_id: 1,
+  random_id: easyvk.randomId()
+})
+			</code></pre>
+		</p>
+		<p>
+			Или, если Вы хотите сделать запрос от другого аккаунта, не меняя сессию
+		</p>
+		<pre class="js"><code>
+vk.call("messages.send", {
+  access_token: 'пример',
+  message: 'Привет',
+  user_id: 1,
+  random_id: easyvk.randomId()
+})
+		</code></pre>
+	</li>
+	<li>
+		<b>methodType</b> (<a href="#">string</a>) <span class="default">["GET"]</span>
+		<p>
+			Способ отправки запроса <code class="h">GET</code> или <code class="h">POST</code> или <code class="h">DELETE</code>
+		</p>
+		<pre class="js"><code>
+vk.call("wall.post", {
+  message: `
+  Запись с большим текстом может 
+  не поместиться в обычный GET запрос
+  `,
+}, "POST")
+		</code></pre>
+	</li>
+	<li>
+		<b>options</b> (<a href="#">Object</a>) <span class="default">{}</span>
+		<p>
+			 Опции запроса. В них можно поместить <code>signal</code> (<code>easyvk.AbortController</code>) для того, чтобы отменить запрос через определенное время, если он не выполняется.
+		</p>
+		<p>
+			<pre class="js"><code>let abortController = new easyvk.AbortController();
+
+vk.call('users.get', {}, 'get', {
+  signal: abortController.signal
+}).then(console.log).catch(console.error);
+
+setTimeout(() => {
+  abortController.abort();
+}, 1000);
+			</code></pre>
+		</p>
+	</li>
+</ul>
+<p>
+	Метод возвращает объект <a href="#">Promise</a>, в <code class="h">resolve</code> функцию при успешном выполнении запроса вернется <code class="h">VKResponse</code>
+</p>
+<p>
+	В случае неудачного выполнения в <code class="h">reject</code> функцию передается один из объектов ошибки Easy VK
+</p>
+<p>
+	<b>Боевой пример использования</b>
+<pre class="js"><code>vk.call("messages.send", {
+  user_id: 1,
+  message: 'Паша, привет!',
+  random_id: easyvk.randomId()
+}).then((vkr) => {
+  
+  console.log('Сообщение успешно отправлено!')
+  console.log('Выводим ответ сервера ... ')
+
+  console.log(vkr)
+
+}).catch(error => {
+	
+	console.log('Сообщение не отправлено, ошибка!')
+	console.log(error)
+
+})</code></pre>
+</p>
+
+
+<h2 id="vk_post"><span>#</span> vk.post()</h2>
+<p>
+	Метод обращается к <a href="https://vk.com/dev" target="_blank">API ВКонтакте</a> по HTTP запросам, используя за основу метод <a href="#vk_call">vk.call()</a> с заранее установленным параметром methodType = "post"
+</p>
+<p>
+	Аргументы метода
+</p>
+<ul>
+	<li>
+		<b>method</b> <span>*</span> (<a href="#">string</a>) <span class="default"></span>
+		<p>
+		 	Метод, к которому нужно обратиться. Например: <a href="https://vk.com/dev/messages.send">messages.send</a>
+		</p>
+		<p>
+			<pre class="js"><code>
+vk.post("messages.send")
+// или еще
+vk.post("execute")
+			</code></pre>
+		</p>
+	</li>
+	<li>
+		<b>data</b> (<a href="#">object</a>) <span class="default">[ { } ]</span>
+		<p>
+			Дополительные параметры, которые Вы хотите передать в запрос. Вы можете сами перенастраивать все параметры, которые Easy VK вставляет по умолчанию за Вас, такие, как <code class="h">access_token</code> или <code class="h">v</code> (версия API)
+		</p>
+		<p>
+			<pre class="js"><code>
+vk.post("messages.send", {
+  message: 'Привет',
+  user_id: 1,
+  random_id: easyvk.randomId()
+})
+			</code></pre>
+		</p>
+		<p>
+			Или, если Вы хотите сделать запрос от другого аккаунта, не меняя сессию
+		</p>
+		<pre class="js"><code>
+vk.post("messages.send", {
+  access_token: 'пример',
+  message: 'Привет',
+  user_id: 1,
+  random_id: easyvk.randomId()
+})
+		</code></pre>
+	</li>
+</ul>
+<p>
+	Метод возвращает объект <a href="#">Promise</a>, в <code class="h">resolve</code> функцию при успешном выполнении запроса вернется <code class="h">VKResponse</code>
+</p>
+<p>
+	В случае неудачного выполнения в <code class="h">reject</code> функцию передается один из объектов ошибки Easy VK
+</p>
+<p>
+	<b>Боевой пример использования</b>
+<pre class="js"><code>vk.post("messages.send", {
+  user_id: 1,
+  message: 'Паша, привет!',
+  random_id: easyvk.randomId()
+}).then((vkr) => {
+  
+  console.log('Сообщение успешно отправлено!')
+  console.log('Выводим ответ сервера ... ')
+
+  console.log(vkr)
+
+}).catch(error => {
+	
+	console.log('Сообщение не отправлено, ошибка!')
+	console.log(error)
+
+})</code></pre>
+</p>
+
+
+<h2 id="easyvk_is">easyvk.is()</h2>
+<p>
+	Метод проверяет на соответствие переменной <code class="h">foo</code> классу <code class="h">bar</code>
+</p>
+
+<p>
+	Аргументы метода
+</p>
+<ul>
+	<li>
+		<b>foo</b> <span>*</span> (<a href="#">Object</a>) <span class="default"></span>
+		<p>
+		 	Переменная, в которой нужно проверить принадлежость к классу
+		</p>
+	</li>
+	<li>
+		<b>bar</b> <span>*</span> (<a href="#">string</a>) <span class="default"></span>
+		<p>
+		 	Строка с название класса, который мы хотим проверить
+		</p>
+	</li>
+</ul>
+<pre class="js"><code>vk.call("messages.send").then((vkr) => {
+	
+  console.log(easyvk.is(vkr, easyvk.class.VKResponse))
+
+}).catch(error => {
+	
+  if (console.log(easyvk.is(error, easyvk.class.EasyVKError))) {
+		
+    // Тогда ошибка произошла на стороне EasyVK
+
+  } else {
+		
+    // Иначе произошла ошибка в запросе, может быть что-то неправильно введено
+  }
+
+})</code></pre>
+<h2 id="easyvk_class">easyvk.class</h2>
+<p>
+	Это объект классов Easy VK, которые так или иначе приходится проверять, но прямого доступа для <code class="h">instanceof</code> к ним нету. Используется в связке с методом <a href="#easyvk_is">easyvk.is()</a> для проверки принадлежности к классу
+</p>
+<p>
+	Вот как выглядит объект:
+</p>
+<pre class="js"><code>{
+  VKResponse: "VKResponse",
+  VKResponseError: "VKResponseError",
+  EasyVKError: "EasyVKError"
+}</code></pre>
+<h2 id="easyvk_version">easyvk.version</h2>
+<p>
+	Текущая версия установленного Easy VK
+</p>
+<pre class="js"><code>Актуальная версия: {#version#} (npm)</code></pre>
+<div class="big-quote danger">
+  <p>
+  	<span class="ic">!</span>
+    Читайте документацию для актуальной версии (<code class="h">{#version#}</code>), если устанавливаете через NPM
+  </p>
+</div>
+<h2 id="easyvk_callbackapi">easyvk.callbackAPI</h2>
+<p>
+	Прямой доступ к объекту <a href="callbackapi.html">callbackAPI</a> без авторизации
+</p>
+<h2 id="easyvk_streamingapi">easyvk.streamingAPI</h2>
+<p>
+	Прямой доступ к объекту <a href="streamingapi.html">streamingAPI</a> без авторизации
+</p>

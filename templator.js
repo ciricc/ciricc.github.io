@@ -14,7 +14,7 @@ const path = require('path')
 const versions = [
 	'1.5.1',
 	'2.0.0',
-	'2.6.0'
+	'2.8.1'
 ];
 
 const templatesDir = _ + '/templates/';
@@ -77,7 +77,7 @@ function getEditedOrNot (firstVersion, lastVersion) {
 	return lastVersion;
 }
 
-function Update (file = "", version = "2.6.0", isLastVersion = false) {
+function Update (file = "", version = "2.8.1", isLastVersion = false) {
 
 	let htmlTemplate = fs.readFileSync(pagesDir + version + "/template.html").toString();
 	let html = fs.readFileSync(pagesDir + version + "/" + file).toString();
@@ -141,7 +141,7 @@ function Update (file = "", version = "2.6.0", isLastVersion = false) {
 	}
 }
 
-function TemplateIt (htmlContent = "", template = "", version = "2.6.0", rootable = false) {
+function TemplateIt (htmlContent = "", template = "", version = "2.8.1", rootable = false) {
 	let templatesFiles = fs.readdirSync(templatesDir + version);
 
 	function scanRoot (html, variables) {

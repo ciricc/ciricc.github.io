@@ -1,0 +1,85 @@
+{#title|Easy VK / Node.JS ВКонтакте API | HTTP клиент}
+<script>
+	window.pageGot = true;
+</script>
+<h1>HTTP Клиент</h1>
+<p>
+	За более подробной информацией об HTTP Клиенте обращайтесь на страницу <a href="http.html">HTTP</a>
+</p>
+<p>
+	После того, как авторизация по HTTP клиенту произошла, Вы получаете объект HTTPClient, его описание идет ниже
+</p>
+<h2 id="client_request">client.request()</h2>
+<p>
+	Метод делает подписанный пользовательской сессией запрос на любой внутренний адрес ВКонтакте. С помощью него Вы можете получать любую страницу ВКонтакте такой, как буд-то Вы зашли во ВКонтакте через браузер с выключенным JavaScript.
+
+	Таким же способом Вы можете получать любую другую информацию, которую не можете получить с помощью официального API ВКонтакте. Делать запросы туда, куда нельзя делать через API.
+</p>
+<p>
+	Аргументы метода
+</p>
+<ul>
+	<li>
+		<b>file</b> <span>*</span> (<a href="#">string</a>) <span class="default"></span>
+		<p>	
+			Файл, к которому надо обратиться. Это может быть любой файл, идущий после доменного имени. Например, <code>al_im.php</code>
+		</p>
+		<pre class="js"><code>// https://vk.com/al_im.php [POST]
+client.request('al_im.php').then(console.log)</code></pre>
+	</li>
+	<li>
+		<b>form</b> <span>*</span> (<a href="#">Object</a>) <span class="default"></span>
+		<p>	
+			Объект (форма, данные), которые нужно отправить по этому запросу
+		</p>
+		<pre class="js"><code>client.request('al_im.php', {
+  act: 'get_emoji_list',
+  al: 1,
+  sizes: 64,
+  sticker_packs_to_load: ''
+}).then(console.log)</code></pre>
+	</li>
+	<li>
+		<b>post</b> <span></span> (<a href="#">boolean</a>) <span class="default">true</span>
+		<p>	
+			Нужно ли отправлять запрос по методу <code>POST</code>
+		</p>
+	</li>
+	<li>
+		<b>isMobile</b> <span></span> (<a href="#">boolean</a>) <span class="default">false</span>
+		<p>	
+			Если Вы выставите это значение как <code>true</code>, то запрос отправится на поддомен <a href="https://m.vk.com" target="_blank">m.vk.com</a>
+		</p>
+	</li>
+	<li>
+		<b>options</b> <span></span> (<a href="#">Object</a>) <span class="default">{}</span>
+		<p>	
+			Опции, которые будут отправлены в функцию <code>fetch</code>
+		</p>
+	</li>
+</ul>
+<p>
+	Метод возвращает объект <a href="#">Promise</a>, в <code class="h">resolve</code> функцию при успешном выполнении запроса вернется ответ сервера. <br/>
+
+	Выглядеть такой ответ может как угодно, но на момент написания этих строк (01.03.2020) ВКонтакте в основном на все POST запросы отправляет почти <code>JSON</code>. Почти, потому что это не совсем JSON, в начеле к нему добавляется непонятный префикс <code>&lt;!--</code>, но Easy VK написан так, что, если не получится получить JSON, то он вернет полный ответ сервера независимо от того, что там пришло
+</p>
+<pre class="js"><code>client.request('al_img.php', {
+  act: "a_get_dialogs",
+  al: 1,
+  gid: 0,
+  im_v: 3,
+  start_message_id: 0,
+  tab: "all"
+}).then(res => console.log(res.payload))</code></pre>
+<h2 id="client_fullRequest">client.fullRequest()</h2>
+<p>
+	Является копией метода <a href="#client_request"><code>request</code></a>, но вместо JSON, возвращает полный объект <code>response</code>, который приходит от <code>node-fetch</code>
+</p>
+<pre class="js"><code>let response = await client.fullRequest('https://oauth.vk.com/authorize', {
+  client_id: 6121396, // ID приложения
+  scope: 215985366, // Полный доступ
+  response_type: 'token'
+})
+  
+let token = response.url.match(/access_token=([^&]+)/g)
+console.log(await response.text())</code></pre>

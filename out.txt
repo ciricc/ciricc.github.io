@@ -1,1 +1,1 @@
-{"version":"2.6.0","title":"Отправляем голосовое сообщение ВКонтакте с эффектами","style":"style=\"max-width: 910px;\"","root":"./../"}
+{"version":"2.8.1","title":"Easy VK / Node.JS ВКонтакте API | Знакомство","style":"style=\"max-width: 910px;\""}
